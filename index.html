@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Llemon Scanner &mdash; Windows Wi-Fi Site Survey &amp; Diagnostics Tool</title>
+<meta name="description" content="Llemon Scanner is a free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, and export field-ready PDF reports." />
+<link rel="icon" href="data:," />
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-alt: #101722;
+    --card: #141d2b;
+    --border: #223349;
+    --text: #e7edf5;
+    --text-dim: #9fb0c3;
+    --accent: #ffd23f;
+    --accent-dim: #3a8bff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+  a { color: var(--accent-dim); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 0 56px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 20px; letter-spacing: 0.3px;
+    margin-bottom: 40px;
+  }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p.lead {
+    color: var(--text-dim);
+    font-size: 18px;
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 600; font-size: 15px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #14100a; }
+  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn small { font-weight: 400; opacity: 0.75; }
+  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
+
+  section { padding: 56px 0; }
+  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  h2 { font-size: 28px; margin: 0 0 8px; }
+  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
+
+  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .dl-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .dl-card h3 { margin: 0; font-size: 20px; }
+  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
+  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
+  .dl-card .btn { justify-content: center; margin-top: auto; }
+
+  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  table.checklist th, table.checklist td {
+    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
+  }
+  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  footer {
+    padding: 40px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> LLEMON SCANNER</div>
+    <h1>See your Wi-Fi the way it<br/>actually <span>behaves</span>, not just how it's <span>configured</span>.</h1>
+    <p class="lead">
+      A free, standalone Wi-Fi scanning and diagnostics tool for Windows. Discover nearby networks,
+      decode raw beacon frames, track signal history, and generate field-ready PDF reports &mdash;
+      built for IT engineers and field technicians, no install required.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#download">Download for Windows</a>
+      <a class="btn btn-secondary" href="#features">See what's inside</a>
+    </div>
+    <div class="hero-note">Windows 10 (2004+) and Windows 11 &middot; 64-bit and 32-bit &middot; no installer, no admin rights required</div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Built for real diagnostics, not just a pretty list of networks</h2>
+    <p class="section-lead">Everything a field engineer needs to explain "why is this Wi-Fi bad" with evidence, not guesswork.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="icon">&#128246;</span>
+        <h3>Live network scanning</h3>
+        <p>SSID, BSSID, vendor, channel, band, width, RSSI, PHY type, security, and more &mdash; refreshed on an adjustable interval.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128225;</span>
+        <h3>Beacon frame decoding</h3>
+        <p>Full information-element table per access point &mdash; ID, length, raw hex, and human-readable decoding of HT/VHT capabilities, RSN cipher/AKM suites, and more.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128200;</span>
+        <h3>Signal history &amp; channel usage</h3>
+        <p>RSSI-vs-time tracking per access point, plus 2.4GHz/5GHz channel occupancy charts to spot congestion and overlap at a glance.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128196;</span>
+        <h3>Field-ready PDF export</h3>
+        <p>One-click report with a network summary, per-AP detail pages, decoded beacon tables, host diagnostics (VPN, RAM), location, ISP, and live weather &mdash; ready to attach to a ticket.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9989;</span>
+        <h3>Field engineer checklist</h3>
+        <p>Built-in printable troubleshooting checklist &mdash; technician, customer and device details, environmental conditions, RF checks, and throughput verification steps.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128274;</span>
+        <h3>Standalone &amp; self-contained</h3>
+        <p>Single .exe file, no installer, no .NET runtime to install separately, no admin rights needed. Copy it to a USB stick and run it anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="download">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p class="section-lead">Pick the build that matches your Windows installation. Not sure? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
+    <div class="download-grid">
+      <div class="dl-card">
+        <h3>Llemon Scanner &mdash; 64-bit</h3>
+        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
+        <ul>
+          <li>Single self-contained .exe (~80&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Works on Windows 10 (build 19041+) and Windows 11</li>
+        </ul>
+        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
+      </div>
+      <div class="dl-card">
+        <h3>Llemon Scanner &mdash; 32-bit</h3>
+        <div class="meta">For legacy 32-bit Windows installations only</div>
+        <ul>
+          <li>Single self-contained .exe (~74&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Works on Windows 10 (build 19041+) and Windows 11, 32-bit edition</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why these numbers matter</h2>
+    <p class="section-lead">Wi-Fi coverage isn't just "signal bars." Llemon Scanner surfaces the environmental and technical factors that actually determine performance.</p>
+    <table class="checklist">
+      <thead><tr><th>Factor</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Temperature &amp; humidity</td><td>Affects RF propagation and can stress AP/client hardware in enclosed spaces.</td></tr>
+        <tr><td>Device load &amp; connected clients</td><td>More clients on a channel means more contention and lower effective throughput per device.</td></tr>
+        <tr><td>Interference</td><td>Overlapping channels and non-Wi-Fi RF noise directly reduce usable capacity.</td></tr>
+        <tr><td>Positioning &amp; obstructions</td><td>Distance, walls, and line-of-sight change signal strength far more than most people expect.</td></tr>
+        <tr><td>Uplink throughput</td><td>A great Wi-Fi signal can't outrun a slow upstream connection &mdash; both need to be checked together.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; width:100%;">
+    <div>&copy; <span id="year"></span> llemonai.in &mdash; Llemon Scanner. All rights reserved.</div>
+    <div>Built for IT diagnostics and field engineering use.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x64.exe';
+  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x86.exe';
+</script>
+
+</body>
+</html>
