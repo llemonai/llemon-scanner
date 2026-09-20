@@ -107,6 +107,16 @@
   }
   table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
 
+  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+  .shot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
+  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
+
   footer {
     padding: 40px 0;
     color: var(--text-dim);
@@ -177,6 +187,23 @@
   </div>
 </section>
 
+<section id="screenshots">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="section-lead">Live network scan with signal history and full beacon decode, plus per-band channel occupancy.</p>
+    <div class="shot-grid">
+      <div class="shot-card">
+        <img src="screenshots/scan-view.png" alt="Llemon Scanner main window showing a live network scan, RSSI signal history chart, and decoded beacon information table" loading="lazy" />
+        <div class="cap">Live scan &mdash; network list, signal history, and full beacon decode table</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/channel-usage.png" alt="Llemon Scanner showing a 2.4GHz channel usage bar chart of nearby access points" loading="lazy" />
+        <div class="cap">2.4GHz channel usage &mdash; spot congestion and overlapping channels at a glance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="alt" id="download">
   <div class="wrap">
     <h2>Download</h2>
@@ -224,9 +251,10 @@
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; width:100%;">
+  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
     <div>&copy; <span id="year"></span> llemonai.in &mdash; Llemon Scanner. All rights reserved.</div>
     <div>Built for IT diagnostics and field engineering use.</div>
+    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
   </div>
 </footer>
 
