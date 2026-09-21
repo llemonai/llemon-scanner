@@ -242,6 +242,22 @@
     transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
   }
   .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
+
+  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  #chat-input {
+    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
+    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
+  }
+  #chat-input:focus { border-color: var(--accent-dim); }
+  #chat-send {
+    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
+    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.12s ease;
+  }
+  #chat-send:hover { transform: scale(1.06); }
+  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
+  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
 </style>
 </head>
 <body>
@@ -418,12 +434,16 @@
     <span class="chat-avatar">&#129302;</span>
     <div class="chat-title-block">
       <div>llemonai Help Bot</div>
-      <div class="chat-status"><span class="dot"></span> FAQ bot &middot; instant answers</div>
+      <div class="chat-status"><span class="dot"></span> AI-powered &middot; ask anything about the app</div>
     </div>
     <button id="chat-close" aria-label="Close chat">&times;</button>
   </div>
   <div id="chat-body"></div>
   <div id="chat-quick-replies"></div>
+  <div id="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Type a question&hellip;" maxlength="500" autocomplete="off" />
+    <button id="chat-send" aria-label="Send">&#10148;</button>
+  </div>
 </div>
 
 <script>
@@ -463,21 +483,26 @@
     }
   ];
 
+  var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
+
   var toggle = document.getElementById('chat-toggle');
   var badge = document.getElementById('chat-badge');
   var panel = document.getElementById('chat-panel');
   var closeBtn = document.getElementById('chat-close');
   var body = document.getElementById('chat-body');
   var replies = document.getElementById('chat-quick-replies');
+  var input = document.getElementById('chat-input');
+  var sendBtn = document.getElementById('chat-send');
   var greeted = false;
 
   function addMessage(text, who) {
+    var isBot = who.split(' ')[0] === 'bot';
     var row = document.createElement('div');
     row.className = 'chat-row ' + who;
 
     var avatar = document.createElement('div');
     avatar.className = 'chat-mini-avatar';
-    avatar.textContent = who === 'bot' ? '\u{1F916}' : '\u{1F9D1}';
+    avatar.textContent = isBot ? '\u{1F916}' : '\u{1F9D1}';
 
     var bubble = document.createElement('div');
     bubble.className = 'chat-msg ' + who;
@@ -518,6 +543,35 @@
     }, 450 + Math.random() * 350);
   }
 
+  function askAi(question) {
+    addMessage(question, 'user');
+    input.value = '';
+    sendBtn.disabled = true;
+    var typingRow = addTypingIndicator();
+
+    fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: question })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
+        return res.json();
+      })
+      .then(function (data) {
+        typingRow.remove();
+        if (data.error) throw new Error(data.error);
+        addMessage(data.reply, 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't reach the AI assistant just now. Please try again, or email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a>.", 'bot error');
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+      });
+  }
+
   function showMenu() {
     replies.innerHTML = '';
     faq.forEach(function (item) {
@@ -533,11 +587,22 @@
     panel.classList.add('open');
     badge.classList.add('hidden');
     if (!greeted) {
-      addMessage("Hi! I'm a simple FAQ bot, not a live AI — pick a question below and I'll answer from what's on this page. For anything else, email us.", 'bot');
+      addMessage("Hi! I'm the llemonai Help Bot. Pick a common question below, or type your own and I'll answer using AI grounded in what's on this page.", 'bot');
       showMenu();
       greeted = true;
     }
   }
+
+  function handleSend() {
+    var text = input.value.trim();
+    if (!text) return;
+    askAi(text);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleSend();
+  });
 
   toggle.addEventListener('click', function () {
     if (panel.classList.contains('open')) {
