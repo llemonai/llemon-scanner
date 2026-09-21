@@ -100,6 +100,14 @@
   .dl-card .meta { color: var(--text-dim); font-size: 13px; }
   .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
   .dl-card .btn { justify-content: center; margin-top: auto; }
+  .checksum {
+    font-size: 11px;
+    color: var(--text-dim);
+    word-break: break-all;
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
 
   table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
   table.checklist th, table.checklist td {
@@ -204,6 +212,19 @@
   </div>
 </section>
 
+<section id="checklist">
+  <div class="wrap">
+    <h2>Field Engineer Checklist</h2>
+    <p class="section-lead">A built-in, printable checklist so a site visit covers every factor that affects Wi-Fi performance &mdash; not just signal strength. Fill it in on screen, tick items as you verify them, then print a signed record for the ticket.</p>
+    <div class="shot-grid">
+      <div class="shot-card" style="max-width: 480px; margin: 0 auto;">
+        <img src="screenshots/checklist.png" alt="llemonai WiFi Scanner Field Engineer Checklist showing site and visit details, device information, and environmental condition checkboxes" loading="lazy" />
+        <div class="cap">Technician, customer and device details, environmental conditions, RF checks, and throughput verification &mdash; all in one printable page</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="alt" id="download">
   <div class="wrap">
     <h2>Download</h2>
@@ -218,6 +239,7 @@
           <li>Works on Windows 10 (build 19041+) and Windows 11</li>
         </ul>
         <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
       </div>
       <div class="dl-card">
         <h3>llemonai WiFi Scanner &mdash; 32-bit</h3>
@@ -228,8 +250,14 @@
           <li>Works on Windows 10 (build 19041+) and Windows 11, 32-bit edition</li>
         </ul>
         <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
       </div>
     </div>
+    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
+      Verify your download hasn't been tampered with or corrupted: after downloading, run
+      <span class="mono">certutil -hashfile LlemonScanner-15.B1-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      and compare the result to the SHA256 value shown above for the file you downloaded.
+    </p>
   </div>
 </section>
 
@@ -263,6 +291,8 @@
   document.getElementById('year').textContent = new Date().getFullYear();
   document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x64.exe';
   document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x86.exe';
+  document.getElementById('sha-x64').textContent = '28F8DEAFCC327E4D0A03B36FA1C16C0D8AEB581B4BE426D1EEE5D8783747B783';
+  document.getElementById('sha-x86').textContent = '8E281446FF53CF100328B4C94D592AE3B35C27D48A326A663C2504C46F694FD2';
 </script>
 
 </body>
