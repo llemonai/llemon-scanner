@@ -135,6 +135,44 @@
   footer a { color: var(--text-dim); }
 
   code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
+
+  /* Chat widget */
+  #chat-toggle {
+    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--accent); color: #14100a; border: none;
+    font-size: 24px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+  }
+  #chat-toggle:hover { transform: scale(1.06); }
+  #chat-panel {
+    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
+    width: 340px; max-width: calc(100vw - 40px);
+    height: 460px; max-height: calc(100vh - 140px);
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    display: none; flex-direction: column; overflow: hidden;
+  }
+  #chat-panel.open { display: flex; }
+  #chat-header {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg-alt); font-weight: 700; font-size: 14px;
+  }
+  #chat-header button {
+    background: none; border: none; color: var(--text-dim); font-size: 18px; cursor: pointer; line-height: 1;
+  }
+  #chat-body { flex: 1; overflow-y: auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  .chat-msg { font-size: 13.5px; line-height: 1.5; max-width: 90%; }
+  .chat-msg.bot { align-self: flex-start; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
+  .chat-msg.user { align-self: flex-end; background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
+  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
+  .chat-chip {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
+  }
+  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
 </style>
 </head>
 <body>
@@ -300,6 +338,102 @@
   document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x86.exe';
   document.getElementById('sha-x64').textContent = 'A0D7F1CEFA12769213C402464B0AE59ED948F81524A714DEFDF43F32C6787198';
   document.getElementById('sha-x86').textContent = '0371542263A5CD21C94DE245D5DFD018283CE6A094C4011608F95FAAC062EC9B';
+</script>
+
+<button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">&#128172;</button>
+<div id="chat-panel" role="dialog" aria-label="Help chat">
+  <div id="chat-header">
+    <span>llemonai Help Bot</span>
+    <button id="chat-close" aria-label="Close chat">&times;</button>
+  </div>
+  <div id="chat-body"></div>
+  <div id="chat-quick-replies"></div>
+</div>
+
+<script>
+(function () {
+  var faq = [
+    {
+      q: "What is llemonai WiFi Scanner?",
+      a: "A free, standalone Wi-Fi scanning and diagnostics tool for Windows. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians."
+    },
+    {
+      q: "Which download do I need — 32-bit or 64-bit?",
+      a: "Use the 64-bit build unless you specifically know you're on a 32-bit Windows install — almost every PC made since 2010 is 64-bit. Both are on the <a href=\"#download\">Download</a> section above."
+    },
+    {
+      q: "What are the system requirements?",
+      a: "Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit. No installer, no admin rights, no separate .NET install needed — it's a single self-contained .exe."
+    },
+    {
+      q: "Is it really free? Do I need to install anything?",
+      a: "Yes, it's free, and there's nothing to install — download the single .exe and run it directly. You can even run it from a USB stick."
+    },
+    {
+      q: "I see a Windows SmartScreen warning — is it safe?",
+      a: "The .exe is digitally signed with a self-signed certificate (not a paid, publicly-trusted one yet), so SmartScreen may still flag it as from an \"Unknown Publisher\" — that's expected. To confirm the file is genuine and untouched, compare its SHA256 checksum (shown in the <a href=\"#download\">Download</a> section) against your downloaded file using <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+    },
+    {
+      q: "What's the Field Engineer Checklist?",
+      a: "A built-in, printable checklist inside the app for site visits — technician and customer details, device info, environmental conditions, RF checks, and throughput verification, all tickable on screen and printable as a signed record. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
+    },
+    {
+      q: "My Wi-Fi throughput is low — what should I check?",
+      a: "Signal strength (RSSI) alone doesn't tell the whole story. Check: optimal channel selection (avoid overlapping/congested channels — use the Channel Usage view), AP and client positioning (distance, walls, obstructions), interference from other networks or non-Wi-Fi devices, number of connected clients, and uplink throughput separately from downlink — it's often the real bottleneck."
+    },
+    {
+      q: "How do I contact support?",
+      a: "Email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a> and we'll get back to you."
+    }
+  ];
+
+  var toggle = document.getElementById('chat-toggle');
+  var panel = document.getElementById('chat-panel');
+  var closeBtn = document.getElementById('chat-close');
+  var body = document.getElementById('chat-body');
+  var replies = document.getElementById('chat-quick-replies');
+  var greeted = false;
+
+  function addMessage(text, who) {
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + who;
+    div.innerHTML = text;
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function showMenu() {
+    replies.innerHTML = '';
+    faq.forEach(function (item) {
+      var btn = document.createElement('button');
+      btn.className = 'chat-chip';
+      btn.textContent = item.q;
+      btn.onclick = function () {
+        addMessage(item.q, 'user');
+        addMessage(item.a, 'bot');
+      };
+      replies.appendChild(btn);
+    });
+  }
+
+  function openChat() {
+    panel.classList.add('open');
+    if (!greeted) {
+      addMessage("Hi! I'm a simple FAQ bot, not a live AI — pick a question below and I'll answer from what's on this page. For anything else, email us.", 'bot');
+      showMenu();
+      greeted = true;
+    }
+  }
+
+  toggle.addEventListener('click', function () {
+    if (panel.classList.contains('open')) {
+      panel.classList.remove('open');
+    } else {
+      openChat();
+    }
+  });
+  closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
+})();
 </script>
 
 </body>
