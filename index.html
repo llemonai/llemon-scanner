@@ -6,7 +6,9 @@
 <title>llemonai WiFi Scanner &mdash; Windows Wi-Fi Site Survey &amp; Diagnostics Tool</title>
 <meta name="description" content="llemonai WiFi Scanner is a free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, and export field-ready PDF reports." />
 <link rel="canonical" href="https://llemonai.in/" />
-<link rel="icon" href="data:," />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://llemonai.in/" />
@@ -69,11 +71,10 @@
     padding: 64px 0 56px;
   }
   .brand {
-    display: flex; align-items: center; gap: 10px;
-    font-weight: 700; font-size: 20px; letter-spacing: 0.3px;
+    display: flex; align-items: center;
     margin-bottom: 40px;
   }
-  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .brand img { height: 34px; width: auto; display: block; }
   .hero h1 {
     font-size: clamp(32px, 5vw, 52px);
     line-height: 1.1;
@@ -320,7 +321,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="brand"><span class="dot"></span> LLEMONAI WIFI SCANNER</div>
+    <div class="brand"><img src="assets/wordmark.png" alt="llemonai WiFi Scanner" /></div>
     <h1>See your Wi-Fi the way it<br/>actually <span>behaves</span>, not just how it's <span>configured</span>.</h1>
     <p class="lead">
       A free, standalone Wi-Fi scanning and diagnostics tool for Windows. Discover nearby networks,
@@ -477,8 +478,8 @@
   document.getElementById('year').textContent = new Date().getFullYear();
   document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x64.exe';
   document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x86.exe';
-  document.getElementById('sha-x64').textContent = 'A0D7F1CEFA12769213C402464B0AE59ED948F81524A714DEFDF43F32C6787198';
-  document.getElementById('sha-x86').textContent = '0371542263A5CD21C94DE245D5DFD018283CE6A094C4011608F95FAAC062EC9B';
+  document.getElementById('sha-x64').textContent = 'A467CBB2198B414DC2B38C93CE0CFF47D2A94A62B2F79EF0B9F849A228A60431';
+  document.getElementById('sha-x86').textContent = '8A3B84EF335EFE5B91F70317700C41C724DF189B2186A74741B69731832799B3';
 </script>
 
 <button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
