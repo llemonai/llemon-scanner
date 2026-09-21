@@ -258,6 +258,13 @@
       <span class="mono">certutil -hashfile LlemonScanner-15.B1-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
       and compare the result to the SHA256 value shown above for the file you downloaded.
     </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      Both builds are digitally signed (self-signed certificate, SHA256, timestamped). Windows SmartScreen
+      may still show an "Unknown Publisher" warning on first run since this isn't a publicly trusted
+      Certificate Authority signature &mdash; that's expected for a self-signed build. The signature and the
+      SHA256 checksum above both let you confirm the file matches exactly what we published and hasn't been
+      altered in transit.
+    </p>
   </div>
 </section>
 
@@ -291,8 +298,8 @@
   document.getElementById('year').textContent = new Date().getFullYear();
   document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x64.exe';
   document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x86.exe';
-  document.getElementById('sha-x64').textContent = '28F8DEAFCC327E4D0A03B36FA1C16C0D8AEB581B4BE426D1EEE5D8783747B783';
-  document.getElementById('sha-x86').textContent = '8E281446FF53CF100328B4C94D592AE3B35C27D48A326A663C2504C46F694FD2';
+  document.getElementById('sha-x64').textContent = 'A0D7F1CEFA12769213C402464B0AE59ED948F81524A714DEFDF43F32C6787198';
+  document.getElementById('sha-x86').textContent = '0371542263A5CD21C94DE245D5DFD018283CE6A094C4011608F95FAAC062EC9B';
 </script>
 
 </body>
