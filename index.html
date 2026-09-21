@@ -164,8 +164,8 @@
 
   #chat-panel {
     position: fixed; right: 20px; bottom: 88px; z-index: 1000;
-    width: 360px; max-width: calc(100vw - 40px);
-    height: 560px; max-height: calc(100vh - 120px);
+    width: 400px; max-width: calc(100vw - 40px);
+    height: min(720px, 85vh); max-height: calc(100vh - 100px);
     background: var(--card); border: 1px solid var(--border); border-radius: 14px;
     box-shadow: 0 12px 32px rgba(0,0,0,0.5);
     display: flex; flex-direction: column; overflow: hidden;
@@ -174,13 +174,20 @@
     transition: opacity 0.18s ease, transform 0.18s ease;
   }
   #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-  @media (max-width: 420px) {
-    #chat-panel { right: 12px; bottom: 80px; height: min(560px, 76vh); }
+  @media (max-width: 440px) {
+    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
     #chat-toggle { right: 14px; bottom: 14px; }
   }
 
-  #chat-body { min-height: 90px; }
-  #chat-quick-replies { max-height: 160px; overflow-y: auto; flex-shrink: 0; }
+  #chat-body { min-height: 160px; flex: 1 1 auto; }
+  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
+  #chat-quick-replies.collapsed { display: none; }
+  #chat-more-toggle {
+    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
+    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
+    border-radius: 999px; cursor: pointer; align-self: flex-start;
+  }
+  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
   #chat-quick-replies::-webkit-scrollbar { width: 6px; }
   #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
@@ -454,6 +461,7 @@
     <button id="chat-close" aria-label="Close chat">&times;</button>
   </div>
   <div id="chat-body"></div>
+  <button id="chat-more-toggle" type="button">Suggested questions &#9662;</button>
   <div id="chat-quick-replies"></div>
   <div id="chat-report-pill">
     <span>&#128196;</span>
@@ -522,6 +530,7 @@
   var closeBtn = document.getElementById('chat-close');
   var body = document.getElementById('chat-body');
   var replies = document.getElementById('chat-quick-replies');
+  var moreToggle = document.getElementById('chat-more-toggle');
   var input = document.getElementById('chat-input');
   var sendBtn = document.getElementById('chat-send');
   var attachBtn = document.getElementById('chat-attach');
@@ -571,8 +580,21 @@
     return row;
   }
 
+  function collapseSuggestions() {
+    replies.classList.add('collapsed');
+    moreToggle.textContent = 'Suggested questions ▾';
+  }
+
+  function toggleSuggestions() {
+    var isCollapsed = replies.classList.toggle('collapsed');
+    moreToggle.textContent = isCollapsed ? 'Suggested questions ▾' : 'Hide suggestions ▴';
+  }
+
+  moreToggle.addEventListener('click', toggleSuggestions);
+
   function askQuestion(item) {
     addMessage(item.q, 'user');
+    collapseSuggestions();
     var typingRow = addTypingIndicator();
     setTimeout(function () {
       typingRow.remove();
@@ -582,6 +604,7 @@
 
   function askAi(question) {
     addMessage(question, 'user');
+    collapseSuggestions();
     input.value = '';
     sendBtn.disabled = true;
     var typingRow = addTypingIndicator();
@@ -677,6 +700,8 @@
       btn.onclick = function () { askQuestion(item); };
       replies.appendChild(btn);
     });
+    replies.classList.remove('collapsed');
+    moreToggle.textContent = 'Hide suggestions ▴';
   }
 
   function openChat() {
