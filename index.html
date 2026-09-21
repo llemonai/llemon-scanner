@@ -6,6 +6,7 @@
 <title>llemonai WiFi Scanner &mdash; Windows Wi-Fi Site Survey &amp; Diagnostics Tool</title>
 <meta name="description" content="llemonai WiFi Scanner is a free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, and export field-ready PDF reports." />
 <link rel="icon" href="data:," />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <style>
   :root {
     --bg: #0b0f14;
@@ -249,15 +250,29 @@
     padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
   }
   #chat-input:focus { border-color: var(--accent-dim); }
-  #chat-send {
+  #chat-send, #chat-attach {
     background: var(--accent); color: #14100a; border: none; border-radius: 50%;
     width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.12s ease;
   }
-  #chat-send:hover { transform: scale(1.06); }
+  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
+  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
+  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
   #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
   .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
+
+  #chat-report-pill {
+    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
+    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
+    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
+  }
+  #chat-report-pill.show { display: flex; }
+  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+  #chat-report-pill button {
+    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
+  }
+  #chat-report-pill button:hover { color: var(--text); }
 </style>
 </head>
 <body>
@@ -440,7 +455,14 @@
   </div>
   <div id="chat-body"></div>
   <div id="chat-quick-replies"></div>
+  <div id="chat-report-pill">
+    <span>&#128196;</span>
+    <span class="name" id="chat-report-name"></span>
+    <button id="chat-report-remove" aria-label="Remove attached report" title="Remove">&times;</button>
+  </div>
   <div id="chat-input-row">
+    <input type="file" id="chat-file-input" accept="application/pdf" style="display:none;" />
+    <button id="chat-attach" aria-label="Attach your PDF report" title="Attach your PDF report">&#128206;</button>
     <input id="chat-input" type="text" placeholder="Type a question&hellip;" maxlength="500" autocomplete="off" />
     <button id="chat-send" aria-label="Send">&#10148;</button>
   </div>
@@ -480,10 +502,19 @@
     {
       q: "How do I contact support?",
       a: "Email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a> and we'll get back to you."
+    },
+    {
+      q: "Can I get advice based on my own scan report?",
+      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonai WiFi Scanner (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
     }
   ];
 
   var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
+  var MAX_REPORT_CHARS = 15000;
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
 
   var toggle = document.getElementById('chat-toggle');
   var badge = document.getElementById('chat-badge');
@@ -493,7 +524,13 @@
   var replies = document.getElementById('chat-quick-replies');
   var input = document.getElementById('chat-input');
   var sendBtn = document.getElementById('chat-send');
+  var attachBtn = document.getElementById('chat-attach');
+  var fileInput = document.getElementById('chat-file-input');
+  var reportPill = document.getElementById('chat-report-pill');
+  var reportName = document.getElementById('chat-report-name');
+  var reportRemoveBtn = document.getElementById('chat-report-remove');
   var greeted = false;
+  var reportContext = '';
 
   function addMessage(text, who) {
     var isBot = who.split(' ')[0] === 'bot';
@@ -552,7 +589,7 @@
     fetch(CHAT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: question })
+      body: JSON.stringify({ message: question, reportContext: reportContext })
     })
       .then(function (res) {
         if (!res.ok) throw new Error('Request failed (' + res.status + ')');
@@ -572,6 +609,65 @@
       });
   }
 
+  function extractPdfText(file) {
+    return file.arrayBuffer().then(function (buf) {
+      return pdfjsLib.getDocument({ data: buf }).promise;
+    }).then(function (pdf) {
+      var pageTexts = [];
+      var pagePromise = Promise.resolve();
+      for (var i = 1; i <= pdf.numPages; i++) {
+        (function (pageNum) {
+          pagePromise = pagePromise
+            .then(function () { return pdf.getPage(pageNum); })
+            .then(function (page) { return page.getTextContent(); })
+            .then(function (content) {
+              var text = content.items.map(function (it) { return it.str; }).join(' ');
+              pageTexts.push(text);
+            });
+        })(i);
+      }
+      return pagePromise.then(function () { return pageTexts.join('\n\n'); });
+    });
+  }
+
+  function handleFileAttach(file) {
+    if (!file || file.type !== 'application/pdf') {
+      addMessage('Please attach a PDF file (the report exported from llemonai WiFi Scanner).', 'bot error');
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
+      return;
+    }
+
+    var typingRow = addTypingIndicator();
+    extractPdfText(file)
+      .then(function (text) {
+        typingRow.remove();
+        reportContext = text.slice(0, MAX_REPORT_CHARS);
+        reportName.textContent = file.name;
+        reportPill.classList.add('show');
+        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't read that PDF. Make sure it's not password-protected and try again.", 'bot error');
+      });
+  }
+
+  attachBtn.addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files[0]) {
+      handleFileAttach(fileInput.files[0]);
+    }
+    fileInput.value = '';
+  });
+  reportRemoveBtn.addEventListener('click', function () {
+    reportContext = '';
+    reportPill.classList.remove('show');
+    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
+  });
+
   function showMenu() {
     replies.innerHTML = '';
     faq.forEach(function (item) {
@@ -587,7 +683,7 @@
     panel.classList.add('open');
     badge.classList.add('hidden');
     if (!greeted) {
-      addMessage("Hi! I'm the llemonai Help Bot. Pick a common question below, or type your own and I'll answer using AI grounded in what's on this page.", 'bot');
+      addMessage("Hi! I'm the llemonai Help Bot. Pick a common question below, type your own, or attach your scan report (paperclip icon) for advice based on your actual numbers.", 'bot');
       showMenu();
       greeted = true;
     }
