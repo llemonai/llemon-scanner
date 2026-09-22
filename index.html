@@ -408,7 +408,7 @@
 <section class="alt" id="download">
   <div class="wrap">
     <h2>Download</h2>
-    <p class="section-lead">Pick the build that matches your Windows installation. Not sure? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
+    <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
     <div class="download-grid">
       <div class="dl-card">
         <h3>llemonai WiFi Scanner &mdash; 64-bit</h3>
@@ -432,18 +432,34 @@
         <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
       </div>
+      <div class="dl-card">
+        <h3>llemonai WiFi Scanner &mdash; Android</h3>
+        <div class="meta">Native app &middot; Android 8.0+ (API 26+)</div>
+        <ul>
+          <li>Single .apk (~11&nbsp;MB), sideload install</li>
+          <li>Signed with our own release key (not on Play Store yet)</li>
+          <li>Same features as desktop: scan, PDF export, checklist, network info</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
+      </div>
     </div>
     <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
       Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile LlemonScanner-15.B1-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      <span class="mono">certutil -hashfile LlemonScanner-15.B2-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
       and compare the result to the SHA256 value shown above for the file you downloaded.
     </p>
     <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      Both builds are digitally signed (self-signed certificate, SHA256, timestamped). Windows SmartScreen
-      may still show an "Unknown Publisher" warning on first run since this isn't a publicly trusted
-      Certificate Authority signature &mdash; that's expected for a self-signed build. The signature and the
-      SHA256 checksum above both let you confirm the file matches exactly what we published and hasn't been
-      altered in transit.
+      All builds are digitally signed (self-signed certificates, SHA256). Windows SmartScreen may still show
+      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
+      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
+      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we
+      published and hasn't been altered in transit.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      Installing the Android APK: Android will block it by default as an "unknown source." Open the
+      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
+      normal for any app installed outside the Play Store, not a sign of a problem with this app specifically.
     </p>
   </div>
 </section>
@@ -476,10 +492,12 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x64.exe';
-  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x86.exe';
-  document.getElementById('sha-x64').textContent = 'A467CBB2198B414DC2B38C93CE0CFF47D2A94A62B2F79EF0B9F849A228A60431';
-  document.getElementById('sha-x86').textContent = '8A3B84EF335EFE5B91F70317700C41C724DF189B2186A74741B69731832799B3';
+  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x64.exe';
+  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x86.exe';
+  document.getElementById('dl-android').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/llemonai-wifiscanner-15A2-android.apk';
+  document.getElementById('sha-x64').textContent = '852892A5728A9A39E7D451E20A5673F78EE20331944F6612C68C36B60B11F47B';
+  document.getElementById('sha-x86').textContent = '271A73D0997DAFAA7348C5DCDD2461E208FAA2EA89019DB85692584F79CD8C2B';
+  document.getElementById('sha-android').textContent = '51F42FC103BCA6538CCC16F52B9A1837D4B39EABFDEA095CC0132A31E73B82B2';
 </script>
 
 <button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
