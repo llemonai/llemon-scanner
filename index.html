@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>llemonai WiFi Scanner &mdash; Windows Wi-Fi Site Survey &amp; Diagnostics Tool</title>
-<meta name="description" content="llemonai WiFi Scanner is a free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, and export field-ready PDF reports." />
+<title>llemonai WiFi Scanner &mdash; Wi-Fi Site Survey &amp; Diagnostics Tool for Windows &amp; Android</title>
+<meta name="description" content="llemonai WiFi Scanner is a free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, and export field-ready PDF reports." />
 <link rel="canonical" href="https://llemonai.in/" />
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
@@ -12,34 +12,50 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://llemonai.in/" />
-<meta property="og:title" content="llemonai WiFi Scanner — Free Windows Wi-Fi Site Survey & Diagnostics Tool" />
-<meta property="og:description" content="Free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports — no install required." />
+<meta property="og:title" content="llemonai WiFi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows & Android" />
+<meta property="og:description" content="Free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports — no install required on Windows, sideload on Android." />
 <meta property="og:image" content="https://llemonai.in/screenshots/scan-view.png" />
 <meta property="og:image:width" content="1294" />
 <meta property="og:image:height" content="686" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="llemonai WiFi Scanner — Free Windows Wi-Fi Site Survey & Diagnostics Tool" />
-<meta name="twitter:description" content="Free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports." />
+<meta name="twitter:title" content="llemonai WiFi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows & Android" />
+<meta name="twitter:description" content="Free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports." />
 <meta name="twitter:image" content="https://llemonai.in/screenshots/scan-view.png" />
 
-<meta name="keywords" content="wifi scanner, wifi analyzer, windows wifi tool, wifi site survey, network diagnostics, beacon frame decoder, wifi channel scanner, rssi signal strength, wifi troubleshooting" />
+<meta name="keywords" content="wifi scanner, wifi analyzer, windows wifi tool, android wifi tool, wifi site survey, network diagnostics, beacon frame decoder, wifi channel scanner, rssi signal strength, wifi troubleshooting" />
 
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "llemonai WiFi Scanner",
-  "operatingSystem": "Windows 10, Windows 11",
-  "applicationCategory": "UtilitiesApplication",
-  "description": "Free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, track signal history and channel usage, and export field-ready PDF reports.",
-  "url": "https://llemonai.in/",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonai WiFi Scanner for Windows",
+    "operatingSystem": "Windows 10 (build 19041+), Windows 11",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, track signal history and channel usage, and export field-ready PDF reports.",
+    "url": "https://llemonai.in/",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonai WiFi Scanner for Android",
+    "operatingSystem": "Android 8.0 (API 26) and later",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Free Wi-Fi scanning and diagnostics app for Android. Scan networks, view beacon-decoded PHY/rate details, check Wi-Fi chipset capabilities, and export field-ready PDF reports.",
+    "url": "https://llemonai.in/#download",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   }
-}
+]
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -144,6 +160,13 @@
     border-top: 1px solid var(--border);
     padding-top: 10px;
   }
+  .dl-count {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: -4px;
+  }
+  .dl-count .n { color: var(--accent); font-weight: 700; }
 
   table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
   table.checklist th, table.checklist td {
@@ -324,15 +347,15 @@
     <div class="brand"><img src="assets/wordmark.png" alt="llemonai WiFi Scanner" /></div>
     <h1>See your Wi-Fi the way it<br/>actually <span>behaves</span>, not just how it's <span>configured</span>.</h1>
     <p class="lead">
-      A free, standalone Wi-Fi scanning and diagnostics tool for Windows. Discover nearby networks,
+      A free Wi-Fi scanning and diagnostics tool for <strong>Windows and Android</strong>. Discover nearby networks,
       decode raw beacon frames, track signal history, and generate field-ready PDF reports &mdash;
-      built for IT engineers and field technicians, no install required.
+      built for IT engineers and field technicians.
     </p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#download">Download for Windows</a>
+      <a class="btn btn-primary" href="#download">Download</a>
       <a class="btn btn-secondary" href="#features">See what's inside</a>
     </div>
-    <div class="hero-note">Windows 10 (2004+) and Windows 11 &middot; 64-bit and 32-bit &middot; no installer, no admin rights required</div>
+    <div class="hero-note">Windows 10 (2004+)/11, 64-bit &amp; 32-bit, no installer &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
   </div>
 </header>
 
@@ -359,17 +382,27 @@
       <div class="card">
         <span class="icon">&#128196;</span>
         <h3>Field-ready PDF export</h3>
-        <p>One-click report with a network summary, per-AP detail pages, decoded beacon tables, host diagnostics (VPN, RAM), location, ISP, and live weather &mdash; ready to attach to a ticket.</p>
+        <p>One-click report with a network summary, per-AP detail pages, decoded beacon tables, host diagnostics, location, ISP, and (Windows) live weather &mdash; ready to attach to a ticket. Available on both Windows and Android.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#127760;</span>
+        <h3>Network info, on screen</h3>
+        <p>Local IP, gateway, WAN (public) IP, ISP, and GPS location &mdash; live, with a Refresh button, on both Windows and Android. Android adds a reverse-geocoded place name too.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128241;</span>
+        <h3>Wi-Fi chipset capabilities (Android)</h3>
+        <p>See which Wi-Fi bands and standards your phone's own radio supports &mdash; 2.4/5/6/60GHz, WPA3-SAE, Wi-Fi Direct/Aware, and more &mdash; plus a real connected-device count per access point where the AP advertises it.</p>
       </div>
       <div class="card">
         <span class="icon">&#9989;</span>
         <h3>Field engineer checklist</h3>
-        <p>Built-in printable troubleshooting checklist &mdash; technician, customer and device details, environmental conditions, RF checks, and throughput verification steps.</p>
+        <p>Built-in printable/exportable troubleshooting checklist on both platforms &mdash; technician, customer and device details, environmental conditions, RF checks, and throughput verification steps.</p>
       </div>
       <div class="card">
         <span class="icon">&#128274;</span>
-        <h3>Standalone &amp; self-contained</h3>
-        <p>Single .exe file, no installer, no .NET runtime to install separately, no admin rights needed. Copy it to a USB stick and run it anywhere.</p>
+        <h3>No install, no store required</h3>
+        <p>Windows: a single self-contained .exe, no installer or admin rights needed &mdash; run it from a USB stick. Android: a single sideloaded .apk, no Play Store account needed.</p>
       </div>
     </div>
   </div>
@@ -378,7 +411,7 @@
 <section id="screenshots">
   <div class="wrap">
     <h2>See it in action</h2>
-    <p class="section-lead">Live network scan with signal history and full beacon decode, plus per-band channel occupancy.</p>
+    <p class="section-lead">Live network scan with signal history and full beacon decode, plus per-band channel occupancy. Shown here on Windows &mdash; the Android app mirrors the same scan/history/channel/checklist views, plus its own Network Info and Wi-Fi Chipset Capabilities cards.</p>
     <div class="shot-grid">
       <div class="shot-card">
         <img src="screenshots/scan-view.png" alt="llemonai WiFi Scanner main window showing a live network scan, RSSI signal history chart, and decoded beacon information table" loading="lazy" />
@@ -395,7 +428,7 @@
 <section id="checklist">
   <div class="wrap">
     <h2>Field Engineer Checklist</h2>
-    <p class="section-lead">A built-in, printable checklist so a site visit covers every factor that affects Wi-Fi performance &mdash; not just signal strength. Fill it in on screen, tick items as you verify them, then print a signed record for the ticket.</p>
+    <p class="section-lead">A built-in, printable/exportable checklist &mdash; on both Windows and Android &mdash; so a site visit covers every factor that affects Wi-Fi performance, not just signal strength. Fill it in on screen, tick items as you verify them, then print (Windows) or share as PDF (Android) a signed record for the ticket.</p>
     <div class="shot-grid">
       <div class="shot-card" style="max-width: 480px; margin: 0 auto;">
         <img src="screenshots/checklist.png" alt="llemonai WiFi Scanner Field Engineer Checklist showing site and visit details, device information, and environmental condition checkboxes" loading="lazy" />
@@ -419,6 +452,7 @@
           <li>Works on Windows 10 (build 19041+) and Windows 11</li>
         </ul>
         <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
+        <div class="dl-count" id="count-x64"></div>
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
       </div>
       <div class="dl-card">
@@ -430,6 +464,7 @@
           <li>Works on Windows 10 (build 19041+) and Windows 11, 32-bit edition</li>
         </ul>
         <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
+        <div class="dl-count" id="count-x86"></div>
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
       </div>
       <div class="dl-card">
@@ -441,9 +476,11 @@
           <li>Same features as desktop: scan, PDF export, checklist, network info</li>
         </ul>
         <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
+        <div class="dl-count" id="count-android"></div>
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
       </div>
     </div>
+    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
     <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
       Verify your download hasn't been tampered with or corrupted: after downloading, run
       <span class="mono">certutil -hashfile LlemonScanner-15.B2-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
@@ -498,6 +535,34 @@
   document.getElementById('sha-x64').textContent = '852892A5728A9A39E7D451E20A5673F78EE20331944F6612C68C36B60B11F47B';
   document.getElementById('sha-x86').textContent = '271A73D0997DAFAA7348C5DCDD2461E208FAA2EA89019DB85692584F79CD8C2B';
   document.getElementById('sha-android').textContent = '51F42FC103BCA6538CCC16F52B9A1837D4B39EABFDEA095CC0132A31E73B82B2';
+
+  // Live download counts, pulled from GitHub's public Releases API (no backend of our own).
+  // Summed across ALL releases whose asset name matches each platform, not just the latest
+  // version, so the counter doesn't reset to 0 every time a new version ships.
+  fetch('https://api.github.com/repos/llemonai/llemon-scanner/releases?per_page=100')
+    .then(function (res) { if (!res.ok) throw new Error('GitHub API error ' + res.status); return res.json(); })
+    .then(function (releases) {
+      var totals = { x64: 0, x86: 0, android: 0 };
+      releases.forEach(function (release) {
+        (release.assets || []).forEach(function (asset) {
+          var name = asset.name.toLowerCase();
+          if (name.indexOf('win-x64') !== -1) totals.x64 += asset.download_count;
+          else if (name.indexOf('win-x86') !== -1) totals.x86 += asset.download_count;
+          else if (name.indexOf('.apk') !== -1) totals.android += asset.download_count;
+        });
+      });
+      function fmt(n) { return n.toLocaleString(); }
+      document.getElementById('count-x64').innerHTML = '<span class="n">' + fmt(totals.x64) + '</span> downloads';
+      document.getElementById('count-x86').innerHTML = '<span class="n">' + fmt(totals.x86) + '</span> downloads';
+      document.getElementById('count-android').innerHTML = '<span class="n">' + fmt(totals.android) + '</span> downloads';
+      var total = totals.x64 + totals.x86 + totals.android;
+      document.getElementById('dl-total-line').textContent =
+        total > 0 ? fmt(total) + ' total downloads across all platforms and versions.' : '';
+    })
+    .catch(function () {
+      // GitHub API rate limits (60/hr unauthenticated) or a network hiccup - fail quietly,
+      // the download buttons themselves don't depend on this.
+    });
 </script>
 
 <button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
@@ -534,31 +599,35 @@
   var faq = [
     {
       q: "What is llemonai WiFi Scanner?",
-      a: "A free, standalone Wi-Fi scanning and diagnostics tool for Windows. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians."
+      a: "A free Wi-Fi scanning and diagnostics tool for Windows and Android. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians."
     },
     {
-      q: "Which download do I need — 32-bit or 64-bit?",
-      a: "Use the 64-bit build unless you specifically know you're on a 32-bit Windows install — almost every PC made since 2010 is 64-bit. Both are on the <a href=\"#download\">Download</a> section above."
+      q: "Is there an Android version?",
+      a: "Yes — a native Android app (Android 8.0 / API 26 and later) with the same core features as Windows: scanning, beacon decode, signal history, PDF export, and the Field Engineer Checklist, plus a couple of Android-only extras (Wi-Fi chipset capabilities, reverse-geocoded location). It's a sideloaded .apk, not on the Play Store yet — see the <a href=\"#download\">Download</a> section for install steps."
+    },
+    {
+      q: "Which download do I need — Windows 32-bit, 64-bit, or Android?",
+      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install — almost every PC made since 2010 is 64-bit. On Android, there's a single .apk that works on any Android 8.0+ device. All three are on the <a href=\"#download\">Download</a> section above."
     },
     {
       q: "What are the system requirements?",
-      a: "Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit. No installer, no admin rights, no separate .NET install needed — it's a single self-contained .exe."
+      a: "Windows: Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit — no installer, no admin rights, no separate .NET install needed. Android: Android 8.0 (API 26) or later, ~11MB sideloaded .apk."
     },
     {
       q: "Is it really free? Do I need to install anything?",
-      a: "Yes, it's free, and there's nothing to install — download the single .exe and run it directly. You can even run it from a USB stick."
+      a: "Yes, it's free on both platforms. On Windows there's nothing to install — download the single .exe and run it directly (even from a USB stick). On Android, download the .apk and sideload it — no Play Store account needed."
     },
     {
-      q: "I see a Windows SmartScreen warning — is it safe?",
-      a: "The .exe is digitally signed with a self-signed certificate (not a paid, publicly-trusted one yet), so SmartScreen may still flag it as from an \"Unknown Publisher\" — that's expected. To confirm the file is genuine and untouched, compare its SHA256 checksum (shown in the <a href=\"#download\">Download</a> section) against your downloaded file using <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+      q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
+      a: "Both platforms' builds are digitally signed with our own self-signed certificate/key (not a paid, publicly-trusted CA or Play Store listing yet), so Windows SmartScreen may flag it as an \"Unknown Publisher\" and Android may warn about an \"unknown source\" — that's expected on both. To confirm a file is genuine, compare its SHA256 checksum (shown in the <a href=\"#download\">Download</a> section) against your downloaded file — on Windows, <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
     },
     {
       q: "What's the Field Engineer Checklist?",
-      a: "A built-in, printable checklist inside the app for site visits — technician and customer details, device info, environmental conditions, RF checks, and throughput verification, all tickable on screen and printable as a signed record. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
+      a: "A built-in, printable/exportable checklist for site visits, on both Windows and Android — technician and customer details, device info, environmental conditions, RF checks, and throughput verification. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
     },
     {
       q: "My Wi-Fi throughput is low — what should I check?",
-      a: "Signal strength (RSSI) alone doesn't tell the whole story. Check: optimal channel selection (avoid overlapping/congested channels — use the Channel Usage view), AP and client positioning (distance, walls, obstructions), interference from other networks or non-Wi-Fi devices, number of connected clients, and uplink throughput separately from downlink — it's often the real bottleneck."
+      a: "Signal strength (RSSI) alone doesn't tell the whole story. Check: optimal channel selection (avoid overlapping/congested channels — use the Channel Usage view), AP and client positioning (distance, walls, obstructions), interference from other networks or non-Wi-Fi devices, number of connected clients (now shown directly when an AP advertises it), and uplink throughput separately from downlink — it's often the real bottleneck."
     },
     {
       q: "How do I contact support?",
@@ -566,7 +635,7 @@
     },
     {
       q: "Can I get advice based on my own scan report?",
-      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonai WiFi Scanner (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
+      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonai WiFi Scanner on either Windows or Android (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
     }
   ];
 
