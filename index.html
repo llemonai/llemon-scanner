@@ -175,6 +175,7 @@
   table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
 
   .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
   .shot-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -411,7 +412,7 @@
 <section id="screenshots">
   <div class="wrap">
     <h2>See it in action</h2>
-    <p class="section-lead">Live network scan with signal history and full beacon decode, plus per-band channel occupancy. Shown here on Windows &mdash; the Android app mirrors the same scan/history/channel/checklist views, plus its own Network Info and Wi-Fi Chipset Capabilities cards.</p>
+    <p class="section-lead">Live network scan with signal history and full beacon decode, plus per-band channel occupancy &mdash; on Windows.</p>
     <div class="shot-grid">
       <div class="shot-card">
         <img src="screenshots/scan-view.png" alt="llemonai WiFi Scanner main window showing a live network scan, RSSI signal history chart, and decoded beacon information table" loading="lazy" />
@@ -420,6 +421,18 @@
       <div class="shot-card">
         <img src="screenshots/channel-usage.png" alt="llemonai WiFi Scanner showing a 2.4GHz channel usage bar chart of nearby access points" loading="lazy" />
         <div class="cap">2.4GHz channel usage &mdash; spot congestion and overlapping channels at a glance</div>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-top:40px;">...and on Android &mdash; same scan/history/channel/checklist views, plus its own Network Info and Wi-Fi Chipset Capabilities cards.</p>
+    <div class="shot-grid shot-grid-phone">
+      <div class="shot-card">
+        <img src="screenshots/android-network-info.png" alt="llemonai WiFi Scanner for Android showing the Network Info card (local IP, gateway, WAN IP, ISP, location) and Wi-Fi Chipset Capabilities card" loading="lazy" />
+        <div class="cap">Network Info &amp; Wi-Fi Chipset Capabilities &mdash; live on screen, not just in the PDF</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/android-beacon-detail.png" alt="llemonai WiFi Scanner for Android showing per-access-point detail: PHY type, max rate, guard interval, connected-device count, and live link speed" loading="lazy" />
+        <div class="cap">Per-AP detail &mdash; PHY type, max rate, guard interval, and connected-device count</div>
       </div>
     </div>
   </div>
