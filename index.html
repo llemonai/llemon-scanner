@@ -34,6 +34,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <style>
   :root {
@@ -124,6 +125,150 @@
   .site-footer { border-top: 1px solid var(--border); padding: 40px; background: var(--bg); }
   .site-footer-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
   .site-footer a { color: var(--text-dim); font-size: 13px; }
+
+  /* Chat widget */
+  #chat-toggle {
+    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--accent); color: #14100a; border: none;
+    font-size: 24px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+  #chat-toggle .chat-badge {
+    position: absolute; top: -2px; right: -2px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--bg);
+    animation: chat-badge-pulse 1.8s ease-in-out infinite;
+  }
+  #chat-toggle .chat-badge.hidden { display: none; }
+  @keyframes chat-badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+  }
+
+  #chat-panel {
+    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
+    width: 400px; max-width: calc(100vw - 40px);
+    height: min(720px, 85vh); max-height: calc(100vh - 100px);
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; transform: translateY(12px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  @media (max-width: 440px) {
+    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
+    #chat-toggle { right: 14px; bottom: 14px; }
+  }
+
+  #chat-body { min-height: 160px; flex: 1 1 auto; }
+  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
+  #chat-quick-replies.collapsed { display: none; }
+  #chat-more-toggle {
+    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
+    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
+    border-radius: 999px; cursor: pointer; align-self: flex-start;
+  }
+  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
+  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  #chat-header {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-alt); font-weight: 700; font-size: 14px;
+  }
+  #chat-header .chat-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: #14100a;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
+  }
+  #chat-header .chat-title-block { flex: 1; min-width: 0; }
+  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
+  #chat-header button {
+    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
+    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
+  }
+  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+
+  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  #chat-body::-webkit-scrollbar { width: 6px; }
+  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
+  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
+  .chat-row .chat-mini-avatar {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+  }
+  @keyframes chat-pop-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-msg { font-size: 13.5px; line-height: 1.5; }
+  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
+  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
+  .chat-msg a { color: inherit; text-decoration: underline; }
+  .chat-msg.bot a { color: var(--accent-dim); }
+
+  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
+  .chat-typing span {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
+    animation: chat-typing-bounce 1s infinite ease-in-out;
+  }
+  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes chat-typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
+  .chat-chip {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
+
+  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  #chat-input {
+    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
+    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
+  }
+  #chat-input:focus { border-color: var(--accent-dim); }
+  #chat-send, #chat-attach {
+    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
+    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.12s ease;
+  }
+  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
+  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
+  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
+  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
+
+  #chat-report-pill {
+    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
+    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
+    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
+  }
+  #chat-report-pill.show { display: flex; }
+  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+  #chat-report-pill button {
+    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
+  }
+  #chat-report-pill button:hover { color: var(--text); }
 </style>
 </head>
 <body>
@@ -379,6 +524,299 @@
 </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
+  &#128172;
+  <span class="chat-badge" id="chat-badge">1</span>
+</button>
+<div id="chat-panel" role="dialog" aria-label="Help chat">
+  <div id="chat-header">
+    <span class="chat-avatar">&#129302;</span>
+    <div class="chat-title-block">
+      <div>llemonai Help Bot</div>
+      <div class="chat-status"><span class="dot"></span> AI-powered &middot; ask about either product</div>
+    </div>
+    <button id="chat-close" aria-label="Close chat">&times;</button>
+  </div>
+  <div id="chat-body"></div>
+  <button id="chat-more-toggle" type="button">Suggested questions &#9662;</button>
+  <div id="chat-quick-replies"></div>
+  <div id="chat-report-pill">
+    <span>&#128196;</span>
+    <span class="name" id="chat-report-name"></span>
+    <button id="chat-report-remove" aria-label="Remove attached report" title="Remove">&times;</button>
+  </div>
+  <div id="chat-input-row">
+    <input type="file" id="chat-file-input" accept="application/pdf" style="display:none;" />
+    <button id="chat-attach" aria-label="Attach your PDF report" title="Attach your PDF report">&#128206;</button>
+    <input id="chat-input" type="text" placeholder="Type a question&hellip;" maxlength="500" autocomplete="off" />
+    <button id="chat-send" aria-label="Send">&#10148;</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var faq = [
+    {
+      q: "What is llemonai WiFi Scanner?",
+      a: "A free Wi-Fi scanning and diagnostics tool for Windows and Android. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians. See the <a href=\"scanner.html\">Scanner page</a> for details and downloads."
+    },
+    {
+      q: "What is LlemonAI Insurance Vault?",
+      a: "A second llemonai product, currently in development and not yet public: a web app that finds the insurance your bank already gave you (savings/salary/current/Jan Dhan accounts, debit/credit/prepaid cards), plus policies bought directly and employer group policies — in one place, with lapse warnings and a printable family claim sheet. Email <a href=\"mailto:llemonai.us@gmail.com?subject=Insurance%20Vault%20early%20access\">llemonai.us@gmail.com</a> for early access."
+    },
+    {
+      q: "Which download do I need — Windows 32-bit, 64-bit, or Android?",
+      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install — almost every PC made since 2010 is 64-bit. On Android, there's a single .apk that works on any Android 8.0+ device. All three are on the <a href=\"scanner.html#download\">Download</a> section."
+    },
+    {
+      q: "What are the system requirements for WiFi Scanner?",
+      a: "Windows: Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit — no installer, no admin rights, no separate .NET install needed. Android: Android 8.0 (API 26) or later, ~11MB sideloaded .apk."
+    },
+    {
+      q: "Is WiFi Scanner really free? Do I need to install anything?",
+      a: "Yes, it's free on both platforms. On Windows there's nothing to install — download the single .exe and run it directly (even from a USB stick). On Android, download the .apk and sideload it — no Play Store account needed."
+    },
+    {
+      q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
+      a: "Both platforms' builds are digitally signed with our own self-signed certificate/key (not a paid, publicly-trusted CA or Play Store listing yet), so Windows SmartScreen may flag it as an \"Unknown Publisher\" and Android may warn about an \"unknown source\" — that's expected on both. To confirm a file is genuine, compare its SHA256 checksum (shown in the <a href=\"scanner.html#download\">Download</a> section) against your downloaded file — on Windows, <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+    },
+    {
+      q: "What's the Field Engineer Checklist?",
+      a: "A built-in, printable/exportable checklist for site visits, on both Windows and Android — technician and customer details, device info, environmental conditions, RF checks, and throughput verification. See the <a href=\"scanner.html#checklist\">Field Engineer Checklist</a> section."
+    },
+    {
+      q: "My Wi-Fi throughput is low — what should I check?",
+      a: "Signal strength (RSSI) alone doesn't tell the whole story. Check: optimal channel selection (avoid overlapping/congested channels — use the Channel Usage view), AP and client positioning (distance, walls, obstructions), interference from other networks or non-Wi-Fi devices, number of connected clients (now shown directly when an AP advertises it), and uplink throughput separately from downlink — it's often the real bottleneck."
+    },
+    {
+      q: "How do I contact support?",
+      a: "Email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a> and we'll get back to you."
+    },
+    {
+      q: "Can I get advice based on my own scan report?",
+      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonai WiFi Scanner on either Windows or Android (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
+    }
+  ];
+
+  var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
+  var MAX_REPORT_CHARS = 15000;
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var toggle = document.getElementById('chat-toggle');
+  var badge = document.getElementById('chat-badge');
+  var panel = document.getElementById('chat-panel');
+  var closeBtn = document.getElementById('chat-close');
+  var body = document.getElementById('chat-body');
+  var replies = document.getElementById('chat-quick-replies');
+  var moreToggle = document.getElementById('chat-more-toggle');
+  var input = document.getElementById('chat-input');
+  var sendBtn = document.getElementById('chat-send');
+  var attachBtn = document.getElementById('chat-attach');
+  var fileInput = document.getElementById('chat-file-input');
+  var reportPill = document.getElementById('chat-report-pill');
+  var reportName = document.getElementById('chat-report-name');
+  var reportRemoveBtn = document.getElementById('chat-report-remove');
+  var greeted = false;
+  var reportContext = '';
+
+  function addMessage(text, who) {
+    var isBot = who.split(' ')[0] === 'bot';
+    var row = document.createElement('div');
+    row.className = 'chat-row ' + who;
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = isBot ? '\u{1F916}' : '\u{1F9D1}';
+
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg ' + who;
+    bubble.innerHTML = text;
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function addTypingIndicator() {
+    var row = document.createElement('div');
+    row.className = 'chat-row bot';
+    row.id = 'chat-typing-row';
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = '\u{1F916}';
+
+    var typing = document.createElement('div');
+    typing.className = 'chat-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+
+    row.appendChild(avatar);
+    row.appendChild(typing);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+    return row;
+  }
+
+  function collapseSuggestions() {
+    replies.classList.add('collapsed');
+    moreToggle.textContent = 'Suggested questions ▾';
+  }
+
+  function toggleSuggestions() {
+    var isCollapsed = replies.classList.toggle('collapsed');
+    moreToggle.textContent = isCollapsed ? 'Suggested questions ▾' : 'Hide suggestions ▴';
+  }
+
+  moreToggle.addEventListener('click', toggleSuggestions);
+
+  function askQuestion(item) {
+    addMessage(item.q, 'user');
+    collapseSuggestions();
+    var typingRow = addTypingIndicator();
+    setTimeout(function () {
+      typingRow.remove();
+      addMessage(item.a, 'bot');
+    }, 450 + Math.random() * 350);
+  }
+
+  function askAi(question) {
+    addMessage(question, 'user');
+    collapseSuggestions();
+    input.value = '';
+    sendBtn.disabled = true;
+    var typingRow = addTypingIndicator();
+
+    fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: question, reportContext: reportContext })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
+        return res.json();
+      })
+      .then(function (data) {
+        typingRow.remove();
+        if (data.error) throw new Error(data.error);
+        addMessage(data.reply, 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't reach the AI assistant just now. Please try again, or email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a>.", 'bot error');
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+      });
+  }
+
+  function extractPdfText(file) {
+    return file.arrayBuffer().then(function (buf) {
+      return pdfjsLib.getDocument({ data: buf }).promise;
+    }).then(function (pdf) {
+      var pageTexts = [];
+      var pagePromise = Promise.resolve();
+      for (var i = 1; i <= pdf.numPages; i++) {
+        (function (pageNum) {
+          pagePromise = pagePromise
+            .then(function () { return pdf.getPage(pageNum); })
+            .then(function (page) { return page.getTextContent(); })
+            .then(function (content) {
+              var text = content.items.map(function (it) { return it.str; }).join(' ');
+              pageTexts.push(text);
+            });
+        })(i);
+      }
+      return pagePromise.then(function () { return pageTexts.join('\n\n'); });
+    });
+  }
+
+  function handleFileAttach(file) {
+    if (!file || file.type !== 'application/pdf') {
+      addMessage('Please attach a PDF file (the report exported from llemonai WiFi Scanner).', 'bot error');
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
+      return;
+    }
+
+    var typingRow = addTypingIndicator();
+    extractPdfText(file)
+      .then(function (text) {
+        typingRow.remove();
+        reportContext = text.slice(0, MAX_REPORT_CHARS);
+        reportName.textContent = file.name;
+        reportPill.classList.add('show');
+        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't read that PDF. Make sure it's not password-protected and try again.", 'bot error');
+      });
+  }
+
+  attachBtn.addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files[0]) {
+      handleFileAttach(fileInput.files[0]);
+    }
+    fileInput.value = '';
+  });
+  reportRemoveBtn.addEventListener('click', function () {
+    reportContext = '';
+    reportPill.classList.remove('show');
+    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
+  });
+
+  function showMenu() {
+    replies.innerHTML = '';
+    faq.forEach(function (item) {
+      var btn = document.createElement('button');
+      btn.className = 'chat-chip';
+      btn.textContent = item.q;
+      btn.onclick = function () { askQuestion(item); };
+      replies.appendChild(btn);
+    });
+    replies.classList.remove('collapsed');
+    moreToggle.textContent = 'Hide suggestions ▴';
+  }
+
+  function openChat() {
+    panel.classList.add('open');
+    badge.classList.add('hidden');
+    if (!greeted) {
+      addMessage("Hi! I'm the llemonai Help Bot. Ask me about WiFi Scanner or Insurance Vault, pick a common question below, type your own, or attach your scan report (paperclip icon) for advice based on your actual numbers.", 'bot');
+      showMenu();
+      greeted = true;
+    }
+  }
+
+  function handleSend() {
+    var text = input.value.trim();
+    if (!text) return;
+    askAi(text);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  toggle.addEventListener('click', function () {
+    if (panel.classList.contains('open')) {
+      panel.classList.remove('open');
+    } else {
+      openChat();
+    }
+  });
+  closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
+})();
+</script>
 
 </body>
 </html>
