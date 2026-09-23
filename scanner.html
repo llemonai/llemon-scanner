@@ -178,6 +178,20 @@
     margin-top: -4px;
   }
   .dl-count .n { color: var(--accent); font-weight: 700; }
+  .dl-version {
+    display: inline-block; align-self: flex-start;
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 2px 10px;
+  }
+  .whats-new { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0 0 20px; }
+  .whats-new strong { color: var(--text); }
+  .prev-versions { margin-top: 32px; }
+  .prev-versions h3 { font-size: 16px; margin: 0 0 4px; }
+  .prev-scroll { overflow-x: auto; }
+  table.prev { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+  table.prev th, table.prev td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.prev th { color: var(--text-dim); font-weight: 600; }
+  table.prev td.sha { font-size: 11px; word-break: break-all; color: var(--text-dim); }
 
   table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
   table.checklist th, table.checklist td {
@@ -483,8 +497,14 @@
   <div class="wrap">
     <h2>Download</h2>
     <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
+    <p class="whats-new"><strong>New in 15.B3 (Windows) / 15A3 (Android), 23 Sep 2026:</strong>
+      an <strong>AI Companion</strong> tab that interviews you about the problem (coverage or speed, where, walls, devices,
+      interference) and combines your answers with the live scan and your laptop/phone's own Wi-Fi chipset, battery and
+      power-saving state to give a ranked list of fixes &mdash; fully offline. Plus an <strong>SNR</strong> (signal-to-noise)
+      column for every network, also in the PDF report.</p>
     <div class="download-grid">
       <div class="dl-card">
+        <span class="dl-version">Version 15.B3 &middot; 23 Sep 2026</span>
         <h3>llemonai WiFi Scanner &mdash; 64-bit</h3>
         <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
         <ul>
@@ -497,6 +517,7 @@
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
       </div>
       <div class="dl-card">
+        <span class="dl-version">Version 15.B3 &middot; 23 Sep 2026</span>
         <h3>llemonai WiFi Scanner &mdash; 32-bit</h3>
         <div class="meta">For legacy 32-bit Windows installations only</div>
         <ul>
@@ -509,12 +530,13 @@
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
       </div>
       <div class="dl-card">
+        <span class="dl-version">Version 15A3 &middot; 23 Sep 2026</span>
         <h3>llemonai WiFi Scanner &mdash; Android</h3>
         <div class="meta">Native app &middot; Android 8.0+ (API 26+)</div>
         <ul>
           <li>Single .apk (~11&nbsp;MB), sideload install</li>
           <li>Signed with our own release key (not on Play Store yet)</li>
-          <li>Same features as desktop: scan, PDF export, checklist, network info</li>
+          <li>Same features as desktop: scan, SNR, PDF export, checklist, network info, AI Companion</li>
         </ul>
         <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
         <div class="dl-count" id="count-android"></div>
@@ -522,9 +544,27 @@
       </div>
     </div>
     <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+
+    <div class="prev-versions">
+      <h3>Previous versions</h3>
+      <p class="section-lead" style="margin:0 0 10px; font-size:13px;">Older builds stay available if you need them. The latest version above is recommended.</p>
+      <div class="prev-scroll">
+        <table class="prev">
+          <thead><tr><th>Version</th><th>Released</th><th>File</th><th>SHA256</th></tr></thead>
+          <tbody>
+            <tr><td>Windows 15.B2 (64-bit)</td><td>22 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x64.exe">LlemonScanner-15.B2-win-x64.exe</a></td><td class="sha mono">FE29E8F12F15206871B1E073035D1F680DF88D36982AC66D93D3BCE8F51223C8</td></tr>
+            <tr><td>Windows 15.B2 (32-bit)</td><td>22 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x86.exe">LlemonScanner-15.B2-win-x86.exe</a></td><td class="sha mono">4DEDD82509EB1AD2DF962DD7E9A06AF2D862B534F7D60C52E9206CD83C812B40</td></tr>
+            <tr><td>Android 15A2</td><td>22 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/llemonai-wifiscanner-15A2-android.apk">llemonai-wifiscanner-15A2-android.apk</a></td><td class="sha mono">4FB260160717A11C6F7F4AE10E662565407EC6FEC6BFFD08908A417D1ED13C2C</td></tr>
+            <tr><td>Windows 15.B1 (64-bit)</td><td>20 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x64.exe">LlemonScanner-15.B1-win-x64.exe</a></td><td class="sha mono">A467CBB2198B414DC2B38C93CE0CFF47D2A94A62B2F79EF0B9F849A228A60431</td></tr>
+            <tr><td>Windows 15.B1 (32-bit)</td><td>20 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B1/LlemonScanner-15.B1-win-x86.exe">LlemonScanner-15.B1-win-x86.exe</a></td><td class="sha mono">8A3B84EF335EFE5B91F70317700C41C724DF189B2186A74741B69731832799B3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
       Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile LlemonScanner-15.B2-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      <span class="mono">certutil -hashfile LlemonScanner-15.B3-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
       and compare the result to the SHA256 value shown above for the file you downloaded.
     </p>
     <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
@@ -571,12 +611,12 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x64.exe';
-  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x86.exe';
-  document.getElementById('dl-android').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/llemonai-wifiscanner-15A2-android.apk';
-  document.getElementById('sha-x64').textContent = 'FE29E8F12F15206871B1E073035D1F680DF88D36982AC66D93D3BCE8F51223C8';
-  document.getElementById('sha-x86').textContent = '4DEDD82509EB1AD2DF962DD7E9A06AF2D862B534F7D60C52E9206CD83C812B40';
-  document.getElementById('sha-android').textContent = '4FB260160717A11C6F7F4AE10E662565407EC6FEC6BFFD08908A417D1ED13C2C';
+  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B3/LlemonScanner-15.B3-win-x64.exe';
+  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B3/LlemonScanner-15.B3-win-x86.exe';
+  document.getElementById('dl-android').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B3/llemonai-wifiscanner-15A3-android.apk';
+  document.getElementById('sha-x64').textContent = '4267E8A088A1C7590C08372099F0C9FBDB21BF37158AF754BEB5229F83297C7D';
+  document.getElementById('sha-x86').textContent = 'FF24B74774369853266A4DAC85BDE0C4F0B965FE34ABAE306720AC69B0A7DB61';
+  document.getElementById('sha-android').textContent = 'B17747E352751EB1A44EEA048DB4613D7EB3B2265E8DF4880676D41FD0EE0BC4';
 
   // Live download counts, pulled from GitHub's public Releases API (no backend of our own).
   // Summed across ALL releases whose asset name matches each platform, not just the latest
@@ -662,6 +702,10 @@
     {
       q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
       a: "Both platforms' builds are digitally signed with our own self-signed certificate/key (not a paid, publicly-trusted CA or Play Store listing yet), so Windows SmartScreen may flag it as an \"Unknown Publisher\" and Android may warn about an \"unknown source\" — that's expected on both. To confirm a file is genuine, compare its SHA256 checksum (shown in the <a href=\"#download\">Download</a> section) against your downloaded file — on Windows, <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+    },
+    {
+      q: "What's the latest version, and what's new?",
+      a: "Windows <b>15.B3</b> and Android <b>15A3</b>, released 23 Sep 2026. New: an <b>AI Companion</b> tab that asks a few questions about your problem and combines them with the live scan and your device's own Wi-Fi chipset, battery and power-saving state to suggest fixes (offline), plus an <b>SNR</b> column for every network. SHA256 checksums:<br><span class=\"mono\" style=\"word-break:break-all\">15.B3 x64: 4267E8A088A1C7590C08372099F0C9FBDB21BF37158AF754BEB5229F83297C7D</span><br><span class=\"mono\" style=\"word-break:break-all\">15.B3 x86: FF24B74774369853266A4DAC85BDE0C4F0B965FE34ABAE306720AC69B0A7DB61</span><br><span class=\"mono\" style=\"word-break:break-all\">15A3 Android: B17747E352751EB1A44EEA048DB4613D7EB3B2265E8DF4880676D41FD0EE0BC4</span><br>Older versions and their checksums are in the <a href=\"#download\">Previous versions</a> table."
     },
     {
       q: "What's the Field Engineer Checklist?",
