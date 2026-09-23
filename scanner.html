@@ -93,6 +93,15 @@
   .brand img { height: 34px; width: auto; display: block; }
   .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
   .back-home:hover { color: var(--text); }
+
+  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
+  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
+  .wm-ai { color: #3a8bff; }
+  .wm-product { margin-left: 0.28em; font-weight: 700; }
+  .wm.on-dark .wm-llm { color: #3a8bff; }
+  .wm.on-dark .wm-n { color: #e7edf5; }
+  .wm.on-dark .wm-product { color: #ffd23f; }
   .hero h1 {
     font-size: clamp(32px, 5vw, 52px);
     line-height: 1.1;
@@ -347,7 +356,24 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="brand"><img src="assets/wordmark.png" alt="llemonai WiFi Scanner" /><a class="back-home" href="index.html">&larr; llemonai.in</a></div>
+    <div class="brand">
+      <span class="wm on-dark" style="font-size: 1.9rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+        <span class="wm-llm">llem</span>
+        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+        </svg>
+        <span class="wm-n">n</span>
+        <span class="wm-ai">AI</span>
+        <span class="wm-product">WiFi Scanner</span>
+      </span>
+      <a class="back-home" href="index.html">&larr; llemonai.in</a>
+    </div>
     <h1>See your Wi-Fi the way it<br/>actually <span>behaves</span>, not just how it's <span>configured</span>.</h1>
     <p class="lead">
       A free Wi-Fi scanning and diagnostics tool for <strong>Windows and Android</strong>. Discover nearby networks,
@@ -536,6 +562,7 @@
 <footer>
   <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
     <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonai WiFi Scanner. All rights reserved.</div>
+    <div>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</div>
     <div>Built for IT diagnostics and field engineering use.</div>
     <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
     <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
