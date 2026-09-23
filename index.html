@@ -339,9 +339,35 @@
     background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
   }
   #chat-report-pill button:hover { color: var(--text); }
+
+  .product-banner { background: var(--card); border-bottom: 1px solid var(--border); }
+  .product-banner-inner { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 24px; font-size: 13px; }
+  .product-banner-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); background: rgba(255, 210, 63, 0.1); padding: 3px 8px; border-radius: 999px; flex-shrink: 0;
+  }
+  .product-banner-text { color: var(--text-dim); flex: 1; min-width: 200px; }
+  .product-banner-link { color: var(--accent-dim); font-weight: 600; white-space: nowrap; }
+
+  .iv-teaser { background: #fffbeb; border: 1px solid #eee4c8; border-radius: 16px; padding: 32px; }
+  .iv-teaser-tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #92700a; background: rgba(255, 210, 63, 0.25); border: 1px solid #e0b000; padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .iv-teaser h2 { color: #1c1917; }
+  .iv-teaser p { color: #5f5a52; margin: 0 0 18px; max-width: 560px; line-height: 1.6; }
+  .iv-teaser .btn-primary { background: #ffd23f; color: #1c1917; }
 </style>
 </head>
 <body>
+
+<div class="product-banner">
+  <div class="wrap product-banner-inner">
+    <span class="product-banner-tag">Also from llemonai</span>
+    <span class="product-banner-text">LlemonAI Insurance Vault &mdash; one place for every insurance cover your bank already gave you. In development.</span>
+    <a class="product-banner-link" href="#insurance-vault">Learn more &rarr;</a>
+  </div>
+</div>
 
 <header class="hero">
   <div class="wrap">
@@ -359,6 +385,23 @@
     <div class="hero-note">Windows 10 (2004+)/11, 64-bit &amp; 32-bit, no installer &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
   </div>
 </header>
+
+<section id="insurance-vault">
+  <div class="wrap">
+    <div class="iv-teaser">
+      <div class="iv-teaser-tag">Fintech &middot; in development</div>
+      <h2>LlemonAI Insurance Vault</h2>
+      <p>
+        A second product from llemonai, for a very different problem: finding the insurance your bank already
+        gave you. Savings, salary, current and Jan Dhan accounts, and debit, credit and prepaid cards often come
+        with free cover &mdash; most people don't know how much, and some of it lapses if the card goes unused.
+        Insurance Vault puts every cover in one place, warns you before one lapses, and prepares a claim sheet
+        your family can use.
+      </p>
+      <a class="btn btn-primary" href="mailto:llemonai.us@gmail.com?subject=Insurance%20Vault%20early%20access">Get on the early access list</a>
+    </div>
+  </div>
+</section>
 
 <section id="features">
   <div class="wrap">
