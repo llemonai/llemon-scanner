@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>llemonai WiFi Scanner &mdash; Wi-Fi Site Survey &amp; Diagnostics Tool for Windows &amp; Android</title>
-<meta name="description" content="llemonai WiFi Scanner is a free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, and export field-ready PDF reports." />
+<title>llemonai &mdash; WiFi Scanner &amp; Insurance Vault</title>
+<meta name="description" content="llemonai builds focused software for different problems: a free Wi-Fi diagnostics tool for Windows &amp; Android, and Insurance Vault, a family insurance tracker (in development)." />
 <link rel="canonical" href="https://llemonai.in/" />
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
@@ -12,53 +12,29 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://llemonai.in/" />
-<meta property="og:title" content="llemonai WiFi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows & Android" />
-<meta property="og:description" content="Free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports — no install required on Windows, sideload on Android." />
+<meta property="og:title" content="llemonai — WiFi Scanner & Insurance Vault" />
+<meta property="og:description" content="Two focused products from llemonai: a free Wi-Fi diagnostics tool for Windows & Android, and Insurance Vault, a family insurance tracker (in development)." />
 <meta property="og:image" content="https://llemonai.in/screenshots/scan-view.png" />
-<meta property="og:image:width" content="1294" />
-<meta property="og:image:height" content="686" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="llemonai WiFi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows & Android" />
-<meta name="twitter:description" content="Free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports." />
+<meta name="twitter:title" content="llemonai — WiFi Scanner & Insurance Vault" />
+<meta name="twitter:description" content="Two focused products from llemonai: a free Wi-Fi diagnostics tool for Windows & Android, and Insurance Vault, a family insurance tracker (in development)." />
 <meta name="twitter:image" content="https://llemonai.in/screenshots/scan-view.png" />
 
-<meta name="keywords" content="wifi scanner, wifi analyzer, windows wifi tool, android wifi tool, wifi site survey, network diagnostics, beacon frame decoder, wifi channel scanner, rssi signal strength, wifi troubleshooting" />
-
 <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "llemonai WiFi Scanner for Windows",
-    "operatingSystem": "Windows 10 (build 19041+), Windows 11",
-    "applicationCategory": "UtilitiesApplication",
-    "description": "Free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, track signal history and channel usage, and export field-ready PDF reports.",
-    "url": "https://llemonai.in/",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "llemonai WiFi Scanner for Android",
-    "operatingSystem": "Android 8.0 (API 26) and later",
-    "applicationCategory": "UtilitiesApplication",
-    "description": "Free Wi-Fi scanning and diagnostics app for Android. Scan networks, view beacon-decoded PHY/rate details, check Wi-Fi chipset capabilities, and export field-ready PDF reports.",
-    "url": "https://llemonai.in/#download",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  }
-]
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "llemonai",
+  "url": "https://llemonai.in/",
+  "logo": "https://llemonai.in/assets/wordmark.png"
+}
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --bg: #0b0f14;
@@ -75,844 +51,334 @@
     margin: 0; padding: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
   }
-  a { color: var(--accent-dim); }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  a { text-decoration: none; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; }
 
-  header.hero {
-    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 64px 0 56px;
-  }
-  .brand {
-    display: flex; align-items: center;
-    margin-bottom: 40px;
-  }
-  .brand img { height: 34px; width: auto; display: block; }
-  .hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.1;
-    margin: 0 0 16px;
-  }
-  .hero h1 span { color: var(--accent); }
-  .hero p.lead {
-    color: var(--text-dim);
-    font-size: 18px;
-    max-width: 640px;
-    line-height: 1.6;
-    margin: 0 0 32px;
-  }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 22px;
-    border-radius: 10px;
-    font-weight: 600; font-size: 15px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: transform 0.12s ease, opacity 0.12s ease;
-  }
-  .btn:hover { transform: translateY(-1px); }
+  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
+  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
+  .wm-ai { color: #3a8bff; }
+  .wm-product { margin-left: 0.28em; font-weight: 700; }
+  .wm.on-dark .wm-llem { color: #e7edf5; }
+  .wm.on-dark .wm-product { color: #ffd23f; }
+  .wm.on-light .wm-llem { color: #1c1917; }
+  .wm.on-light .wm-product { color: #1f6fe5; }
+
+  /* Nav */
+  .nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px); background: rgba(11,15,20,0.86); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .nav-links { display: flex; align-items: center; gap: 36px; }
+  .nav-link { color: var(--text-dim); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+  .nav-link:hover { color: var(--text); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 14px; border: 1px solid transparent; transition: filter 0.15s, background 0.15s; }
+  .btn-sm { padding: 10px 18px; border-radius: 999px; }
   .btn-primary { background: var(--accent); color: #14100a; }
-  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
-  .btn small { font-weight: 400; opacity: 0.75; }
-  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
+  .btn-primary:hover { filter: brightness(1.06); }
+  .btn-outline { background: transparent; border-color: #4a3d14; color: var(--accent); }
+  .btn-outline:hover { background: rgba(255,255,255,0.04); }
 
-  section { padding: 56px 0; }
-  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  h2 { font-size: 28px; margin: 0 0 8px; }
-  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
+  /* Hero */
+  .hero { background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%); padding: 96px 40px 72px; }
+  .hero-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+  .hero h1 { margin: 0 0 22px; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 52px; line-height: 1.12; color: #f5f2ea; }
+  .hero p { margin: 0 auto 40px; max-width: 600px; font-size: 17px; line-height: 1.65; color: var(--text-dim); }
+  .jump-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .jump-card { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 12px; }
+  .jump-card .t { font-size: 14px; color: var(--text); font-weight: 600; }
+  .jump-card .s { font-size: 12px; }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px;
-  }
-  .card h3 { margin: 0 0 8px; font-size: 16px; }
-  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
-  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  /* Why section */
+  .why { padding: 84px 40px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .why-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .why h2 { margin: 0 0 18px; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 30px; color: #f5f2ea; }
+  .why p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--text-dim); }
 
-  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-  .dl-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .dl-card h3 { margin: 0; font-size: 20px; }
-  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
-  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
-  .dl-card .btn { justify-content: center; margin-top: auto; }
-  .checksum {
-    font-size: 11px;
-    color: var(--text-dim);
-    word-break: break-all;
-    line-height: 1.5;
-    border-top: 1px solid var(--border);
-    padding-top: 10px;
-  }
-  .dl-count {
-    font-size: 12px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-top: -4px;
-  }
-  .dl-count .n { color: var(--accent); font-weight: 700; }
+  /* Product panels */
+  .panel { padding: 96px 40px; }
+  .panel-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: center; }
+  .badge-pill { display: inline-block; padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; }
+  .panel h2 { margin: 0 0 14px; }
+  .panel-sub { margin: 0 0 22px; font-size: 16px; line-height: 1.6; }
+  .status-row { display: flex; align-items: center; gap: 8px; margin-bottom: 28px; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .status-text { font-size: 13px; font-weight: 600; }
+  .feature-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+  .feature-row { display: flex; gap: 12px; align-items: flex-start; }
+  .feature-row svg { flex-shrink: 0; margin-top: 2px; }
+  .feature-row span { font-size: 15px; line-height: 1.5; }
+  .chip-row { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .chip { font-size: 12px; padding: 5px 10px; border-radius: 6px; }
+  .cta-row2 { display: flex; gap: 14px; flex-wrap: wrap; }
 
-  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
-  table.checklist th, table.checklist td {
-    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
-  }
-  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
-
-  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
-  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
-  .shot-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
-  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
-
-  footer {
-    padding: 40px 0;
-    color: var(--text-dim);
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
-  }
-  footer a { color: var(--text-dim); }
-
-  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
-
-  /* Chat widget */
-  #chat-toggle {
-    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--accent); color: #14100a; border: none;
-    font-size: 24px; cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-  }
-  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
-  #chat-toggle .chat-badge {
-    position: absolute; top: -2px; right: -2px;
-    width: 18px; height: 18px; border-radius: 50%;
-    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--bg);
-    animation: chat-badge-pulse 1.8s ease-in-out infinite;
-  }
-  #chat-toggle .chat-badge.hidden { display: none; }
-  @keyframes chat-badge-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.18); }
+  @media (max-width: 860px) {
+    .panel-grid { grid-template-columns: 1fr; }
+    .nav-links { gap: 18px; }
+    .nav-link { display: none; }
   }
 
-  #chat-panel {
-    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
-    width: 400px; max-width: calc(100vw - 40px);
-    height: min(720px, 85vh); max-height: calc(100vh - 100px);
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-    display: flex; flex-direction: column; overflow: hidden;
-    opacity: 0; transform: translateY(12px) scale(0.98);
-    pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease;
-  }
-  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-  @media (max-width: 440px) {
-    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
-    #chat-toggle { right: 14px; bottom: 14px; }
-  }
-
-  #chat-body { min-height: 160px; flex: 1 1 auto; }
-  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
-  #chat-quick-replies.collapsed { display: none; }
-  #chat-more-toggle {
-    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
-    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
-    border-radius: 999px; cursor: pointer; align-self: flex-start;
-  }
-  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
-  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  #chat-header {
-    padding: 14px 16px; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 10px;
-    background: var(--bg-alt); font-weight: 700; font-size: 14px;
-  }
-  #chat-header .chat-avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--accent); color: #14100a;
-    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
-  }
-  #chat-header .chat-title-block { flex: 1; min-width: 0; }
-  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
-  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
-  #chat-header button {
-    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
-    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
-  }
-  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
-
-  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
-  #chat-body::-webkit-scrollbar { width: 6px; }
-  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
-  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
-  .chat-row .chat-mini-avatar {
-    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
-    background: var(--bg-alt); border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center; font-size: 11px;
-  }
-  @keyframes chat-pop-in {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .chat-msg { font-size: 13.5px; line-height: 1.5; }
-  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
-  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
-  .chat-msg a { color: inherit; text-decoration: underline; }
-  .chat-msg.bot a { color: var(--accent-dim); }
-
-  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
-  .chat-typing span {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
-    animation: chat-typing-bounce 1s infinite ease-in-out;
-  }
-  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
-  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes chat-typing-bounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-    30% { transform: translateY(-4px); opacity: 1; }
-  }
-
-  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
-  .chat-chip {
-    background: transparent; border: 1px solid var(--border); color: var(--text);
-    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
-    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-  }
-  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
-
-  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
-  #chat-input {
-    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
-    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
-  }
-  #chat-input:focus { border-color: var(--accent-dim); }
-  #chat-send, #chat-attach {
-    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
-    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.12s ease;
-  }
-  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
-  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
-  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
-  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
-
-  #chat-report-pill {
-    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
-    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
-    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
-  }
-  #chat-report-pill.show { display: flex; }
-  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
-  #chat-report-pill button {
-    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
-  }
-  #chat-report-pill button:hover { color: var(--text); }
-
-  .product-banner { background: var(--card); border-bottom: 1px solid var(--border); }
-  .product-banner-inner { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 24px; font-size: 13px; }
-  .product-banner-tag {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--accent); background: rgba(255, 210, 63, 0.1); padding: 3px 8px; border-radius: 999px; flex-shrink: 0;
-  }
-  .product-banner-text { color: var(--text-dim); flex: 1; min-width: 200px; }
-  .product-banner-link { color: var(--accent-dim); font-weight: 600; white-space: nowrap; }
-
-  .iv-teaser { background: #fffbeb; border: 1px solid #eee4c8; border-radius: 16px; padding: 32px; }
-  .iv-teaser-tag {
-    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-    color: #92700a; background: rgba(255, 210, 63, 0.25); border: 1px solid #e0b000; padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
-  }
-  .iv-teaser h2 { color: #1c1917; }
-  .iv-teaser p { color: #5f5a52; margin: 0 0 18px; max-width: 560px; line-height: 1.6; }
-  .iv-teaser .btn-primary { background: #ffd23f; color: #1c1917; }
+  /* Footer */
+  .site-footer { border-top: 1px solid var(--border); padding: 40px; background: var(--bg); }
+  .site-footer-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .site-footer a { color: var(--text-dim); font-size: 13px; }
 </style>
 </head>
 <body>
 
-<div class="product-banner">
-  <div class="wrap product-banner-inner">
-    <span class="product-banner-tag">Also from llemonai</span>
-    <span class="product-banner-text">LlemonAI Insurance Vault &mdash; one place for every insurance cover your bank already gave you. In development.</span>
-    <a class="product-banner-link" href="#insurance-vault">Learn more &rarr;</a>
+<div class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" aria-label="llemonai">
+      <span class="wm on-dark" style="font-size: 1.5rem;">
+        <span class="wm-llem">llem</span>
+        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+        </svg>
+        <span class="wm-llem">n</span>
+        <span class="wm-ai">AI</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="#why">Why two products</a>
+      <a class="nav-link" href="scanner.html">Wi-Fi Scanner</a>
+      <a class="nav-link" href="#fintech">Insurance Vault</a>
+      <a class="btn btn-primary btn-sm" href="scanner.html#download">Download Scanner</a>
+    </div>
   </div>
 </div>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="brand"><img src="assets/wordmark.png" alt="llemonai WiFi Scanner" /></div>
-    <h1>See your Wi-Fi the way it<br/>actually <span>behaves</span>, not just how it's <span>configured</span>.</h1>
-    <p class="lead">
-      A free Wi-Fi scanning and diagnostics tool for <strong>Windows and Android</strong>. Discover nearby networks,
-      decode raw beacon frames, track signal history, and generate field-ready PDF reports &mdash;
-      built for IT engineers and field technicians.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#download">Download</a>
-      <a class="btn btn-secondary" href="#features">See what's inside</a>
-    </div>
-    <div class="hero-note">Windows 10 (2004+)/11, 64-bit &amp; 32-bit, no installer &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
-  </div>
-</header>
+<div id="top"></div>
 
-<section id="insurance-vault">
-  <div class="wrap">
-    <div class="iv-teaser">
-      <div class="iv-teaser-tag">Fintech &middot; in development</div>
-      <h2>LlemonAI Insurance Vault</h2>
-      <p>
-        A second product from llemonai, for a very different problem: finding the insurance your bank already
-        gave you. Savings, salary, current and Jan Dhan accounts, and debit, credit and prepaid cards often come
-        with free cover &mdash; most people don't know how much, and some of it lapses if the card goes unused.
-        Insurance Vault puts every cover in one place, warns you before one lapses, and prepares a claim sheet
-        your family can use.
-      </p>
-      <a class="btn btn-primary" href="mailto:llemonai.us@gmail.com?subject=Insurance%20Vault%20early%20access">Get on the early access list</a>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow" style="color: #6c7a8e; font-size: 12px; margin-bottom: 20px;">llemonai</div>
+    <h1>One team. Two very<br>different problems.</h1>
+    <p>We build focused software instead of one blurry platform &mdash; a real-time Wi-Fi diagnostics tool for people who manage networks, and a private vault for people managing insurance. Each one gets its own home, on its own terms.</p>
+    <div class="jump-row">
+      <a class="jump-card" href="#tech" style="background: var(--card); border: 1px solid var(--border);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1.2" fill="#ffd23f" stroke="none"/></svg>
+        <span class="t">Wi-Fi Scanner</span>
+        <span class="s" style="color: #7c8ca3;">&mdash; Tech, live now</span>
+      </a>
+      <a class="jump-card" href="#fintech" style="background: #0f231c; border: 1px solid #1e3a2e;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8b94e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+        <span class="t">Insurance Vault</span>
+        <span class="s" style="color: #7ca391;">&mdash; Fintech, in development</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="features">
-  <div class="wrap">
-    <h2>Built for real diagnostics, not just a pretty list of networks</h2>
-    <p class="section-lead">Everything a field engineer needs to explain "why is this Wi-Fi bad" with evidence, not guesswork.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="icon">&#128246;</span>
-        <h3>Live network scanning</h3>
-        <p>SSID, BSSID, vendor, channel, band, width, RSSI, PHY type, security, and more &mdash; refreshed on an adjustable interval.</p>
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="eyebrow" style="color: #6c7a8e; font-size: 12px; margin-bottom: 16px;">Why two shelves</div>
+    <h2>Fintech and tech don't read the same way</h2>
+    <p>One product lives or dies on technical depth &mdash; protocol internals, signal timing, chipset quirks. The other lives or dies on trust &mdash; clear numbers, calm paperwork, a claim sheet your family can actually use. Forcing both onto one palette would undersell them both, so the Scanner stays dark and technical below, and the Vault stays light and paper-like, the way it already looks inside the product. The llemonai wordmark is the only thing they share.</p>
+  </div>
+</section>
+
+<section class="panel" id="tech" style="background: linear-gradient(180deg, var(--bg) 0%, #0e1420 100%);">
+  <div class="panel-grid">
+    <div>
+      <div class="badge-pill" style="border: 1px solid #4a3d14; background: rgba(255,210,63,0.08);">
+        <span class="eyebrow" style="font-size: 11px; color: #ffd23f;">Tech &middot; Network diagnostics</span>
       </div>
-      <div class="card">
-        <span class="icon">&#128225;</span>
-        <h3>Beacon frame decoding</h3>
-        <p>Full information-element table per access point &mdash; ID, length, raw hex, and human-readable decoding of HT/VHT capabilities, RSN cipher/AKM suites, and more.</p>
+      <h2>
+        <span class="wm on-dark" style="font-size: 2rem;">
+          <span class="wm-llem">llem</span>
+          <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+            <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+            <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+            <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+            <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+            <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+            <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+            <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+          </svg>
+          <span class="wm-llem">n</span>
+          <span class="wm-ai">AI</span>
+          <span class="wm-product">WiFi Scanner</span>
+        </span>
+      </h2>
+      <p class="panel-sub" style="color: var(--text-dim);">See your Wi-Fi network the way it actually behaves &mdash; not just how it's configured.</p>
+
+      <div class="status-row">
+        <span class="status-dot" style="background: #4ade80;"></span>
+        <span class="status-text" style="color: #7c8ca3;">Live &middot; free &middot; no signup</span>
       </div>
-      <div class="card">
-        <span class="icon">&#128200;</span>
-        <h3>Signal history &amp; channel usage</h3>
-        <p>RSSI-vs-time tracking per access point, plus 2.4GHz/5GHz channel occupancy charts to spot congestion and overlap at a glance.</p>
+
+      <div class="feature-list">
+        <div class="feature-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span style="color: #c9d3e0;">Real-time scanning across 2.4, 5 and 6&nbsp;GHz</span>
+        </div>
+        <div class="feature-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span style="color: #c9d3e0;">Beacon-level PHY &amp; MCS decode, not just signal bars</span>
+        </div>
+        <div class="feature-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span style="color: #c9d3e0;">Native apps for Windows and Android, one shared engine</span>
+        </div>
+        <div class="feature-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffd23f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span style="color: #c9d3e0;">Signal history, channel congestion and PDF field reports</span>
+        </div>
       </div>
-      <div class="card">
-        <span class="icon">&#128196;</span>
-        <h3>Field-ready PDF export</h3>
-        <p>One-click report with a network summary, per-AP detail pages, decoded beacon tables, host diagnostics, location, ISP, and (Windows) live weather &mdash; ready to attach to a ticket. Available on both Windows and Android.</p>
+
+      <div class="chip-row">
+        <span class="chip" style="background: var(--card); border: 1px solid var(--border); color: var(--text-dim);">Windows 10 (19041+) / 11</span>
+        <span class="chip" style="background: var(--card); border: 1px solid var(--border); color: var(--text-dim);">Android 8.0 (API 26)+</span>
       </div>
-      <div class="card">
-        <span class="icon">&#127760;</span>
-        <h3>Network info, on screen</h3>
-        <p>Local IP, gateway, WAN (public) IP, ISP, and GPS location &mdash; live, with a Refresh button, on both Windows and Android. Android adds a reverse-geocoded place name too.</p>
+
+      <div class="cta-row2">
+        <a class="btn btn-primary" href="scanner.html#download">Download for Windows</a>
+        <a class="btn btn-outline" href="scanner.html#download">Download for Android</a>
+        <a class="btn" href="scanner.html" style="background: transparent; border-color: var(--border); color: var(--text);">See full details &rarr;</a>
       </div>
-      <div class="card">
-        <span class="icon">&#128241;</span>
-        <h3>Wi-Fi chipset capabilities (Android)</h3>
-        <p>See which Wi-Fi bands and standards your phone's own radio supports &mdash; 2.4/5/6/60GHz, WPA3-SAE, Wi-Fi Direct/Aware, and more &mdash; plus a real connected-device count per access point where the AP advertises it.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#9989;</span>
-        <h3>Field engineer checklist</h3>
-        <p>Built-in printable/exportable troubleshooting checklist on both platforms &mdash; technician, customer and device details, environmental conditions, RF checks, and throughput verification steps.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128274;</span>
-        <h3>No install, no store required</h3>
-        <p>Windows: a single self-contained .exe, no installer or admin rights needed &mdash; run it from a USB stick. Android: a single sideloaded .apk, no Play Store account needed.</p>
-      </div>
+    </div>
+
+    <div style="position: relative; height: 380px; border-radius: 20px; background: var(--bg-alt); border: 1px solid var(--border); overflow: hidden; padding: 28px;">
+      <svg width="100%" height="100%" viewBox="0 0 420 320" style="position: absolute; inset: 0; opacity: 0.9;">
+        <line x1="40" y1="40" x2="40" y2="270" stroke="var(--border)" stroke-width="1"/>
+        <line x1="40" y1="270" x2="400" y2="270" stroke="var(--border)" stroke-width="1"/>
+        <line x1="40" y1="100" x2="400" y2="100" stroke="#1a2536" stroke-width="1"/>
+        <line x1="40" y1="160" x2="400" y2="160" stroke="#1a2536" stroke-width="1"/>
+        <line x1="40" y1="220" x2="400" y2="220" stroke="#1a2536" stroke-width="1"/>
+        <text x="32" y="104" text-anchor="end" font-size="10" fill="#5b6b80" font-family="monospace">-40</text>
+        <text x="32" y="164" text-anchor="end" font-size="10" fill="#5b6b80" font-family="monospace">-60</text>
+        <text x="32" y="224" text-anchor="end" font-size="10" fill="#5b6b80" font-family="monospace">-80</text>
+        <polyline points="40,190 80,175 120,185 160,150 200,160 240,120 280,135 320,105 360,115 400,95" fill="none" stroke="#3a8bff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="400" cy="95" r="4.5" fill="#0b0f14" stroke="#3a8bff" stroke-width="2"/>
+        <text x="400" y="82" text-anchor="end" font-size="11" font-weight="700" fill="#e7edf5">-42 dBm</text>
+        <text x="220" y="300" text-anchor="middle" font-size="10" fill="#5b6b80">Time (s)</text>
+      </svg>
     </div>
   </div>
 </section>
 
-<section id="screenshots">
-  <div class="wrap">
-    <h2>See it in action</h2>
-    <p class="section-lead">Live network scan with signal history and full beacon decode, plus per-band channel occupancy &mdash; on Windows.</p>
-    <div class="shot-grid">
-      <div class="shot-card">
-        <img src="screenshots/scan-view.png" alt="llemonai WiFi Scanner main window showing a live network scan, RSSI signal history chart, and decoded beacon information table" loading="lazy" />
-        <div class="cap">Live scan &mdash; network list, signal history, and full beacon decode table</div>
+<section class="panel" id="fintech" style="background: #fffbeb; border-top: 1px solid #eee4c8;">
+  <div class="panel-grid">
+    <div style="background: #ffffff; border: 1px solid #eee4c8; border-radius: 20px; padding: 24px; box-shadow: 0 1px 2px rgba(120,90,0,0.06), 0 4px 14px rgba(120,90,0,0.06);">
+      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5f5a52; margin-bottom: 14px;">Total cover, by type</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+        <div style="padding: 14px 16px; border-radius: 12px; border-top: 5px solid #7c3aed; background: linear-gradient(160deg, rgba(124,58,237,0.14), #ffffff 70%);">
+          <div style="font-size: 12px; font-weight: 650; color: #7c3aed;">Life</div>
+          <div style="font-size: 22px; font-weight: 750; color: #1c1917;">&#8377;25 L</div>
+        </div>
+        <div style="padding: 14px 16px; border-radius: 12px; border-top: 5px solid #ea580c; background: linear-gradient(160deg, rgba(234,88,12,0.14), #ffffff 70%);">
+          <div style="font-size: 12px; font-weight: 650; color: #ea580c;">Accidental death</div>
+          <div style="font-size: 22px; font-weight: 750; color: #1c1917;">&#8377;12 L</div>
+        </div>
+        <div style="padding: 14px 16px; border-radius: 12px; border-top: 5px solid #16a34a; background: linear-gradient(160deg, rgba(22,163,74,0.14), #ffffff 70%);">
+          <div style="font-size: 12px; font-weight: 650; color: #16a34a;">Health</div>
+          <div style="font-size: 22px; font-weight: 750; color: #1c1917;">&#8377;10 L</div>
+        </div>
+        <div style="padding: 14px 16px; border-radius: 12px; border-top: 5px solid #db2777; background: linear-gradient(160deg, rgba(219,39,119,0.14), #ffffff 70%);">
+          <div style="font-size: 12px; font-weight: 650; color: #db2777;">Card protection</div>
+          <div style="font-size: 22px; font-weight: 750; color: #1c1917;">&#8377;2 L</div>
+        </div>
       </div>
-      <div class="shot-card">
-        <img src="screenshots/channel-usage.png" alt="llemonai WiFi Scanner showing a 2.4GHz channel usage bar chart of nearby access points" loading="lazy" />
-        <div class="cap">2.4GHz channel usage &mdash; spot congestion and overlapping channels at a glance</div>
+      <div style="margin-top: 14px; padding: 10px 12px; border-radius: 8px; background: rgba(180,83,9,0.08); border: 1px solid rgba(180,83,9,0.25); display: flex; gap: 8px; align-items: center;">
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: #b45309; flex-shrink: 0;"></span>
+        <span style="font-size: 12px; color: #b45309; font-weight: 600;">Credit card &middot;&middot;4821 &mdash; card protection lapses in 4 days, use it once to keep it</span>
       </div>
+      <div style="margin-top: 10px; font-size: 11px; color: #a89f8e;">Illustrative example, not a real account</div>
     </div>
 
-    <p class="section-lead" style="margin-top:40px;">...and on Android &mdash; same scan/history/channel/checklist views, plus its own Network Info and Wi-Fi Chipset Capabilities cards.</p>
-    <div class="shot-grid shot-grid-phone">
-      <div class="shot-card">
-        <img src="screenshots/android-network-info.png" alt="llemonai WiFi Scanner for Android showing the Network Info card (local IP, gateway, WAN IP, ISP, location) and Wi-Fi Chipset Capabilities card" loading="lazy" />
-        <div class="cap">Network Info &amp; Wi-Fi Chipset Capabilities &mdash; live on screen, not just in the PDF</div>
+    <div>
+      <div class="badge-pill" style="border: 1px solid #e0b000; background: rgba(255,210,63,0.16);">
+        <span class="eyebrow" style="font-size: 11px; color: #92700a;">Fintech &middot; Insurance vault</span>
       </div>
-      <div class="shot-card">
-        <img src="screenshots/android-beacon-detail.png" alt="llemonai WiFi Scanner for Android showing per-access-point detail: PHY type, max rate, guard interval, connected-device count, and live link speed" loading="lazy" />
-        <div class="cap">Per-AP detail &mdash; PHY type, max rate, guard interval, and connected-device count</div>
+      <h2>
+        <span class="wm on-light" style="font-size: 2rem;">
+          <span class="wm-llem">llem</span>
+          <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+            <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+            <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+            <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+            <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+            <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+            <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+            <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+          </svg>
+          <span class="wm-llem">n</span>
+          <span class="wm-ai">AI</span>
+          <span class="wm-product">Insurance Vault</span>
+        </span>
+      </h2>
+      <p class="panel-sub" style="color: #5f5a52;">Find the insurance your bank already gave you &mdash; and don't let it lapse without noticing.</p>
+
+      <div class="status-row">
+        <span class="status-dot" style="background: #b45309;"></span>
+        <span class="status-text" style="color: #92700a;">In development &middot; not yet public</span>
       </div>
+
+      <div class="feature-list">
+        <div class="feature-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f6fe5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span style="color: #1c1917;">Every cover in one place &mdash; bank and card cover, policies bought directly from any IRDAI-registered insurer, and employer group policies</span>
+        </div>
+        <div class="feature-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f6fe5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span style="color: #1c1917;">Warns before a card-linked cover lapses from non-use, with that bank's exact usage conditions</span>
+        </div>
+        <div class="feature-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f6fe5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span style="color: #1c1917;">A printable claim sheet for your family &mdash; insurer, policy number, nominee, deadline and TPA details for health claims</span>
+        </div>
+        <div class="feature-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f6fe5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <span style="color: #1c1917;">Premium and card-bill reminders before they're due, not after</span>
+        </div>
+      </div>
+
+      <div class="chip-row">
+        <span class="chip" style="background: #ffffff; border: 1px solid #eee4c8; color: #5f5a52;">Web app &middot; any browser</span>
+        <span class="chip" style="background: #ffffff; border: 1px solid #eee4c8; color: #5f5a52;">Email sign-in, no password</span>
+      </div>
+
+      <a class="btn btn-primary" href="mailto:llemonai.us@gmail.com?subject=Insurance%20Vault%20early%20access" style="background: #ffd23f; color: #1c1917; border: 1px solid #e0b000;">Get on the early access list</a>
     </div>
   </div>
 </section>
 
-<section id="checklist">
-  <div class="wrap">
-    <h2>Field Engineer Checklist</h2>
-    <p class="section-lead">A built-in, printable/exportable checklist &mdash; on both Windows and Android &mdash; so a site visit covers every factor that affects Wi-Fi performance, not just signal strength. Fill it in on screen, tick items as you verify them, then print (Windows) or share as PDF (Android) a signed record for the ticket.</p>
-    <div class="shot-grid">
-      <div class="shot-card" style="max-width: 480px; margin: 0 auto;">
-        <img src="screenshots/checklist.png" alt="llemonai WiFi Scanner Field Engineer Checklist showing site and visit details, device information, and environmental condition checkboxes" loading="lazy" />
-        <div class="cap">Technician, customer and device details, environmental conditions, RF checks, and throughput verification &mdash; all in one printable page</div>
-      </div>
+<footer class="site-footer">
+  <div class="wrap site-footer-inner">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <span class="wm on-dark" style="font-size: 1rem; opacity: 0.8;" aria-label="llemonai">
+        <span class="wm-llem">llem</span>
+        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+        </svg>
+        <span class="wm-llem">n</span>
+        <span class="wm-ai">AI</span>
+      </span>
+      <span style="font-size: 13px; color: #5b6b80;">&copy; <span id="year"></span> llemonai &middot; Two products. One standard of craft.</span>
+      <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
     </div>
-  </div>
-</section>
-
-<section class="alt" id="download">
-  <div class="wrap">
-    <h2>Download</h2>
-    <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
-    <div class="download-grid">
-      <div class="dl-card">
-        <h3>llemonai WiFi Scanner &mdash; 64-bit</h3>
-        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
-        <ul>
-          <li>Single self-contained .exe (~80&nbsp;MB)</li>
-          <li>No installation, no admin rights required</li>
-          <li>Works on Windows 10 (build 19041+) and Windows 11</li>
-        </ul>
-        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
-        <div class="dl-count" id="count-x64"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
-      </div>
-      <div class="dl-card">
-        <h3>llemonai WiFi Scanner &mdash; 32-bit</h3>
-        <div class="meta">For legacy 32-bit Windows installations only</div>
-        <ul>
-          <li>Single self-contained .exe (~74&nbsp;MB)</li>
-          <li>No installation, no admin rights required</li>
-          <li>Works on Windows 10 (build 19041+) and Windows 11, 32-bit edition</li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
-        <div class="dl-count" id="count-x86"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
-      </div>
-      <div class="dl-card">
-        <h3>llemonai WiFi Scanner &mdash; Android</h3>
-        <div class="meta">Native app &middot; Android 8.0+ (API 26+)</div>
-        <ul>
-          <li>Single .apk (~11&nbsp;MB), sideload install</li>
-          <li>Signed with our own release key (not on Play Store yet)</li>
-          <li>Same features as desktop: scan, PDF export, checklist, network info</li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
-        <div class="dl-count" id="count-android"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
-      </div>
+    <div style="display: flex; gap: 24px;">
+      <a href="mailto:llemonai.us@gmail.com">Contact</a>
+      <a href="scanner.html">Wi-Fi Scanner</a>
     </div>
-    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
-    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
-      Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile LlemonScanner-15.B2-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
-      and compare the result to the SHA256 value shown above for the file you downloaded.
-    </p>
-    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      All builds are digitally signed (self-signed certificates, SHA256). Windows SmartScreen may still show
-      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
-      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
-      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we
-      published and hasn't been altered in transit.
-    </p>
-    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      Installing the Android APK: Android will block it by default as an "unknown source." Open the
-      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
-      normal for any app installed outside the Play Store, not a sign of a problem with this app specifically.
-    </p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>Why these numbers matter</h2>
-    <p class="section-lead">Wi-Fi coverage isn't just "signal bars." llemonai WiFi Scanner surfaces the environmental and technical factors that actually determine performance.</p>
-    <table class="checklist">
-      <thead><tr><th>Factor</th><th>Why it matters</th></tr></thead>
-      <tbody>
-        <tr><td>Temperature &amp; humidity</td><td>Affects RF propagation and can stress AP/client hardware in enclosed spaces.</td></tr>
-        <tr><td>Device load &amp; connected clients</td><td>More clients on a channel means more contention and lower effective throughput per device.</td></tr>
-        <tr><td>Interference</td><td>Overlapping channels and non-Wi-Fi RF noise directly reduce usable capacity.</td></tr>
-        <tr><td>Positioning &amp; obstructions</td><td>Distance, walls, and line-of-sight change signal strength far more than most people expect.</td></tr>
-        <tr><td>Uplink throughput</td><td>A great Wi-Fi signal can't outrun a slow upstream connection &mdash; both need to be checked together.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
-    <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonai WiFi Scanner. All rights reserved.</div>
-    <div>Built for IT diagnostics and field engineering use.</div>
-    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
-    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x64.exe';
-  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x86.exe';
-  document.getElementById('dl-android').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/llemonai-wifiscanner-15A2-android.apk';
-  document.getElementById('sha-x64').textContent = '26DC6B44844FE555BE790BBE426790342BDD7B08A2A349288A837415864153DA';
-  document.getElementById('sha-x86').textContent = 'A0D193BF96FC8A0C4A17FE17F8AD515C94C7B88C9AAD19C8DEB7E365F43FA8EA';
-  document.getElementById('sha-android').textContent = 'C4F08E2DF5D716DD87532C2928911052C1EF47FB7589FFA4E5D31B5DD4D9A49D';
-
-  // Live download counts, pulled from GitHub's public Releases API (no backend of our own).
-  // Summed across ALL releases whose asset name matches each platform, not just the latest
-  // version, so the counter doesn't reset to 0 every time a new version ships.
-  fetch('https://api.github.com/repos/llemonai/llemon-scanner/releases?per_page=100')
-    .then(function (res) { if (!res.ok) throw new Error('GitHub API error ' + res.status); return res.json(); })
-    .then(function (releases) {
-      var totals = { x64: 0, x86: 0, android: 0 };
-      releases.forEach(function (release) {
-        (release.assets || []).forEach(function (asset) {
-          var name = asset.name.toLowerCase();
-          if (name.indexOf('win-x64') !== -1) totals.x64 += asset.download_count;
-          else if (name.indexOf('win-x86') !== -1) totals.x86 += asset.download_count;
-          else if (name.indexOf('.apk') !== -1) totals.android += asset.download_count;
-        });
-      });
-      function fmt(n) { return n.toLocaleString(); }
-      document.getElementById('count-x64').innerHTML = '<span class="n">' + fmt(totals.x64) + '</span> downloads';
-      document.getElementById('count-x86').innerHTML = '<span class="n">' + fmt(totals.x86) + '</span> downloads';
-      document.getElementById('count-android').innerHTML = '<span class="n">' + fmt(totals.android) + '</span> downloads';
-      var total = totals.x64 + totals.x86 + totals.android;
-      document.getElementById('dl-total-line').textContent =
-        total > 0 ? fmt(total) + ' total downloads across all platforms and versions.' : '';
-    })
-    .catch(function () {
-      // GitHub API rate limits (60/hr unauthenticated) or a network hiccup - fail quietly,
-      // the download buttons themselves don't depend on this.
-    });
-</script>
-
-<button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
-  &#128172;
-  <span class="chat-badge" id="chat-badge">1</span>
-</button>
-<div id="chat-panel" role="dialog" aria-label="Help chat">
-  <div id="chat-header">
-    <span class="chat-avatar">&#129302;</span>
-    <div class="chat-title-block">
-      <div>llemonai Help Bot</div>
-      <div class="chat-status"><span class="dot"></span> AI-powered &middot; ask anything about the app</div>
-    </div>
-    <button id="chat-close" aria-label="Close chat">&times;</button>
-  </div>
-  <div id="chat-body"></div>
-  <button id="chat-more-toggle" type="button">Suggested questions &#9662;</button>
-  <div id="chat-quick-replies"></div>
-  <div id="chat-report-pill">
-    <span>&#128196;</span>
-    <span class="name" id="chat-report-name"></span>
-    <button id="chat-report-remove" aria-label="Remove attached report" title="Remove">&times;</button>
-  </div>
-  <div id="chat-input-row">
-    <input type="file" id="chat-file-input" accept="application/pdf" style="display:none;" />
-    <button id="chat-attach" aria-label="Attach your PDF report" title="Attach your PDF report">&#128206;</button>
-    <input id="chat-input" type="text" placeholder="Type a question&hellip;" maxlength="500" autocomplete="off" />
-    <button id="chat-send" aria-label="Send">&#10148;</button>
-  </div>
-</div>
-
-<script>
-(function () {
-  var faq = [
-    {
-      q: "What is llemonai WiFi Scanner?",
-      a: "A free Wi-Fi scanning and diagnostics tool for Windows and Android. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians."
-    },
-    {
-      q: "Is there an Android version?",
-      a: "Yes — a native Android app (Android 8.0 / API 26 and later) with the same core features as Windows: scanning, beacon decode, signal history, PDF export, and the Field Engineer Checklist, plus a couple of Android-only extras (Wi-Fi chipset capabilities, reverse-geocoded location). It's a sideloaded .apk, not on the Play Store yet — see the <a href=\"#download\">Download</a> section for install steps."
-    },
-    {
-      q: "Which download do I need — Windows 32-bit, 64-bit, or Android?",
-      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install — almost every PC made since 2010 is 64-bit. On Android, there's a single .apk that works on any Android 8.0+ device. All three are on the <a href=\"#download\">Download</a> section above."
-    },
-    {
-      q: "What are the system requirements?",
-      a: "Windows: Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit — no installer, no admin rights, no separate .NET install needed. Android: Android 8.0 (API 26) or later, ~11MB sideloaded .apk."
-    },
-    {
-      q: "Is it really free? Do I need to install anything?",
-      a: "Yes, it's free on both platforms. On Windows there's nothing to install — download the single .exe and run it directly (even from a USB stick). On Android, download the .apk and sideload it — no Play Store account needed."
-    },
-    {
-      q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
-      a: "Both platforms' builds are digitally signed with our own self-signed certificate/key (not a paid, publicly-trusted CA or Play Store listing yet), so Windows SmartScreen may flag it as an \"Unknown Publisher\" and Android may warn about an \"unknown source\" — that's expected on both. To confirm a file is genuine, compare its SHA256 checksum (shown in the <a href=\"#download\">Download</a> section) against your downloaded file — on Windows, <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
-    },
-    {
-      q: "What's the Field Engineer Checklist?",
-      a: "A built-in, printable/exportable checklist for site visits, on both Windows and Android — technician and customer details, device info, environmental conditions, RF checks, and throughput verification. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
-    },
-    {
-      q: "My Wi-Fi throughput is low — what should I check?",
-      a: "Signal strength (RSSI) alone doesn't tell the whole story. Check: optimal channel selection (avoid overlapping/congested channels — use the Channel Usage view), AP and client positioning (distance, walls, obstructions), interference from other networks or non-Wi-Fi devices, number of connected clients (now shown directly when an AP advertises it), and uplink throughput separately from downlink — it's often the real bottleneck."
-    },
-    {
-      q: "How do I contact support?",
-      a: "Email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a> and we'll get back to you."
-    },
-    {
-      q: "Can I get advice based on my own scan report?",
-      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonai WiFi Scanner on either Windows or Android (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
-    }
-  ];
-
-  var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
-  var MAX_REPORT_CHARS = 15000;
-
-  if (window.pdfjsLib) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-  }
-
-  var toggle = document.getElementById('chat-toggle');
-  var badge = document.getElementById('chat-badge');
-  var panel = document.getElementById('chat-panel');
-  var closeBtn = document.getElementById('chat-close');
-  var body = document.getElementById('chat-body');
-  var replies = document.getElementById('chat-quick-replies');
-  var moreToggle = document.getElementById('chat-more-toggle');
-  var input = document.getElementById('chat-input');
-  var sendBtn = document.getElementById('chat-send');
-  var attachBtn = document.getElementById('chat-attach');
-  var fileInput = document.getElementById('chat-file-input');
-  var reportPill = document.getElementById('chat-report-pill');
-  var reportName = document.getElementById('chat-report-name');
-  var reportRemoveBtn = document.getElementById('chat-report-remove');
-  var greeted = false;
-  var reportContext = '';
-
-  function addMessage(text, who) {
-    var isBot = who.split(' ')[0] === 'bot';
-    var row = document.createElement('div');
-    row.className = 'chat-row ' + who;
-
-    var avatar = document.createElement('div');
-    avatar.className = 'chat-mini-avatar';
-    avatar.textContent = isBot ? '\u{1F916}' : '\u{1F9D1}';
-
-    var bubble = document.createElement('div');
-    bubble.className = 'chat-msg ' + who;
-    bubble.innerHTML = text;
-
-    row.appendChild(avatar);
-    row.appendChild(bubble);
-    body.appendChild(row);
-    body.scrollTop = body.scrollHeight;
-  }
-
-  function addTypingIndicator() {
-    var row = document.createElement('div');
-    row.className = 'chat-row bot';
-    row.id = 'chat-typing-row';
-
-    var avatar = document.createElement('div');
-    avatar.className = 'chat-mini-avatar';
-    avatar.textContent = '\u{1F916}';
-
-    var typing = document.createElement('div');
-    typing.className = 'chat-typing';
-    typing.innerHTML = '<span></span><span></span><span></span>';
-
-    row.appendChild(avatar);
-    row.appendChild(typing);
-    body.appendChild(row);
-    body.scrollTop = body.scrollHeight;
-    return row;
-  }
-
-  function collapseSuggestions() {
-    replies.classList.add('collapsed');
-    moreToggle.textContent = 'Suggested questions ▾';
-  }
-
-  function toggleSuggestions() {
-    var isCollapsed = replies.classList.toggle('collapsed');
-    moreToggle.textContent = isCollapsed ? 'Suggested questions ▾' : 'Hide suggestions ▴';
-  }
-
-  moreToggle.addEventListener('click', toggleSuggestions);
-
-  function askQuestion(item) {
-    addMessage(item.q, 'user');
-    collapseSuggestions();
-    var typingRow = addTypingIndicator();
-    setTimeout(function () {
-      typingRow.remove();
-      addMessage(item.a, 'bot');
-    }, 450 + Math.random() * 350);
-  }
-
-  function askAi(question) {
-    addMessage(question, 'user');
-    collapseSuggestions();
-    input.value = '';
-    sendBtn.disabled = true;
-    var typingRow = addTypingIndicator();
-
-    fetch(CHAT_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: question, reportContext: reportContext })
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
-        return res.json();
-      })
-      .then(function (data) {
-        typingRow.remove();
-        if (data.error) throw new Error(data.error);
-        addMessage(data.reply, 'bot');
-      })
-      .catch(function () {
-        typingRow.remove();
-        addMessage("Sorry, I couldn't reach the AI assistant just now. Please try again, or email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a>.", 'bot error');
-      })
-      .finally(function () {
-        sendBtn.disabled = false;
-      });
-  }
-
-  function extractPdfText(file) {
-    return file.arrayBuffer().then(function (buf) {
-      return pdfjsLib.getDocument({ data: buf }).promise;
-    }).then(function (pdf) {
-      var pageTexts = [];
-      var pagePromise = Promise.resolve();
-      for (var i = 1; i <= pdf.numPages; i++) {
-        (function (pageNum) {
-          pagePromise = pagePromise
-            .then(function () { return pdf.getPage(pageNum); })
-            .then(function (page) { return page.getTextContent(); })
-            .then(function (content) {
-              var text = content.items.map(function (it) { return it.str; }).join(' ');
-              pageTexts.push(text);
-            });
-        })(i);
-      }
-      return pagePromise.then(function () { return pageTexts.join('\n\n'); });
-    });
-  }
-
-  function handleFileAttach(file) {
-    if (!file || file.type !== 'application/pdf') {
-      addMessage('Please attach a PDF file (the report exported from llemonai WiFi Scanner).', 'bot error');
-      return;
-    }
-    if (file.size > 15 * 1024 * 1024) {
-      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
-      return;
-    }
-
-    var typingRow = addTypingIndicator();
-    extractPdfText(file)
-      .then(function (text) {
-        typingRow.remove();
-        reportContext = text.slice(0, MAX_REPORT_CHARS);
-        reportName.textContent = file.name;
-        reportPill.classList.add('show');
-        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
-      })
-      .catch(function () {
-        typingRow.remove();
-        addMessage("Sorry, I couldn't read that PDF. Make sure it's not password-protected and try again.", 'bot error');
-      });
-  }
-
-  attachBtn.addEventListener('click', function () { fileInput.click(); });
-  fileInput.addEventListener('change', function () {
-    if (fileInput.files && fileInput.files[0]) {
-      handleFileAttach(fileInput.files[0]);
-    }
-    fileInput.value = '';
-  });
-  reportRemoveBtn.addEventListener('click', function () {
-    reportContext = '';
-    reportPill.classList.remove('show');
-    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
-  });
-
-  function showMenu() {
-    replies.innerHTML = '';
-    faq.forEach(function (item) {
-      var btn = document.createElement('button');
-      btn.className = 'chat-chip';
-      btn.textContent = item.q;
-      btn.onclick = function () { askQuestion(item); };
-      replies.appendChild(btn);
-    });
-    replies.classList.remove('collapsed');
-    moreToggle.textContent = 'Hide suggestions ▴';
-  }
-
-  function openChat() {
-    panel.classList.add('open');
-    badge.classList.add('hidden');
-    if (!greeted) {
-      addMessage("Hi! I'm the llemonai Help Bot. Pick a common question below, type your own, or attach your scan report (paperclip icon) for advice based on your actual numbers.", 'bot');
-      showMenu();
-      greeted = true;
-    }
-  }
-
-  function handleSend() {
-    var text = input.value.trim();
-    if (!text) return;
-    askAi(text);
-  }
-
-  sendBtn.addEventListener('click', handleSend);
-  input.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') handleSend();
-  });
-
-  toggle.addEventListener('click', function () {
-    if (panel.classList.contains('open')) {
-      panel.classList.remove('open');
-    } else {
-      openChat();
-    }
-  });
-  closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
-})();
-</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
 </body>
 </html>

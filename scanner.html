@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>llemonai WiFi Scanner &mdash; Wi-Fi Site Survey &amp; Diagnostics Tool for Windows &amp; Android</title>
+<meta name="description" content="llemonai WiFi Scanner is a free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, and export field-ready PDF reports." />
+<link rel="canonical" href="https://llemonai.in/scanner.html" />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://llemonai.in/scanner.html" />
+<meta property="og:title" content="llemonai WiFi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows & Android" />
+<meta property="og:description" content="Free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports — no install required on Windows, sideload on Android." />
+<meta property="og:image" content="https://llemonai.in/screenshots/scan-view.png" />
+<meta property="og:image:width" content="1294" />
+<meta property="og:image:height" content="686" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="llemonai WiFi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows & Android" />
+<meta name="twitter:description" content="Free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports." />
+<meta name="twitter:image" content="https://llemonai.in/screenshots/scan-view.png" />
+
+<meta name="keywords" content="wifi scanner, wifi analyzer, windows wifi tool, android wifi tool, wifi site survey, network diagnostics, beacon frame decoder, wifi channel scanner, rssi signal strength, wifi troubleshooting" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonai WiFi Scanner for Windows",
+    "operatingSystem": "Windows 10 (build 19041+), Windows 11",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, track signal history and channel usage, and export field-ready PDF reports.",
+    "url": "https://llemonai.in/scanner.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonai WiFi Scanner for Android",
+    "operatingSystem": "Android 8.0 (API 26) and later",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Free Wi-Fi scanning and diagnostics app for Android. Scan networks, view beacon-decoded PHY/rate details, check Wi-Fi chipset capabilities, and export field-ready PDF reports.",
+    "url": "https://llemonai.in/scanner.html#download",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+]
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-alt: #101722;
+    --card: #141d2b;
+    --border: #223349;
+    --text: #e7edf5;
+    --text-dim: #9fb0c3;
+    --accent: #ffd23f;
+    --accent-dim: #3a8bff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+  a { color: var(--accent-dim); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 0 56px;
+  }
+  .brand {
+    display: flex; align-items: center;
+    margin-bottom: 40px;
+  }
+  .brand img { height: 34px; width: auto; display: block; }
+  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
+  .back-home:hover { color: var(--text); }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p.lead {
+    color: var(--text-dim);
+    font-size: 18px;
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 600; font-size: 15px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #14100a; }
+  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn small { font-weight: 400; opacity: 0.75; }
+  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
+
+  section { padding: 56px 0; }
+  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  h2 { font-size: 28px; margin: 0 0 8px; }
+  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
+
+  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .dl-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .dl-card h3 { margin: 0; font-size: 20px; }
+  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
+  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
+  .dl-card .btn { justify-content: center; margin-top: auto; }
+  .checksum {
+    font-size: 11px;
+    color: var(--text-dim);
+    word-break: break-all;
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .dl-count {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: -4px;
+  }
+  .dl-count .n { color: var(--accent); font-weight: 700; }
+
+  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  table.checklist th, table.checklist td {
+    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
+  }
+  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
+  .shot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
+  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
+
+  footer {
+    padding: 40px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
+
+  /* Chat widget */
+  #chat-toggle {
+    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--accent); color: #14100a; border: none;
+    font-size: 24px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+  #chat-toggle .chat-badge {
+    position: absolute; top: -2px; right: -2px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--bg);
+    animation: chat-badge-pulse 1.8s ease-in-out infinite;
+  }
+  #chat-toggle .chat-badge.hidden { display: none; }
+  @keyframes chat-badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+  }
+
+  #chat-panel {
+    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
+    width: 400px; max-width: calc(100vw - 40px);
+    height: min(720px, 85vh); max-height: calc(100vh - 100px);
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; transform: translateY(12px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  @media (max-width: 440px) {
+    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
+    #chat-toggle { right: 14px; bottom: 14px; }
+  }
+
+  #chat-body { min-height: 160px; flex: 1 1 auto; }
+  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
+  #chat-quick-replies.collapsed { display: none; }
+  #chat-more-toggle {
+    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
+    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
+    border-radius: 999px; cursor: pointer; align-self: flex-start;
+  }
+  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
+  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  #chat-header {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-alt); font-weight: 700; font-size: 14px;
+  }
+  #chat-header .chat-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: #14100a;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
+  }
+  #chat-header .chat-title-block { flex: 1; min-width: 0; }
+  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
+  #chat-header button {
+    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
+    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
+  }
+  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+
+  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  #chat-body::-webkit-scrollbar { width: 6px; }
+  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
+  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
+  .chat-row .chat-mini-avatar {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+  }
+  @keyframes chat-pop-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-msg { font-size: 13.5px; line-height: 1.5; }
+  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
+  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
+  .chat-msg a { color: inherit; text-decoration: underline; }
+  .chat-msg.bot a { color: var(--accent-dim); }
+
+  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
+  .chat-typing span {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
+    animation: chat-typing-bounce 1s infinite ease-in-out;
+  }
+  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes chat-typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
+  .chat-chip {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
+
+  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  #chat-input {
+    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
+    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
+  }
+  #chat-input:focus { border-color: var(--accent-dim); }
+  #chat-send, #chat-attach {
+    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
+    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.12s ease;
+  }
+  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
+  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
+  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
+  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
+
+  #chat-report-pill {
+    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
+    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
+    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
+  }
+  #chat-report-pill.show { display: flex; }
+  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+  #chat-report-pill button {
+    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
+  }
+  #chat-report-pill button:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand"><img src="assets/wordmark.png" alt="llemonai WiFi Scanner" /><a class="back-home" href="index.html">&larr; llemonai.in</a></div>
+    <h1>See your Wi-Fi the way it<br/>actually <span>behaves</span>, not just how it's <span>configured</span>.</h1>
+    <p class="lead">
+      A free Wi-Fi scanning and diagnostics tool for <strong>Windows and Android</strong>. Discover nearby networks,
+      decode raw beacon frames, track signal history, and generate field-ready PDF reports &mdash;
+      built for IT engineers and field technicians.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#download">Download</a>
+      <a class="btn btn-secondary" href="#features">See what's inside</a>
+    </div>
+    <div class="hero-note">Windows 10 (2004+)/11, 64-bit &amp; 32-bit, no installer &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Built for real diagnostics, not just a pretty list of networks</h2>
+    <p class="section-lead">Everything a field engineer needs to explain "why is this Wi-Fi bad" with evidence, not guesswork.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="icon">&#128246;</span>
+        <h3>Live network scanning</h3>
+        <p>SSID, BSSID, vendor, channel, band, width, RSSI, PHY type, security, and more &mdash; refreshed on an adjustable interval.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128225;</span>
+        <h3>Beacon frame decoding</h3>
+        <p>Full information-element table per access point &mdash; ID, length, raw hex, and human-readable decoding of HT/VHT capabilities, RSN cipher/AKM suites, and more.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128200;</span>
+        <h3>Signal history &amp; channel usage</h3>
+        <p>RSSI-vs-time tracking per access point, plus 2.4GHz/5GHz channel occupancy charts to spot congestion and overlap at a glance.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128196;</span>
+        <h3>Field-ready PDF export</h3>
+        <p>One-click report with a network summary, per-AP detail pages, decoded beacon tables, host diagnostics, location, ISP, and (Windows) live weather &mdash; ready to attach to a ticket. Available on both Windows and Android.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#127760;</span>
+        <h3>Network info, on screen</h3>
+        <p>Local IP, gateway, WAN (public) IP, ISP, and GPS location &mdash; live, with a Refresh button, on both Windows and Android. Android adds a reverse-geocoded place name too.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128241;</span>
+        <h3>Wi-Fi chipset capabilities (Android)</h3>
+        <p>See which Wi-Fi bands and standards your phone's own radio supports &mdash; 2.4/5/6/60GHz, WPA3-SAE, Wi-Fi Direct/Aware, and more &mdash; plus a real connected-device count per access point where the AP advertises it.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9989;</span>
+        <h3>Field engineer checklist</h3>
+        <p>Built-in printable/exportable troubleshooting checklist on both platforms &mdash; technician, customer and device details, environmental conditions, RF checks, and throughput verification steps.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128274;</span>
+        <h3>No install, no store required</h3>
+        <p>Windows: a single self-contained .exe, no installer or admin rights needed &mdash; run it from a USB stick. Android: a single sideloaded .apk, no Play Store account needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="section-lead">Live network scan with signal history and full beacon decode, plus per-band channel occupancy &mdash; on Windows.</p>
+    <div class="shot-grid">
+      <div class="shot-card">
+        <img src="screenshots/scan-view.png" alt="llemonai WiFi Scanner main window showing a live network scan, RSSI signal history chart, and decoded beacon information table" loading="lazy" />
+        <div class="cap">Live scan &mdash; network list, signal history, and full beacon decode table</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/channel-usage.png" alt="llemonai WiFi Scanner showing a 2.4GHz channel usage bar chart of nearby access points" loading="lazy" />
+        <div class="cap">2.4GHz channel usage &mdash; spot congestion and overlapping channels at a glance</div>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-top:40px;">...and on Android &mdash; same scan/history/channel/checklist views, plus its own Network Info and Wi-Fi Chipset Capabilities cards.</p>
+    <div class="shot-grid shot-grid-phone">
+      <div class="shot-card">
+        <img src="screenshots/android-network-info.png" alt="llemonai WiFi Scanner for Android showing the Network Info card (local IP, gateway, WAN IP, ISP, location) and Wi-Fi Chipset Capabilities card" loading="lazy" />
+        <div class="cap">Network Info &amp; Wi-Fi Chipset Capabilities &mdash; live on screen, not just in the PDF</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/android-beacon-detail.png" alt="llemonai WiFi Scanner for Android showing per-access-point detail: PHY type, max rate, guard interval, connected-device count, and live link speed" loading="lazy" />
+        <div class="cap">Per-AP detail &mdash; PHY type, max rate, guard interval, and connected-device count</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="wrap">
+    <h2>Field Engineer Checklist</h2>
+    <p class="section-lead">A built-in, printable/exportable checklist &mdash; on both Windows and Android &mdash; so a site visit covers every factor that affects Wi-Fi performance, not just signal strength. Fill it in on screen, tick items as you verify them, then print (Windows) or share as PDF (Android) a signed record for the ticket.</p>
+    <div class="shot-grid">
+      <div class="shot-card" style="max-width: 480px; margin: 0 auto;">
+        <img src="screenshots/checklist.png" alt="llemonai WiFi Scanner Field Engineer Checklist showing site and visit details, device information, and environmental condition checkboxes" loading="lazy" />
+        <div class="cap">Technician, customer and device details, environmental conditions, RF checks, and throughput verification &mdash; all in one printable page</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="download">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
+    <div class="download-grid">
+      <div class="dl-card">
+        <h3>llemonai WiFi Scanner &mdash; 64-bit</h3>
+        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
+        <ul>
+          <li>Single self-contained .exe (~80&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Works on Windows 10 (build 19041+) and Windows 11</li>
+        </ul>
+        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
+        <div class="dl-count" id="count-x64"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
+      </div>
+      <div class="dl-card">
+        <h3>llemonai WiFi Scanner &mdash; 32-bit</h3>
+        <div class="meta">For legacy 32-bit Windows installations only</div>
+        <ul>
+          <li>Single self-contained .exe (~74&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Works on Windows 10 (build 19041+) and Windows 11, 32-bit edition</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
+        <div class="dl-count" id="count-x86"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
+      </div>
+      <div class="dl-card">
+        <h3>llemonai WiFi Scanner &mdash; Android</h3>
+        <div class="meta">Native app &middot; Android 8.0+ (API 26+)</div>
+        <ul>
+          <li>Single .apk (~11&nbsp;MB), sideload install</li>
+          <li>Signed with our own release key (not on Play Store yet)</li>
+          <li>Same features as desktop: scan, PDF export, checklist, network info</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
+        <div class="dl-count" id="count-android"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
+      </div>
+    </div>
+    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
+      Verify your download hasn't been tampered with or corrupted: after downloading, run
+      <span class="mono">certutil -hashfile LlemonScanner-15.B2-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      and compare the result to the SHA256 value shown above for the file you downloaded.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      All builds are digitally signed (self-signed certificates, SHA256). Windows SmartScreen may still show
+      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
+      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
+      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we
+      published and hasn't been altered in transit.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      Installing the Android APK: Android will block it by default as an "unknown source." Open the
+      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
+      normal for any app installed outside the Play Store, not a sign of a problem with this app specifically.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why these numbers matter</h2>
+    <p class="section-lead">Wi-Fi coverage isn't just "signal bars." llemonai WiFi Scanner surfaces the environmental and technical factors that actually determine performance.</p>
+    <table class="checklist">
+      <thead><tr><th>Factor</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Temperature &amp; humidity</td><td>Affects RF propagation and can stress AP/client hardware in enclosed spaces.</td></tr>
+        <tr><td>Device load &amp; connected clients</td><td>More clients on a channel means more contention and lower effective throughput per device.</td></tr>
+        <tr><td>Interference</td><td>Overlapping channels and non-Wi-Fi RF noise directly reduce usable capacity.</td></tr>
+        <tr><td>Positioning &amp; obstructions</td><td>Distance, walls, and line-of-sight change signal strength far more than most people expect.</td></tr>
+        <tr><td>Uplink throughput</td><td>A great Wi-Fi signal can't outrun a slow upstream connection &mdash; both need to be checked together.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
+    <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonai WiFi Scanner. All rights reserved.</div>
+    <div>Built for IT diagnostics and field engineering use.</div>
+    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x64.exe';
+  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x86.exe';
+  document.getElementById('dl-android').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/llemonai-wifiscanner-15A2-android.apk';
+  document.getElementById('sha-x64').textContent = '26DC6B44844FE555BE790BBE426790342BDD7B08A2A349288A837415864153DA';
+  document.getElementById('sha-x86').textContent = 'A0D193BF96FC8A0C4A17FE17F8AD515C94C7B88C9AAD19C8DEB7E365F43FA8EA';
+  document.getElementById('sha-android').textContent = 'C4F08E2DF5D716DD87532C2928911052C1EF47FB7589FFA4E5D31B5DD4D9A49D';
+
+  // Live download counts, pulled from GitHub's public Releases API (no backend of our own).
+  // Summed across ALL releases whose asset name matches each platform, not just the latest
+  // version, so the counter doesn't reset to 0 every time a new version ships.
+  fetch('https://api.github.com/repos/llemonai/llemon-scanner/releases?per_page=100')
+    .then(function (res) { if (!res.ok) throw new Error('GitHub API error ' + res.status); return res.json(); })
+    .then(function (releases) {
+      var totals = { x64: 0, x86: 0, android: 0 };
+      releases.forEach(function (release) {
+        (release.assets || []).forEach(function (asset) {
+          var name = asset.name.toLowerCase();
+          if (name.indexOf('win-x64') !== -1) totals.x64 += asset.download_count;
+          else if (name.indexOf('win-x86') !== -1) totals.x86 += asset.download_count;
+          else if (name.indexOf('.apk') !== -1) totals.android += asset.download_count;
+        });
+      });
+      function fmt(n) { return n.toLocaleString(); }
+      document.getElementById('count-x64').innerHTML = '<span class="n">' + fmt(totals.x64) + '</span> downloads';
+      document.getElementById('count-x86').innerHTML = '<span class="n">' + fmt(totals.x86) + '</span> downloads';
+      document.getElementById('count-android').innerHTML = '<span class="n">' + fmt(totals.android) + '</span> downloads';
+      var total = totals.x64 + totals.x86 + totals.android;
+      document.getElementById('dl-total-line').textContent =
+        total > 0 ? fmt(total) + ' total downloads across all platforms and versions.' : '';
+    })
+    .catch(function () {
+      // GitHub API rate limits (60/hr unauthenticated) or a network hiccup - fail quietly,
+      // the download buttons themselves don't depend on this.
+    });
+</script>
+
+<button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
+  &#128172;
+  <span class="chat-badge" id="chat-badge">1</span>
+</button>
+<div id="chat-panel" role="dialog" aria-label="Help chat">
+  <div id="chat-header">
+    <span class="chat-avatar">&#129302;</span>
+    <div class="chat-title-block">
+      <div>llemonai Help Bot</div>
+      <div class="chat-status"><span class="dot"></span> AI-powered &middot; ask anything about the app</div>
+    </div>
+    <button id="chat-close" aria-label="Close chat">&times;</button>
+  </div>
+  <div id="chat-body"></div>
+  <button id="chat-more-toggle" type="button">Suggested questions &#9662;</button>
+  <div id="chat-quick-replies"></div>
+  <div id="chat-report-pill">
+    <span>&#128196;</span>
+    <span class="name" id="chat-report-name"></span>
+    <button id="chat-report-remove" aria-label="Remove attached report" title="Remove">&times;</button>
+  </div>
+  <div id="chat-input-row">
+    <input type="file" id="chat-file-input" accept="application/pdf" style="display:none;" />
+    <button id="chat-attach" aria-label="Attach your PDF report" title="Attach your PDF report">&#128206;</button>
+    <input id="chat-input" type="text" placeholder="Type a question&hellip;" maxlength="500" autocomplete="off" />
+    <button id="chat-send" aria-label="Send">&#10148;</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var faq = [
+    {
+      q: "What is llemonai WiFi Scanner?",
+      a: "A free Wi-Fi scanning and diagnostics tool for Windows and Android. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians."
+    },
+    {
+      q: "Is there an Android version?",
+      a: "Yes — a native Android app (Android 8.0 / API 26 and later) with the same core features as Windows: scanning, beacon decode, signal history, PDF export, and the Field Engineer Checklist, plus a couple of Android-only extras (Wi-Fi chipset capabilities, reverse-geocoded location). It's a sideloaded .apk, not on the Play Store yet — see the <a href=\"#download\">Download</a> section for install steps."
+    },
+    {
+      q: "Which download do I need — Windows 32-bit, 64-bit, or Android?",
+      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install — almost every PC made since 2010 is 64-bit. On Android, there's a single .apk that works on any Android 8.0+ device. All three are on the <a href=\"#download\">Download</a> section above."
+    },
+    {
+      q: "What are the system requirements?",
+      a: "Windows: Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit — no installer, no admin rights, no separate .NET install needed. Android: Android 8.0 (API 26) or later, ~11MB sideloaded .apk."
+    },
+    {
+      q: "Is it really free? Do I need to install anything?",
+      a: "Yes, it's free on both platforms. On Windows there's nothing to install — download the single .exe and run it directly (even from a USB stick). On Android, download the .apk and sideload it — no Play Store account needed."
+    },
+    {
+      q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
+      a: "Both platforms' builds are digitally signed with our own self-signed certificate/key (not a paid, publicly-trusted CA or Play Store listing yet), so Windows SmartScreen may flag it as an \"Unknown Publisher\" and Android may warn about an \"unknown source\" — that's expected on both. To confirm a file is genuine, compare its SHA256 checksum (shown in the <a href=\"#download\">Download</a> section) against your downloaded file — on Windows, <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+    },
+    {
+      q: "What's the Field Engineer Checklist?",
+      a: "A built-in, printable/exportable checklist for site visits, on both Windows and Android — technician and customer details, device info, environmental conditions, RF checks, and throughput verification. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
+    },
+    {
+      q: "My Wi-Fi throughput is low — what should I check?",
+      a: "Signal strength (RSSI) alone doesn't tell the whole story. Check: optimal channel selection (avoid overlapping/congested channels — use the Channel Usage view), AP and client positioning (distance, walls, obstructions), interference from other networks or non-Wi-Fi devices, number of connected clients (now shown directly when an AP advertises it), and uplink throughput separately from downlink — it's often the real bottleneck."
+    },
+    {
+      q: "How do I contact support?",
+      a: "Email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a> and we'll get back to you."
+    },
+    {
+      q: "Can I get advice based on my own scan report?",
+      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonai WiFi Scanner on either Windows or Android (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
+    }
+  ];
+
+  var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
+  var MAX_REPORT_CHARS = 15000;
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var toggle = document.getElementById('chat-toggle');
+  var badge = document.getElementById('chat-badge');
+  var panel = document.getElementById('chat-panel');
+  var closeBtn = document.getElementById('chat-close');
+  var body = document.getElementById('chat-body');
+  var replies = document.getElementById('chat-quick-replies');
+  var moreToggle = document.getElementById('chat-more-toggle');
+  var input = document.getElementById('chat-input');
+  var sendBtn = document.getElementById('chat-send');
+  var attachBtn = document.getElementById('chat-attach');
+  var fileInput = document.getElementById('chat-file-input');
+  var reportPill = document.getElementById('chat-report-pill');
+  var reportName = document.getElementById('chat-report-name');
+  var reportRemoveBtn = document.getElementById('chat-report-remove');
+  var greeted = false;
+  var reportContext = '';
+
+  function addMessage(text, who) {
+    var isBot = who.split(' ')[0] === 'bot';
+    var row = document.createElement('div');
+    row.className = 'chat-row ' + who;
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = isBot ? '\u{1F916}' : '\u{1F9D1}';
+
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg ' + who;
+    bubble.innerHTML = text;
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function addTypingIndicator() {
+    var row = document.createElement('div');
+    row.className = 'chat-row bot';
+    row.id = 'chat-typing-row';
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = '\u{1F916}';
+
+    var typing = document.createElement('div');
+    typing.className = 'chat-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+
+    row.appendChild(avatar);
+    row.appendChild(typing);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+    return row;
+  }
+
+  function collapseSuggestions() {
+    replies.classList.add('collapsed');
+    moreToggle.textContent = 'Suggested questions ▾';
+  }
+
+  function toggleSuggestions() {
+    var isCollapsed = replies.classList.toggle('collapsed');
+    moreToggle.textContent = isCollapsed ? 'Suggested questions ▾' : 'Hide suggestions ▴';
+  }
+
+  moreToggle.addEventListener('click', toggleSuggestions);
+
+  function askQuestion(item) {
+    addMessage(item.q, 'user');
+    collapseSuggestions();
+    var typingRow = addTypingIndicator();
+    setTimeout(function () {
+      typingRow.remove();
+      addMessage(item.a, 'bot');
+    }, 450 + Math.random() * 350);
+  }
+
+  function askAi(question) {
+    addMessage(question, 'user');
+    collapseSuggestions();
+    input.value = '';
+    sendBtn.disabled = true;
+    var typingRow = addTypingIndicator();
+
+    fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: question, reportContext: reportContext })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
+        return res.json();
+      })
+      .then(function (data) {
+        typingRow.remove();
+        if (data.error) throw new Error(data.error);
+        addMessage(data.reply, 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't reach the AI assistant just now. Please try again, or email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a>.", 'bot error');
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+      });
+  }
+
+  function extractPdfText(file) {
+    return file.arrayBuffer().then(function (buf) {
+      return pdfjsLib.getDocument({ data: buf }).promise;
+    }).then(function (pdf) {
+      var pageTexts = [];
+      var pagePromise = Promise.resolve();
+      for (var i = 1; i <= pdf.numPages; i++) {
+        (function (pageNum) {
+          pagePromise = pagePromise
+            .then(function () { return pdf.getPage(pageNum); })
+            .then(function (page) { return page.getTextContent(); })
+            .then(function (content) {
+              var text = content.items.map(function (it) { return it.str; }).join(' ');
+              pageTexts.push(text);
+            });
+        })(i);
+      }
+      return pagePromise.then(function () { return pageTexts.join('\n\n'); });
+    });
+  }
+
+  function handleFileAttach(file) {
+    if (!file || file.type !== 'application/pdf') {
+      addMessage('Please attach a PDF file (the report exported from llemonai WiFi Scanner).', 'bot error');
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
+      return;
+    }
+
+    var typingRow = addTypingIndicator();
+    extractPdfText(file)
+      .then(function (text) {
+        typingRow.remove();
+        reportContext = text.slice(0, MAX_REPORT_CHARS);
+        reportName.textContent = file.name;
+        reportPill.classList.add('show');
+        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't read that PDF. Make sure it's not password-protected and try again.", 'bot error');
+      });
+  }
+
+  attachBtn.addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files[0]) {
+      handleFileAttach(fileInput.files[0]);
+    }
+    fileInput.value = '';
+  });
+  reportRemoveBtn.addEventListener('click', function () {
+    reportContext = '';
+    reportPill.classList.remove('show');
+    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
+  });
+
+  function showMenu() {
+    replies.innerHTML = '';
+    faq.forEach(function (item) {
+      var btn = document.createElement('button');
+      btn.className = 'chat-chip';
+      btn.textContent = item.q;
+      btn.onclick = function () { askQuestion(item); };
+      replies.appendChild(btn);
+    });
+    replies.classList.remove('collapsed');
+    moreToggle.textContent = 'Hide suggestions ▴';
+  }
+
+  function openChat() {
+    panel.classList.add('open');
+    badge.classList.add('hidden');
+    if (!greeted) {
+      addMessage("Hi! I'm the llemonai Help Bot. Pick a common question below, type your own, or attach your scan report (paperclip icon) for advice based on your actual numbers.", 'bot');
+      showMenu();
+      greeted = true;
+    }
+  }
+
+  function handleSend() {
+    var text = input.value.trim();
+    if (!text) return;
+    askAi(text);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  toggle.addEventListener('click', function () {
+    if (panel.classList.contains('open')) {
+      panel.classList.remove('open');
+    } else {
+      openChat();
+    }
+  });
+  closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
+})();
+</script>
+
+</body>
+</html>
