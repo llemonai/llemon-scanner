@@ -24,13 +24,15 @@ Windows 10 (build 19041+) or Windows 11, 64-bit or 32-bit. No installer, no admi
 This repository holds only the public website and release binaries — not the application's source code.
 
 - `index.html` — the website home page (hosted via GitHub Pages at llemonai.in)
-- `scanner.html` — the WiFi Scanner page; `reader.html` — the llemonAI Reader page
+- `scanner.html` — the WiFi Scanner page; `reader.html` — the llemonAI Reader page; `organizer.html` — the llemonAI PDF Organizer page
 - `screenshots/` — in-app screenshots used on the site
 - Release assets (under [Releases](https://github.com/llemonai/llemon-scanner/releases)) — the downloadable WiFi Scanner executables
 
 ## More from llemonai
 
 **llemonAI Reader** is a free PDF reader and annotator for Windows and Android. Details are at https://llemonai.in/reader.html, and downloads at https://github.com/llemonai/llemon-reader/releases.
+
+**llemonAI PDF Organizer** is a free PDF organizer for Windows and Android that changes the resolution page by page — shrink the photos and scans, keep text pages sharp. Details are at https://llemonai.in/organizer.html, and downloads at https://github.com/llemonai/llemon-organizer/releases.
 
 ## Contact
 

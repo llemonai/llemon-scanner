@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>llemonAI PDF Organizer &mdash; Change the Resolution of Each PDF Page, Free for Windows &amp; Android</title>
+<meta name="description" content="llemonAI PDF Organizer is a free PDF organizer for Windows and Android. Change the resolution page by page: shrink the photos and scans that make a PDF big while text pages stay sharp. Reorder, rotate, combine PDF, Word and text files, add or delete page numbers, and print." />
+<link rel="canonical" href="https://llemonai.in/organizer.html" />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://llemonai.in/organizer.html" />
+<meta property="og:title" content="llemonAI PDF Organizer — Change the resolution of each PDF page" />
+<meta property="og:description" content="Shrink only the photos and scans that make a PDF big; keep text pages sharp. Free for Windows and Android: reorder, rotate, combine PDF/Word/text files, page numbers, print." />
+<meta property="og:image" content="https://llemonai.in/screenshots/organizer-sizes.png" />
+<meta property="og:image:width" content="1800" />
+<meta property="og:image:height" content="1125" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="llemonAI PDF Organizer — Change the resolution of each PDF page" />
+<meta name="twitter:description" content="Shrink only the photos and scans that make a PDF big; keep text pages sharp. Free for Windows and Android." />
+<meta name="twitter:image" content="https://llemonai.in/screenshots/organizer-sizes.png" />
+
+<meta name="keywords" content="reduce pdf size, compress pdf pages, pdf page resolution, compress selected pages, pdf organizer, reorder pdf pages, rotate pdf pages, merge pdf, word to pdf, doc to pdf, add page numbers to pdf, remove page numbers from pdf, portable pdf tool, android pdf organizer" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonAI PDF Organizer for Windows",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "BusinessApplication",
+    "softwareVersion": "1.5.0",
+    "description": "Free, portable PDF organizer for Windows: change the resolution of individual pages, reorder, rotate, add and delete pages, combine PDF, Word and text files, add or delete page numbers, and print.",
+    "url": "https://llemonai.in/organizer.html",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonAI PDF Organizer for Android",
+    "operatingSystem": "Android 8.0 (API 26) and later",
+    "applicationCategory": "BusinessApplication",
+    "softwareVersion": "1.5.0",
+    "description": "Free PDF organizer for Android with page-by-page resolution, page management, PDF/Word/text merging, page numbers and printing.",
+    "url": "https://llemonai.in/organizer.html#download",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+]
+</script>
+
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-alt: #101722;
+    --card: #141d2b;
+    --border: #223349;
+    --text: #e7edf5;
+    --text-dim: #9fb0c3;
+    --accent: #ffd23f;
+    --accent-dim: #3a8bff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+  a { color: var(--accent-dim); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 0 56px;
+  }
+  .brand {
+    display: flex; align-items: center;
+    margin-bottom: 40px;
+  }
+  .brand img { height: 34px; width: auto; display: block; }
+  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
+  .back-home:hover { color: var(--text); }
+
+  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
+  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
+  .wm-ai { color: #3a8bff; }
+  .wm-product { margin-left: 0.28em; font-weight: 700; }
+  .wm.on-dark .wm-llm { color: #3a8bff; }
+  .wm.on-dark .wm-n { color: #e7edf5; }
+  .wm.on-dark .wm-product { color: #ffd23f; }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p.lead {
+    color: var(--text-dim);
+    font-size: 18px;
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 600; font-size: 15px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #14100a; }
+  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn small { font-weight: 400; opacity: 0.75; }
+  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
+
+  section { padding: 56px 0; }
+  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  h2 { font-size: 28px; margin: 0 0 8px; }
+  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
+
+  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .dl-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .dl-card h3 { margin: 0; font-size: 20px; }
+  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
+  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
+  .dl-card .btn { justify-content: center; margin-top: auto; }
+  .checksum {
+    font-size: 11px;
+    color: var(--text-dim);
+    word-break: break-all;
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .dl-count {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: -4px;
+  }
+  .dl-count .n { color: var(--accent); font-weight: 700; }
+  .dl-version {
+    display: inline-block; align-self: flex-start;
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 2px 10px;
+  }
+  .whats-new { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0 0 20px; }
+  .whats-new strong { color: var(--text); }
+  .prev-versions { margin-top: 32px; }
+  .prev-versions h3 { font-size: 16px; margin: 0 0 4px; }
+  .prev-scroll { overflow-x: auto; }
+  table.prev { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+  table.prev th, table.prev td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.prev th { color: var(--text-dim); font-weight: 600; }
+  table.prev td.sha { font-size: 11px; word-break: break-all; color: var(--text-dim); }
+
+  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  table.checklist th, table.checklist td {
+    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
+  }
+  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
+  .shot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
+  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
+
+  footer {
+    padding: 40px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
+
+  /* Chat widget */
+  #chat-toggle {
+    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--accent); color: #14100a; border: none;
+    font-size: 24px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+  #chat-toggle .chat-badge {
+    position: absolute; top: -2px; right: -2px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--bg);
+    animation: chat-badge-pulse 1.8s ease-in-out infinite;
+  }
+  #chat-toggle .chat-badge.hidden { display: none; }
+  @keyframes chat-badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+  }
+
+  #chat-panel {
+    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
+    width: 400px; max-width: calc(100vw - 40px);
+    height: min(720px, 85vh); max-height: calc(100vh - 100px);
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; transform: translateY(12px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  @media (max-width: 440px) {
+    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
+    #chat-toggle { right: 14px; bottom: 14px; }
+  }
+
+  #chat-body { min-height: 160px; flex: 1 1 auto; }
+  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
+  #chat-quick-replies.collapsed { display: none; }
+  #chat-more-toggle {
+    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
+    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
+    border-radius: 999px; cursor: pointer; align-self: flex-start;
+  }
+  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
+  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  #chat-header {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-alt); font-weight: 700; font-size: 14px;
+  }
+  #chat-header .chat-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: #14100a;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
+  }
+  #chat-header .chat-title-block { flex: 1; min-width: 0; }
+  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
+  #chat-header button {
+    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
+    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
+  }
+  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+
+  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  #chat-body::-webkit-scrollbar { width: 6px; }
+  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
+  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
+  .chat-row .chat-mini-avatar {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+  }
+  @keyframes chat-pop-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-msg { font-size: 13.5px; line-height: 1.5; }
+  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
+  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
+  .chat-msg a { color: inherit; text-decoration: underline; }
+  .chat-msg.bot a { color: var(--accent-dim); }
+
+  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
+  .chat-typing span {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
+    animation: chat-typing-bounce 1s infinite ease-in-out;
+  }
+  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes chat-typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
+  .chat-chip {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
+
+  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  #chat-input {
+    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
+    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
+  }
+  #chat-input:focus { border-color: var(--accent-dim); }
+  #chat-send, #chat-attach {
+    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
+    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.12s ease;
+  }
+  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
+  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
+  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
+  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
+
+  #chat-report-pill {
+    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
+    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
+    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
+  }
+  #chat-report-pill.show { display: flex; }
+  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+  #chat-report-pill button {
+    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
+  }
+  #chat-report-pill button:hover { color: var(--text); }
+  /* PDF Organizer page additions */
+  .kbd { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 12px; padding: 1px 6px; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; background: var(--card); color: var(--text); }
+  table.checklist td:first-child { white-space: nowrap; }
+  #chat-attach { display: none; }
+  .usp-tag {
+    display: inline-block; margin-bottom: 14px; padding: 5px 12px; border-radius: 999px;
+    background: rgba(255,210,63,0.12); border: 1px solid rgba(255,210,63,0.45); color: var(--accent);
+    font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .usp-split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 26px 0 8px; }
+  .usp-col { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; }
+  .usp-col h3 { margin: 0 0 8px; font-size: 17px; }
+  .usp-col p { margin: 0; color: var(--text-dim); font-size: 14.5px; line-height: 1.55; }
+  .usp-col.ours { border-color: rgba(255,210,63,0.55); box-shadow: 0 0 0 1px rgba(255,210,63,0.2) inset; }
+  .usp-col.ours h3 { color: var(--accent); }
+  .size-demo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 22px; }
+  .size-demo .num { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; }
+  .size-demo .num small { display: block; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dim); }
+  .size-demo .arrow { font-size: 28px; color: var(--text-dim); }
+  .size-demo .num.after { color: #6fcf7a; }
+  .size-demo .note { flex: 1 1 260px; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+  ol.steps { margin: 18px 0 0; padding-left: 22px; color: var(--text-dim); line-height: 1.7; }
+  ol.steps b { color: var(--text); }
+  @media (max-width: 760px) { .usp-split { grid-template-columns: 1fr; } .size-demo .num { font-size: 28px; } .brand { flex-wrap: wrap; row-gap: 10px; } .brand .wm { font-size: 1.45rem !important; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <span class="wm on-dark" style="font-size: 1.9rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+        <span class="wm-llm">llem</span>
+        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+        </svg>
+        <span class="wm-n">n</span>
+        <span class="wm-ai">AI</span>
+        <span class="wm-product">PDF Organizer</span>
+      </span>
+      <a class="back-home" href="index.html">&larr; llemonai.in</a>
+    </div>
+    <span class="usp-tag">&#9733; Page-by-page resolution</span>
+    <h1>Shrink the pages that are big.<br/><span>Keep the rest sharp.</span></h1>
+    <p class="lead">
+      A free PDF organizer for <strong>Windows and Android</strong>. Typical PDF compressors squeeze the whole
+      file at one setting. llemonAI PDF Organizer lets you choose the resolution <strong>for each page</strong>:
+      shrink the photos and scans that make a file too big to email or upload, and leave text pages exactly as they are.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#download">Download</a>
+      <a class="btn btn-secondary" href="#resolution">How it works</a>
+    </div>
+    <div class="hero-note">Windows 10/11, 64-bit &amp; 32-bit, one portable .exe, no installer &middot; Android 8.0 (API 26) and later, single sideloaded APK &middot; works offline</div>
+  </div>
+</header>
+
+<section id="resolution">
+  <div class="wrap">
+    <h2>Change the resolution of just the pages you choose</h2>
+    <p class="section-lead">A report with a few photos and a scanned letter can easily reach 15&nbsp;MB, almost all of it in three pages. Shrinking the whole file blurs every page. Shrinking only those three doesn't.</p>
+    <div class="usp-split">
+      <div class="usp-col">
+        <h3>One setting for the whole file</h3>
+        <p>Typical PDF compressors apply one quality level to every page. To get the photos small enough, the text pages are turned into pictures too: they blur, can't be searched, and some even get bigger.</p>
+      </div>
+      <div class="usp-col ours">
+        <h3>&#9733; A setting for each page</h3>
+        <p>Every thumbnail shows that page's share of the file size, so you can see which pages make it big. Select them, pick a resolution, and only those pages change. Text pages stay sharp, searchable and small.</p>
+      </div>
+    </div>
+    <div class="size-demo">
+      <div class="num"><small>Before</small>15.15 MB</div>
+      <div class="arrow">&rarr;</div>
+      <div class="num after"><small>After</small>192 KB</div>
+      <div class="note">The demo report in the screenshots below: two photos and a scanned letter set to 96&nbsp;dpi, the four text pages untouched. That's 99% smaller, and every text page is exactly as it was.</div>
+    </div>
+    <ol class="steps">
+      <li><b>Open</b> the PDF. The size bar shows the original size, and each page shows its own size.</li>
+      <li><b>Select</b> the heavy pages: Ctrl+click on Windows, or tap the &#10003; on each page on Android.</li>
+      <li><b>Resolution&hellip;</b> &mdash; choose dpi, colour or grayscale, JPEG or PNG. The preview shows the page's size before and after.</li>
+      <li><b>Apply</b> and watch the file size drop. If a page would only get bigger as a picture (plain text pages), it is left as it is.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt" id="screenshots">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="section-lead">The demo report on Windows: find the heavy pages, shrink only them, and see the result.</p>
+    <div class="shot-grid">
+      <div class="shot-card">
+        <img src="screenshots/organizer-sizes.png" alt="llemonAI PDF Organizer showing six page thumbnails with their sizes; two photo pages of 3.5 MB and a scanned letter of 8.2 MB are selected, text pages are under 1 KB" loading="lazy" />
+        <div class="cap">Every page shows its size &mdash; the two photos and the scan are selected</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/organizer-resolution.png" alt="The Change resolution dialog for three selected pages at 96 dpi, with a preview and the page size before (3.50 MB) and after (42 KB)" loading="lazy" />
+        <div class="cap">Resolution for the selected pages only, with a preview and the size before and after</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/organizer-after.png" alt="The size bar showing 15.15 MB before and 192 KB after (minus 99 percent), with the three changed pages marked 96 dpi" loading="lazy" />
+        <div class="cap">15.15&nbsp;MB &rarr; 192&nbsp;KB; text pages untouched</div>
+      </div>
+    </div>
+    <div class="shot-grid" style="margin-top:18px;">
+      <div class="shot-card">
+        <img src="screenshots/organizer-numbers.png" alt="The Page numbers dialog with options to add page numbers to all pages or delete the numbers already in the document" loading="lazy" />
+        <div class="cap">Add page numbers to all pages, or find and delete the old ones</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/organizer-android.png" alt="llemonAI PDF Organizer on Android with two pages selected using the check circles" loading="lazy" />
+        <div class="cap">Android &mdash; tap the &#10003; to pick the pages to shrink</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Everything else you need to put a PDF in order</h2>
+    <p class="section-lead">For assembling applications, reports, study material and scanned paperwork &mdash; and getting them under the upload limit.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="icon">&#9878;</span>
+        <h3>File size, always visible</h3>
+        <p>The main screen shows the original size, the size after your changes as you work, and each page's share of the file.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128464;</span>
+        <h3>Reorder, rotate, add, delete</h3>
+        <p>Drag pages into a new order, rotate them, add blank pages, delete what you don't need &mdash; one page or a whole selection. Undo and redo everything.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128206;</span>
+        <h3>Combine PDF, Word &amp; text</h3>
+        <p>Append or insert PDF, Word (.docx and old .doc) and text (.txt) files. Kannada, Hindi, Tamil and other scripts show correctly.</p>
+      </div>
+      <div class="card">
+        <span class="icon">#</span>
+        <h3>Add or delete page numbers</h3>
+        <p>Number every page &mdash; "Page 1 of 10", "1 / 10" and more, in six positions, skipping the cover if you like. Or find and remove the numbers already in a document.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128424;</span>
+        <h3>Print</h3>
+        <p>Print the document exactly as it will be saved: new page order, rotations and page numbers included.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128274;</span>
+        <h3>Private and offline</h3>
+        <p>Everything happens on your device. No account, no upload, no internet connection needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="download">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
+    <p class="whats-new"><strong>llemonAI PDF Organizer 1.5.0, 31 Oct 2026.</strong> First public release:
+      page-by-page resolution with before/after sizes, page reorder, rotate, add and delete with multi-select,
+      PDF, Word (.docx, .doc) and text merging, adding and deleting page numbers, and printing.</p>
+    <div class="download-grid">
+      <div class="dl-card">
+        <span class="dl-version">Version 1.5.0 &middot; 31 Oct 2026</span>
+        <h3>PDF Organizer &mdash; 64-bit</h3>
+        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
+        <ul>
+          <li>Single portable .exe (~13&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Uses the Microsoft Edge WebView2 runtime built into Windows 10 and 11</li>
+        </ul>
+        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
+        <div class="dl-count" id="count-x64"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
+      </div>
+      <div class="dl-card">
+        <span class="dl-version">Version 1.5.0 &middot; 31 Oct 2026</span>
+        <h3>PDF Organizer &mdash; 32-bit</h3>
+        <div class="meta">For 32-bit Windows installations</div>
+        <ul>
+          <li>Single portable .exe (~13&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Windows 10/11, 32-bit edition</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
+        <div class="dl-count" id="count-x86"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
+      </div>
+      <div class="dl-card">
+        <span class="dl-version">Version 1.5.0 &middot; 31 Oct 2026</span>
+        <h3>PDF Organizer &mdash; Android</h3>
+        <div class="meta">Android 8.0+ (API 26+)</div>
+        <ul>
+          <li>Single .apk (~2.5&nbsp;MB), sideload install</li>
+          <li>Signed with our own release key (not on Play Store yet)</li>
+          <li>Same features as Windows, with touch selection</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
+        <div class="dl-count" id="count-android"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
+      </div>
+    </div>
+    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+
+    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
+      Verify your download hasn't been tampered with or corrupted: after downloading, run
+      <span class="mono">certutil -hashfile llemonAI-PDF-Organizer-1.5.0-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      and compare the result to the SHA256 value shown above for the file you downloaded.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      All builds are digitally signed (self-signed certificates, SHA256). Windows SmartScreen may still show
+      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
+      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
+      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we published.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      Installing the Android APK: Android will block it by default as an "unknown source." Open the
+      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
+      normal for any app installed outside the Play Store.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Good to know</h2>
+    <p class="section-lead">How llemonAI PDF Organizer handles your files.</p>
+    <table class="checklist">
+      <thead><tr><th>Topic</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Your files stay on your device</td><td>Documents are opened, changed and saved locally. Nothing is uploaded, and no internet connection is needed.</td></tr>
+        <tr><td>Which pages get smaller</td><td>Pages with photos, scans or heavy drawings shrink a lot. A page of ordinary text is already smaller than any picture of it, so the app warns you and, by default, leaves it unchanged.</td></tr>
+        <tr><td>Changed pages</td><td>A page with a new resolution becomes a picture: its text can no longer be selected or searched. Pages you don't select are not touched.</td></tr>
+        <tr><td>Word &amp; text files</td><td>.docx keeps headings, bold and italic, lists, tables and pictures; old Word 97&ndash;2003 .doc files keep their text; .txt keeps its line layout.</td></tr>
+        <tr><td>Deleting page numbers</td><td>Numbers printed in the page margins are found and covered with white. Works best on white margins; numbers on scanned pages can't be detected.</td></tr>
+        <tr><td>Encrypted PDFs</td><td>Password-protected PDFs can't be organized.</td></tr>
+        <tr><td>Shortcuts</td><td><span class="kbd">Ctrl</span>+<span class="kbd">O</span> open &middot; <span class="kbd">Ctrl</span>+<span class="kbd">S</span> save &middot; <span class="kbd">Ctrl</span>+<span class="kbd">P</span> print &middot; <span class="kbd">Ctrl</span>+<span class="kbd">A</span> select all &middot; <span class="kbd">Ctrl</span>+<span class="kbd">Z</span> undo &middot; <span class="kbd">F1</span> help</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
+    <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonAI PDF Organizer. All rights reserved.</div>
+    <div>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</div>
+    <div>Also from llemonai: <a href="reader.html">llemonAI Reader</a> &middot; <a href="scanner.html">WiFi Scanner</a></div>
+    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var REL = 'https://github.com/llemonai/llemon-organizer/releases/download/v1.5.0/';
+  document.getElementById('dl-x64').href = REL + 'llemonAI-PDF-Organizer-1.5.0-win-x64.exe';
+  document.getElementById('dl-x86').href = REL + 'llemonAI-PDF-Organizer-1.5.0-win-x86.exe';
+  document.getElementById('dl-android').href = REL + 'llemonAI-PDF-Organizer-1.5.0-android.apk';
+  document.getElementById('sha-x64').textContent = 'B1D2BC325F40C1780AA1D77BDDE5715F4F47B19216487A0CC3D5E45ECB2C9328';
+  document.getElementById('sha-x86').textContent = 'DD8AE4286C7C04AF32385D3C47258B14CA88461B0AC3EC66BA44468CD832D251';
+  document.getElementById('sha-android').textContent = 'EDE72F41A09D5A2917A6781D4DA79A5B4E094E0707C04371EC285EFB251CA18C';
+
+  // Live download counts from GitHub's public Releases API, summed across all Organizer releases.
+  fetch('https://api.github.com/repos/llemonai/llemon-organizer/releases?per_page=100')
+    .then(function (res) { if (!res.ok) throw new Error('GitHub API error ' + res.status); return res.json(); })
+    .then(function (releases) {
+      var totals = { x64: 0, x86: 0, android: 0 };
+      releases.forEach(function (release) {
+        (release.assets || []).forEach(function (asset) {
+          var name = asset.name.toLowerCase();
+          if (name.indexOf('win-x64') !== -1) totals.x64 += asset.download_count;
+          else if (name.indexOf('win-x86') !== -1) totals.x86 += asset.download_count;
+          else if (name.indexOf('.apk') !== -1) totals.android += asset.download_count;
+        });
+      });
+      function fmt(n) { return n.toLocaleString(); }
+      document.getElementById('count-x64').innerHTML = '<span class="n">' + fmt(totals.x64) + '</span> downloads';
+      document.getElementById('count-x86').innerHTML = '<span class="n">' + fmt(totals.x86) + '</span> downloads';
+      document.getElementById('count-android').innerHTML = '<span class="n">' + fmt(totals.android) + '</span> downloads';
+      var total = totals.x64 + totals.x86 + totals.android;
+      document.getElementById('dl-total-line').textContent =
+        total > 0 ? fmt(total) + ' total downloads across all platforms and versions.' : '';
+    })
+    .catch(function () { /* rate limit or offline: the download buttons don't depend on this */ });
+</script>
+
+<button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
+  &#128172;
+  <span class="chat-badge" id="chat-badge">1</span>
+</button>
+<div id="chat-panel" role="dialog" aria-label="Help chat">
+  <div id="chat-header">
+    <span class="chat-avatar">&#129302;</span>
+    <div class="chat-title-block">
+      <div>llemonai Help Bot</div>
+      <div class="chat-status"><span class="dot"></span> AI-powered &middot; ask anything about the app</div>
+    </div>
+    <button id="chat-close" aria-label="Close chat">&times;</button>
+  </div>
+  <div id="chat-body"></div>
+  <button id="chat-more-toggle" type="button">Suggested questions &#9662;</button>
+  <div id="chat-quick-replies"></div>
+  <div id="chat-report-pill">
+    <span>&#128196;</span>
+    <span class="name" id="chat-report-name"></span>
+    <button id="chat-report-remove" aria-label="Remove attached report" title="Remove">&times;</button>
+  </div>
+  <div id="chat-input-row">
+    <input type="file" id="chat-file-input" accept="application/pdf" style="display:none;" />
+    <button id="chat-attach" aria-label="Attach your PDF report" title="Attach your PDF report">&#128206;</button>
+    <input id="chat-input" type="text" placeholder="Type a question&hellip;" maxlength="500" autocomplete="off" />
+    <button id="chat-send" aria-label="Send">&#10148;</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var faq = [
+    {
+      q: "What is llemonAI PDF Organizer?",
+      a: "A free PDF organizer for Windows and Android. Its main feature is page-by-page resolution: shrink only the photos and scans that make a PDF big, and keep text pages sharp. It also reorders, rotates, adds and deletes pages, combines PDF, Word and text files, adds or deletes page numbers, and prints."
+    },
+    {
+      q: "How do I make a PDF smaller without blurring the text?",
+      a: "Open it and look at the size under each page &mdash; usually a few photo or scanned pages make up most of the file. Select those pages (Ctrl+click on Windows, tap the &#10003; on Android), choose <b>Resolution…</b>, pick e.g. 96 or 150 dpi and Apply. Only those pages change; text pages stay sharp and searchable."
+    },
+    {
+      q: "Why didn't a page get smaller?",
+      a: "A page of ordinary text is already smaller than any picture of it, so turning it into a picture would make the file bigger. The Resolution dialog warns you, and by default such pages are left unchanged. Lower resolution helps pages with photos, scans or heavy drawings."
+    },
+    {
+      q: "Which download do I need — Windows 32-bit, 64-bit, or Android?",
+      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install — almost every PC made since 2010 is 64-bit. On Android, there's a single .apk for any Android 8.0+ device. All three are in the <a href=\"#download\">Download</a> section above."
+    },
+    {
+      q: "Can I combine Word and text files into the PDF?",
+      a: "Yes — <b>Append</b> adds PDF, Word (.docx and old .doc) and text (.txt) files at the end, and <b>Insert</b> adds them after the selected page. Choose several files at once to combine them. Kannada, Hindi and other scripts show correctly."
+    },
+    {
+      q: "How do I add or remove page numbers?",
+      a: "Click <b>Page numbers</b>. To add numbers, choose the position, the format (for example \"Page 1 of 10\"), the first number and size, and whether to skip the cover page. To remove numbers already printed in a document, use <b>Find and delete page numbers</b>; it covers them with white, and <b>Bring back</b> or Undo restores them."
+    },
+    {
+      q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
+      a: "The builds are signed with our own self-signed certificate/key (not a paid, publicly trusted CA or Play Store listing yet), so Windows may show \"Unknown Publisher\" and Android may warn about an unknown source — that's expected. To confirm a file is genuine, compare its SHA256 checksum in the <a href=\"#download\">Download</a> section: on Windows run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+    },
+    {
+      q: "Are my documents uploaded anywhere?",
+      a: "No. llemonAI PDF Organizer works entirely on your device and doesn't need an internet connection."
+    },
+    {
+      q: "How do I contact support?",
+      a: "Email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a> and we'll get back to you."
+    }
+  ];
+
+  var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
+  var MAX_REPORT_CHARS = 15000;
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var toggle = document.getElementById('chat-toggle');
+  var badge = document.getElementById('chat-badge');
+  var panel = document.getElementById('chat-panel');
+  var closeBtn = document.getElementById('chat-close');
+  var body = document.getElementById('chat-body');
+  var replies = document.getElementById('chat-quick-replies');
+  var moreToggle = document.getElementById('chat-more-toggle');
+  var input = document.getElementById('chat-input');
+  var sendBtn = document.getElementById('chat-send');
+  var attachBtn = document.getElementById('chat-attach');
+  var fileInput = document.getElementById('chat-file-input');
+  var reportPill = document.getElementById('chat-report-pill');
+  var reportName = document.getElementById('chat-report-name');
+  var reportRemoveBtn = document.getElementById('chat-report-remove');
+  var greeted = false;
+  var reportContext = '';
+
+  function addMessage(text, who) {
+    var isBot = who.split(' ')[0] === 'bot';
+    var row = document.createElement('div');
+    row.className = 'chat-row ' + who;
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = isBot ? '\u{1F916}' : '\u{1F9D1}';
+
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg ' + who;
+    bubble.innerHTML = text;
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function addTypingIndicator() {
+    var row = document.createElement('div');
+    row.className = 'chat-row bot';
+    row.id = 'chat-typing-row';
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = '\u{1F916}';
+
+    var typing = document.createElement('div');
+    typing.className = 'chat-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+
+    row.appendChild(avatar);
+    row.appendChild(typing);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+    return row;
+  }
+
+  function collapseSuggestions() {
+    replies.classList.add('collapsed');
+    moreToggle.textContent = 'Suggested questions ▾';
+  }
+
+  function toggleSuggestions() {
+    var isCollapsed = replies.classList.toggle('collapsed');
+    moreToggle.textContent = isCollapsed ? 'Suggested questions ▾' : 'Hide suggestions ▴';
+  }
+
+  moreToggle.addEventListener('click', toggleSuggestions);
+
+  function askQuestion(item) {
+    addMessage(item.q, 'user');
+    collapseSuggestions();
+    var typingRow = addTypingIndicator();
+    setTimeout(function () {
+      typingRow.remove();
+      addMessage(item.a, 'bot');
+    }, 450 + Math.random() * 350);
+  }
+
+  function askAi(question) {
+    addMessage(question, 'user');
+    collapseSuggestions();
+    input.value = '';
+    sendBtn.disabled = true;
+    var typingRow = addTypingIndicator();
+
+    fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: question, reportContext: reportContext })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
+        return res.json();
+      })
+      .then(function (data) {
+        typingRow.remove();
+        if (data.error) throw new Error(data.error);
+        addMessage(data.reply, 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't reach the AI assistant just now. Please try again, or email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a>.", 'bot error');
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+      });
+  }
+
+  function extractPdfText(file) {
+    return file.arrayBuffer().then(function (buf) {
+      return pdfjsLib.getDocument({ data: buf }).promise;
+    }).then(function (pdf) {
+      var pageTexts = [];
+      var pagePromise = Promise.resolve();
+      for (var i = 1; i <= pdf.numPages; i++) {
+        (function (pageNum) {
+          pagePromise = pagePromise
+            .then(function () { return pdf.getPage(pageNum); })
+            .then(function (page) { return page.getTextContent(); })
+            .then(function (content) {
+              var text = content.items.map(function (it) { return it.str; }).join(' ');
+              pageTexts.push(text);
+            });
+        })(i);
+      }
+      return pagePromise.then(function () { return pageTexts.join('\n\n'); });
+    });
+  }
+
+  function handleFileAttach(file) {
+    if (!file || file.type !== 'application/pdf') {
+      addMessage('Please attach a PDF file (the report exported from llemonai WiFi Scanner).', 'bot error');
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
+      return;
+    }
+
+    var typingRow = addTypingIndicator();
+    extractPdfText(file)
+      .then(function (text) {
+        typingRow.remove();
+        reportContext = text.slice(0, MAX_REPORT_CHARS);
+        reportName.textContent = file.name;
+        reportPill.classList.add('show');
+        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't read that PDF. Make sure it's not password-protected and try again.", 'bot error');
+      });
+  }
+
+  attachBtn.addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files[0]) {
+      handleFileAttach(fileInput.files[0]);
+    }
+    fileInput.value = '';
+  });
+  reportRemoveBtn.addEventListener('click', function () {
+    reportContext = '';
+    reportPill.classList.remove('show');
+    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
+  });
+
+  function showMenu() {
+    replies.innerHTML = '';
+    faq.forEach(function (item) {
+      var btn = document.createElement('button');
+      btn.className = 'chat-chip';
+      btn.textContent = item.q;
+      btn.onclick = function () { askQuestion(item); };
+      replies.appendChild(btn);
+    });
+    replies.classList.remove('collapsed');
+    moreToggle.textContent = 'Hide suggestions ▴';
+  }
+
+  function openChat() {
+    panel.classList.add('open');
+    badge.classList.add('hidden');
+    if (!greeted) {
+      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI PDF Organizer &mdash; pick a common question below or type your own.", 'bot');
+      showMenu();
+      greeted = true;
+    }
+  }
+
+  function handleSend() {
+    var text = input.value.trim();
+    if (!text) return;
+    askAi(text);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  toggle.addEventListener('click', function () {
+    if (panel.classList.contains('open')) {
+      panel.classList.remove('open');
+    } else {
+      openChat();
+    }
+  });
+  closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
+})();
+</script>
+
+</body>
+</html>
