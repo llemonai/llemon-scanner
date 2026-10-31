@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>llemonAI Reader &mdash; Free PDF Reader &amp; Annotator for Windows &amp; Android</title>
+<meta name="description" content="llemonAI Reader is a free PDF reader and annotator for Windows and Android. Highlight, underline, draw with a pen, add sticky notes and bookmarks, search sentences, reorganise pages, merge PDF and Word files, and export a master PDF." />
+<link rel="canonical" href="https://llemonai.in/reader.html" />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://llemonai.in/reader.html" />
+<meta property="og:title" content="llemonAI Reader â€” Free PDF Reader & Annotator for Windows & Android" />
+<meta property="og:description" content="Read, search, highlight, draw on and reorganise PDFs. Merge PDF and Word files and export a master PDF. A single portable .exe on Windows, a small APK on Android." />
+<meta property="og:image" content="https://llemonai.in/screenshots/reader-annotate.png" />
+<meta property="og:image:width" content="1800" />
+<meta property="og:image:height" content="1125" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="llemonAI Reader â€” Free PDF Reader & Annotator for Windows & Android" />
+<meta name="twitter:description" content="Read, search, highlight, draw on and reorganise PDFs. Merge PDF and Word files and export a master PDF." />
+<meta name="twitter:image" content="https://llemonai.in/screenshots/reader-annotate.png" />
+
+<meta name="keywords" content="pdf reader, pdf annotator, pdf editor, highlight pdf, sticky notes pdf, merge pdf, word to pdf, pdf bookmarks, portable pdf reader, android pdf reader, windows pdf reader" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonAI Reader for Windows",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "BusinessApplication",
+    "softwareVersion": "1.0.0",
+    "description": "Free, portable PDF reader and annotator for Windows: highlight, underline, pen, sticky notes, bookmarks, sentence search, page management, PDF and Word merging, master PDF export and printing.",
+    "url": "https://llemonai.in/reader.html",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonAI Reader for Android",
+    "operatingSystem": "Android 8.0 (API 26) and later",
+    "applicationCategory": "BusinessApplication",
+    "softwareVersion": "1.0.0",
+    "description": "Free PDF reader and annotator for Android with highlights, pen drawing, sticky notes, bookmarks, search, page management and PDF/Word merging.",
+    "url": "https://llemonai.in/reader.html#download",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+]
+</script>
+
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-alt: #101722;
+    --card: #141d2b;
+    --border: #223349;
+    --text: #e7edf5;
+    --text-dim: #9fb0c3;
+    --accent: #ffd23f;
+    --accent-dim: #3a8bff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+  a { color: var(--accent-dim); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 0 56px;
+  }
+  .brand {
+    display: flex; align-items: center;
+    margin-bottom: 40px;
+  }
+  .brand img { height: 34px; width: auto; display: block; }
+  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
+  .back-home:hover { color: var(--text); }
+
+  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
+  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
+  .wm-ai { color: #3a8bff; }
+  .wm-product { margin-left: 0.28em; font-weight: 700; }
+  .wm.on-dark .wm-llm { color: #3a8bff; }
+  .wm.on-dark .wm-n { color: #e7edf5; }
+  .wm.on-dark .wm-product { color: #ffd23f; }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p.lead {
+    color: var(--text-dim);
+    font-size: 18px;
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 600; font-size: 15px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #14100a; }
+  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn small { font-weight: 400; opacity: 0.75; }
+  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
+
+  section { padding: 56px 0; }
+  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  h2 { font-size: 28px; margin: 0 0 8px; }
+  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
+
+  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .dl-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .dl-card h3 { margin: 0; font-size: 20px; }
+  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
+  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
+  .dl-card .btn { justify-content: center; margin-top: auto; }
+  .checksum {
+    font-size: 11px;
+    color: var(--text-dim);
+    word-break: break-all;
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .dl-count {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: -4px;
+  }
+  .dl-count .n { color: var(--accent); font-weight: 700; }
+  .dl-version {
+    display: inline-block; align-self: flex-start;
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 2px 10px;
+  }
+  .whats-new { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0 0 20px; }
+  .whats-new strong { color: var(--text); }
+  .prev-versions { margin-top: 32px; }
+  .prev-versions h3 { font-size: 16px; margin: 0 0 4px; }
+  .prev-scroll { overflow-x: auto; }
+  table.prev { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+  table.prev th, table.prev td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.prev th { color: var(--text-dim); font-weight: 600; }
+  table.prev td.sha { font-size: 11px; word-break: break-all; color: var(--text-dim); }
+
+  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  table.checklist th, table.checklist td {
+    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
+  }
+  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
+  .shot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
+  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
+
+  footer {
+    padding: 40px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
+
+  /* Chat widget */
+  #chat-toggle {
+    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--accent); color: #14100a; border: none;
+    font-size: 24px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+  #chat-toggle .chat-badge {
+    position: absolute; top: -2px; right: -2px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--bg);
+    animation: chat-badge-pulse 1.8s ease-in-out infinite;
+  }
+  #chat-toggle .chat-badge.hidden { display: none; }
+  @keyframes chat-badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+  }
+
+  #chat-panel {
+    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
+    width: 400px; max-width: calc(100vw - 40px);
+    height: min(720px, 85vh); max-height: calc(100vh - 100px);
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; transform: translateY(12px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  @media (max-width: 440px) {
+    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
+    #chat-toggle { right: 14px; bottom: 14px; }
+  }
+
+  #chat-body { min-height: 160px; flex: 1 1 auto; }
+  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
+  #chat-quick-replies.collapsed { display: none; }
+  #chat-more-toggle {
+    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
+    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
+    border-radius: 999px; cursor: pointer; align-self: flex-start;
+  }
+  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
+  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  #chat-header {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-alt); font-weight: 700; font-size: 14px;
+  }
+  #chat-header .chat-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: #14100a;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
+  }
+  #chat-header .chat-title-block { flex: 1; min-width: 0; }
+  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
+  #chat-header button {
+    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
+    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
+  }
+  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+
+  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  #chat-body::-webkit-scrollbar { width: 6px; }
+  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
+  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
+  .chat-row .chat-mini-avatar {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+  }
+  @keyframes chat-pop-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-msg { font-size: 13.5px; line-height: 1.5; }
+  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
+  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
+  .chat-msg a { color: inherit; text-decoration: underline; }
+  .chat-msg.bot a { color: var(--accent-dim); }
+
+  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
+  .chat-typing span {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
+    animation: chat-typing-bounce 1s infinite ease-in-out;
+  }
+  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes chat-typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
+  .chat-chip {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
+
+  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  #chat-input {
+    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
+    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
+  }
+  #chat-input:focus { border-color: var(--accent-dim); }
+  #chat-send, #chat-attach {
+    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
+    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.12s ease;
+  }
+  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
+  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
+  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
+  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
+
+  #chat-report-pill {
+    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
+    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
+    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
+  }
+  #chat-report-pill.show { display: flex; }
+  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+  #chat-report-pill button {
+    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
+  }
+  #chat-report-pill button:hover { color: var(--text); }
+  /* Reader page additions */
+  .kbd { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 12px; padding: 1px 6px; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; background: var(--card); color: var(--text); }
+  table.checklist td:first-child { white-space: nowrap; }
+  #chat-attach { display: none; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <span class="wm on-dark" style="font-size: 1.9rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+        <span class="wm-llm">llem</span>
+        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+        </svg>
+        <span class="wm-n">n</span>
+        <span class="wm-ai">AI</span>
+        <span class="wm-product">Reader</span>
+      </span>
+      <a class="back-home" href="index.html">&larr; llemonai.in</a>
+    </div>
+    <h1>Read it, <span>mark it up</span>,<br/>and put it back together.</h1>
+    <p class="lead">
+      A free PDF reader and annotator for <strong>Windows and Android</strong>. Highlight and underline text,
+      write with a pen, leave sticky notes and bookmarks, find any sentence, reorganise pages, merge PDF and
+      Word files &mdash; then save, print, or export one master PDF.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#download">Download</a>
+      <a class="btn btn-secondary" href="#features">See what's inside</a>
+    </div>
+    <div class="hero-note">Windows 10/11, 64-bit &amp; 32-bit, one portable .exe, no installer &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Everything you do to a paper document, on a PDF</h2>
+    <p class="section-lead">Built for reviewing proposals, contracts, reports and study material &mdash; mark it up, keep track of it, and hand back one clean file.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="icon">&#128209;</span>
+        <h3>Index &amp; pages, docked left</h3>
+        <p>The document's own table of contents, page thumbnails, your notes, bookmarks and search results live in a side panel that scrolls on its own &mdash; the page you're reading never moves it.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128396;</span>
+        <h3>Highlight, underline, circle</h3>
+        <p>Select text to highlight or underline it in six colours, or draw a circle around anything that matters. Every mark can carry a note.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9997;</span>
+        <h3>Pen for freehand writing</h3>
+        <p>Write, sign or sketch directly on the page with a mouse, finger or stylus. Thin, medium or thick pen; <span class="kbd">Ctrl</span>+<span class="kbd">Z</span> undoes the last stroke.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128221;</span>
+        <h3>Sticky notes &amp; bookmarks</h3>
+        <p>Pin a sticky note anywhere, attach a note to a sentence or a whole page, and bookmark pages or individual comments to jump back to them later.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128269;</span>
+        <h3>Word &amp; sentence search</h3>
+        <p>Find a single word or a whole sentence across the document, even when it breaks over lines &mdash; with match-case and whole-word options and a results list in context.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128464;</span>
+        <h3>Add, delete &amp; reorder pages</h3>
+        <p>Drag thumbnails to reorder, rotate or delete pages, insert blank pages, or insert another PDF or Word file at any position. Notes move with their pages.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128206;</span>
+        <h3>Merge PDF &amp; Word files</h3>
+        <p>Append PDFs and Word (.docx) documents to the one you're reading &mdash; or combine several files into a new one. Word text stays searchable.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128424;</span>
+        <h3>Save, export master PDF, print</h3>
+        <p>Save keeps annotations editable and visible in any PDF viewer. Export burns them in and adds a Notes &amp; comments appendix &mdash; one master file to share or archive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="section-lead">A real review session on Windows &mdash; highlights, an underline with a comment, a circle, a sticky note and pen marks, with every annotation listed in the side panel.</p>
+    <div class="shot-grid">
+      <div class="shot-card">
+        <img src="screenshots/reader-annotate.png" alt="llemonAI Reader on Windows showing a PDF page with highlights, an underline, a circle, a sticky note and pen drawing, with the Notes panel listing each annotation" loading="lazy" />
+        <div class="cap">Annotate &mdash; highlight, underline, circle, pen and sticky notes, all listed in the Notes panel</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/reader-pages.png" alt="llemonAI Reader Pages panel with page thumbnails, bookmark and note badges, and buttons to move, rotate, insert and delete pages" loading="lazy" />
+        <div class="cap">Pages &mdash; thumbnails with badges, drag to reorder, rotate, insert blank pages or files, delete</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/reader-search.png" alt="llemonAI Reader Find panel showing sentence search results across several pages with the current match highlighted" loading="lazy" />
+        <div class="cap">Find &mdash; words or whole sentences, with every match in context</div>
+      </div>
+    </div>
+
+    <p class="section-lead" style="margin-top:40px;">...and on Android &mdash; the same features, with touch: pinch to zoom, draw with a finger, and the side panel as a slide-out drawer.</p>
+    <div class="shot-grid shot-grid-phone">
+      <div class="shot-card">
+        <img src="screenshots/reader-android.png" alt="llemonAI Reader for Android showing an annotated PDF page in single-page view with Previous and Next buttons" loading="lazy" />
+        <div class="cap">Single-page reading &mdash; scrolling stays on the page you chose</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/reader-android-pages.png" alt="llemonAI Reader for Android with the side drawer open on the Pages tab" loading="lazy" />
+        <div class="cap">Side drawer &mdash; index, pages, notes, bookmarks and search</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="download">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
+    <p class="whats-new"><strong>llemonAI Reader 1.0.0, 31 Oct 2026 &mdash; first release.</strong>
+      Reading with a docked index and page panel, highlights, underlines, circles, pen, sticky notes, page notes and
+      bookmarks, word and sentence search, page management (add, delete, reorder, rotate, insert), PDF and Word merging,
+      editable save, master PDF export and printing.</p>
+    <div class="download-grid">
+      <div class="dl-card">
+        <span class="dl-version">Version 1.0.0 &middot; 31 Oct 2026</span>
+        <h3>llemonAI Reader &mdash; 64-bit</h3>
+        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
+        <ul>
+          <li>Single portable .exe (~13&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Uses the Microsoft Edge WebView2 runtime built into Windows 10 and 11</li>
+        </ul>
+        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
+        <div class="dl-count" id="count-x64"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
+      </div>
+      <div class="dl-card">
+        <span class="dl-version">Version 1.0.0 &middot; 31 Oct 2026</span>
+        <h3>llemonAI Reader &mdash; 32-bit</h3>
+        <div class="meta">For 32-bit Windows installations</div>
+        <ul>
+          <li>Single portable .exe (~13&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Windows 10/11, 32-bit edition</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
+        <div class="dl-count" id="count-x86"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
+      </div>
+      <div class="dl-card">
+        <span class="dl-version">Version 1.0.0 &middot; 31 Oct 2026</span>
+        <h3>llemonAI Reader &mdash; Android</h3>
+        <div class="meta">Android 8.0+ (API 26+)</div>
+        <ul>
+          <li>Single .apk (~2.5&nbsp;MB), sideload install</li>
+          <li>Signed with our own release key (not on Play Store yet)</li>
+          <li>Same features as Windows, plus pinch-zoom and finger drawing</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
+        <div class="dl-count" id="count-android"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
+      </div>
+    </div>
+    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+
+    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
+      Verify your download hasn't been tampered with or corrupted: after downloading, run
+      <span class="mono">certutil -hashfile llemonAI-Reader-1.0.0-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      and compare the result to the SHA256 value shown above for the file you downloaded.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      All builds are digitally signed (self-signed certificates, SHA256). Windows SmartScreen may still show
+      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
+      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
+      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we published.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      Installing the Android APK: Android will block it by default as an "unknown source." Open the
+      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
+      normal for any app installed outside the Play Store.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Good to know</h2>
+    <p class="section-lead">How llemonAI Reader handles your files.</p>
+    <table class="checklist">
+      <thead><tr><th>Topic</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Your files stay on your device</td><td>Documents are opened, annotated and saved locally. Nothing is uploaded.</td></tr>
+        <tr><td>Annotations</td><td>Saved as standard PDF annotations, so they show in other PDF viewers too &mdash; and stay editable when you reopen the file in llemonAI Reader.</td></tr>
+        <tr><td>Master PDF</td><td>Export burns highlights, drawings and notes into the pages and appends a Notes &amp; comments list, so nothing can be lost or edited by accident.</td></tr>
+        <tr><td>Word files</td><td>.docx files are converted to searchable PDF pages (headings, paragraphs, lists, tables and images). Old Word 97&ndash;2003 .doc files need to be re-saved as .docx first.</td></tr>
+        <tr><td>Encrypted PDFs</td><td>Password-protected PDFs can be opened, read, searched and printed, but not changed.</td></tr>
+        <tr><td>Shortcuts</td><td><span class="kbd">Ctrl</span>+<span class="kbd">O</span> open &middot; <span class="kbd">Ctrl</span>+<span class="kbd">S</span> save &middot; <span class="kbd">Ctrl</span>+<span class="kbd">P</span> print &middot; <span class="kbd">Ctrl</span>+<span class="kbd">F</span> search &middot; <span class="kbd">&larr;</span> <span class="kbd">&rarr;</span> pages &middot; <span class="kbd">F1</span> help</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
+    <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonAI Reader. All rights reserved.</div>
+    <div>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</div>
+    <div>Also from llemonai: <a href="scanner.html">WiFi Scanner</a></div>
+    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var REL = 'https://github.com/llemonai/llemon-reader/releases/download/v1.0.0/';
+  document.getElementById('dl-x64').href = REL + 'llemonAI-Reader-1.0.0-win-x64.exe';
+  document.getElementById('dl-x86').href = REL + 'llemonAI-Reader-1.0.0-win-x86.exe';
+  document.getElementById('dl-android').href = REL + 'llemonAI-Reader-1.0.0-android.apk';
+  document.getElementById('sha-x64').textContent = 'CA430579EF5CA4F04D08E0ACA47F2D6CFF74D5B7A75938490E5EB7995C299FC3';
+  document.getElementById('sha-x86').textContent = '7B733114494D54BF816A15317C1726C084251A39970A07D22A05BE1C7028F6B4';
+  document.getElementById('sha-android').textContent = '49046C676427DE5DA3C0B3103664BDCA0852B6FB43FB347276679DE7E63E0237';
+
+  // Live download counts from GitHub's public Releases API, summed across all Reader releases.
+  fetch('https://api.github.com/repos/llemonai/llemon-reader/releases?per_page=100')
+    .then(function (res) { if (!res.ok) throw new Error('GitHub API error ' + res.status); return res.json(); })
+    .then(function (releases) {
+      var totals = { x64: 0, x86: 0, android: 0 };
+      releases.forEach(function (release) {
+        (release.assets || []).forEach(function (asset) {
+          var name = asset.name.toLowerCase();
+          if (name.indexOf('win-x64') !== -1) totals.x64 += asset.download_count;
+          else if (name.indexOf('win-x86') !== -1) totals.x86 += asset.download_count;
+          else if (name.indexOf('.apk') !== -1) totals.android += asset.download_count;
+        });
+      });
+      function fmt(n) { return n.toLocaleString(); }
+      document.getElementById('count-x64').innerHTML = '<span class="n">' + fmt(totals.x64) + '</span> downloads';
+      document.getElementById('count-x86').innerHTML = '<span class="n">' + fmt(totals.x86) + '</span> downloads';
+      document.getElementById('count-android').innerHTML = '<span class="n">' + fmt(totals.android) + '</span> downloads';
+      var total = totals.x64 + totals.x86 + totals.android;
+      document.getElementById('dl-total-line').textContent =
+        total > 0 ? fmt(total) + ' total downloads across all platforms and versions.' : '';
+    })
+    .catch(function () { /* rate limit or offline: the download buttons don't depend on this */ });
+</script>
+
+<button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
+  &#128172;
+  <span class="chat-badge" id="chat-badge">1</span>
+</button>
+<div id="chat-panel" role="dialog" aria-label="Help chat">
+  <div id="chat-header">
+    <span class="chat-avatar">&#129302;</span>
+    <div class="chat-title-block">
+      <div>llemonai Help Bot</div>
+      <div class="chat-status"><span class="dot"></span> AI-powered &middot; ask anything about the app</div>
+    </div>
+    <button id="chat-close" aria-label="Close chat">&times;</button>
+  </div>
+  <div id="chat-body"></div>
+  <button id="chat-more-toggle" type="button">Suggested questions &#9662;</button>
+  <div id="chat-quick-replies"></div>
+  <div id="chat-report-pill">
+    <span>&#128196;</span>
+    <span class="name" id="chat-report-name"></span>
+    <button id="chat-report-remove" aria-label="Remove attached report" title="Remove">&times;</button>
+  </div>
+  <div id="chat-input-row">
+    <input type="file" id="chat-file-input" accept="application/pdf" style="display:none;" />
+    <button id="chat-attach" aria-label="Attach your PDF report" title="Attach your PDF report">&#128206;</button>
+    <input id="chat-input" type="text" placeholder="Type a question&hellip;" maxlength="500" autocomplete="off" />
+    <button id="chat-send" aria-label="Send">&#10148;</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var faq = [
+    {
+      q: "What is llemonAI Reader?",
+      a: "A free PDF reader and annotator for Windows and Android. Highlight and underline text, write with a pen, add sticky notes, page notes and bookmarks, search words or whole sentences, add/delete/reorder pages, merge PDF and Word files, then save, print or export a master PDF."
+    },
+    {
+      q: "Which download do I need â€” Windows 32-bit, 64-bit, or Android?",
+      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install â€” almost every PC made since 2010 is 64-bit. On Android, there's a single .apk for any Android 8.0+ device. All three are in the <a href=\"#download\">Download</a> section above."
+    },
+    {
+      q: "Do I need to install anything?",
+      a: "No. On Windows it's a single portable .exe (~13 MB) â€” no installer and no admin rights; it uses the Microsoft Edge WebView2 runtime that's built into Windows 10 and 11. On Android, download the .apk and sideload it."
+    },
+    {
+      q: "Can I write or draw on a PDF?",
+      a: "Yes â€” pick the <b>Pen</b> tool and write or sketch with a mouse, finger or stylus. Choose Thin, Medium or Thick and any colour; Ctrl+Z undoes the last stroke. Drawings are saved into the PDF."
+    },
+    {
+      q: "How do I add, delete or reorder pages?",
+      a: "Open the <b>Pages</b> tab in the side panel. Drag a thumbnail to move it, or use its buttons to move it earlier/later, rotate it, insert a blank page after it, or delete it. <b>Insert fileâ€¦</b> adds pages from another PDF or Word file at the current position. Notes and bookmarks move with their pages."
+    },
+    {
+      q: "Can I merge Word documents into a PDF?",
+      a: "Yes â€” <b>Append</b> adds PDF and Word (.docx) files to the end of the open document, and <b>Insert fileâ€¦</b> places them at the current page. Word text stays searchable. Old Word 97â€“2003 .doc files need to be re-saved as .docx first."
+    },
+    {
+      q: "What's the difference between Save and Export master PDF?",
+      a: "<b>Save</b> writes a normal PDF whose annotations show in any PDF viewer and stay editable in llemonAI Reader. <b>Export</b> creates a final master PDF with highlights, drawings and notes burned into the pages plus a Notes &amp; comments appendix."
+    },
+    {
+      q: "I see a Windows SmartScreen (or Android install) warning â€” is it safe?",
+      a: "The builds are signed with our own self-signed certificate/key (not a paid, publicly trusted CA or Play Store listing yet), so Windows may show \"Unknown Publisher\" and Android may warn about an unknown source â€” that's expected. To confirm a file is genuine, compare its SHA256 checksum in the <a href=\"#download\">Download</a> section: on Windows run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+    },
+    {
+      q: "Are my documents uploaded anywhere?",
+      a: "No. llemonAI Reader opens, annotates and saves files entirely on your own device."
+    },
+    {
+      q: "How do I contact support?",
+      a: "Email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a> and we'll get back to you."
+    }
+  ];
+
+  var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
+  var MAX_REPORT_CHARS = 15000;
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var toggle = document.getElementById('chat-toggle');
+  var badge = document.getElementById('chat-badge');
+  var panel = document.getElementById('chat-panel');
+  var closeBtn = document.getElementById('chat-close');
+  var body = document.getElementById('chat-body');
+  var replies = document.getElementById('chat-quick-replies');
+  var moreToggle = document.getElementById('chat-more-toggle');
+  var input = document.getElementById('chat-input');
+  var sendBtn = document.getElementById('chat-send');
+  var attachBtn = document.getElementById('chat-attach');
+  var fileInput = document.getElementById('chat-file-input');
+  var reportPill = document.getElementById('chat-report-pill');
+  var reportName = document.getElementById('chat-report-name');
+  var reportRemoveBtn = document.getElementById('chat-report-remove');
+  var greeted = false;
+  var reportContext = '';
+
+  function addMessage(text, who) {
+    var isBot = who.split(' ')[0] === 'bot';
+    var row = document.createElement('div');
+    row.className = 'chat-row ' + who;
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = isBot ? '\u{1F916}' : '\u{1F9D1}';
+
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg ' + who;
+    bubble.innerHTML = text;
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function addTypingIndicator() {
+    var row = document.createElement('div');
+    row.className = 'chat-row bot';
+    row.id = 'chat-typing-row';
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = '\u{1F916}';
+
+    var typing = document.createElement('div');
+    typing.className = 'chat-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+
+    row.appendChild(avatar);
+    row.appendChild(typing);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+    return row;
+  }
+
+  function collapseSuggestions() {
+    replies.classList.add('collapsed');
+    moreToggle.textContent = 'Suggested questions ▾';
+  }
+
+  function toggleSuggestions() {
+    var isCollapsed = replies.classList.toggle('collapsed');
+    moreToggle.textContent = isCollapsed ? 'Suggested questions ▾' : 'Hide suggestions ▴';
+  }
+
+  moreToggle.addEventListener('click', toggleSuggestions);
+
+  function askQuestion(item) {
+    addMessage(item.q, 'user');
+    collapseSuggestions();
+    var typingRow = addTypingIndicator();
+    setTimeout(function () {
+      typingRow.remove();
+      addMessage(item.a, 'bot');
+    }, 450 + Math.random() * 350);
+  }
+
+  function askAi(question) {
+    addMessage(question, 'user');
+    collapseSuggestions();
+    input.value = '';
+    sendBtn.disabled = true;
+    var typingRow = addTypingIndicator();
+
+    fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: question, reportContext: reportContext })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
+        return res.json();
+      })
+      .then(function (data) {
+        typingRow.remove();
+        if (data.error) throw new Error(data.error);
+        addMessage(data.reply, 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't reach the AI assistant just now. Please try again, or email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a>.", 'bot error');
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+      });
+  }
+
+  function extractPdfText(file) {
+    return file.arrayBuffer().then(function (buf) {
+      return pdfjsLib.getDocument({ data: buf }).promise;
+    }).then(function (pdf) {
+      var pageTexts = [];
+      var pagePromise = Promise.resolve();
+      for (var i = 1; i <= pdf.numPages; i++) {
+        (function (pageNum) {
+          pagePromise = pagePromise
+            .then(function () { return pdf.getPage(pageNum); })
+            .then(function (page) { return page.getTextContent(); })
+            .then(function (content) {
+              var text = content.items.map(function (it) { return it.str; }).join(' ');
+              pageTexts.push(text);
+            });
+        })(i);
+      }
+      return pagePromise.then(function () { return pageTexts.join('\n\n'); });
+    });
+  }
+
+  function handleFileAttach(file) {
+    if (!file || file.type !== 'application/pdf') {
+      addMessage('Please attach a PDF file (the report exported from llemonai WiFi Scanner).', 'bot error');
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
+      return;
+    }
+
+    var typingRow = addTypingIndicator();
+    extractPdfText(file)
+      .then(function (text) {
+        typingRow.remove();
+        reportContext = text.slice(0, MAX_REPORT_CHARS);
+        reportName.textContent = file.name;
+        reportPill.classList.add('show');
+        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't read that PDF. Make sure it's not password-protected and try again.", 'bot error');
+      });
+  }
+
+  attachBtn.addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files[0]) {
+      handleFileAttach(fileInput.files[0]);
+    }
+    fileInput.value = '';
+  });
+  reportRemoveBtn.addEventListener('click', function () {
+    reportContext = '';
+    reportPill.classList.remove('show');
+    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
+  });
+
+  function showMenu() {
+    replies.innerHTML = '';
+    faq.forEach(function (item) {
+      var btn = document.createElement('button');
+      btn.className = 'chat-chip';
+      btn.textContent = item.q;
+      btn.onclick = function () { askQuestion(item); };
+      replies.appendChild(btn);
+    });
+    replies.classList.remove('collapsed');
+    moreToggle.textContent = 'Hide suggestions ▴';
+  }
+
+  function openChat() {
+    panel.classList.add('open');
+    badge.classList.add('hidden');
+    if (!greeted) {
+      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI Reader &mdash; pick a common question below or type your own.", 'bot');
+      showMenu();
+      greeted = true;
+    }
+  }
+
+  function handleSend() {
+    var text = input.value.trim();
+    if (!text) return;
+    askAi(text);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  toggle.addEventListener('click', function () {
+    if (panel.classList.contains('open')) {
+      panel.classList.remove('open');
+    } else {
+      openChat();
+    }
+  });
+  closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
+})();
+</script>
+
+</body>
+</html>
