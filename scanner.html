@@ -497,14 +497,13 @@
   <div class="wrap">
     <h2>Download</h2>
     <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
-    <p class="whats-new"><strong>New in 15.B3 (Windows) / 15A3 (Android), 23 Sep 2026:</strong>
-      an <strong>AI Companion</strong> tab that interviews you about the problem (coverage or speed, where, walls, devices,
-      interference) and combines your answers with the live scan and your laptop/phone's own Wi-Fi chipset, battery and
-      power-saving state to give a ranked list of fixes &mdash; fully offline. Plus an <strong>SNR</strong> (signal-to-noise)
-      column for every network, also in the PDF report.</p>
+    <p class="whats-new"><strong>New in Windows 15.B4, 31 Oct 2026:</strong>
+      color-coded Wi-Fi network entries based on signal and interference; an <strong>M-Lab NDT7 speed test</strong> with live results and server selection;
+      local <strong>Network Devices</strong> discovery (ping-based, limited to a private IPv4 /24, no port scanning); and an AI Companion question progress indicator.
+      Discovery may not find devices that do not respond to ping. <strong>Android remains at 15A3.</strong></p>
     <div class="download-grid">
       <div class="dl-card">
-        <span class="dl-version">Version 15.B3 &middot; 23 Sep 2026</span>
+        <span class="dl-version">Version 15.B4 &middot; 31 Oct 2026</span>
         <h3>llemonai WiFi Scanner &mdash; 64-bit</h3>
         <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
         <ul>
@@ -517,7 +516,7 @@
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
       </div>
       <div class="dl-card">
-        <span class="dl-version">Version 15.B3 &middot; 23 Sep 2026</span>
+        <span class="dl-version">Version 15.B4 &middot; 31 Oct 2026</span>
         <h3>llemonai WiFi Scanner &mdash; 32-bit</h3>
         <div class="meta">For legacy 32-bit Windows installations only</div>
         <ul>
@@ -552,6 +551,8 @@
         <table class="prev">
           <thead><tr><th>Version</th><th>Released</th><th>File</th><th>SHA256</th></tr></thead>
           <tbody>
+            <tr><td>Windows 15.B3 (64-bit)</td><td>23 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B3/LlemonScanner-15.B3-win-x64.exe">LlemonScanner-15.B3-win-x64.exe</a></td><td class="sha mono">4267E8A088A1C7590C08372099F0C9FBDB21BF37158AF754BEB5229F83297C7D</td></tr>
+            <tr><td>Windows 15.B3 (32-bit)</td><td>23 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B3/LlemonScanner-15.B3-win-x86.exe">LlemonScanner-15.B3-win-x86.exe</a></td><td class="sha mono">FF24B74774369853266A4DAC85BDE0C4F0B965FE34ABAE306720AC69B0A7DB61</td></tr>
             <tr><td>Windows 15.B2 (64-bit)</td><td>22 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x64.exe">LlemonScanner-15.B2-win-x64.exe</a></td><td class="sha mono">FE29E8F12F15206871B1E073035D1F680DF88D36982AC66D93D3BCE8F51223C8</td></tr>
             <tr><td>Windows 15.B2 (32-bit)</td><td>22 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/LlemonScanner-15.B2-win-x86.exe">LlemonScanner-15.B2-win-x86.exe</a></td><td class="sha mono">4DEDD82509EB1AD2DF962DD7E9A06AF2D862B534F7D60C52E9206CD83C812B40</td></tr>
             <tr><td>Android 15A2</td><td>22 Sep 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B2/llemonai-wifiscanner-15A2-android.apk">llemonai-wifiscanner-15A2-android.apk</a></td><td class="sha mono">4FB260160717A11C6F7F4AE10E662565407EC6FEC6BFFD08908A417D1ED13C2C</td></tr>
@@ -564,15 +565,13 @@
 
     <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
       Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile LlemonScanner-15.B3-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      <span class="mono">certutil -hashfile LlemonScanner-15.B4-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
       and compare the result to the SHA256 value shown above for the file you downloaded.
     </p>
     <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      All builds are digitally signed (self-signed certificates, SHA256). Windows SmartScreen may still show
-      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
-      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
-      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we
-      published and hasn't been altered in transit.
+      The Windows 15.B4 executables are not digitally signed. Verify each download with its SHA256 checksum above.
+      Android 15A3 is signed with our release key but is not listed on the Play Store, so Android may still warn
+      about installing from an unknown source.
     </p>
     <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
       Installing the Android APK: Android will block it by default as an "unknown source." Open the
@@ -611,11 +610,11 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B3/LlemonScanner-15.B3-win-x64.exe';
-  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B3/LlemonScanner-15.B3-win-x86.exe';
+  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B4/LlemonScanner-15.B4-win-x64.exe';
+  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B4/LlemonScanner-15.B4-win-x86.exe';
   document.getElementById('dl-android').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v15.B3/llemonai-wifiscanner-15A3-android.apk';
-  document.getElementById('sha-x64').textContent = '4267E8A088A1C7590C08372099F0C9FBDB21BF37158AF754BEB5229F83297C7D';
-  document.getElementById('sha-x86').textContent = 'FF24B74774369853266A4DAC85BDE0C4F0B965FE34ABAE306720AC69B0A7DB61';
+  document.getElementById('sha-x64').textContent = 'FF875B649E80F89677A61F2228CD3118FBA4A4E8F30896AC543167F65DCFEA82';
+  document.getElementById('sha-x86').textContent = '0D559390A94EA6FF4EF63E11F395FB5B0B596D6CFB4266F519C4DC45C3CD7DCF';
   document.getElementById('sha-android').textContent = 'B17747E352751EB1A44EEA048DB4613D7EB3B2265E8DF4880676D41FD0EE0BC4';
 
   // Live download counts, pulled from GitHub's public Releases API (no backend of our own).
@@ -701,11 +700,11 @@
     },
     {
       q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
-      a: "Both platforms' builds are digitally signed with our own self-signed certificate/key (not a paid, publicly-trusted CA or Play Store listing yet), so Windows SmartScreen may flag it as an \"Unknown Publisher\" and Android may warn about an \"unknown source\" — that's expected on both. To confirm a file is genuine, compare its SHA256 checksum (shown in the <a href=\"#download\">Download</a> section) against your downloaded file — on Windows, <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+      a: "The Windows 15.B4 executables are unsigned, so Windows may show a SmartScreen or unknown-publisher warning. Compare the downloaded file with its SHA256 checksum in the <a href=\"#download\">Download</a> section; on Windows, run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>. Android 15A3 is signed with our release key but may still show an unknown-source warning because it is sideloaded."
     },
     {
       q: "What's the latest version, and what's new?",
-      a: "Windows <b>15.B3</b> and Android <b>15A3</b>, released 23 Sep 2026. New: an <b>AI Companion</b> tab that asks a few questions about your problem and combines them with the live scan and your device's own Wi-Fi chipset, battery and power-saving state to suggest fixes (offline), plus an <b>SNR</b> column for every network. SHA256 checksums:<br><span class=\"mono\" style=\"word-break:break-all\">15.B3 x64: 4267E8A088A1C7590C08372099F0C9FBDB21BF37158AF754BEB5229F83297C7D</span><br><span class=\"mono\" style=\"word-break:break-all\">15.B3 x86: FF24B74774369853266A4DAC85BDE0C4F0B965FE34ABAE306720AC69B0A7DB61</span><br><span class=\"mono\" style=\"word-break:break-all\">15A3 Android: B17747E352751EB1A44EEA048DB4613D7EB3B2265E8DF4880676D41FD0EE0BC4</span><br>Older versions and their checksums are in the <a href=\"#download\">Previous versions</a> table."
+      a: "Windows <b>15.B4</b> (released 31 Oct 2026); Android remains <b>15A3</b>. Windows 15.B4 adds color-coded SSIDs based on signal/interference, an M-Lab NDT7 speed test with live results and server selection (consent is checked by default and can be disabled), ping-based device discovery on the active private IPv4 subnet up to /24 (no port scanning; devices that block ping may not appear), and an AI Companion question progress indicator. SHA256:<br><span class=\"mono\" style=\"word-break:break-all\">15.B4 x64: FF875B649E80F89677A61F2228CD3118FBA4A4E8F30896AC543167F65DCFEA82</span><br><span class=\"mono\" style=\"word-break:break-all\">15.B4 x86: 0D559390A94EA6FF4EF63E11F395FB5B0B596D6CFB4266F519C4DC45C3CD7DCF</span><br><span class=\"mono\" style=\"word-break:break-all\">15A3 Android: B17747E352751EB1A44EEA048DB4613D7EB3B2265E8DF4880676D41FD0EE0BC4</span><br>Windows downloads are unsigned; previous releases and checksums are listed under <a href=\"#download\">Previous versions</a>."
     },
     {
       q: "What's the Field Engineer Checklist?",
