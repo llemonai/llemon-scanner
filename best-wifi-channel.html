@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Find the Best Wi-Fi Channel on Windows 11 (and 10) &mdash; llemonai Guide</title>
+<meta name="description" content="Slow or dropping Wi-Fi is often a crowded channel. See which channels nearby networks use on Windows 11 or 10, pick the least congested one on 2.4 GHz or 5 GHz, and change it on your router." />
+<link rel="canonical" href="https://llemonai.in/best-wifi-channel.html" />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://llemonai.in/best-wifi-channel.html" />
+<meta property="og:title" content="How to find the best Wi-Fi channel on Windows 11" />
+<meta property="og:description" content="See which channels nearby networks use, pick the least crowded one, and change it on your router." />
+<meta property="og:image" content="https://llemonai.in/screenshots/channel-usage.png" />
+<meta property="og:image:width" content="1294" />
+<meta property="og:image:height" content="686" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to find the best Wi-Fi channel on Windows 11" />
+<meta name="twitter:description" content="See which channels nearby networks use, pick the least crowded one, and change it on your router." />
+<meta name="twitter:image" content="https://llemonai.in/screenshots/channel-usage.png" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to find the best Wi-Fi channel on Windows 11",
+    "description": "See which channels nearby networks use on Windows 11 or 10, pick the least congested one, and change it on your router.",
+    "image": "https://llemonai.in/screenshots/channel-usage.png",
+    "datePublished": "2026-11-01",
+    "dateModified": "2026-11-01",
+    "author": { "@type": "Organization", "name": "llemonai", "url": "https://llemonai.in/" },
+    "publisher": { "@type": "Organization", "name": "llemonai", "logo": { "@type": "ImageObject", "url": "https://llemonai.in/assets/wordmark.png" } },
+    "mainEntityOfPage": "https://llemonai.in/best-wifi-channel.html"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "llemonai", "item": "https://llemonai.in/" },
+      { "@type": "ListItem", "position": 2, "name": "WiFi Scanner", "item": "https://llemonai.in/scanner.html" },
+      { "@type": "ListItem", "position": 3, "name": "Best Wi-Fi channel", "item": "https://llemonai.in/best-wifi-channel.html" }
+    ]
+  }
+]
+</script>
+
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-alt: #101722;
+    --card: #141d2b;
+    --border: #223349;
+    --text: #e7edf5;
+    --text-dim: #9fb0c3;
+    --accent: #ffd23f;
+    --accent-dim: #3a8bff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  a { color: var(--accent-dim); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header.hero {
+    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 0 44px;
+  }
+  .brand { display: flex; align-items: center; flex-wrap: wrap; row-gap: 10px; margin-bottom: 36px; }
+  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
+  .back-home:hover { color: var(--text); }
+  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
+  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
+  .wm-ai { color: #3a8bff; }
+  .wm-llm::before, .wm-n::before, .wm-ai::before { content: attr(data-t); }
+  /* brand name as real text for search engines and screen readers; the visible wordmark draws its "o" as a lemon */
+  .wm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .wm-product { margin-left: 0.28em; font-weight: 700; }
+  .wm.on-dark .wm-llm { color: #3a8bff; }
+  .wm.on-dark .wm-n { color: #e7edf5; }
+  .wm.on-dark .wm-product { color: #ffd23f; }
+  .kicker { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.15; margin: 10px 0 16px; }
+  .hero p.lead { color: var(--text-dim); font-size: 18px; line-height: 1.6; margin: 0; }
+  .byline { color: var(--text-dim); font-size: 13px; margin-top: 18px; }
+
+  article { padding: 40px 0 24px; font-size: 17px; line-height: 1.7; }
+  article h2 { font-size: 26px; line-height: 1.25; margin: 44px 0 12px; }
+  article h3 { font-size: 19px; margin: 28px 0 8px; }
+  article p, article li { color: #cfd9e5; }
+  article ol, article ul { padding-left: 22px; }
+  article li { margin-bottom: 8px; }
+  article strong { color: var(--text); }
+  .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 10px; padding: 16px 20px; margin: 24px 0; }
+  .callout p { margin: 0; }
+  figure { margin: 28px 0; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  figure img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
+  figcaption { padding: 12px 16px; font-size: 14px; color: var(--text-dim); }
+  .table-scroll { overflow-x: auto; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 480px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-dim); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .cta { background: var(--card); border: 1px solid #4a3d14; border-radius: 14px; padding: 26px; margin: 40px 0 16px; }
+  .cta h2 { margin: 0 0 8px; font-size: 22px; }
+  .cta p { margin: 0 0 18px; color: var(--text-dim); }
+  .btn { display: inline-flex; align-items: center; padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; background: var(--accent); color: #14100a; }
+  .btn:hover { opacity: 0.9; }
+  .related { color: var(--text-dim); font-size: 15px; }
+
+  footer {
+    padding: 40px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--text-dim); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  @media (max-width: 600px) { .brand .wm { font-size: 1.45rem !important; } article { font-size: 16px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <a href="scanner.html" style="text-decoration: none;">
+        <span class="wm on-dark" style="font-size: 1.6rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+          <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
+          <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+            <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+            <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+            <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+            <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+            <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+            <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+            <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+          </svg>
+          <span class="wm-n" data-t="n" aria-hidden="true"></span>
+          <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
+          <span class="wm-product">WiFi Scanner</span>
+        </span>
+      </a>
+      <a class="back-home" href="index.html">&larr; llemonai.in</a>
+    </div>
+    <span class="kicker">Guide &middot; Wi-Fi</span>
+    <h1>How to find the best Wi-Fi channel on Windows 11</h1>
+    <p class="lead">If your Wi-Fi is slow or keeps dropping even with full bars, your router may be sharing a crowded channel with the neighbours. Here's how to see which channels are busy and move to a quieter one. It works on Windows 10 too.</p>
+    <div class="byline">By llemonai &middot; 1 November 2026 &middot; 6 min read</div>
+  </div>
+</header>
+
+<main class="wrap">
+<article>
+
+  <h2>Why the channel matters</h2>
+  <p>Wi-Fi networks take turns to talk. Every network on the same or an overlapping channel competes for the same airtime, so when several neighbours share your channel, everyone waits longer. You see that as slow speeds, lag in video calls and random drops, even though the signal looks strong.</p>
+  <p>Moving to a less crowded channel is free, takes a few minutes, and is often the quickest fix for a busy apartment block or office.</p>
+
+  <h2>2.4&nbsp;GHz vs 5&nbsp;GHz in one minute</h2>
+  <div class="table-scroll">
+    <table>
+      <tr><th></th><th>2.4&nbsp;GHz</th><th>5&nbsp;GHz</th></tr>
+      <tr><td>Range</td><td>Longer, better through walls</td><td>Shorter</td></tr>
+      <tr><td>Speed</td><td>Lower</td><td>Much higher</td></tr>
+      <tr><td>Channels to use</td><td>Only <strong>1, 6 or 11</strong></td><td>Many non-overlapping channels</td></tr>
+      <tr><td>Crowding</td><td>Usually very crowded</td><td>Usually much quieter</td></tr>
+    </table>
+  </div>
+  <p>On 2.4&nbsp;GHz, channels overlap their neighbours. Channel 3, for example, overlaps both 1 and 6 and interferes with both. That's why the standard advice is to <strong>use only 1, 6 or 11</strong>, which don't overlap each other.</p>
+  <p>If your devices support it, use 5&nbsp;GHz wherever the signal reaches. It has far more room.</p>
+
+  <h2>Step 1: See which channels nearby networks use</h2>
+
+  <h3>Option A: Windows' built-in command</h3>
+  <p>Open <strong>Terminal</strong> or <strong>Command Prompt</strong> and run:</p>
+  <div class="callout"><p><code>netsh wlan show networks mode=bssid</code></p></div>
+  <p>For each network nearby, Windows lists the <strong>Channel</strong>, the <strong>Signal</strong> as a percentage, and the band. Note which channels come up most often and which networks have a strong signal. A strong neighbour on your channel hurts more than a weak one.</p>
+  <p>To see which channel <em>you</em> are on right now, run <code>netsh wlan show interfaces</code> and look for the <strong>Channel</strong> line.</p>
+  <p>This works without installing anything, but it's a one-off text snapshot, and Windows may only show networks found in its most recent scan.</p>
+
+  <h3>Option B: A Wi-Fi scanner with channel charts</h3>
+  <p>A Wi-Fi scanner makes the picture obvious. <a href="scanner.html">llemonai WiFi Scanner</a> is free and runs on Windows 10/11 without installing. It shows every nearby network with its channel, band, width and signal strength (RSSI), and draws 2.4&nbsp;GHz and 5&nbsp;GHz <strong>channel usage charts</strong>, so you can see at a glance where networks pile up and overlap.</p>
+  <figure>
+    <img src="screenshots/channel-usage.png" alt="2.4 GHz channel usage chart in llemonai WiFi Scanner showing networks crowded on some channels" width="1294" height="686" loading="lazy" />
+    <figcaption>2.4&nbsp;GHz channel usage: crowded and overlapping channels stand out immediately.</figcaption>
+  </figure>
+  <p>Networks are colour-coded by signal and interference, and the signal history graph lets you watch whether a change actually helped.</p>
+  <figure>
+    <img src="screenshots/scan-view.png" alt="llemonai WiFi Scanner live scan with network list, signal history and beacon details" width="1294" height="686" loading="lazy" />
+    <figcaption>Live scan: channel, band, width and signal for every network nearby, plus signal history over time.</figcaption>
+  </figure>
+
+  <h2>Step 2: Pick the best channel</h2>
+  <h3>On 2.4&nbsp;GHz</h3>
+  <ol>
+    <li>Look only at channels <strong>1, 6 and 11</strong>.</li>
+    <li>For each one, count the networks using it or overlapping it, and give strong ones more weight.</li>
+    <li>Choose the one with the fewest and weakest neighbours.</li>
+    <li>Keep the channel width at <strong>20&nbsp;MHz</strong>. Wider 40&nbsp;MHz channels on 2.4&nbsp;GHz overlap most of the band and usually make things worse in busy areas.</li>
+  </ol>
+  <h3>On 5&nbsp;GHz</h3>
+  <ol>
+    <li>Pick a channel that no strong nearby network is using.</li>
+    <li>Remember that wider channels (80&nbsp;MHz) cover several channel numbers at once. Make sure the whole block is quiet, not just the main channel.</li>
+    <li>Channels 52&ndash;144 (called DFS channels) are often the emptiest. Your router may briefly move off them if it detects radar nearby, and some older devices can't use them.</li>
+    <li>If the 5&nbsp;GHz band is crowded where you are, narrowing the width from 80 to 40&nbsp;MHz trades a little top speed for much more reliability.</li>
+  </ol>
+
+  <h2>Step 3: Change the channel on your router</h2>
+  <ol>
+    <li>Open your router's settings page in a browser. It's usually <code>192.168.0.1</code> or <code>192.168.1.1</code>, and the address is often printed on a sticker on the router. You can also run <code>ipconfig</code> and use the <strong>Default Gateway</strong> address.</li>
+    <li>Sign in with the admin password, which is often on the same sticker if you never changed it.</li>
+    <li>Find <strong>Wireless</strong> or <strong>Wi-Fi settings</strong>. Each band (2.4&nbsp;GHz and 5&nbsp;GHz) usually has its own <strong>Channel</strong> and <strong>Channel width</strong> setting.</li>
+    <li>Change from <em>Auto</em> to the channel you chose, then save. The Wi-Fi will drop for a few seconds while the router switches.</li>
+  </ol>
+  <div class="callout">
+    <p><strong>Tip:</strong> "Auto" is fine on many modern routers, but some only choose a channel at startup and never revisit it. If Auto keeps landing on a busy channel, set one yourself.</p>
+  </div>
+
+  <h2>Step 4: Check that it helped</h2>
+  <p>Scan again and compare your signal and the number of neighbours on your new channel. Then run a speed test at the spot where Wi-Fi was worst. llemonai WiFi Scanner has a built-in M-Lab speed test, so you can scan and test in one place.</p>
+  <p>If the channel is quiet but things are still slow, the problem is probably elsewhere. The usual suspects are distance and walls between you and the router, too many devices connected, or a slow internet connection. A strong Wi-Fi signal can't make a slow broadband line faster.</p>
+
+  <h2>Quick reference: what the signal numbers mean</h2>
+  <div class="table-scroll">
+    <table>
+      <tr><th>Signal (RSSI)</th><th>What to expect</th></tr>
+      <tr><td>&minus;30 to &minus;55&nbsp;dBm</td><td>Excellent</td></tr>
+      <tr><td>&minus;56 to &minus;67&nbsp;dBm</td><td>Good: reliable for video calls and streaming</td></tr>
+      <tr><td>&minus;68 to &minus;75&nbsp;dBm</td><td>Fair: browsing is fine, calls may stutter</td></tr>
+      <tr><td>Below &minus;75&nbsp;dBm</td><td>Poor: expect slow speeds and drops</td></tr>
+    </table>
+  </div>
+
+  <section class="cta">
+    <h2>Try it free: llemonai WiFi Scanner</h2>
+    <p>Free for Windows 10/11 and Android. A single portable .exe with no installer and no admin rights, so it runs from a USB stick. It includes channel charts, signal history, a speed test and a PDF report you can share.</p>
+    <a class="btn" href="scanner.html#download">Download WiFi Scanner</a>
+  </section>
+
+  <p class="related">Also useful: <a href="reduce-pdf-size.html">How to reduce PDF size without blurring the text</a></p>
+
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; <span id="year"></span> llemonai.in &middot; Simple, not complex. Powerful and useful.</div>
+    <div><a href="scanner.html">WiFi Scanner</a> &middot; <a href="reader.html">llemonAI Reader</a> &middot; <a href="organizer.html">PDF Organizer</a></div>
+    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

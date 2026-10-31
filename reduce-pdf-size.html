@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Reduce PDF Size Without Blurring the Text &mdash; llemonai Guide</title>
+<meta name="description" content="Why a PDF gets too big to email or upload, and how to shrink it without turning every page blurry: find the heavy pages, lower the resolution of just those, and keep text pages sharp and searchable." />
+<link rel="canonical" href="https://llemonai.in/reduce-pdf-size.html" />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://llemonai.in/reduce-pdf-size.html" />
+<meta property="og:title" content="How to reduce PDF size without blurring the text" />
+<meta property="og:description" content="Shrink only the pages that make a PDF big. Text pages stay sharp and searchable." />
+<meta property="og:image" content="https://llemonai.in/screenshots/organizer-sizes.png" />
+<meta property="og:image:width" content="1800" />
+<meta property="og:image:height" content="1125" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to reduce PDF size without blurring the text" />
+<meta name="twitter:description" content="Shrink only the pages that make a PDF big. Text pages stay sharp and searchable." />
+<meta name="twitter:image" content="https://llemonai.in/screenshots/organizer-sizes.png" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to reduce PDF size without blurring the text",
+    "description": "Why a PDF gets too big to email or upload, and how to shrink it without turning every page blurry.",
+    "image": "https://llemonai.in/screenshots/organizer-sizes.png",
+    "datePublished": "2026-11-01",
+    "dateModified": "2026-11-01",
+    "author": { "@type": "Organization", "name": "llemonai", "url": "https://llemonai.in/" },
+    "publisher": { "@type": "Organization", "name": "llemonai", "logo": { "@type": "ImageObject", "url": "https://llemonai.in/assets/wordmark.png" } },
+    "mainEntityOfPage": "https://llemonai.in/reduce-pdf-size.html"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "llemonai", "item": "https://llemonai.in/" },
+      { "@type": "ListItem", "position": 2, "name": "PDF Organizer", "item": "https://llemonai.in/organizer.html" },
+      { "@type": "ListItem", "position": 3, "name": "Reduce PDF size", "item": "https://llemonai.in/reduce-pdf-size.html" }
+    ]
+  }
+]
+</script>
+
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-alt: #101722;
+    --card: #141d2b;
+    --border: #223349;
+    --text: #e7edf5;
+    --text-dim: #9fb0c3;
+    --accent: #ffd23f;
+    --accent-dim: #3a8bff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  a { color: var(--accent-dim); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header.hero {
+    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 0 44px;
+  }
+  .brand { display: flex; align-items: center; flex-wrap: wrap; row-gap: 10px; margin-bottom: 36px; }
+  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
+  .back-home:hover { color: var(--text); }
+  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
+  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
+  .wm-ai { color: #3a8bff; }
+  .wm-llm::before, .wm-n::before, .wm-ai::before { content: attr(data-t); }
+  /* brand name as real text for search engines and screen readers; the visible wordmark draws its "o" as a lemon */
+  .wm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .wm-product { margin-left: 0.28em; font-weight: 700; }
+  .wm.on-dark .wm-llm { color: #3a8bff; }
+  .wm.on-dark .wm-n { color: #e7edf5; }
+  .wm.on-dark .wm-product { color: #ffd23f; }
+  .kicker { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.15; margin: 10px 0 16px; }
+  .hero p.lead { color: var(--text-dim); font-size: 18px; line-height: 1.6; margin: 0; }
+  .byline { color: var(--text-dim); font-size: 13px; margin-top: 18px; }
+
+  article { padding: 40px 0 24px; font-size: 17px; line-height: 1.7; }
+  article h2 { font-size: 26px; line-height: 1.25; margin: 44px 0 12px; }
+  article h3 { font-size: 19px; margin: 28px 0 8px; }
+  article p, article li { color: #cfd9e5; }
+  article ol, article ul { padding-left: 22px; }
+  article li { margin-bottom: 8px; }
+  article strong { color: var(--text); }
+  .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 10px; padding: 16px 20px; margin: 24px 0; }
+  .callout p { margin: 0; }
+  figure { margin: 28px 0; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  figure img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
+  figcaption { padding: 12px 16px; font-size: 14px; color: var(--text-dim); }
+  .table-scroll { overflow-x: auto; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 480px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-dim); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .cta { background: var(--card); border: 1px solid #4a3d14; border-radius: 14px; padding: 26px; margin: 40px 0 16px; }
+  .cta h2 { margin: 0 0 8px; font-size: 22px; }
+  .cta p { margin: 0 0 18px; color: var(--text-dim); }
+  .btn { display: inline-flex; align-items: center; padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; background: var(--accent); color: #14100a; }
+  .btn:hover { opacity: 0.9; }
+  .related { color: var(--text-dim); font-size: 15px; }
+
+  footer {
+    padding: 40px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--text-dim); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  @media (max-width: 600px) { .brand .wm { font-size: 1.45rem !important; } article { font-size: 16px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <a href="organizer.html" style="text-decoration: none;">
+        <span class="wm on-dark" style="font-size: 1.6rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+          <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
+          <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+            <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+            <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+            <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+            <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+            <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+            <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+            <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+          </svg>
+          <span class="wm-n" data-t="n" aria-hidden="true"></span>
+          <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
+          <span class="wm-product">PDF Organizer</span>
+        </span>
+      </a>
+      <a class="back-home" href="index.html">&larr; llemonai.in</a>
+    </div>
+    <span class="kicker">Guide &middot; PDF</span>
+    <h1>How to reduce PDF size without blurring the text</h1>
+    <p class="lead">Most PDF compressors shrink every page at the same setting, so the text pages come out fuzzy too. Shrinking only the few pages that actually make the file big keeps the rest exactly as they were.</p>
+    <div class="byline">By llemonai &middot; 1 November 2026 &middot; 5 min read</div>
+  </div>
+</header>
+
+<main class="wrap">
+<article>
+
+  <h2>Why is my PDF so big?</h2>
+  <p>A page of ordinary text takes very little space in a PDF, often just a few kilobytes, because the text is stored as characters and fonts, not as a picture. What makes a PDF big is almost always <strong>images</strong>:</p>
+  <ul>
+    <li><strong>Phone photos</strong> pasted into a report. A single 12-megapixel photo can add several megabytes.</li>
+    <li><strong>Scanned pages</strong> such as signed letters, certificates and ID cards, often scanned at 300&nbsp;dpi or more in full colour.</li>
+    <li><strong>Heavy drawings and charts</strong> exported at a high resolution.</li>
+  </ul>
+  <p>So in a 10-page document, two or three pages usually account for nearly all of the file size. The rest are tiny.</p>
+
+  <h2>Why "compress PDF" tools blur everything</h2>
+  <p>A typical PDF compressor applies <strong>one quality setting to the whole file</strong>. To get the photos small enough, it lowers the quality of every page, and many tools turn each page, text included, into a picture. That causes three problems:</p>
+  <ol>
+    <li><strong>The text blurs.</strong> Sharp letters become a low-resolution image of letters.</li>
+    <li><strong>You can no longer search or copy the text,</strong> because a picture of a page has no characters in it.</li>
+    <li><strong>Text pages can even get bigger.</strong> A picture of a page of text is usually larger than the text itself.</li>
+  </ol>
+  <p>If you're submitting an application, a report or exam paperwork, blurry text is exactly what you don't want.</p>
+
+  <h2>The better way: shrink only the heavy pages</h2>
+  <p>The fix is to lower the resolution of <strong>only the pages with photos or scans</strong>, and leave the text pages alone. Here's how.</p>
+
+  <h3>1. Find out which pages make the file big</h3>
+  <p>Open the PDF in a tool that shows the size of each page. In <a href="organizer.html">llemonAI PDF Organizer</a>, every page thumbnail shows its share of the file size, so the heavy pages stand out right away.</p>
+  <figure>
+    <img src="screenshots/organizer-sizes.png" alt="llemonAI PDF Organizer showing each page's size, with two photo pages and a scanned letter selected" width="1800" height="1125" loading="lazy" />
+    <figcaption>Each page shows its own size. The two photos and the scanned letter make up almost all of this 15&nbsp;MB file.</figcaption>
+  </figure>
+
+  <h3>2. Select just those pages</h3>
+  <p>On Windows, Ctrl+click each heavy page. On Android, tap the &#10003; on each page.</p>
+
+  <h3>3. Choose a lower resolution</h3>
+  <p>Pick a resolution (dpi), colour or grayscale, and JPEG or PNG. The right choice depends on what the page is for:</p>
+  <div class="table-scroll">
+    <table>
+      <tr><th>Page is for</th><th>Resolution</th><th>Format</th></tr>
+      <tr><td>Reading on screen, email, web upload</td><td>96&ndash;150&nbsp;dpi</td><td>JPEG</td></tr>
+      <tr><td>Printing photos at normal quality</td><td>150&ndash;200&nbsp;dpi</td><td>JPEG</td></tr>
+      <tr><td>Scanned black-and-white letters, forms, signatures</td><td>150&nbsp;dpi, grayscale</td><td>JPEG, or PNG if lines must stay crisp</td></tr>
+      <tr><td>Diagrams with flat colours and thin lines</td><td>150&ndash;200&nbsp;dpi</td><td>PNG</td></tr>
+    </table>
+  </div>
+  <p>Switching a scanned document from colour to <strong>grayscale</strong> is often the single biggest saving, because most scans of paper don't need colour at all.</p>
+  <figure>
+    <img src="screenshots/organizer-resolution.png" alt="Resolution dialog with a preview and the page size before and after" width="1800" height="1125" loading="lazy" />
+    <figcaption>The preview shows the page's size before and after, so you can check it still looks right.</figcaption>
+  </figure>
+
+  <h3>4. Apply and check the result</h3>
+  <p>Apply the change and look at the new total size. In our demo report, two photos and a scanned letter at 96&nbsp;dpi took the file from <strong>15.15&nbsp;MB to 192&nbsp;KB</strong>, which is 99% smaller. All four text pages stayed exactly as they were: sharp, searchable and still tiny.</p>
+  <figure>
+    <img src="screenshots/organizer-after.png" alt="The same PDF after shrinking three pages: 15.15 MB down to 192 KB" width="1800" height="1125" loading="lazy" />
+    <figcaption>15.15&nbsp;MB &rarr; 192&nbsp;KB, with the text pages untouched.</figcaption>
+  </figure>
+
+  <div class="callout">
+    <p><strong>Good to know:</strong> a page whose resolution you change becomes a picture, so its text can no longer be selected or searched. That's fine for photos and scans, which were pictures anyway. It's also why you should leave ordinary text pages alone.</p>
+  </div>
+
+  <h2>Common size limits</h2>
+  <p>Many email services cap attachments at around 20&ndash;25&nbsp;MB, and many online application forms and government portals accept far less, sometimes only 1 or 2&nbsp;MB per file. If a portal rejects your PDF, check its stated limit and aim comfortably below it.</p>
+
+  <h2>Quick checklist</h2>
+  <ul>
+    <li>Find the 2&ndash;3 pages that hold most of the file size.</li>
+    <li>Lower only those pages to 96&ndash;150&nbsp;dpi.</li>
+    <li>Use grayscale for scanned paper documents.</li>
+    <li>Leave text pages untouched so they stay sharp and searchable.</li>
+    <li>Check the new size against the limit you're aiming for.</li>
+  </ul>
+
+  <section class="cta">
+    <h2>Try it free: llemonAI PDF Organizer</h2>
+    <p>Free for Windows 10/11 and Android. A portable app with no installer, no account and no upload: your files stay on your device and it works offline.</p>
+    <a class="btn" href="organizer.html#download">Download PDF Organizer</a>
+  </section>
+
+  <p class="related">Also useful: <a href="best-wifi-channel.html">How to find the best Wi-Fi channel on Windows 11</a></p>
+
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; <span id="year"></span> llemonai.in &middot; Simple, not complex. Powerful and useful.</div>
+    <div><a href="organizer.html">PDF Organizer</a> &middot; <a href="reader.html">llemonAI Reader</a> &middot; <a href="scanner.html">WiFi Scanner</a></div>
+    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
