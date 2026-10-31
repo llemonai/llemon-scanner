@@ -27,14 +27,24 @@
   "@type": "Organization",
   "name": "llemonai",
   "url": "https://llemonai.in/",
-  "logo": "https://llemonai.in/assets/wordmark.png"
+  "logo": "https://llemonai.in/assets/wordmark.png",
+  "email": "llemonai.us@gmail.com",
+  "sameAs": ["https://github.com/llemonai"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "llemonai",
+  "alternateName": "llemonAI",
+  "url": "https://llemonai.in/"
 }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <style>
   :root {
@@ -63,6 +73,9 @@
   .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
   .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
   .wm-ai { color: #3a8bff; }
+  .wm-llm::before, .wm-n::before, .wm-ai::before { content: attr(data-t); }
+  /* brand name as real text for search engines and screen readers; the visible wordmark draws its "o" as a lemon */
+  .wm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .wm-product { margin-left: 0.28em; font-weight: 700; }
   .wm.on-dark .wm-llm { color: #3a8bff; }
   .wm.on-dark .wm-n { color: #e7edf5; }
@@ -88,6 +101,7 @@
   .hero { background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%); padding: 96px 40px 72px; }
   .hero-inner { max-width: 780px; margin: 0 auto; text-align: center; }
   .hero h1 { margin: 0 0 22px; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 52px; line-height: 1.12; color: #f5f2ea; }
+  .hero h1 .h1-kicker { display: block; margin-top: 18px; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 600; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: #ffd23f; }
   .hero p { margin: 0 auto 40px; max-width: 600px; font-size: 17px; line-height: 1.65; color: var(--text-dim); }
   .jump-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
   .jump-card { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 12px; }
@@ -279,7 +293,7 @@
   <div class="wrap nav-inner">
     <a href="#top" aria-label="llemonai">
       <span class="wm on-dark" style="font-size: 1.5rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-        <span class="wm-llm">llem</span>
+        <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
         <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
           <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
           <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
@@ -289,8 +303,8 @@
           <circle cx="50" cy="33" r="5" fill="#d99a00"/>
           <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
         </svg>
-        <span class="wm-n">n</span>
-        <span class="wm-ai">AI</span>
+        <span class="wm-n" data-t="n" aria-hidden="true"></span>
+        <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
       </span>
     </a>
     <div class="nav-links">
@@ -307,7 +321,7 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <h1>Simple tools.<br>Seriously useful.</h1>
+    <h1>Simple tools.<br>Seriously useful.<span class="h1-kicker">Free Wi-Fi scanner, PDF reader &amp; PDF organizer for Windows and Android</span></h1>
     <p>We build features that are 100% useful, not 100 features of which you use 1%. Simple to learn, powerful where it matters &mdash; and focused on one problem each: a real-time Wi-Fi diagnostics tool for people who manage networks, a PDF reader for people who review and assemble documents, a PDF organizer that shrinks only the pages that need it, and, coming soon, a private vault for people managing insurance.</p>
     <div class="jump-row" id="apps">
       <a class="jump-card" href="#tech" style="background: var(--card); border: 1px solid var(--border);">
@@ -350,7 +364,7 @@
       </div>
       <h2>
         <span class="wm on-dark" style="font-size: 2rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-          <span class="wm-llm">llem</span>
+          <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
           <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
             <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
             <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
@@ -360,8 +374,8 @@
             <circle cx="50" cy="33" r="5" fill="#d99a00"/>
             <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
           </svg>
-          <span class="wm-n">n</span>
-          <span class="wm-ai">AI</span>
+          <span class="wm-n" data-t="n" aria-hidden="true"></span>
+          <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
           <span class="wm-product">WiFi Scanner</span>
         </span>
       </h2>
@@ -459,7 +473,7 @@
       </div>
       <h2>
         <span class="wm on-dark" style="font-size: 2rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-          <span class="wm-llm">llem</span>
+          <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
           <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
             <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
             <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
@@ -469,8 +483,8 @@
             <circle cx="50" cy="33" r="5" fill="#d99a00"/>
             <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
           </svg>
-          <span class="wm-n">n</span>
-          <span class="wm-ai">AI</span>
+          <span class="wm-n" data-t="n" aria-hidden="true"></span>
+          <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
           <span class="wm-product">Reader</span>
         </span>
       </h2>
@@ -522,7 +536,7 @@
       </div>
       <h2>
         <span class="wm on-dark" style="font-size: 2rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-          <span class="wm-llm">llem</span>
+          <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
           <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
             <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
             <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
@@ -532,8 +546,8 @@
             <circle cx="50" cy="33" r="5" fill="#d99a00"/>
             <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
           </svg>
-          <span class="wm-n">n</span>
-          <span class="wm-ai">AI</span>
+          <span class="wm-n" data-t="n" aria-hidden="true"></span>
+          <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
           <span class="wm-product">PDF Organizer</span>
         </span>
       </h2>
@@ -644,7 +658,7 @@
       </div>
       <h2>
         <span class="wm on-light" style="font-size: 2rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-          <span class="wm-llm">llem</span>
+          <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
           <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
             <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
             <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
@@ -654,8 +668,8 @@
             <circle cx="50" cy="33" r="5" fill="#d99a00"/>
             <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
           </svg>
-          <span class="wm-n">n</span>
-          <span class="wm-ai">AI</span>
+          <span class="wm-n" data-t="n" aria-hidden="true"></span>
+          <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
           <span class="wm-product">Insurance Vault</span>
         </span>
       </h2>
@@ -699,7 +713,7 @@
   <div class="wrap site-footer-inner">
     <div style="display: flex; align-items: center; gap: 14px;">
       <span class="wm on-dark" style="font-size: 1rem; opacity: 0.8;" aria-label="llemonai" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-        <span class="wm-llm">llem</span>
+        <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
         <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
           <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
           <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
@@ -709,8 +723,8 @@
           <circle cx="50" cy="33" r="5" fill="#d99a00"/>
           <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
         </svg>
-        <span class="wm-n">n</span>
-        <span class="wm-ai">AI</span>
+        <span class="wm-n" data-t="n" aria-hidden="true"></span>
+        <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
       </span>
       <span style="font-size: 13px; color: #5b6b80;">&copy; <span id="year"></span> llemonai &middot; Simple, not complex. Powerful and useful.<br>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</span>
       <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
@@ -819,8 +833,22 @@
   var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
   var MAX_REPORT_CHARS = 15000;
 
-  if (window.pdfjsLib) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  // pdf.js is only needed when a report is attached, so load it on first use
+  var pdfjsReady = null;
+  function loadPdfJs() {
+    if (!pdfjsReady) {
+      pdfjsReady = new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+        s.onload = function () {
+          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          resolve(pdfjsLib);
+        };
+        s.onerror = function () { pdfjsReady = null; reject(new Error('pdf.js failed to load')); };
+        document.head.appendChild(s);
+      });
+    }
+    return pdfjsReady;
   }
 
   var toggle = document.getElementById('chat-toggle');
@@ -933,7 +961,7 @@
 
   function extractPdfText(file) {
     return file.arrayBuffer().then(function (buf) {
-      return pdfjsLib.getDocument({ data: buf }).promise;
+      return loadPdfJs().then(function (lib) { return lib.getDocument({ data: buf }).promise; });
     }).then(function (pdf) {
       var pageTexts = [];
       var pagePromise = Promise.resolve();
