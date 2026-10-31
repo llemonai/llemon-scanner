@@ -33,7 +33,7 @@
     "name": "llemonAI Reader for Windows",
     "operatingSystem": "Windows 10, Windows 11",
     "applicationCategory": "BusinessApplication",
-    "softwareVersion": "1.0.0",
+    "softwareVersion": "1.0.1",
     "description": "Free, portable PDF reader and annotator for Windows: highlight, underline, pen, sticky notes, bookmarks, sentence search, page management, PDF and Word merging, master PDF export and printing.",
     "url": "https://llemonai.in/reader.html",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -44,7 +44,7 @@
     "name": "llemonAI Reader for Android",
     "operatingSystem": "Android 8.0 (API 26) and later",
     "applicationCategory": "BusinessApplication",
-    "softwareVersion": "1.0.0",
+    "softwareVersion": "1.0.1",
     "description": "Free PDF reader and annotator for Android with highlights, pen drawing, sticky notes, bookmarks, search, page management and PDF/Word merging.",
     "url": "https://llemonai.in/reader.html#download",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -485,13 +485,13 @@
   <div class="wrap">
     <h2>Download</h2>
     <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
-    <p class="whats-new"><strong>llemonAI Reader 1.0.0, 31 Oct 2026 &mdash; first release.</strong>
+    <p class="whats-new"><strong>llemonAI Reader 1.0.1, 31 Oct 2026:</strong> clicking a page thumbnail in the side panel now opens that page, and scrolling stays on it. <strong>1.0.0, 31 Oct 2026 &mdash; first release:</strong>
       Reading with a docked index and page panel, highlights, underlines, circles, pen, sticky notes, page notes and
       bookmarks, word and sentence search, page management (add, delete, reorder, rotate, insert), PDF and Word merging,
       editable save, master PDF export and printing.</p>
     <div class="download-grid">
       <div class="dl-card">
-        <span class="dl-version">Version 1.0.0 &middot; 31 Oct 2026</span>
+        <span class="dl-version">Version 1.0.1 &middot; 31 Oct 2026</span>
         <h3>llemonAI Reader &mdash; 64-bit</h3>
         <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
         <ul>
@@ -504,7 +504,7 @@
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
       </div>
       <div class="dl-card">
-        <span class="dl-version">Version 1.0.0 &middot; 31 Oct 2026</span>
+        <span class="dl-version">Version 1.0.1 &middot; 31 Oct 2026</span>
         <h3>llemonAI Reader &mdash; 32-bit</h3>
         <div class="meta">For 32-bit Windows installations</div>
         <ul>
@@ -517,7 +517,7 @@
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
       </div>
       <div class="dl-card">
-        <span class="dl-version">Version 1.0.0 &middot; 31 Oct 2026</span>
+        <span class="dl-version">Version 1.0.1 &middot; 31 Oct 2026</span>
         <h3>llemonAI Reader &mdash; Android</h3>
         <div class="meta">Android 8.0+ (API 26+)</div>
         <ul>
@@ -532,9 +532,23 @@
     </div>
     <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
 
+    <div class="prev-versions">
+      <h3>Previous versions</h3>
+      <p class="section-lead" style="margin:0 0 10px; font-size:13px;">Older builds stay available if you need them. The latest version above is recommended.</p>
+      <div class="prev-scroll">
+        <table class="prev">
+          <thead><tr><th>Version</th><th>Released</th><th>File</th><th>SHA256</th></tr></thead>
+          <tbody>
+            <tr><td>Windows 1.0.0 (64-bit)</td><td>31 Oct 2026</td><td><a href="https://github.com/llemonai/llemon-reader/releases/download/v1.0.0/llemonAI-Reader-1.0.0-win-x64.exe">llemonAI-Reader-1.0.0-win-x64.exe</a></td><td class="sha mono">CA430579EF5CA4F04D08E0ACA47F2D6CFF74D5B7A75938490E5EB7995C299FC3</td></tr>
+            <tr><td>Windows 1.0.0 (32-bit)</td><td>31 Oct 2026</td><td><a href="https://github.com/llemonai/llemon-reader/releases/download/v1.0.0/llemonAI-Reader-1.0.0-win-x86.exe">llemonAI-Reader-1.0.0-win-x86.exe</a></td><td class="sha mono">7B733114494D54BF816A15317C1726C084251A39970A07D22A05BE1C7028F6B4</td></tr>
+            <tr><td>Android 1.0.0</td><td>31 Oct 2026</td><td><a href="https://github.com/llemonai/llemon-reader/releases/download/v1.0.0/llemonAI-Reader-1.0.0-android.apk">llemonAI-Reader-1.0.0-android.apk</a></td><td class="sha mono">49046C676427DE5DA3C0B3103664BDCA0852B6FB43FB347276679DE7E63E0237</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
       Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile llemonAI-Reader-1.0.0-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      <span class="mono">certutil -hashfile llemonAI-Reader-1.0.1-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
       and compare the result to the SHA256 value shown above for the file you downloaded.
     </p>
     <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
@@ -581,13 +595,13 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  var REL = 'https://github.com/llemonai/llemon-reader/releases/download/v1.0.0/';
-  document.getElementById('dl-x64').href = REL + 'llemonAI-Reader-1.0.0-win-x64.exe';
-  document.getElementById('dl-x86').href = REL + 'llemonAI-Reader-1.0.0-win-x86.exe';
-  document.getElementById('dl-android').href = REL + 'llemonAI-Reader-1.0.0-android.apk';
-  document.getElementById('sha-x64').textContent = 'CA430579EF5CA4F04D08E0ACA47F2D6CFF74D5B7A75938490E5EB7995C299FC3';
-  document.getElementById('sha-x86').textContent = '7B733114494D54BF816A15317C1726C084251A39970A07D22A05BE1C7028F6B4';
-  document.getElementById('sha-android').textContent = '49046C676427DE5DA3C0B3103664BDCA0852B6FB43FB347276679DE7E63E0237';
+  var REL = 'https://github.com/llemonai/llemon-reader/releases/download/v1.0.1/';
+  document.getElementById('dl-x64').href = REL + 'llemonAI-Reader-1.0.1-win-x64.exe';
+  document.getElementById('dl-x86').href = REL + 'llemonAI-Reader-1.0.1-win-x86.exe';
+  document.getElementById('dl-android').href = REL + 'llemonAI-Reader-1.0.1-android.apk';
+  document.getElementById('sha-x64').textContent = '559D4A0CC8590E71CE2F3E5ADDE0A5539D926A7D85D307A11209C07C8629B39B';
+  document.getElementById('sha-x86').textContent = '6D85ADF03D58BC12D0B7E9E578D23611D815574BF98AF2C18B700DE8B897F5A1';
+  document.getElementById('sha-android').textContent = 'DE3F80C6B3B15E05248D0B80537401D667D13BF61792D154CD111F4A431F169D';
 
   // Live download counts from GitHub's public Releases API, summed across all Reader releases.
   fetch('https://api.github.com/repos/llemonai/llemon-reader/releases?per_page=100')
