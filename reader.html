@@ -776,7 +776,7 @@
   <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
     <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonAI Reader. All rights reserved. Simple, not complex. Powerful and useful.</div>
     <div>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</div>
-    <div>Also from llemonai: <a href="organizer.html">PDF Organizer</a> &middot; <a href="scanner.html">WiFi Scanner</a></div>
+    <div>Also from llemonai: <a href="organizer.html">llemonAI PDF Organizer</a> &middot; <a href="scanner.html">llemonAI Wi-Fi Scanner</a></div>
     <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
     <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
   </div>
@@ -1066,7 +1066,7 @@
 
   function handleFileAttach(file) {
     if (!file || file.type !== 'application/pdf') {
-      addMessage('Please attach a PDF file (the report exported from llemonai WiFi Scanner).', 'bot error');
+      addMessage('Please attach a PDF file (the report exported from llemonAI Wi-Fi Scanner).', 'bot error');
       return;
     }
     if (file.size > 15 * 1024 * 1024) {
