@@ -1,0 +1,159 @@
+# Tests the published Mac app on an Apple Silicon (M-series) Mac.
+# It downloads the release's macOS zip (no source code is involved), checks its checksum and signature,
+# runs the app's built-in self-test (start-up, PDF report and checklist, every window, Check for updates)
+# and a real in-app update, and keeps the reports and screenshots as artifacts.
+# GitHub's Macs are virtual machines with no Wi-Fi hardware and no Location permission, so the
+# Wi-Fi scan itself is only tested on a real Mac; here the scan results are recorded, not checked.
+name: Mac Apple Silicon test
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to test (empty = latest)
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: macos-latest   # an Apple Silicon (M-series) Mac; the first step stops if it is not
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      APP_NAME: llemonAI Wi-Fi Scanner
+    steps:
+      - name: Machine
+        run: |
+          sw_vers
+          uname -m
+          sysctl -n machdep.cpu.brand_string
+          test "$(uname -m)" = arm64
+
+      - name: Download the release and check its checksum
+        run: |
+          TAG="${{ github.event.release.tag_name || inputs.tag }}"
+          if [ -z "$TAG" ]; then TAG=$(gh release view --repo "$REPO" --json tagName -q .tagName); fi
+          VERSION="${TAG#v}"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          mkdir -p work out/windows out/report
+          cd work
+          ZIP="llemonAI-WiFi-Scanner-$VERSION-macos.zip"
+          gh release download "$TAG" --repo "$REPO" --pattern "$ZIP" --pattern SHA256SUMS.txt
+          WANT=$(tr -d '\r' < SHA256SUMS.txt | grep "  $ZIP\$" | cut -d' ' -f1 | tr A-F a-f)
+          GOT=$(shasum -a 256 "$ZIP" | cut -d' ' -f1)
+          echo "want $WANT"; echo "got  $GOT"
+          if [ -z "$WANT" ] || [ "$WANT" != "$GOT" ]; then echo "checksum mismatch or missing"; exit 1; fi
+          ditto -x -k "$ZIP" .
+          ls -la
+
+      - name: Universal binary and signature
+        run: |
+          APP="work/$APP_NAME.app"
+          lipo -archs "$APP/Contents/MacOS/$APP_NAME" | tee out/archs.txt
+          grep -q arm64 out/archs.txt
+          codesign --verify --deep --strict --verbose=2 "$APP"
+          codesign -dv "$APP" 2>&1 | tee out/codesign.txt
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")" = "$VERSION"
+
+      - name: Self-test (start-up and scan engine)
+        run: |
+          BIN="work/$APP_NAME.app/Contents/MacOS/$APP_NAME"
+          LLEMON_SELFTEST_OUT="$PWD/out/selftest.json" LLEMON_SELFTEST_SHOT="$PWD/out/main.png" LLEMON_SELFTEST_WAIT=15 arch -arm64 "$BIN" &
+          PID=$!
+          for i in $(seq 90); do sleep 1; [ -s out/selftest.json ] && break; done
+          sleep 3; kill $PID 2>/dev/null || true
+          cat out/selftest.json; echo
+          python3 - <<'PY'
+          import json, os, sys
+          m = json.load(open("out/selftest.json"))
+          checks = {
+              "reports version " + os.environ["VERSION"]: m.get("version") == os.environ["VERSION"],
+              "build time stamped": bool(m.get("built")) and m.get("built") != "not a release build",
+              "scan engine status": bool(m.get("status")),
+              "AI Companion ran": isinstance(m.get("companion"), dict),
+              "main window screenshot": os.path.getsize("out/main.png") > 10000 if os.path.exists("out/main.png") else False,
+          }
+          for k, v in checks.items():
+              print(("PASS " if v else "FAIL ") + k)
+          print(f"info: interface={m.get('interface')!r} networks={m.get('networks')} (no Wi-Fi hardware on this runner)")
+          sys.exit(0 if all(checks.values()) else 1)
+          PY
+
+      - name: Self-test (PDF report and checklist)
+        run: |
+          BIN="work/$APP_NAME.app/Contents/MacOS/$APP_NAME"
+          LLEMON_SELFTEST_OUT="$PWD/out/report/selftest.json" LLEMON_SELFTEST_REPORT="$PWD/out/report" LLEMON_SELFTEST_WAIT=8 arch -arm64 "$BIN" &
+          PID=$!
+          for i in $(seq 120); do sleep 1; [ -s out/report/pdf.txt ] && break; done
+          sleep 2; kill $PID 2>/dev/null || true
+          cat out/report/pdf.txt; echo
+          ls -la out/report
+          grep -q "report: true checklist: true" out/report/pdf.txt
+          for f in report checklist; do head -c 5 "out/report/$f.pdf" | grep -q "%PDF-" || { echo "$f.pdf is not a PDF"; exit 1; }; done
+
+      - name: Self-test (About, Help, AI Companion and Checklist windows)
+        run: |
+          BIN="work/$APP_NAME.app/Contents/MacOS/$APP_NAME"
+          LLEMON_SELFTEST_OUT="$PWD/out/windows/selftest.json" LLEMON_SELFTEST_WINDOWS="$PWD/out/windows" LLEMON_SELFTEST_WAIT=8 arch -arm64 "$BIN" &
+          PID=$!
+          for i in $(seq 60); do sleep 1; [ -s out/windows/checklist.png ] && break; done
+          sleep 2; kill $PID 2>/dev/null || true
+          ls -la out/windows
+          for w in about help companion checklist; do test -s "out/windows/$w.png" || { echo "no screenshot of the $w window"; exit 1; }; done
+
+      - name: GitHub API quota for anonymous requests (used by the app's update check)
+        id: quota
+        run: |
+          LEFT=$(curl -s https://api.github.com/rate_limit | python3 -c 'import json,sys; print(json.load(sys.stdin)["rate"]["remaining"])' || echo 0)
+          echo "anonymous requests left on this runner: $LEFT"
+          if [ "${LEFT:-0}" -lt 5 ]; then
+            echo "::warning::This shared runner has used up GitHub's anonymous API quota, so the update checks are skipped. Run the workflow again later."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check for updates (up to date)
+        if: steps.quota.outputs.ok == 'true'
+        run: |
+          BIN="work/$APP_NAME.app/Contents/MacOS/$APP_NAME"
+          LLEMON_SELFTEST_UPDATE_OUT="$PWD/out/update-current.txt" arch -arm64 "$BIN" &
+          PID=$!
+          for i in $(seq 60); do sleep 1; [ -s out/update-current.txt.check ] && break; done
+          sleep 1; kill $PID 2>/dev/null || true
+          cat out/update-current.txt.check; echo
+          grep -q "latest version ($VERSION)" out/update-current.txt.check
+
+      - name: Real in-app update (from a copy stamped 0.0.1)
+        if: steps.quota.outputs.ok == 'true'
+        run: |
+          mkdir -p old
+          ditto "work/$APP_NAME.app" "old/$APP_NAME.app"
+          OLD="$PWD/old/$APP_NAME.app"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 0.0.1" -c "Set :CFBundleVersion 0.0.1" "$OLD/Contents/Info.plist"
+          codesign --force --deep --sign - "$OLD"
+          LLEMON_SELFTEST_UPDATE_OUT="$PWD/out/update-install.txt" arch -arm64 "$OLD/Contents/MacOS/$APP_NAME" &
+          OLDPID=$!
+          for i in $(seq 120); do sleep 1; [ -s out/update-install.txt ] && break; done
+          sleep 8
+          cat out/update-install.txt.check; echo
+          cat out/update-install.txt; echo
+          grep -q "install: ok" out/update-install.txt
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$OLD/Contents/Info.plist")" = "$VERSION"
+          codesign --verify --deep --strict "$OLD"
+          if kill -0 $OLDPID 2>/dev/null; then echo "the old copy did not quit after installing"; exit 1; fi
+          echo "Relaunched copy:"; pgrep -fl "old/$APP_NAME.app" || { echo "the updated app did not relaunch"; exit 1; }
+          pkill -f "old/$APP_NAME.app" || true
+
+      - name: Keep reports and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac-apple-silicon-${{ env.VERSION }}
+          path: out/
