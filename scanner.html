@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>llemonAI Wi-Fi Scanner &mdash; Wi-Fi Site Survey &amp; Diagnostics Tool for Windows &amp; Android</title>
-<meta name="description" content="llemonAI Wi-Fi Scanner is a free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, and export field-ready PDF reports." />
+<title>llemonAI Wi-Fi Scanner &mdash; Wi-Fi Site Survey &amp; Diagnostics Tool for Windows, macOS &amp; Android</title>
+<meta name="description" content="llemonAI Wi-Fi Scanner is a free Wi-Fi scanning and diagnostics tool for Windows, macOS and Android (8.0+). Scan networks, decode beacon frames, and export field-ready PDF reports." />
 <link rel="canonical" href="https://llemonai.in/scanner.html" />
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
@@ -12,15 +12,15 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://llemonai.in/scanner.html" />
-<meta property="og:title" content="llemonAI Wi-Fi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows & Android" />
-<meta property="og:description" content="Free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports — no install required on Windows, sideload on Android." />
+<meta property="og:title" content="llemonAI Wi-Fi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows, macOS & Android" />
+<meta property="og:description" content="Free Wi-Fi scanning and diagnostics tool for Windows, macOS and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports — no install required on Windows, sideload on Android." />
 <meta property="og:image" content="https://llemonai.in/screenshots/scan-view.png" />
 <meta property="og:image:width" content="1294" />
 <meta property="og:image:height" content="686" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="llemonAI Wi-Fi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows & Android" />
-<meta name="twitter:description" content="Free Wi-Fi scanning and diagnostics tool for Windows and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports." />
+<meta name="twitter:title" content="llemonAI Wi-Fi Scanner — Free Wi-Fi Site Survey & Diagnostics Tool for Windows, macOS & Android" />
+<meta name="twitter:description" content="Free Wi-Fi scanning and diagnostics tool for Windows, macOS and Android (8.0+). Scan networks, decode beacon frames, track signal history, and export field-ready PDF reports." />
 <meta name="twitter:image" content="https://llemonai.in/screenshots/scan-view.png" />
 
 <meta name="keywords" content="wifi scanner, wifi analyzer, windows wifi tool, android wifi tool, wifi site survey, network diagnostics, beacon frame decoder, wifi channel scanner, rssi signal strength, wifi troubleshooting" />
@@ -33,9 +33,24 @@
     "name": "llemonAI Wi-Fi Scanner for Windows",
     "operatingSystem": "Windows 10 (build 19041+), Windows 11",
     "applicationCategory": "UtilitiesApplication",
-    "softwareVersion": "16.0.0",
+    "softwareVersion": "16.1.0",
     "description": "Free, standalone Wi-Fi scanning and diagnostics tool for Windows. Scan networks, decode beacon frames, track signal history and channel usage, and export field-ready PDF reports.",
     "url": "https://llemonai.in/scanner.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonAI Wi-Fi Scanner for macOS",
+    "operatingSystem": "macOS 12 and later (Apple Silicon and Intel)",
+    "applicationCategory": "UtilitiesApplication",
+    "softwareVersion": "16.1.0",
+    "description": "Free Wi-Fi scanning and diagnostics app for Mac. Scan networks with measured SNR, decode beacon frames, test speed, find network devices, troubleshoot with the AI Companion, and export field-ready PDF reports.",
+    "url": "https://llemonai.in/scanner.html#download",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -48,7 +63,7 @@
     "name": "llemonAI Wi-Fi Scanner for Android",
     "operatingSystem": "Android 8.0 (API 26) and later",
     "applicationCategory": "UtilitiesApplication",
-    "softwareVersion": "16.0.0",
+    "softwareVersion": "16.1.0",
     "description": "Free Wi-Fi scanning and diagnostics app for Android. Scan networks, view beacon-decoded PHY/rate details, check Wi-Fi chipset capabilities, and export field-ready PDF reports.",
     "url": "https://llemonai.in/scanner.html#download",
     "offers": {
@@ -157,6 +172,7 @@
   .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
 
   .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  @media (min-width: 700px) { .download-grid { grid-template-columns: repeat(2, 1fr); } }
   .dl-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -395,7 +411,7 @@
     </div>
     <h1>See your Wi-Fi the way it<br/>actually <span>behaves</span>, not just how it's <span>configured</span>.</h1>
     <p class="lead">
-      A free Wi-Fi scanning and diagnostics tool for <strong>Windows and Android</strong>. Discover nearby networks,
+      A free Wi-Fi scanning and diagnostics tool for <strong>Windows, macOS and Android</strong>. Discover nearby networks,
       decode raw beacon frames, track signal history, and generate field-ready PDF reports &mdash;
       built for IT engineers and field technicians.
     </p>
@@ -430,12 +446,12 @@
       <div class="card">
         <span class="icon">&#128196;</span>
         <h3>Field-ready PDF export</h3>
-        <p>One-click report with a network summary, per-AP detail pages, decoded beacon tables, host diagnostics, location, ISP, and (Windows) live weather &mdash; ready to attach to a ticket. Available on both Windows and Android.</p>
+        <p>One-click report with a network summary, per-AP detail pages, decoded beacon tables, host diagnostics, location, ISP, and (Windows) live weather &mdash; ready to attach to a ticket. Available on Windows, Android and macOS.</p>
       </div>
       <div class="card">
         <span class="icon">&#127760;</span>
         <h3>Network info, on screen</h3>
-        <p>Local IP, gateway, WAN (public) IP, ISP, and GPS location &mdash; live, with a Refresh button, on both Windows and Android. Android adds a reverse-geocoded place name too.</p>
+        <p>Local IP, gateway, WAN (public) IP, ISP, and GPS location &mdash; live, with a Refresh button, on Windows, Android and macOS. Android adds a reverse-geocoded place name too.</p>
       </div>
       <div class="card">
         <span class="icon">&#128241;</span>
@@ -445,7 +461,7 @@
       <div class="card">
         <span class="icon">&#9989;</span>
         <h3>Field engineer checklist</h3>
-        <p>Built-in printable/exportable troubleshooting checklist on both platforms &mdash; technician, customer and device details, environmental conditions, RF checks, and throughput verification steps.</p>
+        <p>Built-in printable/exportable troubleshooting checklist on every platform &mdash; technician, customer and device details, environmental conditions, RF checks, and throughput verification steps.</p>
       </div>
       <div class="card">
         <span class="icon">&#128274;</span>
@@ -488,7 +504,7 @@
 <section id="checklist">
   <div class="wrap">
     <h2>Field Engineer Checklist</h2>
-    <p class="section-lead">A built-in, printable/exportable checklist &mdash; on both Windows and Android &mdash; so a site visit covers every factor that affects Wi-Fi performance, not just signal strength. Fill it in on screen, tick items as you verify them, then print (Windows) or share as PDF (Android) a signed record for the ticket.</p>
+    <p class="section-lead">A built-in, printable/exportable checklist &mdash; on Windows, Android and macOS &mdash; so a site visit covers every factor that affects Wi-Fi performance, not just signal strength. Fill it in on screen, tick items as you verify them, then print (Windows) or share as PDF (Android) a signed record for the ticket.</p>
     <div class="shot-grid">
       <div class="shot-card" style="max-width: 480px; margin: 0 auto;">
         <img src="screenshots/checklist.png" alt="llemonAI Wi-Fi Scanner Field Engineer Checklist showing site and visit details, device information, and environmental condition checkboxes" loading="lazy" />
@@ -501,14 +517,14 @@
 <section class="alt" id="download">
   <div class="wrap">
     <h2>Download</h2>
-    <p class="section-lead">Windows or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
-    <p class="whats-new"><strong>New in 16.0.0, 7 Nov 2026:</strong> the app is now <strong>llemonAI Wi-Fi Scanner</strong>, with <strong>one version number for Windows and Android</strong> (macOS comes next);
-      an <strong>About page with Check for updates</strong> that installs newer versions in one click after checking their SHA256 checksum; and a list of what's new in each version.
-      From 15.B4 / 15A4, download 16.0.0 once below; after that, updates come from inside the app.
+    <p class="section-lead">Windows, Mac or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
+    <p class="whats-new"><strong>New in 16.1.0, 8 Nov 2026:</strong> the <strong>Mac app</strong> (Apple Silicon and Intel) with every Windows feature and a <strong>measured SNR</strong> (macOS reports the real noise floor).
+      Windows and Android have no other changes; with 16.0.0 installed, use About &rarr; Check for updates.
+      <strong>16.0.0</strong> renamed the app to llemonAI Wi-Fi Scanner, gave every platform one version number and added the About page with one-click updates; from 15.B4 / 15A4, download 16.1.0 once below.
       Also includes signal/interference colors, the M-Lab NDT7 speed test, Network Devices discovery (ping-based, private /24, no port scanning) and the AI Companion.</p>
     <div class="download-grid">
       <div class="dl-card">
-        <span class="dl-version">Version 16.0.0 &middot; 7 Nov 2026</span>
+        <span class="dl-version">Version 16.1.0 &middot; 8 Nov 2026</span>
         <h3>llemonAI Wi-Fi Scanner &mdash; 64-bit</h3>
         <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
         <ul>
@@ -521,7 +537,7 @@
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
       </div>
       <div class="dl-card">
-        <span class="dl-version">Version 16.0.0 &middot; 7 Nov 2026</span>
+        <span class="dl-version">Version 16.1.0 &middot; 8 Nov 2026</span>
         <h3>llemonAI Wi-Fi Scanner &mdash; 32-bit</h3>
         <div class="meta">For legacy 32-bit Windows installations only</div>
         <ul>
@@ -534,7 +550,21 @@
         <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
       </div>
       <div class="dl-card">
-        <span class="dl-version">Version 16.0.0 &middot; 7 Nov 2026</span>
+        <span class="dl-version">Version 16.1.0 &middot; 8 Nov 2026</span>
+        <h3>llemonAI Wi-Fi Scanner &mdash; Mac</h3>
+        <div class="meta">macOS 12 or later &middot; Apple Silicon and Intel</div>
+        <ul>
+          <li>Disk image (~2&nbsp;MB): drag the app to Applications</li>
+          <li>Measured SNR from the real noise floor; every Windows feature</li>
+          <li>Allow Location when asked &mdash; macOS needs it to show network names</li>
+          <li>First launch: right-click the app, choose Open, then Open again (not notarized by Apple)</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-mac">Download for Mac</a>
+        <div class="dl-count" id="count-mac"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-mac"></span></div>
+      </div>
+      <div class="dl-card">
+        <span class="dl-version">Version 16.1.0 &middot; 8 Nov 2026</span>
         <h3>llemonAI Wi-Fi Scanner &mdash; Android</h3>
         <div class="meta">Native app &middot; Android 8.0+ (API 26+)</div>
         <ul>
@@ -557,6 +587,9 @@
         <table class="prev">
           <thead><tr><th>Version</th><th>Released</th><th>File</th><th>SHA256</th></tr></thead>
           <tbody>
+            <tr><td>Windows 16.0.0 (64-bit)</td><td>7 Nov 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v16.0.0/llemonAI-WiFi-Scanner-16.0.0-win-x64.exe">llemonAI-WiFi-Scanner-16.0.0-win-x64.exe</a></td><td class="sha mono">3A74D856FEC9F85E6EAC5706F91282CC7C8267429024C914A1E95581FC28E438</td></tr>
+            <tr><td>Windows 16.0.0 (32-bit)</td><td>7 Nov 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v16.0.0/llemonAI-WiFi-Scanner-16.0.0-win-x86.exe">llemonAI-WiFi-Scanner-16.0.0-win-x86.exe</a></td><td class="sha mono">D3105D30942354D9CCA85F124A7DEE9299BC19B220DC90F863F601B69DAFE07B</td></tr>
+            <tr><td>Android 16.0.0</td><td>7 Nov 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v16.0.0/llemonAI-WiFi-Scanner-16.0.0-android.apk">llemonAI-WiFi-Scanner-16.0.0-android.apk</a></td><td class="sha mono">0AAF2A58F738A9742D97D3EEFB621955877A5E9EC35CA6147BFCD0BFCD38A80D</td></tr>
             <tr><td>Windows 15.B4 (64-bit)</td><td>31 Oct 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B4/LlemonScanner-15.B4-win-x64.exe">LlemonScanner-15.B4-win-x64.exe</a></td><td class="sha mono">FF875B649E80F89677A61F2228CD3118FBA4A4E8F30896AC543167F65DCFEA82</td></tr>
             <tr><td>Windows 15.B4 (32-bit)</td><td>31 Oct 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15.B4/LlemonScanner-15.B4-win-x86.exe">LlemonScanner-15.B4-win-x86.exe</a></td><td class="sha mono">0D559390A94EA6FF4EF63E11F395FB5B0B596D6CFB4266F519C4DC45C3CD7DCF</td></tr>
             <tr><td>Android 15A4</td><td>31 Oct 2026</td><td><a href="https://github.com/llemonai/llemon-scanner/releases/download/v15A4/llemonai-wifiscanner-15A4-android.apk">llemonai-wifiscanner-15A4-android.apk</a></td><td class="sha mono">FBFE7ECF474DD450C568C26C65A13351BFE06B6EADC4EA74F2BE1B903EF50EA0</td></tr>
@@ -575,11 +608,11 @@
 
     <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
       Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile llemonAI-WiFi-Scanner-16.0.0-win-x64.exe SHA256</span> (PowerShell/Command Prompt)
+      <span class="mono">certutil -hashfile llemonAI-WiFi-Scanner-16.1.0-win-x64.exe SHA256</span> (PowerShell/Command Prompt), or on a Mac <span class="mono">shasum -a 256 llemonAI-WiFi-Scanner-16.1.0-macos.dmg</span> (Terminal),
       and compare the result to the SHA256 value shown above for the file you downloaded.
     </p>
     <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      The Windows 16.0.0 executables are signed with our own self-signed certificate, so Windows
+      The Mac app is signed with our own self-signed identity, so macOS asks you to confirm its first launch. The Windows 16.1.0 executables are signed with our own self-signed certificate, so Windows
       SmartScreen may still show an "Unknown Publisher" warning. The Android APK is signed with our release key but is not
       listed on the Play Store, so Android may still warn about installing from an unknown source. The SHA256 checksums above
       let you confirm each file matches exactly what we published.
@@ -622,12 +655,14 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v16.0.0/llemonAI-WiFi-Scanner-16.0.0-win-x64.exe';
-  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v16.0.0/llemonAI-WiFi-Scanner-16.0.0-win-x86.exe';
-  document.getElementById('dl-android').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v16.0.0/llemonAI-WiFi-Scanner-16.0.0-android.apk';
-  document.getElementById('sha-x64').textContent = '3A74D856FEC9F85E6EAC5706F91282CC7C8267429024C914A1E95581FC28E438';
-  document.getElementById('sha-x86').textContent = 'D3105D30942354D9CCA85F124A7DEE9299BC19B220DC90F863F601B69DAFE07B';
-  document.getElementById('sha-android').textContent = '0AAF2A58F738A9742D97D3EEFB621955877A5E9EC35CA6147BFCD0BFCD38A80D';
+  document.getElementById('dl-x64').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v16.1.0/llemonAI-WiFi-Scanner-16.1.0-win-x64.exe';
+  document.getElementById('dl-x86').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v16.1.0/llemonAI-WiFi-Scanner-16.1.0-win-x86.exe';
+  document.getElementById('dl-android').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v16.1.0/llemonAI-WiFi-Scanner-16.1.0-android.apk';
+  document.getElementById('dl-mac').href = 'https://github.com/llemonai/llemon-scanner/releases/download/v16.1.0/llemonAI-WiFi-Scanner-16.1.0-macos.dmg';
+  document.getElementById('sha-x64').textContent = 'C34BB11D40887EF5245D9332B405A67304CFD89AD49DD7E748CE39C8ADE1D4EE';
+  document.getElementById('sha-x86').textContent = 'B6C2655FCD7D93AD81F1EBBBDDE824CEE5274BF11B699DCF25F26A2D987052D4';
+  document.getElementById('sha-android').textContent = '1E6D939052D97BE6B9FAA267F234C8AF9632D9285BE937DBAC22A0E42D2158E8';
+  document.getElementById('sha-mac').textContent = '113C0C04EC531E3EAAA84900509EB4CA7A688B501AE92B1DABCD4C60EF13EE10';
 
   // Live download counts, pulled from GitHub's public Releases API (no backend of our own).
   // Summed across ALL releases whose asset name matches each platform, not just the latest
@@ -635,20 +670,22 @@
   fetch('https://api.github.com/repos/llemonai/llemon-scanner/releases?per_page=100')
     .then(function (res) { if (!res.ok) throw new Error('GitHub API error ' + res.status); return res.json(); })
     .then(function (releases) {
-      var totals = { x64: 0, x86: 0, android: 0 };
+      var totals = { x64: 0, x86: 0, android: 0, mac: 0 };
       releases.forEach(function (release) {
         (release.assets || []).forEach(function (asset) {
           var name = asset.name.toLowerCase();
           if (name.indexOf('win-x64') !== -1) totals.x64 += asset.download_count;
           else if (name.indexOf('win-x86') !== -1) totals.x86 += asset.download_count;
           else if (name.indexOf('.apk') !== -1) totals.android += asset.download_count;
+          else if (name.indexOf('macos') !== -1) totals.mac += asset.download_count;
         });
       });
       function fmt(n) { return n.toLocaleString(); }
       document.getElementById('count-x64').innerHTML = '<span class="n">' + fmt(totals.x64) + '</span> downloads';
       document.getElementById('count-x86').innerHTML = '<span class="n">' + fmt(totals.x86) + '</span> downloads';
       document.getElementById('count-android').innerHTML = '<span class="n">' + fmt(totals.android) + '</span> downloads';
-      var total = totals.x64 + totals.x86 + totals.android;
+      document.getElementById('count-mac').innerHTML = '<span class="n">' + fmt(totals.mac) + '</span> downloads';
+      var total = totals.x64 + totals.x86 + totals.android + totals.mac;
       document.getElementById('dl-total-line').textContent =
         total > 0 ? fmt(total) + ' total downloads across all platforms and versions.' : '';
     })
@@ -692,7 +729,7 @@
   var faq = [
     {
       q: "What is llemonAI Wi-Fi Scanner?",
-      a: "A free Wi-Fi scanning and diagnostics tool for Windows and Android. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians."
+      a: "A free Wi-Fi scanning and diagnostics tool for Windows, macOS and Android. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians."
     },
     {
       q: "Is there an Android version?",
@@ -704,7 +741,7 @@
     },
     {
       q: "What are the system requirements?",
-      a: "Windows: Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit — no installer, no admin rights, no separate .NET install needed. Android: Android 8.0 (API 26) or later, ~11MB sideloaded .apk."
+      a: "Windows: Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit — no installer, no admin rights, no separate .NET install needed. Android: Android 8.0 (API 26) or later, ~11MB sideloaded .apk. macOS: macOS 12 Monterey or later on Apple Silicon or Intel; allow Location when asked so macOS shows network names."
     },
     {
       q: "Is it really free? Do I need to install anything?",
@@ -712,19 +749,19 @@
     },
     {
       q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
-      a: "The Windows 16.0.0 executables are signed with our own self-signed certificate (not a paid, publicly trusted one), so Windows may show a SmartScreen or unknown-publisher warning. Compare the downloaded file with its SHA256 checksum in the <a href=\"#download\">Download</a> section; on Windows, run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>. The Android APK is signed with our release key but may still show an unknown-source warning because it is sideloaded."
+      a: "The Windows 16.1.0 executables are signed with our own self-signed certificate (not a paid, publicly trusted one), so Windows may show a SmartScreen or unknown-publisher warning. Compare the downloaded file with its SHA256 checksum in the <a href=\"#download\">Download</a> section; on Windows, run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>. The Android APK is signed with our release key but may still show an unknown-source warning because it is sideloaded. The Mac app isn't notarized by Apple, so the first time right-click it in Applications and choose Open."
     },
     {
       q: "What's the latest version, and what's new?",
-      a: "Version <b>16.0.0</b>, released 7 Nov 2026 for Windows and Android. The app is now called llemonAI Wi-Fi Scanner and uses one version number on every platform; the macOS app comes next. New: an About page with <b>Check for updates</b> that installs newer versions in one click after checking their SHA256 checksum (on Windows, the About button in the toolbar; on Android, the About card at the top of Help), and a list of what's new in each version. From 15.B4 / 15A4, download 16.0.0 once. SHA256:<br><span class=\"mono\" style=\"word-break:break-all\">x64: 3A74D856FEC9F85E6EAC5706F91282CC7C8267429024C914A1E95581FC28E438<br>x86: D3105D30942354D9CCA85F124A7DEE9299BC19B220DC90F863F601B69DAFE07B<br>Android: 0AAF2A58F738A9742D97D3EEFB621955877A5E9EC35CA6147BFCD0BFCD38A80D</span>"
+      a: "Version <b>16.1.0</b>, released 8 Nov 2026: the <b>Mac app</b> (Apple Silicon and Intel, macOS 12+) with every Windows feature and a measured SNR from the real noise floor. Windows and Android are unchanged apart from the version list. Version 16.0.0 (7 Nov 2026) renamed the app to llemonAI Wi-Fi Scanner, gave every platform one version number and added the About page with <b>Check for updates</b>. With 16.0.0 installed, update from About; from 15.B4 / 15A4, download 16.1.0 once. SHA256:<br><span class=\"mono\" style=\"word-break:break-all\">x64: C34BB11D40887EF5245D9332B405A67304CFD89AD49DD7E748CE39C8ADE1D4EE<br>x86: B6C2655FCD7D93AD81F1EBBBDDE824CEE5274BF11B699DCF25F26A2D987052D4<br>Android: 1E6D939052D97BE6B9FAA267F234C8AF9632D9285BE937DBAC22A0E42D2158E8<br>Mac (.dmg): 113C0C04EC531E3EAAA84900509EB4CA7A688B501AE92B1DABCD4C60EF13EE10</span>"
     },
     {
       q: "How do I update llemonAI Wi-Fi Scanner?",
-      a: "From 16.0.0 on, use <b>Check for updates</b>: on Windows click <b>About</b> in the toolbar; on Android open the About card at the top of the <b>Help</b> tab. If a newer version exists, click <b>Install</b>: the app downloads it from our GitHub release, checks its SHA256 checksum and installs it. Windows restarts on the new version; on Android, confirm in the system installer. Nothing is checked unless you click the button. From 15.B4 / 15A4, download 16.0.0 once from the <a href=\"#download\">Download</a> section."
+      a: "From 16.0.0 on, use <b>Check for updates</b>: on Windows click <b>About</b> in the toolbar; on a Mac click <b>About</b> in the toolbar or the app menu; on Android open the About card at the top of the <b>Help</b> tab. If a newer version exists, click <b>Install</b>: the app downloads it from our GitHub release, checks its SHA256 checksum and installs it. Windows and macOS restart on the new version; on Android, confirm in the system installer. Nothing is checked unless you click the button. From 15.B4 / 15A4, download the latest version once from the <a href=\"#download\">Download</a> section."
     },
     {
       q: "What's the Field Engineer Checklist?",
-      a: "A built-in, printable/exportable checklist for site visits, on both Windows and Android — technician and customer details, device info, environmental conditions, RF checks, and throughput verification. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
+      a: "A built-in, printable/exportable checklist for site visits, on Windows, Android and macOS — technician and customer details, device info, environmental conditions, RF checks, and throughput verification. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
     },
     {
       q: "My Wi-Fi throughput is low — what should I check?",

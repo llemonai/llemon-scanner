@@ -1,6 +1,6 @@
 # llemonAI Wi-Fi Scanner
 
-Free Wi-Fi scanning and diagnostics tool for Windows and Android (macOS coming next).
+Free Wi-Fi scanning and diagnostics tool for Windows, macOS and Android.
 
 - **Website:** https://llemonai.in
 - **Download:** https://llemonai.in/scanner.html#download
@@ -23,7 +23,9 @@ Windows 10 (build 19041+) or Windows 11, 64-bit or 32-bit. No installer, no admi
 
 Android 8.0 (API 26) or later, as a sideloaded `.apk`.
 
-Since 16.0.0 every platform shares one version number, and each release holds all the files: `llemonAI-WiFi-Scanner-<version>-win-x64.exe`, `-win-x86.exe` and `-android.apk`, with `SHA256SUMS.txt`.
+macOS 12 Monterey or later, Apple Silicon or Intel (one universal app, `.dmg` or `.zip`). Allow Location when asked: macOS only shows network names and BSSIDs to apps with Location access. The app isn't notarized by Apple, so the first time right-click it in Applications and choose Open.
+
+Since 16.0.0 every platform shares one version number, and each release holds all the files: `llemonAI-WiFi-Scanner-<version>-win-x64.exe`, `-win-x86.exe`, `-android.apk`, `-macos.dmg` and `-macos.zip`, with `SHA256SUMS.txt`.
 
 ## Repo contents
 
