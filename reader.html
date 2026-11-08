@@ -430,6 +430,16 @@
   .kbd { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 12px; padding: 1px 6px; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; background: var(--card); color: var(--text); }
   table.checklist td:first-child { white-space: nowrap; }
   #chat-attach { display: none; }
+
+  .mac-open { margin-top: 28px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; }
+  .mac-open h3 { margin: 0 0 6px; font-size: 18px; }
+  .mac-open p { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
+  .mac-open ol { margin: 0 0 12px; padding-left: 22px; font-size: 14px; line-height: 1.7; }
+  .mac-open ol li { margin-bottom: 4px; }
+  .mac-open .quote { color: var(--text); font-style: italic; }
+  .mac-open .mono { display: block; margin-top: 6px; padding: 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; white-space: nowrap; }
+  .mac-open details { margin-top: 6px; font-size: 13px; color: var(--text-dim); }
+  .mac-open summary { cursor: pointer; color: var(--text); }
 </style>
 </head>
 <body>
@@ -709,7 +719,7 @@
           <li>Disk image (~2&nbsp;MB): drag the app to Applications</li>
           <li>Native menu bar and &#8984; shortcuts</li>
           <li>Includes Presentation mode</li>
-          <li>First launch: right-click the app, choose Open, then Open again (not notarized by Apple)</li>
+          <li>First launch: macOS blocks it once because it isn't notarized by Apple &mdash; see <a href="#mac-open">Opening on a Mac</a></li>
         </ul>
         <a class="btn btn-secondary" href="#" id="dl-mac">Download for Mac</a>
         <div class="dl-count" id="count-mac"></div>
@@ -731,13 +741,30 @@
     </div>
     <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
 
+    <div class="mac-open" id="mac-open">
+      <h3>Opening llemonAI Reader on a Mac</h3>
+      <p>The Mac app isn't notarized by Apple (that needs a paid Apple developer account), so macOS blocks it the first time you open it. You only have to allow it once:</p>
+      <ol>
+        <li>Open the downloaded <b>.dmg</b> and drag <b>llemonAI Reader</b> into the <b>Applications</b> folder. Open it from Applications, not from the disk image.</li>
+        <li>Double-click the app. macOS says <span class="quote">&ldquo;Apple could not verify &lsquo;llemonAI Reader&rsquo; is free of malware that may harm your Mac or compromise your privacy.&rdquo;</span> Click <b>Done</b>.</li>
+        <li>Open <b>System Settings &rarr; Privacy &amp; Security</b> and scroll down to <b>Security</b>. Next to <span class="quote">&ldquo;&lsquo;llemonAI Reader&rsquo; was blocked to protect your Mac&rdquo;</span>, click <b>Open Anyway</b>.</li>
+        <li>Enter your Mac password (or use Touch ID), then click <b>Open Anyway</b> once more.</li>
+      </ol>
+      <p>After that it opens normally with a double-click, and updates installed from About &rarr; Check for updates open without asking again. The warning doesn't mean anything was found in the app; you can confirm your download is genuine with its SHA256 checksum.</p>
+      <details>
+        <summary>macOS 14 Sonoma or earlier, or using Terminal</summary>
+        <p style="margin-top:8px">On macOS 12&ndash;14 you can also right-click (or Control-click) the app in Applications, choose <b>Open</b>, then <b>Open</b> again.</p>
+        <p>Or, in Terminal, remove the &ldquo;downloaded from the internet&rdquo; mark (one time): <span class="mono">xattr -dr com.apple.quarantine "/Applications/llemonAI Reader.app"</span></p>
+      </details>
+    </div>
+
     <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
       Verify your download hasn't been tampered with or corrupted: after downloading, run
       <span class="mono">certutil -hashfile llemonAI-Reader-2.0.1-win-x64.exe SHA256</span> (PowerShell/Command Prompt), or on a Mac <span class="mono">shasum -a 256 llemonAI-Reader-2.0.1-macos.dmg</span> (Terminal),
       and compare the result to the SHA256 value shown above for the file you downloaded.
     </p>
     <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      All builds are digitally signed (self-signed certificates, SHA256; the Mac app has an ad-hoc signature and asks you to confirm its first launch). Windows SmartScreen may still show
+      All builds are digitally signed (self-signed certificates, SHA256; the Mac app has an ad-hoc signature and isn't notarized by Apple, so macOS blocks its first launch until you click Open Anyway &mdash; see <a href="#mac-open">Opening on a Mac</a>). Windows SmartScreen may still show
       an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
       run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
       The signature and the SHA256 checksum above both let you confirm each file matches exactly what we published.
@@ -878,7 +905,7 @@
     },
     {
       q: "Do I need to install anything?",
-      a: "No. On Windows it's a single portable .exe (~14 MB) — no installer and no admin rights; it uses the Microsoft Edge WebView2 runtime that's built into Windows 10 and 11. On a Mac, open the .dmg and drag the app to Applications; the first time, right-click it and choose Open, because it isn't notarized by Apple. On Android, download the .apk and sideload it."
+      a: "No. On Windows it's a single portable .exe (~14 MB) — no installer and no admin rights; it uses the Microsoft Edge WebView2 runtime that's built into Windows 10 and 11. On a Mac, open the .dmg and drag the app to Applications; it isn't notarized by Apple, so the first time allow it in System Settings → Privacy &amp; Security → <b>Open Anyway</b> (see <a href=\"#mac-open\">Opening on a Mac</a>). On Android, download the .apk and sideload it."
     },
     {
       q: "Can I write or draw on a PDF?",
@@ -898,7 +925,11 @@
     },
     {
       q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
-      a: "The builds are signed with our own self-signed certificate/key (not a paid, publicly trusted CA or Play Store listing yet), so Windows may show \"Unknown Publisher\" Android may warn about an unknown source, and macOS asks you to confirm the first launch — that's expected. To confirm a file is genuine, compare its SHA256 checksum in the <a href=\"#download\">Download</a> section: on Windows run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>, on a Mac run <span class=\"mono\">shasum -a 256 &lt;file&gt;</span>."
+      a: "The builds are signed with our own self-signed certificate/key (not a paid, publicly trusted CA or Play Store listing yet), so Windows may show \"Unknown Publisher\" Android may warn about an unknown source, and macOS blocks the first launch until you click <b>Open Anyway</b> in System Settings → Privacy &amp; Security — that's expected. To confirm a file is genuine, compare its SHA256 checksum in the <a href=\"#download\">Download</a> section: on Windows run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>, on a Mac run <span class=\"mono\">shasum -a 256 &lt;file&gt;</span>."
+    },
+    {
+      q: "My Mac says \"Apple could not verify llemonAI Reader is free of malware\". How do I open it?",
+      a: "That's macOS's standard message for apps that aren't notarized by Apple; it doesn't mean anything was found in the app. Allow it once: 1. Drag the app from the .dmg into Applications. 2. Double-click it and click <b>Done</b> on the warning. 3. Open <b>System Settings → Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to the blocked app. 4. Enter your password and click <b>Open Anyway</b> again. After that it opens normally. See <a href=\"#mac-open\">Opening on a Mac</a> for details."
     },
     {
       q: "How do I update llemonAI Reader?",

@@ -23,7 +23,7 @@ Windows 10 (build 19041+) or Windows 11, 64-bit or 32-bit. No installer, no admi
 
 Android 8.0 (API 26) or later, as a sideloaded `.apk`.
 
-macOS 12 Monterey or later, Apple Silicon or Intel (one universal app, `.dmg` or `.zip`). Allow Location when asked: macOS only shows network names and BSSIDs to apps with Location access. The app isn't notarized by Apple, so the first time right-click it in Applications and choose Open.
+macOS 12 Monterey or later, Apple Silicon or Intel (one universal app, `.dmg` or `.zip`). Allow Location when asked: macOS only shows network names and BSSIDs to apps with Location access. The app isn't notarized by Apple, so macOS blocks it the first time ("Apple could not verify … is free of malware"). Click **Done**, then open **System Settings → Privacy & Security**, scroll down and click **Open Anyway**, enter your password and click **Open Anyway** again. After that it opens normally. Step-by-step: https://llemonai.in/scanner.html#mac-open
 
 Every platform shares one version number, and each release holds all the files: `llemonAI-WiFi-Scanner-<version>-win-x64.exe`, `-win-x86.exe`, `-android.apk`, `-macos.dmg` and `-macos.zip`, with `SHA256SUMS.txt`.
 

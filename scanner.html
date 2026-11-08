@@ -385,6 +385,16 @@
     background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
   }
   #chat-report-pill button:hover { color: var(--text); }
+
+  .mac-open { margin-top: 28px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; }
+  .mac-open h3 { margin: 0 0 6px; font-size: 18px; }
+  .mac-open p { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
+  .mac-open ol { margin: 0 0 12px; padding-left: 22px; font-size: 14px; line-height: 1.7; }
+  .mac-open ol li { margin-bottom: 4px; }
+  .mac-open .quote { color: var(--text); font-style: italic; }
+  .mac-open .mono { display: block; margin-top: 6px; padding: 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; white-space: nowrap; }
+  .mac-open details { margin-top: 6px; font-size: 13px; color: var(--text-dim); }
+  .mac-open summary { cursor: pointer; color: var(--text); }
 </style>
 </head>
 <body>
@@ -419,7 +429,7 @@
       <a class="btn btn-primary" href="#download">Download</a>
       <a class="btn btn-secondary" href="#features">See what's inside</a>
     </div>
-    <div class="hero-note">Windows 10 (2004+)/11, 64-bit &amp; 32-bit, no installer &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
+    <div class="hero-note">Windows 10 (2004+)/11, 64-bit &amp; 32-bit, no installer &middot; macOS 12 and later, Apple Silicon &amp; Intel &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
   </div>
 </header>
 
@@ -466,7 +476,7 @@
       <div class="card">
         <span class="icon">&#128274;</span>
         <h3>No install, no store required</h3>
-        <p>Windows: a single self-contained .exe, no installer or admin rights needed &mdash; run it from a USB stick. Android: a single sideloaded .apk, no Play Store account needed.</p>
+        <p>Windows: a single self-contained .exe, no installer or admin rights needed &mdash; run it from a USB stick. Mac: drag the app from the .dmg to Applications. Android: a single sideloaded .apk, no Play Store account needed.</p>
       </div>
     </div>
   </div>
@@ -557,7 +567,7 @@
           <li>Disk image (~2&nbsp;MB): drag the app to Applications</li>
           <li>Measured SNR from the real noise floor; every Windows feature</li>
           <li>Allow Location when asked &mdash; macOS needs it to show network names</li>
-          <li>First launch: right-click the app, choose Open, then Open again (not notarized by Apple)</li>
+          <li>First launch: macOS blocks it once because it isn't notarized by Apple &mdash; see <a href="#mac-open">Opening on a Mac</a></li>
         </ul>
         <a class="btn btn-secondary" href="#" id="dl-mac">Download for Mac</a>
         <div class="dl-count" id="count-mac"></div>
@@ -579,6 +589,23 @@
       </div>
     </div>
     <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+
+    <div class="mac-open" id="mac-open">
+      <h3>Opening llemonAI Wi-Fi Scanner on a Mac</h3>
+      <p>The Mac app isn't notarized by Apple (that needs a paid Apple developer account), so macOS blocks it the first time you open it. You only have to allow it once:</p>
+      <ol>
+        <li>Open the downloaded <b>.dmg</b> and drag <b>llemonAI Wi-Fi Scanner</b> into the <b>Applications</b> folder. Open it from Applications, not from the disk image.</li>
+        <li>Double-click the app. macOS says <span class="quote">&ldquo;Apple could not verify &lsquo;llemonAI Wi-Fi Scanner&rsquo; is free of malware that may harm your Mac or compromise your privacy.&rdquo;</span> Click <b>Done</b>.</li>
+        <li>Open <b>System Settings &rarr; Privacy &amp; Security</b> and scroll down to <b>Security</b>. Next to <span class="quote">&ldquo;&lsquo;llemonAI Wi-Fi Scanner&rsquo; was blocked to protect your Mac&rdquo;</span>, click <b>Open Anyway</b>.</li>
+        <li>Enter your Mac password (or use Touch ID), then click <b>Open Anyway</b> once more.</li>
+      </ol>
+      <p>After that it opens normally with a double-click, and updates installed from About &rarr; Check for updates open without asking again. The warning doesn't mean anything was found in the app; you can confirm your download is genuine with its SHA256 checksum.</p>
+      <details>
+        <summary>macOS 14 Sonoma or earlier, or using Terminal</summary>
+        <p style="margin-top:8px">On macOS 12&ndash;14 you can also right-click (or Control-click) the app in Applications, choose <b>Open</b>, then <b>Open</b> again.</p>
+        <p>Or, in Terminal, remove the &ldquo;downloaded from the internet&rdquo; mark (one time): <span class="mono">xattr -dr com.apple.quarantine "/Applications/llemonAI Wi-Fi Scanner.app"</span></p>
+      </details>
+    </div>
 
     <div class="prev-versions">
       <h3>Previous versions</h3>
@@ -609,7 +636,7 @@
       and compare the result to the SHA256 value shown above for the file you downloaded.
     </p>
     <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      The Mac app is signed with our own self-signed identity, so macOS asks you to confirm its first launch. The Windows 16.1.2 executables are signed with our own self-signed certificate, so Windows
+      The Mac app is signed with our own self-signed identity but isn't notarized by Apple, so macOS blocks its first launch until you click Open Anyway (see <a href="#mac-open">Opening on a Mac</a>). The Windows 16.1.2 executables are signed with our own self-signed certificate, so Windows
       SmartScreen may still show an "Unknown Publisher" warning. The Android APK is signed with our release key but is not
       listed on the Play Store, so Android may still warn about installing from an unknown source. The SHA256 checksums above
       let you confirm each file matches exactly what we published.
@@ -742,11 +769,15 @@
     },
     {
       q: "Is it really free? Do I need to install anything?",
-      a: "Yes, it's free on both platforms. On Windows there's nothing to install — download the single .exe and run it directly (even from a USB stick). On Android, download the .apk and sideload it — no Play Store account needed."
+      a: "Yes, it's free on every platform. On Windows there's nothing to install — download the single .exe and run it directly (even from a USB stick). On a Mac, drag the app from the .dmg to Applications (see <a href=\"#mac-open\">Opening on a Mac</a> for the first launch). On Android, download the .apk and sideload it — no Play Store account needed."
     },
     {
       q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
-      a: "The Windows 16.1.2 executables are signed with our own self-signed certificate (not a paid, publicly trusted one), so Windows may show a SmartScreen or unknown-publisher warning. Compare the downloaded file with its SHA256 checksum in the <a href=\"#download\">Download</a> section; on Windows, run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>. The Android APK is signed with our release key but may still show an unknown-source warning because it is sideloaded. The Mac app isn't notarized by Apple, so the first time right-click it in Applications and choose Open."
+      a: "The Windows 16.1.2 executables are signed with our own self-signed certificate (not a paid, publicly trusted one), so Windows may show a SmartScreen or unknown-publisher warning. Compare the downloaded file with its SHA256 checksum in the <a href=\"#download\">Download</a> section; on Windows, run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>. The Android APK is signed with our release key but may still show an unknown-source warning because it is sideloaded. The Mac app isn't notarized by Apple, so the first time allow it in System Settings → Privacy &amp; Security → <b>Open Anyway</b> (see <a href=\"#mac-open\">Opening on a Mac</a>)."
+    },
+    {
+      q: "My Mac says \"Apple could not verify llemonAI Wi-Fi Scanner is free of malware\". How do I open it?",
+      a: "That's macOS's standard message for apps that aren't notarized by Apple; it doesn't mean anything was found in the app. Allow it once: 1. Drag the app from the .dmg into Applications. 2. Double-click it and click <b>Done</b> on the warning. 3. Open <b>System Settings → Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to the blocked app. 4. Enter your password and click <b>Open Anyway</b> again. After that it opens normally. See <a href=\"#mac-open\">Opening on a Mac</a> for details."
     },
     {
       q: "What's the latest version, and what's new?",
@@ -770,7 +801,7 @@
     },
     {
       q: "Can I get advice based on my own scan report?",
-      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonAI Wi-Fi Scanner on either Windows or Android (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
+      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonAI Wi-Fi Scanner on Windows, macOS or Android (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
     }
   ];
 
