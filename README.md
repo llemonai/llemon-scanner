@@ -32,7 +32,7 @@ Every platform shares one version number, and each release holds all the files: 
 This repository holds only the public website and release binaries — not the application's source code.
 
 - `index.html` — the website home page (hosted via GitHub Pages at llemonai.in)
-- `scanner.html` — the llemonAI Wi-Fi Scanner page; `reader.html` — the llemonAI Reader page; `organizer.html` — the llemonAI PDF Organizer page
+- `scanner.html` — the llemonAI Wi-Fi Scanner page; `reader.html` — the llemonAI Reader page; `organizer.html` — the llemonAI PDF Organizer page; `image-editor.html` — the llemonAI Image Editor page
 - `screenshots/` — in-app screenshots used on the site
 - Release assets (under [Releases](https://github.com/llemonai/llemon-scanner/releases)) — the downloadable llemonAI Wi-Fi Scanner files
 
@@ -41,6 +41,8 @@ This repository holds only the public website and release binaries — not the a
 **llemonAI Reader** is a free PDF reader, annotator and presentation tool for Windows, macOS and Android. Details are at https://llemonai.in/reader.html, and downloads at https://github.com/llemonai/llemon-reader/releases.
 
 **llemonAI PDF Organizer** is a free PDF organizer for Windows, macOS and Android that changes the resolution page by page — shrink the photos and scans, keep text pages sharp. Details are at https://llemonai.in/organizer.html, and downloads at https://github.com/llemonai/llemon-organizer/releases.
+
+**llemonAI Image Editor** is a free photo editor for Windows, macOS and Android: AI background removal and scenery backgrounds, face beautify, text in Indian scripts, Indian passport photos and print collages from 6×4 inch to A4. Details are at https://llemonai.in/image-editor.html, and downloads at https://github.com/llemonai/llemon-image-editor/releases.
 
 ## Contact
 

@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>llemonAI Image Editor &mdash; Free Photo Editor, Background Remover &amp; Passport Photo Maker for Windows, macOS &amp; Android</title>
+<meta name="description" content="llemonAI Image Editor is a free photo editor for Windows, macOS and Android. Remove or change the background with on-device AI, put people on any scenery, beautify faces, add text in Hindi and other Indian scripts, make Indian passport photos (35×45 mm) and print collages from 6×4 inch to A4." />
+<link rel="canonical" href="https://llemonai.in/image-editor.html" />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://llemonai.in/image-editor.html" />
+<meta property="og:title" content="llemonAI Image Editor — background remover, passport photos and collages" />
+<meta property="og:description" content="Remove or change backgrounds with on-device AI, beautify faces, add text, make Indian passport photos and print collages. Free for Windows, macOS and Android." />
+<meta property="og:image" content="https://llemonai.in/screenshots/image-editor-scenery.png" />
+<meta property="og:image:width" content="1800" />
+<meta property="og:image:height" content="1125" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="llemonAI Image Editor — background remover, passport photos and collages" />
+<meta name="twitter:description" content="Remove or change backgrounds with on-device AI, beautify faces, add text, make passport photos and collages. Free for Windows, macOS and Android." />
+<meta name="twitter:image" content="https://llemonai.in/screenshots/image-editor-scenery.png" />
+
+<meta name="keywords" content="photo editor, background remover, change photo background, passport size photo maker, indian passport photo 35x45, passport photo online 630x810 250kb, photo collage a4, 4x6 photo print, face beautify, remove dark spots, add text to photo hindi, free photo editor windows, android photo editor offline" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonAI Image Editor for Windows",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "MultimediaApplication",
+    "softwareVersion": "1.0.0",
+    "description": "Free, portable photo editor for Windows: selections and adjustments, AI background removal and scenery backgrounds, face beautify, text, Indian passport photos and print collages from 6x4 inch to A4.",
+    "url": "https://llemonai.in/image-editor.html",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonAI Image Editor for macOS",
+    "operatingSystem": "macOS 12 and later (Apple Silicon and Intel)",
+    "applicationCategory": "MultimediaApplication",
+    "softwareVersion": "1.0.0",
+    "description": "Free photo editor for Mac with AI background removal, scenery backgrounds, face beautify, text, passport photos and collages.",
+    "url": "https://llemonai.in/image-editor.html#download",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "llemonAI Image Editor for Android",
+    "operatingSystem": "Android 8.0 (API 26) and later",
+    "applicationCategory": "MultimediaApplication",
+    "softwareVersion": "1.0.0",
+    "description": "Free offline photo editor for Android with AI background removal, scenery backgrounds, face beautify, text, passport photos and collages.",
+    "url": "https://llemonai.in/image-editor.html#download",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+]
+</script>
+
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-alt: #101722;
+    --card: #141d2b;
+    --border: #223349;
+    --text: #e7edf5;
+    --text-dim: #9fb0c3;
+    --accent: #ffd23f;
+    --accent-dim: #3a8bff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+  a { color: var(--accent-dim); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 0 56px;
+  }
+  .brand {
+    display: flex; align-items: center;
+    margin-bottom: 40px;
+  }
+  .brand img { height: 34px; width: auto; display: block; }
+  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
+  .back-home:hover { color: var(--text); }
+
+  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
+  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
+  .wm-ai { color: #3a8bff; }
+  .wm-llm::before, .wm-n::before, .wm-ai::before { content: attr(data-t); }
+  /* brand name as real text for search engines and screen readers; the visible wordmark draws its "o" as a lemon */
+  .wm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .wm-product { margin-left: 0.28em; font-weight: 700; }
+  .wm.on-dark .wm-llm { color: #3a8bff; }
+  .wm.on-dark .wm-n { color: #e7edf5; }
+  .wm.on-dark .wm-product { color: #ffd23f; }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p.lead {
+    color: var(--text-dim);
+    font-size: 18px;
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 600; font-size: 15px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #14100a; }
+  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn small { font-weight: 400; opacity: 0.75; }
+  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
+
+  section { padding: 56px 0; }
+  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  h2 { font-size: 28px; margin: 0 0 8px; }
+  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
+
+  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  @media (min-width: 700px) { .download-grid { grid-template-columns: repeat(2, 1fr); } }
+  .dl-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .dl-card h3 { margin: 0; font-size: 20px; }
+  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
+  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
+  .dl-card .btn { justify-content: center; margin-top: auto; }
+  .checksum {
+    font-size: 11px;
+    color: var(--text-dim);
+    word-break: break-all;
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .dl-count {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: -4px;
+  }
+  .dl-count .n { color: var(--accent); font-weight: 700; }
+  .dl-version {
+    display: inline-block; align-self: flex-start;
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 2px 10px;
+  }
+  .whats-new { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0 0 20px; }
+  .whats-new strong { color: var(--text); }
+  .prev-versions { margin-top: 32px; }
+  .prev-versions h3 { font-size: 16px; margin: 0 0 4px; }
+  .prev-scroll { overflow-x: auto; }
+  table.prev { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+  table.prev th, table.prev td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.prev th { color: var(--text-dim); font-weight: 600; }
+  table.prev td.sha { font-size: 11px; word-break: break-all; color: var(--text-dim); }
+
+  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  table.checklist th, table.checklist td {
+    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
+  }
+  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
+  .shot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
+  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
+
+  footer {
+    padding: 40px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
+
+  /* Chat widget */
+  #chat-toggle {
+    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--accent); color: #14100a; border: none;
+    font-size: 24px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+  #chat-toggle .chat-badge {
+    position: absolute; top: -2px; right: -2px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--bg);
+    animation: chat-badge-pulse 1.8s ease-in-out infinite;
+  }
+  #chat-toggle .chat-badge.hidden { display: none; }
+  @keyframes chat-badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+  }
+
+  #chat-panel {
+    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
+    width: 400px; max-width: calc(100vw - 40px);
+    height: min(720px, 85vh); max-height: calc(100vh - 100px);
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; transform: translateY(12px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  @media (max-width: 440px) {
+    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
+    #chat-toggle { right: 14px; bottom: 14px; }
+  }
+
+  #chat-body { min-height: 160px; flex: 1 1 auto; }
+  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
+  #chat-quick-replies.collapsed { display: none; }
+  #chat-more-toggle {
+    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
+    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
+    border-radius: 999px; cursor: pointer; align-self: flex-start;
+  }
+  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
+  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  #chat-header {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-alt); font-weight: 700; font-size: 14px;
+  }
+  #chat-header .chat-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: #14100a;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
+  }
+  #chat-header .chat-title-block { flex: 1; min-width: 0; }
+  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
+  #chat-header button {
+    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
+    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
+  }
+  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+
+  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  #chat-body::-webkit-scrollbar { width: 6px; }
+  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
+  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
+  .chat-row .chat-mini-avatar {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+  }
+  @keyframes chat-pop-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-msg { font-size: 13.5px; line-height: 1.5; }
+  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
+  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
+  .chat-msg a { color: inherit; text-decoration: underline; }
+  .chat-msg.bot a { color: var(--accent-dim); }
+
+  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
+  .chat-typing span {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
+    animation: chat-typing-bounce 1s infinite ease-in-out;
+  }
+  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes chat-typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
+  .chat-chip {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
+
+  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  #chat-input {
+    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
+    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
+  }
+  #chat-input:focus { border-color: var(--accent-dim); }
+  #chat-send, #chat-attach {
+    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
+    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.12s ease;
+  }
+  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
+  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
+  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
+  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
+
+  #chat-report-pill {
+    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
+    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
+    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
+  }
+  #chat-report-pill.show { display: flex; }
+  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+  #chat-report-pill button {
+    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
+  }
+  #chat-report-pill button:hover { color: var(--text); }
+  /* PDF Organizer page additions */
+  .kbd { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 12px; padding: 1px 6px; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; background: var(--card); color: var(--text); }
+  table.checklist td:first-child { white-space: nowrap; }
+  #chat-attach { display: none; }
+  .usp-tag {
+    display: inline-block; margin-bottom: 14px; padding: 5px 12px; border-radius: 999px;
+    background: rgba(255,210,63,0.12); border: 1px solid rgba(255,210,63,0.45); color: var(--accent);
+    font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .usp-split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 26px 0 8px; }
+  .usp-col { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; }
+  .usp-col h3 { margin: 0 0 8px; font-size: 17px; }
+  .usp-col p { margin: 0; color: var(--text-dim); font-size: 14.5px; line-height: 1.55; }
+  .usp-col.ours { border-color: rgba(255,210,63,0.55); box-shadow: 0 0 0 1px rgba(255,210,63,0.2) inset; }
+  .usp-col.ours h3 { color: var(--accent); }
+  .size-demo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 22px; }
+  .size-demo .num { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; }
+  .size-demo .num small { display: block; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dim); }
+  .size-demo .arrow { font-size: 28px; color: var(--text-dim); }
+  .size-demo .num.after { color: #6fcf7a; }
+  .size-demo .note { flex: 1 1 260px; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+  ol.steps { margin: 18px 0 0; padding-left: 22px; color: var(--text-dim); line-height: 1.7; }
+  ol.steps b { color: var(--text); }
+  @media (max-width: 760px) { .usp-split { grid-template-columns: 1fr; } .size-demo .num { font-size: 28px; } .brand { flex-wrap: wrap; row-gap: 10px; } .brand .wm { font-size: 1.45rem !important; } }
+
+  .mac-open { margin-top: 28px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; }
+  .mac-open h3 { margin: 0 0 6px; font-size: 18px; }
+  .mac-open p { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
+  .mac-open ol { margin: 0 0 12px; padding-left: 22px; font-size: 14px; line-height: 1.7; }
+  .mac-open ol li { margin-bottom: 4px; }
+  .mac-open .quote { color: var(--text); font-style: italic; }
+  .mac-open .mono { display: block; margin-top: 6px; padding: 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; white-space: nowrap; }
+  .mac-open details { margin-top: 6px; font-size: 13px; color: var(--text-dim); }
+  .mac-open summary { cursor: pointer; color: var(--text); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <span class="wm on-dark" style="font-size: 1.9rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+        <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
+        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+        </svg>
+        <span class="wm-n" data-t="n" aria-hidden="true"></span>
+        <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
+        <span class="wm-product">Image Editor</span>
+      </span>
+      <a class="back-home" href="index.html">&larr; llemonai.in</a>
+    </div>
+    <span class="usp-tag">&#9733; New &middot; on-device AI, nothing uploaded</span>
+    <h1>Change the background.<br/><span>Make the passport photo. Print the collage.</span></h1>
+    <p class="lead">
+      A free photo editor for <strong>Windows, macOS and Android</strong>. Remove or replace a photo's background with
+      on-device AI, put a person on <strong>any scenery</strong>, smooth skin and remove dark spots, add text in English,
+      Hindi and other Indian scripts, make <strong>Indian passport photos</strong> ready to print or upload, and arrange
+      collages on pages from <strong>6&times;4&nbsp;inch to A4</strong>.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#download">Download</a>
+      <a class="btn btn-secondary" href="#highlights">What it does</a>
+    </div>
+    <div class="hero-note">Windows 10/11, 64-bit &amp; 32-bit, one portable .exe, no installer &middot; macOS 12 and later, Apple Silicon &amp; Intel &middot; Android 8.0 (API 26) and later, single sideloaded APK &middot; works offline</div>
+  </div>
+</header>
+
+<section id="highlights">
+  <div class="wrap">
+    <h2>Three jobs people usually need three apps for</h2>
+    <p class="section-lead">Everything runs on your device &mdash; the AI models are built into the app, so your photos are never uploaded.</p>
+    <div class="usp-split">
+      <div class="usp-col ours">
+        <h3>&#9733; Background &amp; scenery</h3>
+        <p>One tap finds the person and removes the background. Keep it transparent, choose a colour, blur it, or put the person on <b>any photo of a place</b> &mdash; then move, zoom and blur the scenery and match the person's lighting to it.</p>
+      </div>
+      <div class="usp-col ours">
+        <h3>&#9733; Passport photos</h3>
+        <p>Indian passport <b>35&times;45&nbsp;mm</b> by default (plus visa/OCI 2&times;2&nbsp;in, PAN card, stamp size and custom). The face is found, the background turned white and the head sized automatically. Save a 300&nbsp;DPI print, a <b>630&times;810 under 250&nbsp;KB</b> file for online forms, or a sheet of 8 on 6&times;4&nbsp;in.</p>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><b>Open</b> a photo &mdash; or drop it on the window, paste it, share it to the app on Android, or take one with the camera.</li>
+      <li><b>Edit</b>: select part of the photo or work on all of it; adjust light and colour, change the background, beautify, add text, crop.</li>
+      <li><b>Passport</b> or <b>Collage</b>: pick a size and a page, and the layout is done for you.</li>
+      <li><b>Save</b> as JPG, PNG, WebP or PDF at 300&nbsp;DPI &mdash; with a maximum file size if a form needs one &mdash; or <b>print</b> at exact size.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt" id="screenshots">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="section-lead">Screenshots from Windows and Android, with an illustrated portrait and public-domain photos of India. The Mac app looks the same, with a native menu bar.</p>
+    <div class="shot-grid">
+      <div class="shot-card">
+        <img src="screenshots/image-editor-scenery.png" alt="llemonAI Image Editor with an illustrated person placed on a softly blurred lake scenery, with Zoom scenery, Blur scenery and Match lighting controls" loading="lazy" />
+        <div class="cap">Put the person on any scenery &mdash; move, zoom and blur it</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/image-editor-passport.png" alt="Passport mode framing a face to 35 by 45 millimetres on a white background with guide lines for the top of the head and the chin" loading="lazy" />
+        <div class="cap">Indian passport photo, framed automatically on white</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/image-editor-sheet.png" alt="A 6 by 4 inch print sheet with eight passport photos and cutting guides" loading="lazy" />
+        <div class="cap">8 copies on a 6&times;4&nbsp;in sheet, with cutting guides</div>
+      </div>
+    </div>
+    <div class="shot-grid" style="margin-top:18px;">
+      <div class="shot-card">
+        <img src="screenshots/image-editor-text.png" alt="Yellow text reading Happy Diwali in Hindi and English on a photo, with the Text panel showing the Hindi and Indian scripts font" loading="lazy" />
+        <div class="cap">Text in Hindi, other Indian scripts and English</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/image-editor-collage.png" alt="A collage of a portrait and three Indian landscape photos on an A4 landscape page, with the layout picker" loading="lazy" />
+        <div class="cap">Collages from 6&times;4&nbsp;in to A4, 24 layouts</div>
+      </div>
+      <div class="shot-card">
+        <img src="screenshots/image-editor-android.png" alt="llemonAI Image Editor on an Android phone, with a portrait's white background replaced by light blue" loading="lazy" />
+        <div class="cap">Android &mdash; the same features, made for touch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Everything in the box</h2>
+    <p class="section-lead">For ID photos, social posts, greeting cards, family prints and documents that must be under an upload limit.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="icon">&#9632;</span>
+        <h3>Select part of a photo</h3>
+        <p>Rectangle, ellipse, freehand lasso and magic-wand selections, with add, subtract, feather and invert. Adjustments then change only that area.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9728;</span>
+        <h3>Light &amp; colour</h3>
+        <p>Brightness, contrast, exposure, highlights, shadows, saturation, vibrance, warmth, tint, hue, sharpness and vignette, with a live preview. One-tap Auto enhance, B&amp;W and Sepia.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9787;</span>
+        <h3>Beauty</h3>
+        <p>Smooth skin for a younger look, remove dark spots, make skin tone lighter or deeper, brighten eyes, whiten teeth &mdash; plus a tap-to-remove spot healer. Only facial skin changes.</p>
+      </div>
+      <div class="card">
+        <span class="icon">T</span>
+        <h3>Text on photos</h3>
+        <p>Any number of text boxes: fonts including Hindi and other Indian scripts, size, colour, bold, italic, outline, shadow, a background box and rotation. Drag to place.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#9986;</span>
+        <h3>Size &amp; resolution</h3>
+        <p>Change the resolution (DPI) and size in pixels, percent, cm, mm or inches, with or without resampling; quick sizes like Full HD and 4K. Crop to print shapes, rotate, flip and straighten. Unlimited undo.</p>
+      </div>
+      <div class="card">
+        <span class="icon">&#128424;</span>
+        <h3>Print at exact size</h3>
+        <p>Collages and passport sheets print at their real dimensions; saved files carry their 300&nbsp;DPI print size. PDF export for print shops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="download">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p class="section-lead">Windows, Mac or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
+    <p class="whats-new"><strong>llemonAI Image Editor 1.0.0, 14 Nov 2026.</strong> First release: photo editing with selections, AI background removal and scenery backgrounds, Beauty, text, Indian passport photos and print sheets, collages from 6&times;4&nbsp;in to A4, and <b>Check for updates</b> in About.</p>
+    <div class="download-grid">
+      <div class="dl-card">
+        <span class="dl-version">Version 1.0.0 &middot; 14 Nov 2026</span>
+        <h3>llemonAI Image Editor &mdash; 64-bit</h3>
+        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
+        <ul>
+          <li>Single portable .exe (~46&nbsp;MB, AI models included)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Uses the Microsoft Edge WebView2 runtime built into Windows 10 and 11</li>
+        </ul>
+        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
+        <div class="dl-count" id="count-x64"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
+      </div>
+      <div class="dl-card">
+        <span class="dl-version">Version 1.0.0 &middot; 14 Nov 2026</span>
+        <h3>llemonAI Image Editor &mdash; 32-bit</h3>
+        <div class="meta">For 32-bit Windows installations</div>
+        <ul>
+          <li>Single portable .exe (~45&nbsp;MB)</li>
+          <li>No installation, no admin rights required</li>
+          <li>Windows 10/11, 32-bit edition</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
+        <div class="dl-count" id="count-x86"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
+      </div>
+      <div class="dl-card">
+        <span class="dl-version">Version 1.0.0 &middot; 14 Nov 2026</span>
+        <h3>llemonAI Image Editor &mdash; Mac</h3>
+        <div class="meta">macOS 12 or later &middot; Apple Silicon and Intel</div>
+        <ul>
+          <li>Disk image (~23&nbsp;MB): drag the app to Applications</li>
+          <li>Native menu bar and &#8984; shortcuts</li>
+          <li>First launch: macOS blocks it once because it isn't notarized by Apple &mdash; see <a href="#mac-open">Opening on a Mac</a></li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-mac">Download for Mac</a>
+        <div class="dl-count" id="count-mac"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-mac"></span></div>
+      </div>
+      <div class="dl-card">
+        <span class="dl-version">Version 1.0.0 &middot; 14 Nov 2026</span>
+        <h3>llemonAI Image Editor &mdash; Android</h3>
+        <div class="meta">Android 8.0+ (API 26+)</div>
+        <ul>
+          <li>Single .apk (~35&nbsp;MB), sideload install</li>
+          <li>Signed with our own release key (not on Play Store yet)</li>
+          <li>Camera, gallery and &ldquo;Share to&rdquo; support; HEIC photos open too</li>
+        </ul>
+        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
+        <div class="dl-count" id="count-android"></div>
+        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
+      </div>
+    </div>
+    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+
+    <div class="mac-open" id="mac-open">
+      <h3>Opening llemonAI Image Editor on a Mac</h3>
+      <p>The Mac app isn't notarized by Apple (that needs a paid Apple developer account), so macOS blocks it the first time you open it. You only have to allow it once:</p>
+      <ol>
+        <li>Open the downloaded <b>.dmg</b> and drag <b>llemonAI Image Editor</b> into the <b>Applications</b> folder. Open it from Applications, not from the disk image.</li>
+        <li>Double-click the app. macOS says <span class="quote">&ldquo;Apple could not verify &lsquo;llemonAI Image Editor&rsquo; is free of malware that may harm your Mac or compromise your privacy.&rdquo;</span> Click <b>Done</b>.</li>
+        <li>Open <b>System Settings &rarr; Privacy &amp; Security</b> and scroll down to <b>Security</b>. Next to <span class="quote">&ldquo;&lsquo;llemonAI Image Editor&rsquo; was blocked to protect your Mac&rdquo;</span>, click <b>Open Anyway</b>.</li>
+        <li>Enter your Mac password (or use Touch ID), then click <b>Open Anyway</b> once more.</li>
+      </ol>
+      <p>After that it opens normally with a double-click, and updates installed from About &rarr; Check for updates open without asking again. The warning doesn't mean anything was found in the app; you can confirm your download is genuine with its SHA256 checksum.</p>
+      <details>
+        <summary>macOS 14 Sonoma or earlier, or using Terminal</summary>
+        <p style="margin-top:8px">On macOS 12&ndash;14 you can also right-click (or Control-click) the app in Applications, choose <b>Open</b>, then <b>Open</b> again.</p>
+        <p>Or, in Terminal, remove the &ldquo;downloaded from the internet&rdquo; mark (one time): <span class="mono">xattr -dr com.apple.quarantine "/Applications/llemonAI Image Editor.app"</span></p>
+      </details>
+    </div>
+
+    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
+      Verify your download hasn't been tampered with or corrupted: after downloading, run
+      <span class="mono">certutil -hashfile llemonAI-Image-Editor-1.0.0-win-x64.exe SHA256</span> (PowerShell/Command Prompt), or on a Mac <span class="mono">shasum -a 256 llemonAI-Image-Editor-1.0.0-macos.dmg</span> (Terminal),
+      and compare the result to the SHA256 value shown above for the file you downloaded.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      All builds are digitally signed (self-signed certificates, SHA256; the Mac app has an ad-hoc signature and isn't notarized by Apple, so macOS blocks its first launch until you click Open Anyway &mdash; see <a href="#mac-open">Opening on a Mac</a>). Windows SmartScreen may still show
+      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
+      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
+      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we published.
+    </p>
+    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
+      Installing the Android APK: Android will block it by default as an "unknown source." Open the
+      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
+      normal for any app installed outside the Play Store.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Good to know</h2>
+    <p class="section-lead">How llemonAI Image Editor handles your photos.</p>
+    <table class="checklist">
+      <thead><tr><th>Topic</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Your photos stay on your device</td><td>Photos are opened, edited and saved locally, and the AI (Google's open-source MediaPipe models) runs inside the app. Nothing is uploaded and no internet connection is needed. The app only goes online when you click Check for updates.</td></tr>
+        <tr><td>Updates</td><td>About &rarr; <strong>Check for updates</strong> installs a newer version after checking its SHA256 checksum. Windows and macOS restart on the new version; Android opens its installer.</td></tr>
+        <tr><td>Background removal</td><td>The AI is made for people. For objects, select the object (lasso or magic wand) and use &ldquo;Keep selection&rdquo;, or remove a plain-coloured background by tapping it. A Refine brush touches up edges.</td></tr>
+        <tr><td>Passport photo sizes</td><td>India passport 35&times;45&nbsp;mm (default), India visa/OCI 2&times;2&nbsp;in, PAN card 25&times;35&nbsp;mm, stamp 20&times;25&nbsp;mm, US 2&times;2&nbsp;in, UK/Schengen 35&times;45&nbsp;mm and custom. Always check the latest official rules before applying.</td></tr>
+        <tr><td>Paper sizes</td><td>6&times;4&nbsp;in (4R), 7&times;5 (5R), 8&times;6 (6R), 10&times;8 (8R), 12&times;8, A5, A4 and Letter, portrait or landscape. Print at 100% / &ldquo;Actual size&rdquo; for exact dimensions.</td></tr>
+        <tr><td>Resolution</td><td>Set any DPI from 30 to 2400 (presets 72, 96, 150, 200, 300, 600). With <b>Resample</b> off only the print size changes and the pixels stay identical; with it on the photo is scaled. The DPI is saved inside JPG and PNG files so they print at the right size.</td></tr>
+        <tr><td>File formats</td><td>Opens JPEG, PNG, WebP, GIF, BMP and AVIF (HEIC on Android and Mac). Saves JPG, PNG (keeps transparency), WebP and PDF.</td></tr>
+        <tr><td>Shortcuts</td><td><span class="kbd">Ctrl</span>+<span class="kbd">O</span> open &middot; <span class="kbd">Ctrl</span>+<span class="kbd">S</span> save &middot; <span class="kbd">Ctrl</span>+<span class="kbd">P</span> print &middot; <span class="kbd">Ctrl</span>+<span class="kbd">Z</span> / <span class="kbd">Ctrl</span>+<span class="kbd">Y</span> undo / redo &middot; <span class="kbd">Ctrl</span>+<span class="kbd">V</span> paste a photo &middot; <span class="kbd">F1</span> help</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
+    <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonAI Image Editor. All rights reserved. Simple, not complex. Powerful and useful.</div>
+    <div>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</div>
+    <div>Also from llemonai: <a href="reader.html">llemonAI Reader</a> &middot; <a href="organizer.html">PDF Organizer</a> &middot; <a href="scanner.html">llemonAI Wi-Fi Scanner</a></div>
+    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var REL = 'https://github.com/llemonai/llemon-image-editor/releases/download/v1.0.0/';
+  document.getElementById('dl-x64').href = REL + 'llemonAI-Image-Editor-1.0.0-win-x64.exe';
+  document.getElementById('dl-x86').href = REL + 'llemonAI-Image-Editor-1.0.0-win-x86.exe';
+  document.getElementById('dl-android').href = REL + 'llemonAI-Image-Editor-1.0.0-android.apk';
+  document.getElementById('dl-mac').href = REL + 'llemonAI-Image-Editor-1.0.0-macos.dmg';
+  document.getElementById('sha-x64').textContent = 'D95057B7EA4094BF3F26A9F348C514BFE07F365428F4ABE7F701376728589C40';
+  document.getElementById('sha-x86').textContent = '73ED4910BCC342E3944E1B8190E2CFE4BF85425DDE4037BB8322EA58A822C082';
+  document.getElementById('sha-android').textContent = 'D4E48F9F418199951FCCF2641301603178D29B59C56D0511A3E317C46694B0A7';
+  document.getElementById('sha-mac').textContent = '480AC9D59DD528EDA3779DC8B256E9932E884D98114B6255D23A7DAC29823D35';
+
+  // Live download counts from GitHub's public Releases API, summed across all Image Editor releases.
+  fetch('https://api.github.com/repos/llemonai/llemon-image-editor/releases?per_page=100')
+    .then(function (res) { if (!res.ok) throw new Error('GitHub API error ' + res.status); return res.json(); })
+    .then(function (releases) {
+      var totals = { x64: 0, x86: 0, android: 0, mac: 0 };
+      releases.forEach(function (release) {
+        (release.assets || []).forEach(function (asset) {
+          var name = asset.name.toLowerCase();
+          if (name.indexOf('win-x64') !== -1) totals.x64 += asset.download_count;
+          else if (name.indexOf('win-x86') !== -1) totals.x86 += asset.download_count;
+          else if (name.indexOf('.apk') !== -1) totals.android += asset.download_count;
+          else if (name.indexOf('macos') !== -1) totals.mac += asset.download_count;
+        });
+      });
+      function fmt(n) { return n.toLocaleString(); }
+      document.getElementById('count-x64').innerHTML = '<span class="n">' + fmt(totals.x64) + '</span> downloads';
+      document.getElementById('count-x86').innerHTML = '<span class="n">' + fmt(totals.x86) + '</span> downloads';
+      document.getElementById('count-android').innerHTML = '<span class="n">' + fmt(totals.android) + '</span> downloads';
+      document.getElementById('count-mac').innerHTML = '<span class="n">' + fmt(totals.mac) + '</span> downloads';
+      var total = totals.x64 + totals.x86 + totals.android + totals.mac;
+      document.getElementById('dl-total-line').textContent =
+        total > 0 ? fmt(total) + ' total downloads across all platforms and versions.' : '';
+    })
+    .catch(function () { /* rate limit or offline: the download buttons don't depend on this */ });
+</script>
+
+<button id="chat-toggle" aria-label="Open help chat" title="Questions? Chat with our help bot">
+  &#128172;
+  <span class="chat-badge" id="chat-badge">1</span>
+</button>
+<div id="chat-panel" role="dialog" aria-label="Help chat">
+  <div id="chat-header">
+    <span class="chat-avatar">&#129302;</span>
+    <div class="chat-title-block">
+      <div>llemonai Help Bot</div>
+      <div class="chat-status"><span class="dot"></span> AI-powered &middot; ask anything about the app</div>
+    </div>
+    <button id="chat-close" aria-label="Close chat">&times;</button>
+  </div>
+  <div id="chat-body"></div>
+  <button id="chat-more-toggle" type="button">Suggested questions &#9662;</button>
+  <div id="chat-quick-replies"></div>
+  <div id="chat-report-pill">
+    <span>&#128196;</span>
+    <span class="name" id="chat-report-name"></span>
+    <button id="chat-report-remove" aria-label="Remove attached report" title="Remove">&times;</button>
+  </div>
+  <div id="chat-input-row">
+    <input type="file" id="chat-file-input" accept="application/pdf" style="display:none;" />
+    <button id="chat-attach" aria-label="Attach your PDF report" title="Attach your PDF report">&#128206;</button>
+    <input id="chat-input" type="text" placeholder="Type a question&hellip;" maxlength="500" autocomplete="off" />
+    <button id="chat-send" aria-label="Send">&#10148;</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var faq = [
+    {
+      q: "What is llemonAI Image Editor?",
+      a: "A free photo editor for Windows, macOS and Android. It removes or replaces a photo's background with on-device AI (including putting a person on any scenery), beautifies faces, adds text in English, Hindi and other Indian scripts, makes Indian passport photos, and prints collages from 6×4 inch to A4. Everything runs on your device."
+    },
+    {
+      q: "How do I change a photo's background?",
+      a: "Open the photo, go to the <b>Background</b> tab and tap <b>Remove background (person)</b>. Then choose None (transparent), a colour, Blur, or <b>Scenery…</b> to use any photo of a place. Use the Refine brush to touch up the edges, and press <b>Apply</b>. For objects, select them first and use <b>Keep selection, remove the rest</b>."
+    },
+    {
+      q: "How do I put a person on a scenery or another photo?",
+      a: "In the <b>Background</b> tab, tap <b>Put the person on a scenery…</b> and choose any photo of a place (a beach, mountains, a monument…). The person is cut out and placed on it. Drag on the photo to move the scenery, use <b>Zoom scenery</b> and <b>Blur scenery</b> to fine-tune it, keep <b>Match the person's lighting</b> on, then press Apply."
+    },
+    {
+      q: "How do I make an Indian passport photo?",
+      a: "Open the <b>Passport</b> tab and choose a photo. India passport 35×45 mm is selected by default: the face is found, the background made white and the head sized to the guide lines automatically. Then <b>Save photo</b> (300 DPI), <b>Save for online form</b> (630×810 px under 250 KB for Passport Seva), or print a sheet — 8 copies fit on 6×4 inch paper. Always check the latest official rules before applying."
+    },
+    {
+      q: "How do I make a photo collage for printing?",
+      a: "Open the <b>Collage</b> tab, choose the page (6×4 in up to A4 and Letter) and portrait or landscape, pick a layout, then <b>Add photos</b>. Tap a box then a photo, or drag photos onto boxes; drag between boxes to swap. Print, or save as JPG, PNG or PDF at 300 DPI. Print at 100% / Actual size for exact dimensions."
+    },
+    {
+      q: "Can it remove dark spots or make someone look younger?",
+      a: "Yes — the <b>Beauty</b> tab smooths skin (younger look), removes dark spots, makes skin tone lighter or deeper, brightens eyes and whitens teeth, or press <b>One-tap beautify</b>. The <b>Spot remover</b> removes single pimples or marks with a tap. Only the skin of the face changes; eyes, eyebrows and lips stay sharp."
+    },
+    {
+      q: "How do I change the resolution or DPI of a photo?",
+      a: "Open the photo and go to the <b>Crop</b> tab, section <b>Image size &amp; resolution</b>. Enter a DPI (or pick 72, 96, 150, 200, 300 or 600) and the size in pixels, percent, cm, mm or inches. Turn <b>Resample</b> off to change only the DPI and print size without touching the pixels, or keep it on to make the photo bigger or smaller. Quick sizes include 4K, Full HD, HD and a small size for WhatsApp or email. Press <b>Apply size &amp; resolution</b>; the DPI is saved in the file."
+    },
+    {
+      q: "Which download do I need — Windows 32-bit, 64-bit, Mac or Android?",
+      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install — almost every PC made since 2010 is 64-bit. On a Mac, download the .dmg; it runs on Apple Silicon and Intel Macs with macOS 12 or later (the first time, allow it in System Settings → Privacy &amp; Security → <b>Open Anyway</b>; see <a href=\"#mac-open\">Opening on a Mac</a>). On Android, there's a single .apk for any Android 8.0+ device. All of them are in the <a href=\"#download\">Download</a> section above."
+    },
+    {
+      q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
+      a: "The builds are signed with our own self-signed certificate/key (not a paid, publicly trusted CA or Play Store listing yet), so Windows may show \"Unknown Publisher\", Android may warn about an unknown source, and macOS blocks the first launch until you click <b>Open Anyway</b> in System Settings → Privacy &amp; Security — that's expected. To confirm a file is genuine, compare its SHA256 checksum in the <a href=\"#download\">Download</a> section: on Windows run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+    },
+    {
+      q: "My Mac says \"Apple could not verify llemonAI Image Editor is free of malware\". How do I open it?",
+      a: "That's macOS's standard message for apps that aren't notarized by Apple; it doesn't mean anything was found in the app. Allow it once: 1. Drag the app from the .dmg into Applications. 2. Double-click it and click <b>Done</b> on the warning. 3. Open <b>System Settings → Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to the blocked app. 4. Enter your password and click <b>Open Anyway</b> again. See <a href=\"#mac-open\">Opening on a Mac</a> for details."
+    },
+    {
+      q: "How do I update llemonAI Image Editor?",
+      a: "Open <b>About</b> (the ⓘ button) and click <b>Check for updates</b>. If a newer version exists, click <b>Install</b>: the app downloads it from our GitHub release, checks its SHA256 checksum, and installs it. Windows and macOS restart on the new version; on Android, confirm in the system installer."
+    },
+    {
+      q: "Are my photos uploaded anywhere?",
+      a: "No. llemonAI Image Editor works entirely on your device, including the AI for background removal and face detection, and doesn't need an internet connection."
+    },
+    {
+      q: "How do I contact support?",
+      a: "Email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a> and we'll get back to you."
+    }
+  ];
+
+  var CHAT_API = 'https://llemonai-chat-worker.llemonai-us.workers.dev';
+  var MAX_REPORT_CHARS = 15000;
+
+  // pdf.js is only needed when a report is attached, so load it on first use
+  var pdfjsReady = null;
+  function loadPdfJs() {
+    if (!pdfjsReady) {
+      pdfjsReady = new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+        s.onload = function () {
+          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          resolve(pdfjsLib);
+        };
+        s.onerror = function () { pdfjsReady = null; reject(new Error('pdf.js failed to load')); };
+        document.head.appendChild(s);
+      });
+    }
+    return pdfjsReady;
+  }
+
+  var toggle = document.getElementById('chat-toggle');
+  var badge = document.getElementById('chat-badge');
+  var panel = document.getElementById('chat-panel');
+  var closeBtn = document.getElementById('chat-close');
+  var body = document.getElementById('chat-body');
+  var replies = document.getElementById('chat-quick-replies');
+  var moreToggle = document.getElementById('chat-more-toggle');
+  var input = document.getElementById('chat-input');
+  var sendBtn = document.getElementById('chat-send');
+  var attachBtn = document.getElementById('chat-attach');
+  var fileInput = document.getElementById('chat-file-input');
+  var reportPill = document.getElementById('chat-report-pill');
+  var reportName = document.getElementById('chat-report-name');
+  var reportRemoveBtn = document.getElementById('chat-report-remove');
+  var greeted = false;
+  var reportContext = '';
+
+  function addMessage(text, who) {
+    var isBot = who.split(' ')[0] === 'bot';
+    var row = document.createElement('div');
+    row.className = 'chat-row ' + who;
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = isBot ? '\u{1F916}' : '\u{1F9D1}';
+
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg ' + who;
+    bubble.innerHTML = text;
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function addTypingIndicator() {
+    var row = document.createElement('div');
+    row.className = 'chat-row bot';
+    row.id = 'chat-typing-row';
+
+    var avatar = document.createElement('div');
+    avatar.className = 'chat-mini-avatar';
+    avatar.textContent = '\u{1F916}';
+
+    var typing = document.createElement('div');
+    typing.className = 'chat-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+
+    row.appendChild(avatar);
+    row.appendChild(typing);
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+    return row;
+  }
+
+  function collapseSuggestions() {
+    replies.classList.add('collapsed');
+    moreToggle.textContent = 'Suggested questions ▾';
+  }
+
+  function toggleSuggestions() {
+    var isCollapsed = replies.classList.toggle('collapsed');
+    moreToggle.textContent = isCollapsed ? 'Suggested questions ▾' : 'Hide suggestions ▴';
+  }
+
+  moreToggle.addEventListener('click', toggleSuggestions);
+
+  function askQuestion(item) {
+    addMessage(item.q, 'user');
+    collapseSuggestions();
+    var typingRow = addTypingIndicator();
+    setTimeout(function () {
+      typingRow.remove();
+      addMessage(item.a, 'bot');
+    }, 450 + Math.random() * 350);
+  }
+
+  function askAi(question) {
+    addMessage(question, 'user');
+    collapseSuggestions();
+    input.value = '';
+    sendBtn.disabled = true;
+    var typingRow = addTypingIndicator();
+
+    fetch(CHAT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: question, reportContext: reportContext })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
+        return res.json();
+      })
+      .then(function (data) {
+        typingRow.remove();
+        if (data.error) throw new Error(data.error);
+        addMessage(data.reply, 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't reach the AI assistant just now. Please try again, or email <a href=\"mailto:llemonai.us@gmail.com\">llemonai.us@gmail.com</a>.", 'bot error');
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+      });
+  }
+
+  function extractPdfText(file) {
+    return file.arrayBuffer().then(function (buf) {
+      return loadPdfJs().then(function (lib) { return lib.getDocument({ data: buf }).promise; });
+    }).then(function (pdf) {
+      var pageTexts = [];
+      var pagePromise = Promise.resolve();
+      for (var i = 1; i <= pdf.numPages; i++) {
+        (function (pageNum) {
+          pagePromise = pagePromise
+            .then(function () { return pdf.getPage(pageNum); })
+            .then(function (page) { return page.getTextContent(); })
+            .then(function (content) {
+              var text = content.items.map(function (it) { return it.str; }).join(' ');
+              pageTexts.push(text);
+            });
+        })(i);
+      }
+      return pagePromise.then(function () { return pageTexts.join('\n\n'); });
+    });
+  }
+
+  function handleFileAttach(file) {
+    if (!file || file.type !== 'application/pdf') {
+      addMessage('Please attach a PDF file (the report exported from llemonAI Wi-Fi Scanner).', 'bot error');
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
+      return;
+    }
+
+    var typingRow = addTypingIndicator();
+    extractPdfText(file)
+      .then(function (text) {
+        typingRow.remove();
+        reportContext = text.slice(0, MAX_REPORT_CHARS);
+        reportName.textContent = file.name;
+        reportPill.classList.add('show');
+        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
+      })
+      .catch(function () {
+        typingRow.remove();
+        addMessage("Sorry, I couldn't read that PDF. Make sure it's not password-protected and try again.", 'bot error');
+      });
+  }
+
+  attachBtn.addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files[0]) {
+      handleFileAttach(fileInput.files[0]);
+    }
+    fileInput.value = '';
+  });
+  reportRemoveBtn.addEventListener('click', function () {
+    reportContext = '';
+    reportPill.classList.remove('show');
+    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
+  });
+
+  function showMenu() {
+    replies.innerHTML = '';
+    faq.forEach(function (item) {
+      var btn = document.createElement('button');
+      btn.className = 'chat-chip';
+      btn.textContent = item.q;
+      btn.onclick = function () { askQuestion(item); };
+      replies.appendChild(btn);
+    });
+    replies.classList.remove('collapsed');
+    moreToggle.textContent = 'Hide suggestions ▴';
+  }
+
+  function openChat() {
+    panel.classList.add('open');
+    badge.classList.add('hidden');
+    if (!greeted) {
+      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI Image Editor &mdash; pick a common question below or type your own.", 'bot');
+      showMenu();
+      greeted = true;
+    }
+  }
+
+  function handleSend() {
+    var text = input.value.trim();
+    if (!text) return;
+    askAi(text);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  toggle.addEventListener('click', function () {
+    if (panel.classList.contains('open')) {
+      panel.classList.remove('open');
+    } else {
+      openChat();
+    }
+  });
+  closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
+})();
+</script>
+
+</body>
+</html>
