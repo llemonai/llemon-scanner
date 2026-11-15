@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>llemonAI Reader 2.0 &mdash; Free PDF Reader &amp; Presentation Tool for Advocates, Teachers &amp; Students</title>
+<title>llemonAI PDF Annotator &mdash; Free PDF Annotator &amp; Presentation Tool for Advocates, Teachers &amp; Students</title>
 <meta name="description" content="Free PDF reader, annotator and presentation tool. Show only the PDF page on a projector or video call, and keep your notes, desktop and other windows private. Combine PDF and Word files into one PDF. Made for advocates, lawyers, tutors, lecturers, students and corporate trainers." />
 <link rel="canonical" href="https://llemonai.in/reader.html" />
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
@@ -12,14 +12,14 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://llemonai.in/reader.html" />
-<meta property="og:title" content="llemonAI Reader 2.0 — Free PDF Reader & Presentation Tool" />
+<meta property="og:title" content="llemonAI PDF Annotator — Free PDF Annotator & Presentation Tool" />
 <meta property="og:description" content="Show your audience only the PDF page on a projector or video call. Combine case files, notes and study material into one PDF, annotate live and collect passages on a whiteboard. Free for Windows, macOS and Android." />
 <meta property="og:image" content="https://llemonai.in/screenshots/reader-annotate.png" />
 <meta property="og:image:width" content="1800" />
 <meta property="og:image:height" content="1125" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="llemonAI Reader 2.0 — Free PDF Reader & Presentation Tool" />
+<meta name="twitter:title" content="llemonAI PDF Annotator — Free PDF Annotator & Presentation Tool" />
 <meta name="twitter:description" content="Show your audience only the PDF page on a projector or video call. Combine files into one PDF, annotate live and collect passages on a whiteboard." />
 <meta name="twitter:image" content="https://llemonai.in/screenshots/reader-annotate.png" />
 
@@ -30,7 +30,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "llemonAI Reader for Windows",
+    "name": "llemonAI PDF Annotator for Windows",
     "operatingSystem": "Windows 10, Windows 11",
     "applicationCategory": "BusinessApplication",
     "softwareVersion": "2.0.3",
@@ -41,7 +41,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "llemonAI Reader for macOS",
+    "name": "llemonAI PDF Annotator for macOS",
     "operatingSystem": "macOS 12 and later (Apple Silicon and Intel)",
     "applicationCategory": "BusinessApplication",
     "softwareVersion": "2.0.3",
@@ -52,7 +52,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "llemonAI Reader for Android",
+    "name": "llemonAI PDF Annotator for Android",
     "operatingSystem": "Android 8.0 (API 26) and later",
     "applicationCategory": "BusinessApplication",
     "softwareVersion": "2.0.3",
@@ -66,7 +66,7 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is llemonAI Reader?",
+        "name": "What is llemonAI PDF Annotator?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "A free PDF reader, annotator and presentation tool for Windows, macOS and Android. You can highlight, write with a pen, add notes, search, reorder or hide pages, merge PDF and Word files, and collect important passages on a whiteboard. On Windows and macOS, Presentation mode shows your audience only the PDF page."
@@ -77,7 +77,7 @@
         "name": "How do I show only the PDF page on a projector?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Connect the projector. On Windows, press Windows+P and choose Extend; on a Mac, open System Settings > Displays and use the projector as an extended display, not a mirror. Then click Present in llemonAI Reader. The projector shows only the PDF page, and your screen keeps all the controls, thumbnails and the whiteboard. With Duplicate or mirroring, the audience sees your whole screen."
+          "text": "Connect the projector. On Windows, press Windows+P and choose Extend; on a Mac, open System Settings > Displays and use the projector as an extended display, not a mirror. Then click Present in llemonAI PDF Annotator. The projector shows only the PDF page, and your screen keeps all the controls, thumbnails and the whiteboard. With Duplicate or mirroring, the audience sees your whole screen."
         }
       },
       {
@@ -109,7 +109,7 @@
         "name": "Are my documents uploaded anywhere?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. llemonAI Reader opens, annotates and saves files on your own device."
+          "text": "No. llemonAI PDF Annotator opens, annotates and saves files on your own device."
         }
       }
     ]
@@ -117,635 +117,225 @@
 ]
 </script>
 
-<style>
-  :root {
-    --bg: #0b0f14;
-    --bg-alt: #101722;
-    --card: #141d2b;
-    --border: #223349;
-    --text: #e7edf5;
-    --text-dim: #9fb0c3;
-    --accent: #ffd23f;
-    --accent-dim: #3a8bff;
-  }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0; padding: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    scroll-behavior: smooth;
-  }
-  a { color: var(--accent-dim); }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-
-  header.hero {
-    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 64px 0 56px;
-  }
-  .brand {
-    display: flex; align-items: center;
-    margin-bottom: 40px;
-  }
-  .brand img { height: 34px; width: auto; display: block; }
-  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
-  .back-home:hover { color: var(--text); }
-
-  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
-  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
-  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
-  .wm-ai { color: #3a8bff; }
-  .wm-llm::before, .wm-n::before, .wm-ai::before { content: attr(data-t); }
-  /* brand name as real text for search engines and screen readers; the visible wordmark draws its "o" as a lemon */
-  .wm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .wm-product { margin-left: 0.28em; font-weight: 700; }
-  .wm.on-dark .wm-llm { color: #3a8bff; }
-  .wm.on-dark .wm-n { color: #e7edf5; }
-  .wm.on-dark .wm-product { color: #ffd23f; }
-  .hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.1;
-    margin: 0 0 16px;
-  }
-  .hero h1 span { color: var(--accent); }
-  .hero p.lead {
-    color: var(--text-dim);
-    font-size: 18px;
-    max-width: 640px;
-    line-height: 1.6;
-    margin: 0 0 32px;
-  }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 22px;
-    border-radius: 10px;
-    font-weight: 600; font-size: 15px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: transform 0.12s ease, opacity 0.12s ease;
-  }
-  .btn:hover { transform: translateY(-1px); }
-  .btn-primary { background: var(--accent); color: #14100a; }
-  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
-  .btn small { font-weight: 400; opacity: 0.75; }
-  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
-
-  section { padding: 56px 0; }
-  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  h2 { font-size: 28px; margin: 0 0 8px; }
-  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px;
-  }
-  .card h3 { margin: 0 0 8px; font-size: 16px; }
-  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
-  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
-
-  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-  @media (min-width: 700px) { .download-grid { grid-template-columns: repeat(2, 1fr); } }
-  .dl-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .dl-card h3 { margin: 0; font-size: 20px; }
-  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
-  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
-  .dl-card .btn { justify-content: center; margin-top: auto; }
-  .checksum {
-    font-size: 11px;
-    color: var(--text-dim);
-    word-break: break-all;
-    line-height: 1.5;
-    border-top: 1px solid var(--border);
-    padding-top: 10px;
-  }
-  .dl-count {
-    font-size: 12px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-top: -4px;
-  }
-  .dl-count .n { color: var(--accent); font-weight: 700; }
-  .dl-version {
-    display: inline-block; align-self: flex-start;
-    font-size: 12px; font-weight: 700; color: var(--accent);
-    border: 1px solid var(--accent); border-radius: 999px; padding: 2px 10px;
-  }
-  .whats-new { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0 0 20px; }
-  .whats-new strong { color: var(--text); }
-  .prev-versions { margin-top: 32px; }
-  .prev-versions h3 { font-size: 16px; margin: 0 0 4px; }
-  .prev-scroll { overflow-x: auto; }
-  table.prev { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
-  table.prev th, table.prev td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  table.prev th { color: var(--text-dim); font-weight: 600; }
-  table.prev td.sha { font-size: 11px; word-break: break-all; color: var(--text-dim); }
-
-  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
-  table.checklist th, table.checklist td {
-    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
-  }
-  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
-
-  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
-  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
-  .shot-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
-  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
-
-  footer {
-    padding: 40px 0;
-    color: var(--text-dim);
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
-  }
-  footer a { color: var(--text-dim); }
-
-  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
-
-  /* Chat widget */
-  #chat-toggle {
-    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--accent); color: #14100a; border: none;
-    font-size: 24px; cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-  }
-  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
-  #chat-toggle .chat-badge {
-    position: absolute; top: -2px; right: -2px;
-    width: 18px; height: 18px; border-radius: 50%;
-    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--bg);
-    animation: chat-badge-pulse 1.8s ease-in-out infinite;
-  }
-  #chat-toggle .chat-badge.hidden { display: none; }
-  @keyframes chat-badge-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.18); }
-  }
-
-  #chat-panel {
-    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
-    width: 400px; max-width: calc(100vw - 40px);
-    height: min(720px, 85vh); max-height: calc(100vh - 100px);
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-    display: flex; flex-direction: column; overflow: hidden;
-    opacity: 0; transform: translateY(12px) scale(0.98);
-    pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease;
-  }
-  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-  @media (max-width: 440px) {
-    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
-    #chat-toggle { right: 14px; bottom: 14px; }
-  }
-
-  #chat-body { min-height: 160px; flex: 1 1 auto; }
-  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
-  #chat-quick-replies.collapsed { display: none; }
-  #chat-more-toggle {
-    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
-    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
-    border-radius: 999px; cursor: pointer; align-self: flex-start;
-  }
-  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
-  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  #chat-header {
-    padding: 14px 16px; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 10px;
-    background: var(--bg-alt); font-weight: 700; font-size: 14px;
-  }
-  #chat-header .chat-avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--accent); color: #14100a;
-    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
-  }
-  #chat-header .chat-title-block { flex: 1; min-width: 0; }
-  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
-  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
-  #chat-header button {
-    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
-    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
-  }
-  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
-
-  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
-  #chat-body::-webkit-scrollbar { width: 6px; }
-  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
-  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
-  .chat-row .chat-mini-avatar {
-    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
-    background: var(--bg-alt); border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center; font-size: 11px;
-  }
-  @keyframes chat-pop-in {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .chat-msg { font-size: 13.5px; line-height: 1.5; }
-  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
-  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
-  .chat-msg a { color: inherit; text-decoration: underline; }
-  .chat-msg.bot a { color: var(--accent-dim); }
-
-  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
-  .chat-typing span {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
-    animation: chat-typing-bounce 1s infinite ease-in-out;
-  }
-  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
-  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes chat-typing-bounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-    30% { transform: translateY(-4px); opacity: 1; }
-  }
-
-  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
-  .chat-chip {
-    background: transparent; border: 1px solid var(--border); color: var(--text);
-    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
-    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-  }
-  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
-
-  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
-  #chat-input {
-    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
-    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
-  }
-  #chat-input:focus { border-color: var(--accent-dim); }
-  #chat-send, #chat-attach {
-    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
-    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.12s ease;
-  }
-  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
-  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
-  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
-  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
-
-  #chat-report-pill {
-    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
-    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
-    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
-  }
-  #chat-report-pill.show { display: flex; }
-  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
-  #chat-report-pill button {
-    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
-  }
-  #chat-report-pill button:hover { color: var(--text); }
-  /* Reader page additions */
-  .kbd { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 12px; padding: 1px 6px; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; background: var(--card); color: var(--text); }
-  table.checklist td:first-child { white-space: nowrap; }
-  #chat-attach { display: none; }
-
-  .mac-open { margin-top: 28px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; }
-  .mac-open h3 { margin: 0 0 6px; font-size: 18px; }
-  .mac-open p { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
-  .mac-open ol { margin: 0 0 12px; padding-left: 22px; font-size: 14px; line-height: 1.7; }
-  .mac-open ol li { margin-bottom: 4px; }
-  .mac-open .quote { color: var(--text); font-style: italic; }
-  .mac-open .mono { display: block; margin-top: 6px; padding: 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; white-space: nowrap; }
-  .mac-open details { margin-top: 6px; font-size: 13px; color: var(--text-dim); }
-  .mac-open summary { cursor: pointer; color: var(--text); }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>#chat-attach { display: none; }</style>
 </head>
 <body>
 
-<header class="hero">
+<div class="topbar">
   <div class="wrap">
-    <div class="brand">
-      <span class="wm on-dark" style="font-size: 1.9rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-        <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
-        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
-          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
-          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
-          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
-          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
-          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
-          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
-          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
-        </svg>
-        <span class="wm-n" data-t="n" aria-hidden="true"></span>
-        <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
-        <span class="wm-product">Reader</span>
-      </span>
-      <a class="back-home" href="index.html">&larr; llemonai.in</a>
-    </div>
-    <h1>Show the page.<br/><span>Keep everything else private.</span></h1>
-    <p class="lead">
-      A free PDF reader, annotator and presentation tool for <strong>advocates, teachers, students and trainers</strong>.
-      Combine your documents into one PDF, mark them up and collect key passages on a whiteboard. When you present on
-      a projector or video call, your audience sees only the PDF page, not your notes, desktop or other windows.
-    </p>
+    <a class="wm" href="#top" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+      <span class="wm-sr">llemonAI PDF Annotator</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
+      <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+        <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+        <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+        <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+        <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+        <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+        <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+        <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+      </svg>
+      <span class="wm-n" data-t="n" aria-hidden="true"></span><span class="wm-ai" data-t="AI" aria-hidden="true"></span><span class="wm-product" aria-hidden="true">PDF Annotator</span>
+    </a>
+    <a class="home" href="index.html">&larr; llemonai.in</a>
+    <nav>
+      <a class="opt" href="#present">Presenting</a>
+      <a class="opt" href="#features">Features</a>
+      <a class="opt" href="#who">Who it's for</a>
+      <a class="btn btn-primary btn-sm" href="#download">Download</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow"><b>Free</b> &middot; Windows, macOS and Android &middot; version 2.0.3 &middot; no signup</p>
+    <h1>Present a PDF.<br/><span class="accent">Keep your notes to yourself.</span></h1>
+    <p class="lead">llemonAI PDF Annotator is a PDF reader and annotator for advocates, teachers, students and trainers. Put your documents in one PDF, mark them up, and collect key passages on a whiteboard. On a projector or video call, your audience sees only the page.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#download">Download</a>
-      <a class="btn btn-secondary" href="#use-cases">Who it's for</a>
+      <a class="btn btn-primary" href="#download">Download free</a>
+      <a class="btn btn-plain" href="#present">How presenting works</a>
     </div>
-    <div class="hero-note">Windows 10/11, 64-bit &amp; 32-bit, one portable .exe, no installer &middot; macOS 12 and later, Apple Silicon &amp; Intel &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
+    <p class="small">Windows 10/11: one portable .exe, no installer &middot; macOS 12 or later, Apple Silicon and Intel &middot; Android 8.0 or later</p>
+    <figure class="hero-shot">
+      <div class="frame"><img src="screenshots/reader-whiteboard.png" width="1800" height="1125" alt="llemonAI PDF Annotator with page thumbnails on the left, a witness statement with a highlighted sentence in the middle, and a whiteboard on the right whose boxes link to pages 1, 3 and 4 and are joined by arrows" /></div>
+      <figcaption>Your screen: page thumbnails, the document, and a whiteboard of passages linked to their pages. Sample document.</figcaption>
+    </figure>
   </div>
 </header>
 
-<section id="use-cases" class="alt">
-  <div class="wrap">
-    <h2>One PDF, whatever you present or study</h2>
-    <p class="section-lead">The same simple tools, for anyone who works from documents.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="icon">&#9878;</span>
-        <h3>Advocates and lawyers</h3>
-        <p>Keep trial court records, pleadings, witness statements, evidence, orders, judgments, appeals, memos, hand notings and arguments in one PDF, with a bookmark for each document. During arguments, cross-examination or a virtual hearing, your notes stay on your screen while the audience sees only the page. <a href="#advocates">How advocates use it</a></p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128187;</span>
-        <h3>Online tutors</h3>
-        <p>Teach on Zoom, Google Meet or Microsoft Teams without showing your desktop, other windows or answer keys. Share only the audience window, then highlight and write on the page with a pen as you explain. Students see each stroke as you draw it.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#127979;</span>
-        <h3>Lecturers and teachers</h3>
-        <p>Combine lecture notes, textbook extracts and question papers into one PDF for the classroom projector. Move through pages, zoom in on a diagram and annotate live, with your thumbnails and teaching notes visible only to you.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#127891;</span>
-        <h3>Students preparing for exams</h3>
-        <p>Merge notes and past papers, highlight key points and find any sentence in seconds. Copy text or any part of a page to the whiteboard, connect related ideas with arrows, and click a box to return to the page it came from. Useful for revision for board exams, entrance tests and competitive exams.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128188;</span>
-        <h3>Corporate training and presentations</h3>
-        <p>Run training sessions and client presentations from one PDF on a projector, Teams or Zoom. Your email, chat windows and desktop stay off the shared screen, and Export produces one final copy with every note included.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128214;</span>
-        <h3>Everyday reading and review</h3>
-        <p>Read books, reports, contracts and research papers one page at a time or in continuous scrolling. Mark them up, keep notes and bookmarks, and save a normal PDF that opens in other PDF viewers.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="advocates">
-  <div class="wrap">
-    <h2>For advocates and lawyers: your whole case file, in one place</h2>
-    <p class="section-lead">Stop juggling folders and bundles. Keep trial court records, pleadings, witness statements, evidence, orders, judgments, appeals, memos, hand notings and arguments together in one PDF, in the order you want to argue them. Free, with no signup.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="icon">&#128194;</span>
-        <h3>The whole matter in one file</h3>
-        <p>Combine trial court records, pleadings, witness statements including Section 161 statements (Section 180 BNSS), evidence, orders, judgments, appeals, memos, bare acts and written arguments into one PDF. PDF and Word files both work. Each file gets its own bookmark, and you can reorder pages or insert a document at any position as the matter grows.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#9997;</span>
-        <h3>Your hand notings on the page</h3>
-        <p>Write directly on a page with a mouse, stylus or finger, just as you would in the margin of a paper file. Highlight or underline text, circle a passage, and attach a note to a sentence or a whole page. The Notes panel lists every annotation in one place.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128269;</span>
-        <h3>Find it while on your feet</h3>
-        <p>Jump straight to any document with its bookmark, a page thumbnail or the page number, and search a word or whole sentence across typed documents. Scanned records can be read and annotated, but can only be searched if the PDF already contains text.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128203;</span>
-        <h3>Build your argument on the whiteboard</h3>
-        <p>Pull a line from a deposition, a paragraph of an order and a section of the act onto the whiteboard, keeping any annotations on them, and connect them with arrows. Each box shows its page number and takes you back to that page with one click.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#9878;</span>
-        <h3>Arguments and cross-examination</h3>
-        <p>Have the record, your questions and your notes ready on your own screen. Where the court or forum allows a screen, or in a virtual hearing, the projector or shared window shows only the page you choose, and your notes and other documents stay with you.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128274;</span>
-        <h3>Confidential by design</h3>
-        <p>Client files are opened, annotated and saved on your own device. Nothing is uploaded. Your notes and whiteboard are saved inside the PDF, so keep a clean copy of any document you need to send to someone else.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="present">
   <div class="wrap">
-    <h2>Presentation mode: they see the page, you keep the controls</h2>
-    <p class="section-lead">Click <strong>Present</strong> and a separate audience window shows only the PDF page, following what you do on your screen. Your toolbar, thumbnails, whiteboard, notes and desktop stay with you. Available on Windows.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="icon">&#128253;</span>
-        <h3>On a projector</h3>
-        <p>Connect the projector, press <span class="kbd">Windows</span>+<span class="kbd">P</span> and choose <strong>Extend</strong>, then click Present. With Duplicate, the audience sees your whole screen, so use Extend.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#127909;</span>
-        <h3>On a video call</h3>
-        <p>Click Present, then in Zoom, Microsoft Teams or Google Meet share only the window named <strong>llemonAI Reader - Audience</strong>, not your entire screen. Viewers won't see your other windows or desktop background.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#9998;</span>
-        <h3>Live, as you work</h3>
-        <p>Page changes, zoom, scrolling, highlights and pen strokes appear for your audience as you make them. Click a whiteboard box and they see that page, with the source lit up.</p>
-      </div>
+    <p class="kicker">Presentation mode &middot; Windows and macOS</p>
+    <div class="narrow">
+      <h2>They see the page. You keep everything else.</h2>
+      <p class="muted">Click <b>Present</b> and a second window shows only the PDF page. It follows what you do, while your toolbar, thumbnails, notes, whiteboard and desktop stay on your own screen.</p>
+    </div>
+    <div class="present-grid">
+      <figure>
+        <div class="frame"><img src="screenshots/reader-present.png" width="1800" height="1013" loading="lazy" alt="The llemonAI PDF Annotator audience window showing only a PDF page with one highlighted sentence, and no toolbar, thumbnails or whiteboard" /></div>
+        <figcaption>What the audience sees: the page, nothing more.</figcaption>
+      </figure>
+      <ol class="steps">
+        <li><h3>On a projector</h3><p>On Windows press <span class="kbd">Windows</span>+<span class="kbd">P</span> and choose <b>Extend</b>. On a Mac, use the projector as an extended display, not a mirror. Then click Present.</p></li>
+        <li><h3>On a video call</h3><p>Click Present, then in Zoom, Teams or Google Meet share only the window named <b>llemonAI Reader - Audience</b>, not your entire screen.</p></li>
+        <li><h3>Live, as you work</h3><p>Page changes, zoom, highlights and pen strokes appear as you make them. Click a whiteboard box and the audience sees that page.</p></li>
+      </ol>
     </div>
   </div>
 </section>
 
-<section id="features" class="alt">
+<section class="band" id="features">
   <div class="wrap">
-    <h2>Everything you do to a paper document, on a PDF</h2>
-    <p class="section-lead">Mark it up, keep track of it, and hand back one clean file.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="icon">&#128203;</span>
-        <h3>Whiteboard with page links</h3>
-        <p>Copy selected text, a rectangle or any freehand shape from any page, along with its annotations. Each box shows its page number and opens that page when clicked, and arrows connect related boxes. It is saved inside the PDF.</p>
+    <p class="kicker">Features</p>
+    <div class="narrow">
+      <h2>Everything you do to a paper file, on a PDF.</h2>
+    </div>
+
+    <div class="feature">
+      <div class="text">
+        <h3>Collect what matters, linked to its page</h3>
+        <p>Copy a sentence, a rectangle or any freehand shape onto the whiteboard, with its highlights. Each box shows its page number; click it and you are back on that page.</p>
+        <ul class="ticks">
+          <li>Connect related boxes with arrows</li>
+          <li>Add a note to any box</li>
+          <li>Saved inside the PDF</li>
+        </ul>
       </div>
-      <div class="card">
-        <span class="icon">&#128209;</span>
-        <h3>Index &amp; pages, docked left</h3>
-        <p>The document's own table of contents, page thumbnails, your notes, bookmarks and search results live in a side panel that scrolls on its own &mdash; the page you're reading never moves it.</p>
+      <figure><div class="frame crop crop-right"><img src="screenshots/reader-whiteboard.png" loading="lazy" alt="Close-up of the whiteboard: boxes from pages 1, 3 and 4 with a note, joined by arrows" /></div></figure>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h3>Mark it up like paper</h3>
+        <p>Highlight or underline text in six colours, circle a passage, write with a pen, or type on the page. Every mark can carry a note, and the Notes panel lists them all.</p>
+        <ul class="ticks">
+          <li>Type on any page with font, size, bold, italic and underline</li>
+          <li>Paste text or screenshots with <span class="kbd">Ctrl</span>+<span class="kbd">V</span></li>
+          <li>Sticky notes and bookmarks</li>
+        </ul>
       </div>
-      <div class="card">
-        <span class="icon">&#128396;</span>
-        <h3>Highlight, underline, circle</h3>
-        <p>Select text to highlight or underline it in six colours, or draw a circle around anything that matters. Every mark can carry a note.</p>
+      <figure><div class="frame"><img src="screenshots/reader-annotate.png" width="1800" height="1125" loading="lazy" alt="A PDF page with highlights, an underline with a comment, a circle, a sticky note and pen marks, with the Notes panel listing each one" /></div></figure>
+    </div>
+
+    <div class="feature">
+      <div class="text">
+        <h3>Put the whole matter in one file</h3>
+        <p>Append PDF and Word files to the one you are reading. Each file gets its own bookmark, and you can reorder, rotate, hide or delete pages as the matter grows.</p>
+        <ul class="ticks">
+          <li>Insert a document or a blank page anywhere</li>
+          <li>Notes move with their pages</li>
+          <li>Word text stays searchable</li>
+        </ul>
       </div>
-      <div class="card">
-        <span class="icon">&#9997;</span>
-        <h3>Pen for freehand writing</h3>
-        <p>Write, sign or sketch directly on the page with a mouse, finger or stylus. Thin, medium or thick pen; <span class="kbd">Ctrl</span>+<span class="kbd">Z</span> undoes the last stroke.</p>
+      <figure><div class="frame"><img src="screenshots/reader-pages.png" width="1800" height="1125" loading="lazy" alt="The Pages panel with thumbnails, bookmark and note badges, and buttons to move, rotate, insert and delete pages" /></div></figure>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h3>Find the sentence while you're on your feet</h3>
+        <p>Search a word or a whole sentence, even when it breaks across lines. Every match is listed in context, one click from its page.</p>
+        <ul class="ticks">
+          <li>Match case and whole-word options</li>
+          <li>Jump by bookmark, thumbnail or page number</li>
+          <li>Scanned pages can be read and marked up; search needs text in the PDF</li>
+        </ul>
       </div>
-      <div class="card">
-        <span class="icon">&#128395;</span>
-        <h3>Type &amp; paste onto pages</h3>
-        <p>Insert a blank page and type on it &mdash; font, size, bold, italic, underline and colour &mdash; or paste text and pictures such as screenshots with <span class="kbd">Ctrl</span>+<span class="kbd">V</span>. Each one also appears on the whiteboard, one click from its page.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128221;</span>
-        <h3>Sticky notes &amp; bookmarks</h3>
-        <p>Pin a sticky note anywhere, attach a note to a sentence or a whole page, and bookmark pages or individual comments to jump back to them later.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128269;</span>
-        <h3>Word &amp; sentence search</h3>
-        <p>Find a single word or a whole sentence across the document, even when it breaks over lines &mdash; with match-case and whole-word options and a results list in context.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128464;</span>
-        <h3>Add, delete &amp; reorder pages</h3>
-        <p>Drag thumbnails to reorder, rotate or delete pages, insert blank pages, or insert another PDF or Word file at any position. Notes move with their pages.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128206;</span>
-        <h3>Merge PDF &amp; Word files</h3>
-        <p>Append PDFs and Word (.docx) documents to the one you're reading &mdash; or combine several files into a new one. Each file gets a bookmark, and Word text stays searchable.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128424;</span>
-        <h3>Save, export master PDF, print</h3>
-        <p>Save keeps annotations editable and visible in any PDF viewer. Export burns them in and adds a Notes &amp; comments appendix &mdash; one master file to share or archive.</p>
-      </div>
+      <figure><div class="frame"><img src="screenshots/reader-search.png" width="1800" height="1125" loading="lazy" alt="The Find panel listing sentence matches on several pages, with the current match highlighted on the page" /></div></figure>
+    </div>
+
+    <div class="also">
+      <div><h3>Save, export or print</h3><p>Save keeps marks editable and visible in other PDF readers. Export makes one final copy with a notes appendix.</p></div>
+      <div><h3>Hide pages</h3><p>A hidden page stays in the file, but reading, presenting, Print and Export skip it.</p></div>
+      <div><h3>Index panel</h3><p>The document's contents, thumbnails, notes, bookmarks and search, docked on the left.</p></div>
+      <div><h3>Private</h3><p>Files are opened and saved on your device. Nothing is uploaded.</p></div>
+      <div><h3>Updates</h3><p>About &rarr; Check for updates installs a new version after checking its checksum.</p></div>
+      <div><h3>Reading</h3><p>One page at a time or continuous scrolling, with fit-to-width and zoom.</p></div>
     </div>
   </div>
 </section>
 
-<section id="screenshots">
+<section id="who">
   <div class="wrap">
-    <h2>See it in action</h2>
-    <p class="section-lead">A real review session on Windows &mdash; highlights, an underline with a comment, a circle, a sticky note and pen marks, with every annotation listed in the side panel.</p>
-    <div class="shot-grid">
-      <div class="shot-card">
-        <img src="screenshots/reader-whiteboard.png" alt="llemonAI Reader with page thumbnails, an annotated sample PDF page, and a whiteboard of boxes linked to their page numbers and joined by arrows" loading="lazy" />
-        <div class="cap">Your screen &mdash; every control, thumbnails and the whiteboard (sample document)</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/reader-present.png" alt="The llemonAI Reader audience window showing only a highlighted PDF page, with no toolbar, thumbnails or whiteboard" loading="lazy" />
-        <div class="cap">What your audience sees &mdash; only the PDF page (sample document)</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/reader-annotate.png" alt="llemonAI Reader on Windows showing a PDF page with highlights, an underline, a circle, a sticky note and pen drawing, with the Notes panel listing each annotation" loading="lazy" />
-        <div class="cap">Annotate &mdash; highlight, underline, circle, pen and sticky notes, all listed in the Notes panel</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/reader-pages.png" alt="llemonAI Reader Pages panel with page thumbnails, bookmark and note badges, and buttons to move, rotate, insert and delete pages" loading="lazy" />
-        <div class="cap">Pages &mdash; thumbnails with badges, drag to reorder, rotate, insert blank pages or files, delete</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/reader-search.png" alt="llemonAI Reader Find panel showing sentence search results across several pages with the current match highlighted" loading="lazy" />
-        <div class="cap">Find &mdash; words or whole sentences, with every match in context</div>
-      </div>
+    <p class="kicker">Who it's for</p>
+    <div class="narrow">
+      <h2>For people who work from documents.</h2>
     </div>
-
-    <p class="section-lead" style="margin-top:40px;">...and on Android &mdash; the same features, with touch: pinch to zoom, draw with a finger, and the side panel as a slide-out drawer.</p>
-    <div class="shot-grid shot-grid-phone">
-      <div class="shot-card">
-        <img src="screenshots/reader-android.png" alt="llemonAI Reader for Android showing an annotated PDF page in single-page view with Previous and Next buttons" loading="lazy" />
-        <div class="cap">Single-page reading &mdash; scrolling stays on the page you chose</div>
+    <div class="who">
+      <div class="lawyers" id="advocates">
+        <h3>Advocates and lawyers</h3>
+        <p>Keep the whole case file in one PDF, in the order you want to argue it: trial court records, pleadings, witness statements including Section 161 statements (Section 180 BNSS), evidence, orders, judgments, appeals, memos, bare acts, hand notings and written arguments.</p>
+        <p>Write your notings in the margin, pull a line from a deposition and a paragraph of an order onto the whiteboard, and jump to any document by its bookmark. In court or a virtual hearing, the screen shows only the page you choose; your notes and other documents stay with you.</p>
+        <p style="margin:0">Client files never leave your device. Keep a clean copy of any document you need to send to someone else.</p>
       </div>
-      <div class="shot-card">
-        <img src="screenshots/reader-android-pages.png" alt="llemonAI Reader for Android with the side drawer open on the Pages tab" loading="lazy" />
-        <div class="cap">Side drawer &mdash; index, pages, notes, bookmarks and search</div>
-      </div>
+      <ul class="people">
+        <li><b>Online tutors</b><span>Teach on Zoom, Meet or Teams without showing your desktop or answer keys, and write on the page as you explain.</span></li>
+        <li><b>Lecturers and teachers</b><span>Lecture notes, textbook extracts and question papers in one PDF for the classroom projector.</span></li>
+        <li><b>Students preparing for exams</b><span>Merge notes and past papers, highlight, and link key passages on the whiteboard for revision.</span></li>
+        <li><b>Corporate trainers</b><span>Present from one PDF while email and chat stay off the shared screen; export one final copy.</span></li>
+        <li><b>Everyday reading</b><span>Books, reports, contracts and papers, with notes and bookmarks saved in a normal PDF.</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="alt" id="download">
+<section class="band">
+  <div class="wrap android">
+    <div>
+      <p class="kicker">Android</p>
+      <h2>The same reader on your phone.</h2>
+      <p class="muted">Everything except Presentation mode, with touch: pinch to zoom, draw with a finger, and the side panel as a slide-out drawer.</p>
+    </div>
+    <div class="phones">
+      <div class="frame"><img src="screenshots/reader-android.png" width="1030" height="2200" loading="lazy" alt="llemonAI PDF Annotator for Android showing an annotated page in single-page view" /></div>
+      <div class="frame"><img src="screenshots/reader-android-pages.png" width="1030" height="2200" loading="lazy" alt="llemonAI PDF Annotator for Android with the side drawer open on the Pages tab" /></div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
   <div class="wrap">
-    <h2>Download</h2>
-    <p class="section-lead">Windows, Mac or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
-    <p class="whats-new"><strong>llemonAI Reader 2.0.3, 15 Nov 2026.</strong> Fixed: clicking a whiteboard box, note, search result or bookmark now always opens the <b>right page</b>, also in continuous view, and on Windows, Open with offers <b>Always</b> again. If you have 2.0.1 or 2.0.2, About &rarr; Check for updates installs it.</p>
-    <p class="whats-new"><strong>2.0.2:</strong> <b>type on any page</b>, such as a blank page you insert, with font, size, bold, italic, underline and colour; <b>paste text and pictures</b> onto a page with Ctrl+V (&#8984;V on a Mac); and each typed text or pasted picture gets a <b>whiteboard box</b> that takes you back to its page.
-      Also includes the Mac app, Presentation mode on Windows and macOS, hide pages, the whiteboard with page links and arrows, reading with a docked index and page panel, highlights, underlines, circles, pen, eraser, sticky notes, page notes and
-      bookmarks, word and sentence search, page management, PDF and Word merging, editable save, master PDF export and printing.</p>
-    <div class="download-grid">
-      <div class="dl-card">
-        <span class="dl-version">Version 2.0.3 &middot; 15 Nov 2026</span>
-        <h3>llemonAI Reader &mdash; 64-bit</h3>
-        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
-        <ul>
-          <li>Single portable .exe (~14&nbsp;MB)</li>
-          <li>No installation, no admin rights required</li>
-          <li>Uses the Microsoft Edge WebView2 runtime built into Windows 10 and 11</li>
-          <li>Includes Presentation mode</li>
-        </ul>
-        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
-        <div class="dl-count" id="count-x64"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
+    <p class="kicker">Download</p>
+    <div class="narrow">
+      <h2>Free, for Windows, Mac and Android.</h2>
+      <p class="muted">Not sure which Windows file? Almost every PC made since 2010 is 64-bit.</p>
+    </div>
+    <div class="whats-new">
+      <p><strong>New in 2.0.3 (15 Nov 2026):</strong> clicking a whiteboard box, note, search result or bookmark always opens the right page, also in continuous view, and on Windows, Open with offers <b>Always</b> again. If you have 2.0.1 or 2.0.2, About &rarr; Check for updates installs it.</p>
+      <p>The app itself is still named <b>llemonAI Reader</b>, as are the download files; it gets the new name in a coming update.</p>
+      <p><strong>2.0.2:</strong> type on any page, paste text and pictures with Ctrl+V (&#8984;V on a Mac), and find each one on the whiteboard.</p>
+    </div>
+
+    <div class="dl-list">
+      <div class="dl-row">
+        <h3>Windows 64-bit <span class="rec">Recommended</span></h3>
+        <div class="meta">Windows 10 or 11. One portable .exe (about 14&nbsp;MB), no installer, no admin rights. Includes Presentation mode.</div>
+        <div class="act"><a class="btn btn-primary" href="#" id="dl-x64">Download .exe</a><div class="dl-count" id="count-x64"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-x64"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 2.0.3 &middot; 15 Nov 2026</span>
-        <h3>llemonAI Reader &mdash; 32-bit</h3>
-        <div class="meta">For 32-bit Windows installations</div>
-        <ul>
-          <li>Single portable .exe (~14&nbsp;MB)</li>
-          <li>No installation, no admin rights required</li>
-          <li>Windows 10/11, 32-bit edition</li>
-          <li>Includes Presentation mode</li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
-        <div class="dl-count" id="count-x86"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
+      <div class="dl-row">
+        <h3>Windows 32-bit</h3>
+        <div class="meta">For 32-bit editions of Windows 10 or 11. Same portable .exe, with Presentation mode.</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-x86">Download .exe</a><div class="dl-count" id="count-x86"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-x86"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 2.0.3 &middot; 15 Nov 2026</span>
-        <h3>llemonAI Reader &mdash; Mac</h3>
-        <div class="meta">macOS 12 or later &middot; Apple Silicon and Intel</div>
-        <ul>
-          <li>Disk image (~2&nbsp;MB): drag the app to Applications</li>
-          <li>Native menu bar and &#8984; shortcuts</li>
-          <li>Includes Presentation mode</li>
-          <li>First launch: macOS blocks it once because it isn't notarized by Apple &mdash; see <a href="#mac-open">Opening on a Mac</a></li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-mac">Download for Mac</a>
-        <div class="dl-count" id="count-mac"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-mac"></span></div>
+      <div class="dl-row">
+        <h3>Mac</h3>
+        <div class="meta">macOS 12 or later, Apple Silicon and Intel. Disk image (about 2&nbsp;MB) with Presentation mode. The first launch needs one extra step: <a href="#mac-open">opening on a Mac</a>.</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-mac">Download .dmg</a><div class="dl-count" id="count-mac"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-mac"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 2.0.3 &middot; 15 Nov 2026</span>
-        <h3>llemonAI Reader &mdash; Android</h3>
-        <div class="meta">Android 8.0+ (API 26+)</div>
-        <ul>
-          <li>Single .apk (~2.5&nbsp;MB), sideload install</li>
-          <li>Signed with our own release key (not on Play Store yet)</li>
-          <li>Same features as Windows except Presentation mode, plus pinch-zoom and finger drawing</li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
-        <div class="dl-count" id="count-android"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
+      <div class="dl-row">
+        <h3>Android</h3>
+        <div class="meta">Android 8.0 or later. One .apk (about 2.5&nbsp;MB), installed directly; not on the Play Store yet.</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-android">Download .apk</a><div class="dl-count" id="count-android"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-android"></span></details>
       </div>
     </div>
-    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+    <p class="small" style="margin-top:14px" id="dl-total-line"></p>
 
     <div class="mac-open" id="mac-open">
       <h3>Opening llemonAI Reader on a Mac</h3>
@@ -764,54 +354,36 @@
       </details>
     </div>
 
-    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
-      Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile llemonAI-Reader-2.0.3-win-x64.exe SHA256</span> (PowerShell/Command Prompt), or on a Mac <span class="mono">shasum -a 256 llemonAI-Reader-2.0.3-macos.dmg</span> (Terminal),
-      and compare the result to the SHA256 value shown above for the file you downloaded.
-    </p>
-    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      All builds are digitally signed (self-signed certificates, SHA256; the Mac app has an ad-hoc signature and isn't notarized by Apple, so macOS blocks its first launch until you click Open Anyway &mdash; see <a href="#mac-open">Opening on a Mac</a>). Windows SmartScreen may still show
-      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
-      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
-      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we published.
-    </p>
-    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      Installing the Android APK: Android will block it by default as an "unknown source." Open the
-      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
-      normal for any app installed outside the Play Store.
-    </p>
+    <p class="fine">To check a download, run <span class="mono">certutil -hashfile llemonAI-Reader-2.0.3-win-x64.exe SHA256</span> on Windows or <span class="mono">shasum -a 256 llemonAI-Reader-2.0.3-macos.dmg</span> on a Mac, and compare it with the checksum above. The files are signed with llemonai's own certificates, not a public authority, so Windows SmartScreen may say "Unknown Publisher" and Android may ask you to allow installs from this source. Both are expected.</p>
   </div>
 </section>
 
-<section>
+<section class="band">
   <div class="wrap">
-    <h2>Good to know</h2>
-    <p class="section-lead">How llemonAI Reader handles your files.</p>
-    <table class="checklist">
-      <thead><tr><th>Topic</th><th>Details</th></tr></thead>
+    <p class="kicker">Good to know</p>
+    <div class="narrow"><h2>How it handles your files.</h2></div>
+    <table class="facts">
       <tbody>
-        <tr><td>Your files stay on your device</td><td>Documents are opened, annotated and saved locally. Nothing is uploaded.</td></tr>
-        <tr><td>Annotations</td><td>Saved as standard PDF annotations, so they show in other PDF viewers too &mdash; and stay editable when you reopen the file in llemonAI Reader.</td></tr>
-        <tr><td>Save or Export</td><td>Use <strong>Save</strong> for any file you may want to change. <strong>Export</strong> makes a final copy: highlights, drawings and notes are burned into the pages, with a Notes &amp; comments list at the end, and can't be erased from that copy.</td></tr>
-        <tr><td>Whiteboard</td><td><strong>Save</strong> keeps the whiteboard inside the PDF. Export and Print do not include it.</td></tr>
-        <tr><td>Presentation mode</td><td>Windows and macOS. On a projector, use Extend (Windows+P) or an extended display on a Mac, not Duplicate or mirroring. On a video call, share only the audience window, not your entire screen.</td></tr>
-        <tr><td>Hidden pages</td><td>The eye button on a thumbnail hides a page: it stays in the file, but reading, search, the projector, Print and Export skip it. Other PDF viewers still show it.</td></tr>
-        <tr><td>Updates</td><td>About &rarr; <strong>Check for updates</strong> installs a newer version after checking its SHA256 checksum. Nothing is checked unless you click it.</td></tr>
-        <tr><td>Word files</td><td>.docx files are converted to searchable PDF pages (headings, paragraphs, lists, tables and images). Old Word 97&ndash;2003 .doc files need to be re-saved as .docx first.</td></tr>
-        <tr><td>Encrypted PDFs</td><td>Password-protected PDFs can be opened, read, searched and printed, but not changed.</td></tr>
-        <tr><td>Shortcuts</td><td><span class="kbd">Ctrl</span>+<span class="kbd">O</span> open &middot; <span class="kbd">Ctrl</span>+<span class="kbd">S</span> save &middot; <span class="kbd">Ctrl</span>+<span class="kbd">W</span> close &middot; <span class="kbd">Ctrl</span>+<span class="kbd">P</span> print &middot; <span class="kbd">Ctrl</span>+<span class="kbd">F</span> search &middot; <span class="kbd">&larr;</span> <span class="kbd">&rarr;</span> pages &middot; <span class="kbd">F1</span> help</td></tr>
+        <tr><th>Your files stay on your device</th><td>Documents are opened, annotated and saved locally. Nothing is uploaded.</td></tr>
+        <tr><th>Annotations</th><td>Saved as standard PDF annotations, so they show in other PDF viewers, and stay editable when you reopen the file in llemonAI PDF Annotator.</td></tr>
+        <tr><th>Save or Export</th><td>Use <b>Save</b> for any file you may want to change. <b>Export</b> makes a final copy: highlights, drawings and notes are burned into the pages, with a Notes &amp; comments list at the end.</td></tr>
+        <tr><th>Whiteboard</th><td><b>Save</b> keeps the whiteboard inside the PDF. Export and Print do not include it.</td></tr>
+        <tr><th>Presentation mode</th><td>Windows and macOS. On a projector, extend the display rather than duplicating it. On a video call, share only the audience window.</td></tr>
+        <tr><th>Hidden pages</th><td>Stay in the file, but reading, search, the projector, Print and Export skip them. Other PDF viewers still show them.</td></tr>
+        <tr><th>Word files</th><td>.docx files become searchable PDF pages. Old .doc files need to be saved as .docx first.</td></tr>
+        <tr><th>Encrypted PDFs</th><td>Password-protected PDFs can be opened, read, searched and printed, but not changed.</td></tr>
+        <tr><th>Shortcuts</th><td><span class="kbd">Ctrl</span>+<span class="kbd">O</span> open &middot; <span class="kbd">Ctrl</span>+<span class="kbd">S</span> save &middot; <span class="kbd">Ctrl</span>+<span class="kbd">P</span> print &middot; <span class="kbd">Ctrl</span>+<span class="kbd">F</span> search &middot; <span class="kbd">&larr;</span> <span class="kbd">&rarr;</span> pages &middot; <span class="kbd">F1</span> help (&#8984; on a Mac)</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
-    <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonAI Reader. All rights reserved. Simple, not complex. Powerful and useful.</div>
-    <div>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</div>
-    <div>Also from llemonai: <a href="organizer.html">llemonAI PDF Organizer</a> &middot; <a href="scanner.html">llemonAI Wi-Fi Scanner</a></div>
-    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
-    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
+  <div class="wrap">
+    <div>&copy; <span id="year"></span> llemonai.in &middot; llemonAI PDF Annotator</div>
+    <div>Also from llemonai: <a href="organizer.html">PDF Shrinker</a> &middot; <a href="image-editor.html">Photo Editor</a> &middot; <a href="scanner.html">Wi-Fi Scanner</a></div>
+    <div><a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=5b9bff&labelColor=2c2a26" alt="Page view count" style="height:20px;" />
   </div>
 </footer>
 
@@ -886,12 +458,12 @@
 (function () {
   var faq = [
     {
-      q: "What is llemonAI Reader?",
+      q: "What is llemonAI PDF Annotator?",
       a: "A free PDF reader, annotator and presentation tool for Windows, macOS and Android. You can highlight, write with a pen, add notes, search, reorder or hide pages, merge PDF and Word files, and collect important passages on a whiteboard. On Windows and macOS, Presentation mode shows your audience only the PDF page."
     },
     {
       q: "How do I show only the PDF page on a projector?",
-      a: "Connect the projector. On Windows, press Windows+P and choose Extend; on a Mac, open System Settings > Displays and use the projector as an extended display, not a mirror. Then click Present in llemonAI Reader. The projector shows only the PDF page, and your screen keeps all the controls, thumbnails and the whiteboard. With Duplicate or mirroring, the audience sees your whole screen."
+      a: "Connect the projector. On Windows, press Windows+P and choose Extend; on a Mac, open System Settings > Displays and use the projector as an extended display, not a mirror. Then click Present in llemonAI PDF Annotator. The projector shows only the PDF page, and your screen keeps all the controls, thumbnails and the whiteboard. With Duplicate or mirroring, the audience sees your whole screen."
     },
     {
       q: "How do I hide my desktop and other windows on a video call?",
@@ -927,7 +499,7 @@
     },
     {
       q: "What's the difference between Save and Export master PDF?",
-      a: "<b>Save</b> writes a normal PDF whose annotations show in any PDF viewer and stay editable in llemonAI Reader. <b>Export</b> creates a final master PDF with highlights, drawings and notes burned into the pages plus a Notes &amp; comments appendix. They can't be erased from an exported copy, so use Save for any file you may want to change."
+      a: "<b>Save</b> writes a normal PDF whose annotations show in any PDF viewer and stay editable in llemonAI PDF Annotator. <b>Export</b> creates a final master PDF with highlights, drawings and notes burned into the pages plus a Notes &amp; comments appendix. They can't be erased from an exported copy, so use Save for any file you may want to change."
     },
     {
       q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
@@ -938,12 +510,12 @@
       a: "That's macOS's standard message for apps that aren't notarized by Apple; it doesn't mean anything was found in the app. Allow it once: 1. Drag the app from the .dmg into Applications. 2. Double-click it and click <b>Done</b> on the warning. 3. Open <b>System Settings → Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to the blocked app. 4. Enter your password and click <b>Open Anyway</b> again. After that it opens normally. See <a href=\"#mac-open\">Opening on a Mac</a> for details."
     },
     {
-      q: "How do I update llemonAI Reader?",
+      q: "How do I update llemonAI PDF Annotator?",
       a: "Open <b>About</b> (the ⓘ button) and click <b>Check for updates</b>. If a newer version exists, click <b>Install</b>: the app downloads it from our GitHub release, checks its SHA256 checksum, and installs it. Windows and macOS restart on the new version; on Android, confirm in the system installer. Nothing is checked unless you click the button."
     },
     {
       q: "Are my documents uploaded anywhere?",
-      a: "No. llemonAI Reader opens, annotates and saves files entirely on your own device."
+      a: "No. llemonAI PDF Annotator opens, annotates and saves files entirely on your own device."
     },
     {
       q: "How do I contact support?",
@@ -1156,7 +728,7 @@
     panel.classList.add('open');
     badge.classList.add('hidden');
     if (!greeted) {
-      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI Reader &mdash; pick a common question below or type your own.", 'bot');
+      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI PDF Annotator &mdash; pick a common question below or type your own.", 'bot');
       showMenu();
       greeted = true;
     }

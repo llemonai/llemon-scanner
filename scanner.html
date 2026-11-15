@@ -76,519 +76,156 @@
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<style>
-  :root {
-    --bg: #0b0f14;
-    --bg-alt: #101722;
-    --card: #141d2b;
-    --border: #223349;
-    --text: #e7edf5;
-    --text-dim: #9fb0c3;
-    --accent: #ffd23f;
-    --accent-dim: #3a8bff;
-  }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0; padding: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    scroll-behavior: smooth;
-  }
-  a { color: var(--accent-dim); }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-
-  header.hero {
-    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 64px 0 56px;
-  }
-  .brand {
-    display: flex; align-items: center;
-    margin-bottom: 40px;
-  }
-  .brand img { height: 34px; width: auto; display: block; }
-  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
-  .back-home:hover { color: var(--text); }
-
-  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
-  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
-  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
-  .wm-ai { color: #3a8bff; }
-  .wm-llm::before, .wm-n::before, .wm-ai::before { content: attr(data-t); }
-  /* brand name as real text for search engines and screen readers; the visible wordmark draws its "o" as a lemon */
-  .wm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .wm-product { margin-left: 0.28em; font-weight: 700; }
-  .wm.on-dark .wm-llm { color: #3a8bff; }
-  .wm.on-dark .wm-n { color: #e7edf5; }
-  .wm.on-dark .wm-product { color: #ffd23f; }
-  .hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.1;
-    margin: 0 0 16px;
-  }
-  .hero h1 span { color: var(--accent); }
-  .hero p.lead {
-    color: var(--text-dim);
-    font-size: 18px;
-    max-width: 640px;
-    line-height: 1.6;
-    margin: 0 0 32px;
-  }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 22px;
-    border-radius: 10px;
-    font-weight: 600; font-size: 15px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: transform 0.12s ease, opacity 0.12s ease;
-  }
-  .btn:hover { transform: translateY(-1px); }
-  .btn-primary { background: var(--accent); color: #14100a; }
-  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
-  .btn small { font-weight: 400; opacity: 0.75; }
-  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
-
-  section { padding: 56px 0; }
-  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  h2 { font-size: 28px; margin: 0 0 8px; }
-  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px;
-  }
-  .card h3 { margin: 0 0 8px; font-size: 16px; }
-  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
-  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
-
-  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-  @media (min-width: 700px) { .download-grid { grid-template-columns: repeat(2, 1fr); } }
-  .dl-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .dl-card h3 { margin: 0; font-size: 20px; }
-  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
-  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
-  .dl-card .btn { justify-content: center; margin-top: auto; }
-  .checksum {
-    font-size: 11px;
-    color: var(--text-dim);
-    word-break: break-all;
-    line-height: 1.5;
-    border-top: 1px solid var(--border);
-    padding-top: 10px;
-  }
-  .dl-count {
-    font-size: 12px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-top: -4px;
-  }
-  .dl-count .n { color: var(--accent); font-weight: 700; }
-  .dl-version {
-    display: inline-block; align-self: flex-start;
-    font-size: 12px; font-weight: 700; color: var(--accent);
-    border: 1px solid var(--accent); border-radius: 999px; padding: 2px 10px;
-  }
-  .whats-new { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0 0 20px; }
-  .whats-new strong { color: var(--text); }
-  .prev-versions { margin-top: 32px; }
-  .prev-versions h3 { font-size: 16px; margin: 0 0 4px; }
-  .prev-scroll { overflow-x: auto; }
-  table.prev { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
-  table.prev th, table.prev td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  table.prev th { color: var(--text-dim); font-weight: 600; }
-  table.prev td.sha { font-size: 11px; word-break: break-all; color: var(--text-dim); }
-
-  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
-  table.checklist th, table.checklist td {
-    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
-  }
-  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
-
-  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
-  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
-  .shot-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
-  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
-
-  footer {
-    padding: 40px 0;
-    color: var(--text-dim);
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
-  }
-  footer a { color: var(--text-dim); }
-
-  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
-
-  /* Chat widget */
-  #chat-toggle {
-    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--accent); color: #14100a; border: none;
-    font-size: 24px; cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-  }
-  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
-  #chat-toggle .chat-badge {
-    position: absolute; top: -2px; right: -2px;
-    width: 18px; height: 18px; border-radius: 50%;
-    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--bg);
-    animation: chat-badge-pulse 1.8s ease-in-out infinite;
-  }
-  #chat-toggle .chat-badge.hidden { display: none; }
-  @keyframes chat-badge-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.18); }
-  }
-
-  #chat-panel {
-    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
-    width: 400px; max-width: calc(100vw - 40px);
-    height: min(720px, 85vh); max-height: calc(100vh - 100px);
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-    display: flex; flex-direction: column; overflow: hidden;
-    opacity: 0; transform: translateY(12px) scale(0.98);
-    pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease;
-  }
-  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-  @media (max-width: 440px) {
-    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
-    #chat-toggle { right: 14px; bottom: 14px; }
-  }
-
-  #chat-body { min-height: 160px; flex: 1 1 auto; }
-  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
-  #chat-quick-replies.collapsed { display: none; }
-  #chat-more-toggle {
-    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
-    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
-    border-radius: 999px; cursor: pointer; align-self: flex-start;
-  }
-  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
-  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  #chat-header {
-    padding: 14px 16px; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 10px;
-    background: var(--bg-alt); font-weight: 700; font-size: 14px;
-  }
-  #chat-header .chat-avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--accent); color: #14100a;
-    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
-  }
-  #chat-header .chat-title-block { flex: 1; min-width: 0; }
-  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
-  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
-  #chat-header button {
-    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
-    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
-  }
-  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
-
-  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
-  #chat-body::-webkit-scrollbar { width: 6px; }
-  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
-  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
-  .chat-row .chat-mini-avatar {
-    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
-    background: var(--bg-alt); border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center; font-size: 11px;
-  }
-  @keyframes chat-pop-in {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .chat-msg { font-size: 13.5px; line-height: 1.5; }
-  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
-  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
-  .chat-msg a { color: inherit; text-decoration: underline; }
-  .chat-msg.bot a { color: var(--accent-dim); }
-
-  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
-  .chat-typing span {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
-    animation: chat-typing-bounce 1s infinite ease-in-out;
-  }
-  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
-  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes chat-typing-bounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-    30% { transform: translateY(-4px); opacity: 1; }
-  }
-
-  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
-  .chat-chip {
-    background: transparent; border: 1px solid var(--border); color: var(--text);
-    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
-    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-  }
-  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
-
-  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
-  #chat-input {
-    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
-    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
-  }
-  #chat-input:focus { border-color: var(--accent-dim); }
-  #chat-send, #chat-attach {
-    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
-    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.12s ease;
-  }
-  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
-  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
-  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
-  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
-
-  #chat-report-pill {
-    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
-    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
-    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
-  }
-  #chat-report-pill.show { display: flex; }
-  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
-  #chat-report-pill button {
-    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
-  }
-  #chat-report-pill button:hover { color: var(--text); }
-
-  .mac-open { margin-top: 28px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; }
-  .mac-open h3 { margin: 0 0 6px; font-size: 18px; }
-  .mac-open p { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
-  .mac-open ol { margin: 0 0 12px; padding-left: 22px; font-size: 14px; line-height: 1.7; }
-  .mac-open ol li { margin-bottom: 4px; }
-  .mac-open .quote { color: var(--text); font-style: italic; }
-  .mac-open .mono { display: block; margin-top: 6px; padding: 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; white-space: nowrap; }
-  .mac-open details { margin-top: 6px; font-size: 13px; color: var(--text-dim); }
-  .mac-open summary { cursor: pointer; color: var(--text); }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
 
-<header class="hero">
+<div class="topbar">
   <div class="wrap">
-    <div class="brand">
-      <span class="wm on-dark" style="font-size: 1.9rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-        <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
-        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
-          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
-          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
-          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
-          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
-          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
-          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
-          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
-        </svg>
-        <span class="wm-n" data-t="n" aria-hidden="true"></span>
-        <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
-        <span class="wm-product">Wi-Fi Scanner</span>
-      </span>
-      <a class="back-home" href="index.html">&larr; llemonai.in</a>
-    </div>
-    <h1>See your Wi-Fi the way it<br/>actually <span>behaves</span>, not just how it's <span>configured</span>.</h1>
-    <p class="lead">
-      A free Wi-Fi scanning and diagnostics tool for <strong>Windows, macOS and Android</strong>. Discover nearby networks,
-      decode raw beacon frames, track signal history, and generate field-ready PDF reports &mdash;
-      built for IT engineers and field technicians.
-    </p>
+    <a class="wm" href="#top" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+      <span class="wm-sr">llemonAI Wi-Fi Scanner</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
+      <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+        <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+        <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+        <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+        <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+        <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+        <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+        <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+      </svg>
+      <span class="wm-n" data-t="n" aria-hidden="true"></span><span class="wm-ai" data-t="AI" aria-hidden="true"></span><span class="wm-product" aria-hidden="true">Wi-Fi Scanner</span>
+    </a>
+    <a class="home" href="index.html">&larr; llemonai.in</a>
+    <nav>
+      <a class="opt" href="#features">Features</a>
+      <a class="opt" href="#checklist">Checklist</a>
+      <a class="btn btn-primary btn-sm" href="#download">Download</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow"><b>Free</b> &middot; Windows, macOS and Android &middot; version 16.1.2 &middot; no signup</p>
+    <h1>See your Wi-Fi the way it actually behaves,<br/><span class="accent">not just how it's configured.</span></h1>
+    <p class="lead">A free Wi-Fi scanning and diagnostics tool for IT engineers and field technicians. Discover nearby networks, decode raw beacon frames, track signal history, and produce field-ready PDF reports.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#download">Download</a>
-      <a class="btn btn-secondary" href="#features">See what's inside</a>
+      <a class="btn btn-primary" href="#download">Download free</a>
+      <a class="btn btn-plain" href="#features">See what's inside</a>
     </div>
-    <div class="hero-note">Windows 10 (2004+)/11, 64-bit &amp; 32-bit, no installer &middot; macOS 12 and later, Apple Silicon &amp; Intel &middot; Android 8.0 (API 26) and later, single sideloaded APK</div>
+    <p class="small">Windows 10 (2004+)/11, 64-bit and 32-bit, no installer &middot; macOS 12 or later, Apple Silicon and Intel &middot; Android 8.0 or later</p>
+    <figure class="hero-shot">
+      <div class="frame"><img src="screenshots/scan-view.png" width="1294" height="686" alt="llemonAI Wi-Fi Scanner main window showing a live network scan, RSSI signal history chart, and decoded beacon information table" /></div>
+      <figcaption>Live scan on Windows: the network list, signal history and the full beacon decode table.</figcaption>
+    </figure>
   </div>
 </header>
 
 <section id="features">
   <div class="wrap">
-    <h2>Built for real diagnostics, not just a pretty list of networks</h2>
-    <p class="section-lead">Everything a field engineer needs to explain "why is this Wi-Fi bad" with evidence, not guesswork.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="icon">&#128246;</span>
-        <h3>Live network scanning</h3>
-        <p>SSID, BSSID, vendor, channel, band, width, RSSI, PHY type, security, and more &mdash; refreshed on an adjustable interval.</p>
+    <p class="kicker">Features</p>
+    <div class="narrow">
+      <h2>Real diagnostics, not just a list of networks.</h2>
+      <p class="muted">Everything a field engineer needs to explain "why is this Wi-Fi bad" with evidence, not guesswork.</p>
+    </div>
+
+    <div class="feature">
+      <div class="text">
+        <h3>Spot congestion at a glance</h3>
+        <p>Channel occupancy charts for 2.4&nbsp;GHz and 5&nbsp;GHz show which channels are crowded and where networks overlap, and signal history tracks RSSI over time for each access point.</p>
+        <ul class="ticks">
+          <li>Signal and interference colours</li>
+          <li>Measured SNR on the Mac, from the real noise floor</li>
+        </ul>
       </div>
-      <div class="card">
-        <span class="icon">&#128225;</span>
-        <h3>Beacon frame decoding</h3>
-        <p>Full information-element table per access point &mdash; ID, length, raw hex, and human-readable decoding of HT/VHT capabilities, RSN cipher/AKM suites, and more.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128200;</span>
-        <h3>Signal history &amp; channel usage</h3>
-        <p>RSSI-vs-time tracking per access point, plus 2.4GHz/5GHz channel occupancy charts to spot congestion and overlap at a glance.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128196;</span>
-        <h3>Field-ready PDF export</h3>
-        <p>One-click report with a network summary, per-AP detail pages, decoded beacon tables, host diagnostics, location, ISP, and (Windows) live weather &mdash; ready to attach to a ticket. Available on Windows, Android and macOS.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#127760;</span>
-        <h3>Network info, on screen</h3>
-        <p>Local IP, gateway, WAN (public) IP, ISP, and GPS location &mdash; live, with a Refresh button, on Windows, Android and macOS. Android adds a reverse-geocoded place name too.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128241;</span>
-        <h3>Wi-Fi chipset capabilities (Android)</h3>
-        <p>See which Wi-Fi bands and standards your phone's own radio supports &mdash; 2.4/5/6/60GHz, WPA3-SAE, Wi-Fi Direct/Aware, and more &mdash; plus a real connected-device count per access point where the AP advertises it.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#9989;</span>
-        <h3>Field engineer checklist</h3>
-        <p>Built-in printable/exportable troubleshooting checklist on every platform &mdash; technician, customer and device details, environmental conditions, RF checks, and throughput verification steps.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128274;</span>
-        <h3>No install, no store required</h3>
-        <p>Windows: a single self-contained .exe, no installer or admin rights needed &mdash; run it from a USB stick. Mac: drag the app from the .dmg to Applications. Android: a single sideloaded .apk, no Play Store account needed.</p>
-      </div>
+      <figure><div class="frame"><img src="screenshots/channel-usage.png" width="1294" height="686" loading="lazy" alt="llemonAI Wi-Fi Scanner showing a 2.4 GHz channel usage bar chart of nearby access points" /></div></figure>
+    </div>
+
+    <div class="also">
+      <div><h3>Live network scanning</h3><p>SSID, BSSID, vendor, channel, band, width, RSSI, PHY type, security and more, refreshed on an adjustable interval.</p></div>
+      <div><h3>Beacon frame decoding</h3><p>The full information-element table per access point: ID, length, raw hex, and readable HT/VHT capabilities, RSN cipher and AKM suites.</p></div>
+      <div><h3>Field-ready PDF reports</h3><p>A network summary, per-AP detail pages, decoded beacon tables, host diagnostics, location, ISP and (Windows) live weather, ready to attach to a ticket.</p></div>
+      <div><h3>Network info on screen</h3><p>Local IP, gateway, public IP, ISP and GPS location, live with a Refresh button. Android adds the place name.</p></div>
+      <div><h3>Speed test and devices</h3><p>The M-Lab NDT7 speed test, and network-device discovery by ping on your private /24, with no port scanning.</p></div>
+      <div><h3>No install, no store</h3><p>Windows: one self-contained .exe you can run from a USB stick. Mac: drag the app to Applications. Android: one .apk.</p></div>
     </div>
   </div>
 </section>
 
-<section id="screenshots">
-  <div class="wrap">
-    <h2>See it in action</h2>
-    <p class="section-lead">Live network scan with signal history and full beacon decode, plus per-band channel occupancy &mdash; on Windows.</p>
-    <div class="shot-grid">
-      <div class="shot-card">
-        <img src="screenshots/scan-view.png" alt="llemonAI Wi-Fi Scanner main window showing a live network scan, RSSI signal history chart, and decoded beacon information table" loading="lazy" />
-        <div class="cap">Live scan &mdash; network list, signal history, and full beacon decode table</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/channel-usage.png" alt="llemonAI Wi-Fi Scanner showing a 2.4GHz channel usage bar chart of nearby access points" loading="lazy" />
-        <div class="cap">2.4GHz channel usage &mdash; spot congestion and overlapping channels at a glance</div>
-      </div>
+<section class="band">
+  <div class="wrap android">
+    <div>
+      <p class="kicker">Android</p>
+      <h2>The same scanner in your pocket.</h2>
+      <p class="muted">Scan, history, channels and the checklist, plus Network Info and Wi-Fi Chipset Capabilities: which bands and standards your phone's radio supports (2.4/5/6/60&nbsp;GHz, WPA3-SAE, Wi-Fi Direct and Aware), and a real connected-device count where the access point advertises it.</p>
     </div>
-
-    <p class="section-lead" style="margin-top:40px;">...and on Android &mdash; same scan/history/channel/checklist views, plus its own Network Info and Wi-Fi Chipset Capabilities cards.</p>
-    <div class="shot-grid shot-grid-phone">
-      <div class="shot-card">
-        <img src="screenshots/android-network-info.png" alt="llemonAI Wi-Fi Scanner for Android showing the Network Info card (local IP, gateway, WAN IP, ISP, location) and Wi-Fi Chipset Capabilities card" loading="lazy" />
-        <div class="cap">Network Info &amp; Wi-Fi Chipset Capabilities &mdash; live on screen, not just in the PDF</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/android-beacon-detail.png" alt="llemonAI Wi-Fi Scanner for Android showing per-access-point detail: PHY type, max rate, guard interval, connected-device count, and live link speed" loading="lazy" />
-        <div class="cap">Per-AP detail &mdash; PHY type, max rate, guard interval, and connected-device count</div>
-      </div>
+    <div class="phones">
+      <div class="frame"><img src="screenshots/android-network-info.png" width="1080" height="1590" loading="lazy" alt="llemonAI Wi-Fi Scanner for Android showing the Network Info card (local IP, gateway, WAN IP, ISP, location) and Wi-Fi Chipset Capabilities card" /></div>
+      <div class="frame"><img src="screenshots/android-beacon-detail.png" width="1080" height="1540" loading="lazy" alt="llemonAI Wi-Fi Scanner for Android showing per-access-point detail: PHY type, max rate, guard interval, connected-device count, and live link speed" /></div>
     </div>
   </div>
 </section>
 
 <section id="checklist">
   <div class="wrap">
-    <h2>Field Engineer Checklist</h2>
-    <p class="section-lead">A built-in, printable/exportable checklist &mdash; on Windows, Android and macOS &mdash; so a site visit covers every factor that affects Wi-Fi performance, not just signal strength. Fill it in on screen, tick items as you verify them, then print (Windows) or share as PDF (Android) a signed record for the ticket.</p>
-    <div class="shot-grid">
-      <div class="shot-card" style="max-width: 480px; margin: 0 auto;">
-        <img src="screenshots/checklist.png" alt="llemonAI Wi-Fi Scanner Field Engineer Checklist showing site and visit details, device information, and environmental condition checkboxes" loading="lazy" />
-        <div class="cap">Technician, customer and device details, environmental conditions, RF checks, and throughput verification &mdash; all in one printable page</div>
+    <div class="feature flip" style="border-top:0; padding-top:0">
+      <div class="text">
+        <p class="kicker">Field engineer checklist</p>
+        <h3>Cover every factor on a site visit</h3>
+        <p>A built-in checklist on Windows, Android and macOS, so a visit covers everything that affects Wi-Fi performance, not just signal strength. Fill it in on screen, tick items as you verify them, then print it or share it as a PDF for the ticket.</p>
+        <ul class="ticks">
+          <li>Technician, customer and device details</li>
+          <li>Environmental conditions and RF checks</li>
+          <li>Throughput verification steps</li>
+        </ul>
       </div>
+      <figure><div class="frame" style="max-width:480px"><img src="screenshots/checklist.png" width="880" height="737" loading="lazy" alt="llemonAI Wi-Fi Scanner Field Engineer Checklist showing site and visit details, device information, and environmental condition checkboxes" /></div></figure>
     </div>
   </div>
 </section>
 
-<section class="alt" id="download">
+<section class="band" id="download">
   <div class="wrap">
-    <h2>Download</h2>
-    <p class="section-lead">Windows, Mac or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
-    <p class="whats-new"><strong>New in 16.1.2, 8 Nov 2026:</strong> a tidier list of what's new in each version. <strong>16.1.1</strong> brought a <strong>new app icon</strong> in line with llemonAI Reader and llemonAI PDF Organizer.
-      <strong>16.1.0</strong> added the <strong>Mac app</strong> (Apple Silicon and Intel) with every Windows feature and a <strong>measured SNR</strong> (macOS reports the real noise floor). If your copy has About &rarr; Check for updates, use it to install 16.1.2.
-      From 15.B4 / 15A4 or older, download 16.1.2 once below; after that, updates come from inside the app.
-      Also includes signal/interference colors, the M-Lab NDT7 speed test, Network Devices discovery (ping-based, private /24, no port scanning) and the AI Companion.</p>
-    <div class="download-grid">
-      <div class="dl-card">
-        <span class="dl-version">Version 16.1.2 &middot; 8 Nov 2026</span>
-        <h3>llemonAI Wi-Fi Scanner &mdash; 64-bit</h3>
-        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
-        <ul>
-          <li>Single self-contained .exe (~76&nbsp;MB)</li>
-          <li>No installation, no admin rights required</li>
-          <li>Works on Windows 10 (build 19041+) and Windows 11</li>
-        </ul>
-        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
-        <div class="dl-count" id="count-x64"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
+    <p class="kicker">Download</p>
+    <div class="narrow">
+      <h2>Free, for Windows, Mac and Android.</h2>
+      <p class="muted">Not sure which Windows file? Almost every PC made since 2010 is 64-bit.</p>
+    </div>
+    <div class="whats-new">
+      <p><strong>New in 16.1.2 (8 Nov 2026):</strong> a tidier list of what's new in each version. 16.1.1 brought a new app icon, and 16.1.0 added the Mac app with every Windows feature and a measured SNR.</p>
+      <p>If your copy has About &rarr; Check for updates, use it. From 15.B4 / 15A4 or older, download 16.1.2 once below; after that, updates come from inside the app.</p>
+    </div>
+
+    <div class="dl-list">
+      <div class="dl-row">
+        <h3>Windows 64-bit <span class="rec">Recommended</span></h3>
+        <div class="meta">Windows 10 (build 19041+) or 11. One self-contained .exe (about 76&nbsp;MB), no installer, no admin rights.</div>
+        <div class="act"><a class="btn btn-primary" href="#" id="dl-x64">Download .exe</a><div class="dl-count" id="count-x64"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-x64"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 16.1.2 &middot; 8 Nov 2026</span>
-        <h3>llemonAI Wi-Fi Scanner &mdash; 32-bit</h3>
-        <div class="meta">For legacy 32-bit Windows installations only</div>
-        <ul>
-          <li>Single self-contained .exe (~71&nbsp;MB)</li>
-          <li>No installation, no admin rights required</li>
-          <li>Works on Windows 10 (build 19041+) and Windows 11, 32-bit edition</li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
-        <div class="dl-count" id="count-x86"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
+      <div class="dl-row">
+        <h3>Windows 32-bit</h3>
+        <div class="meta">For legacy 32-bit editions of Windows 10 (build 19041+) or 11. One .exe (about 71&nbsp;MB).</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-x86">Download .exe</a><div class="dl-count" id="count-x86"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-x86"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 16.1.2 &middot; 8 Nov 2026</span>
-        <h3>llemonAI Wi-Fi Scanner &mdash; Mac</h3>
-        <div class="meta">macOS 12 or later &middot; Apple Silicon and Intel</div>
-        <ul>
-          <li>Disk image (~2&nbsp;MB): drag the app to Applications</li>
-          <li>Measured SNR from the real noise floor; every Windows feature</li>
-          <li>Allow Location when asked &mdash; macOS needs it to show network names</li>
-          <li>First launch: macOS blocks it once because it isn't notarized by Apple &mdash; see <a href="#mac-open">Opening on a Mac</a></li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-mac">Download for Mac</a>
-        <div class="dl-count" id="count-mac"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-mac"></span></div>
+      <div class="dl-row">
+        <h3>Mac</h3>
+        <div class="meta">macOS 12 or later, Apple Silicon and Intel. Disk image (about 2&nbsp;MB). Allow Location when asked: macOS needs it to show network names. The first launch needs one extra step: <a href="#mac-open">opening on a Mac</a>.</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-mac">Download .dmg</a><div class="dl-count" id="count-mac"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-mac"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 16.1.2 &middot; 8 Nov 2026</span>
-        <h3>llemonAI Wi-Fi Scanner &mdash; Android</h3>
-        <div class="meta">Native app &middot; Android 8.0+ (API 26+)</div>
-        <ul>
-          <li>Single .apk (~11&nbsp;MB), sideload install</li>
-          <li>Signed with our own release key (not on Play Store yet)</li>
-          <li>Wi-Fi scan with signal/interference colors, channels, SNR, PDF reports and AI Companion</li>
-          <li>M-Lab speed test and local network-device discovery</li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
-        <div class="dl-count" id="count-android"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
+      <div class="dl-row">
+        <h3>Android</h3>
+        <div class="meta">Android 8.0 or later. One .apk (about 11&nbsp;MB), installed directly; not on the Play Store yet. Includes the speed test, device discovery and the AI Companion.</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-android">Download .apk</a><div class="dl-count" id="count-android"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-android"></span></details>
       </div>
     </div>
-    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+    <p class="small" style="margin-top:14px" id="dl-total-line"></p>
 
     <div class="mac-open" id="mac-open">
       <h3>Opening llemonAI Wi-Fi Scanner on a Mac</h3>
@@ -607,9 +244,9 @@
       </details>
     </div>
 
-    <div class="prev-versions">
-      <h3>Previous versions</h3>
-      <p class="section-lead" style="margin:0 0 10px; font-size:13px;">Older builds stay available if you need them. The latest version above is recommended.</p>
+    <details class="prev-versions">
+      <summary>Previous versions</summary>
+      <p class="small" style="margin:10px 0">Older builds stay available if you need them. The latest version above is recommended.</p>
       <div class="prev-scroll">
         <table class="prev">
           <thead><tr><th>Version</th><th>Released</th><th>File</th><th>SHA256</th></tr></thead>
@@ -628,52 +265,35 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </details>
 
-    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
-      Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile llemonAI-WiFi-Scanner-16.1.2-win-x64.exe SHA256</span> (PowerShell/Command Prompt), or on a Mac <span class="mono">shasum -a 256 llemonAI-WiFi-Scanner-16.1.2-macos.dmg</span> (Terminal),
-      and compare the result to the SHA256 value shown above for the file you downloaded.
-    </p>
-    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      The Mac app is signed with our own self-signed identity but isn't notarized by Apple, so macOS blocks its first launch until you click Open Anyway (see <a href="#mac-open">Opening on a Mac</a>). The Windows 16.1.2 executables are signed with our own self-signed certificate, so Windows
-      SmartScreen may still show an "Unknown Publisher" warning. The Android APK is signed with our release key but is not
-      listed on the Play Store, so Android may still warn about installing from an unknown source. The SHA256 checksums above
-      let you confirm each file matches exactly what we published.
-    </p>
-    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      Installing the Android APK: Android will block it by default as an "unknown source." Open the
-      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
-      normal for any app installed outside the Play Store, not a sign of a problem with this app specifically.
-    </p>
+    <p class="fine">To check a download, run <span class="mono">certutil -hashfile llemonAI-WiFi-Scanner-16.1.2-win-x64.exe SHA256</span> on Windows or <span class="mono">shasum -a 256 llemonAI-WiFi-Scanner-16.1.2-macos.dmg</span> on a Mac, and compare it with the checksum above. The files are signed with llemonai's own certificates, not a public authority, so Windows SmartScreen may say "Unknown Publisher" and Android may ask you to allow installs from this source. Both are expected.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Why these numbers matter</h2>
-    <p class="section-lead">Wi-Fi coverage isn't just "signal bars." llemonAI Wi-Fi Scanner surfaces the environmental and technical factors that actually determine performance.</p>
-    <table class="checklist">
-      <thead><tr><th>Factor</th><th>Why it matters</th></tr></thead>
+    <p class="kicker">Why these numbers matter</p>
+    <div class="narrow"><h2>Wi-Fi isn't just signal bars.</h2></div>
+    <table class="facts">
       <tbody>
-        <tr><td>Temperature &amp; humidity</td><td>Affects RF propagation and can stress AP/client hardware in enclosed spaces.</td></tr>
-        <tr><td>Device load &amp; connected clients</td><td>More clients on a channel means more contention and lower effective throughput per device.</td></tr>
-        <tr><td>Interference</td><td>Overlapping channels and non-Wi-Fi RF noise directly reduce usable capacity.</td></tr>
-        <tr><td>Positioning &amp; obstructions</td><td>Distance, walls, and line-of-sight change signal strength far more than most people expect.</td></tr>
-        <tr><td>Uplink throughput</td><td>A great Wi-Fi signal can't outrun a slow upstream connection &mdash; both need to be checked together.</td></tr>
+        <tr><th>Temperature and humidity</th><td>Affect RF propagation and can stress access point and client hardware in enclosed spaces.</td></tr>
+        <tr><th>Device load and connected clients</th><td>More clients on a channel means more contention and lower throughput per device.</td></tr>
+        <tr><th>Interference</th><td>Overlapping channels and non-Wi-Fi RF noise directly reduce usable capacity.</td></tr>
+        <tr><th>Positioning and obstructions</th><td>Distance, walls and line of sight change signal strength far more than most people expect.</td></tr>
+        <tr><th>Uplink throughput</th><td>A great Wi-Fi signal can't outrun a slow upstream connection; check both together.</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
-    <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonAI Wi-Fi Scanner. All rights reserved. Simple, not complex. Powerful and useful.</div>
-    <div>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</div>
-    <div>Built for IT diagnostics and field engineering use. Also from llemonai: <a href="reader.html">llemonAI Reader</a> &middot; <a href="organizer.html">PDF Organizer</a></div>
-    <div>Guide: <a href="best-wifi-channel.html">How to find the best Wi-Fi channel on Windows 11</a></div>
-    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
-    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
+  <div class="wrap">
+    <div>&copy; <span id="year"></span> llemonai.in &middot; llemonAI Wi-Fi Scanner</div>
+    <div>Also from llemonai: <a href="reader.html">PDF Annotator</a> &middot; <a href="organizer.html">PDF Shrinker</a> &middot; <a href="image-editor.html">Photo Editor</a></div>
+    <div>Guide: <a href="best-wifi-channel.html">Find the best Wi-Fi channel on Windows 11</a></div>
+    <div><a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=5b9bff&labelColor=2c2a26" alt="Page view count" style="height:20px;" />
   </div>
 </footer>
 
@@ -781,7 +401,7 @@
     },
     {
       q: "What's the latest version, and what's new?",
-      a: "Version <b>16.1.2</b>, released 8 Nov 2026, tidies the list of what's new in each version. Version 16.1.1 brought a new app icon in line with llemonAI Reader and llemonAI PDF Organizer. Version 16.1.0 (8 Nov 2026) added the <b>Mac app</b> (Apple Silicon and Intel, macOS 12+) with every Windows feature and a measured SNR from the real noise floor. The app has one version number on every platform, and About → <b>Check for updates</b> installs new versions. If your copy has that button, update from About; from 15.B4 / 15A4 or older, download 16.1.2 once. SHA256:<br><span class=\"mono\" style=\"word-break:break-all\">x64: B1640FD5008FBDD57F6D46155D95E405F8125E55DC4D412FCF67862D11CF472F<br>x86: 50A4B8AF09BD41ABF62F20E6CFF589C5BAAFFA39051C0F410CB6823F8F232012<br>Android: C276BBA7D4F3752C3C25FFA4EC239C1A5E692133C9FD5CA10C833758D1CB5E4B<br>Mac (.dmg): 5D9D25B24CC866CFED19E7BD93C68C6A3227C919F411C75C46166DA0AE66FCA6</span>"
+      a: "Version <b>16.1.2</b>, released 8 Nov 2026, tidies the list of what's new in each version. Version 16.1.1 brought a new app icon in line with llemonAI PDF Annotator and llemonAI PDF Shrinker. Version 16.1.0 (8 Nov 2026) added the <b>Mac app</b> (Apple Silicon and Intel, macOS 12+) with every Windows feature and a measured SNR from the real noise floor. The app has one version number on every platform, and About → <b>Check for updates</b> installs new versions. If your copy has that button, update from About; from 15.B4 / 15A4 or older, download 16.1.2 once. SHA256:<br><span class=\"mono\" style=\"word-break:break-all\">x64: B1640FD5008FBDD57F6D46155D95E405F8125E55DC4D412FCF67862D11CF472F<br>x86: 50A4B8AF09BD41ABF62F20E6CFF589C5BAAFFA39051C0F410CB6823F8F232012<br>Android: C276BBA7D4F3752C3C25FFA4EC239C1A5E692133C9FD5CA10C833758D1CB5E4B<br>Mac (.dmg): 5D9D25B24CC866CFED19E7BD93C68C6A3227C919F411C75C46166DA0AE66FCA6</span>"
     },
     {
       q: "How do I update llemonAI Wi-Fi Scanner?",

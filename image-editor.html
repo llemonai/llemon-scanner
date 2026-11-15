@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>llemonAI Image Editor &mdash; Passport Photo Maker, Background Remover, Resolution Changer &amp; Collage Maker, Free for Windows, macOS &amp; Android</title>
-<meta name="description" content="llemonAI Image Editor is a free photo editor for Windows, macOS and Android with four key features: Indian passport photos (35×45 mm, 630×810 under 250 KB, print sheets), background removal with on-device AI, change or reduce the resolution and file size of photos, and collages from 6×4 inch to A4." />
+<title>llemonAI Photo Editor &mdash; Passport Photo Maker, Background Remover, Resolution Changer &amp; Collage Maker, Free for Windows, macOS &amp; Android</title>
+<meta name="description" content="llemonAI Photo Editor is a free photo editor for Windows, macOS and Android with four key features: Indian passport photos (35×45 mm, 630×810 under 250 KB, print sheets), background removal with on-device AI, change or reduce the resolution and file size of photos, and collages from 6×4 inch to A4." />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <meta name="author" content="llemonai" />
 <link rel="canonical" href="https://llemonai.in/image-editor.html" />
@@ -14,14 +14,14 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://llemonai.in/image-editor.html" />
-<meta property="og:title" content="llemonAI Image Editor — passport photos, background removal, resolution and collages" />
+<meta property="og:title" content="llemonAI Photo Editor — passport photos, background removal, resolution and collages" />
 <meta property="og:description" content="Make Indian passport photos, remove backgrounds with on-device AI, reduce or change photo resolution and file size, and print collages from 6×4 in to A4. Free for Windows, macOS and Android." />
 <meta property="og:image" content="https://llemonai.in/screenshots/image-editor-scenery.png" />
 <meta property="og:image:width" content="1800" />
 <meta property="og:image:height" content="1125" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="llemonAI Image Editor — passport photos, background removal, resolution and collages" />
+<meta name="twitter:title" content="llemonAI Photo Editor — passport photos, background removal, resolution and collages" />
 <meta name="twitter:description" content="Passport photos, AI background removal, photo resolution and file size, and collages. Free for Windows, macOS and Android." />
 <meta name="twitter:image" content="https://llemonai.in/screenshots/image-editor-scenery.png" />
 
@@ -32,7 +32,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "llemonAI Image Editor for Windows",
+    "name": "llemonAI Photo Editor for Windows",
     "operatingSystem": "Windows 10, Windows 11",
     "applicationCategory": "MultimediaApplication",
     "softwareVersion": "1.0.0",
@@ -46,7 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "llemonAI Image Editor for macOS",
+    "name": "llemonAI Photo Editor for macOS",
     "operatingSystem": "macOS 12 and later (Apple Silicon and Intel)",
     "applicationCategory": "MultimediaApplication",
     "softwareVersion": "1.0.0",
@@ -60,7 +60,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "llemonAI Image Editor for Android",
+    "name": "llemonAI Photo Editor for Android",
     "operatingSystem": "Android 8.0 (API 26) and later",
     "applicationCategory": "MultimediaApplication",
     "softwareVersion": "1.0.0",
@@ -84,7 +84,7 @@
    "name": "How do I make an Indian passport size photo at home?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Open llemonAI Image Editor, go to the Passport tab and choose a photo. India passport 35×45 mm is the default: the face is found, the background is turned white and the head is sized to the official guide lines automatically. Print a sheet of 8 photos on 6×4 inch paper, or save a 630×810 file under 250 KB for the Passport Seva online form."
+    "text": "Open llemonAI Photo Editor, go to the Passport tab and choose a photo. India passport 35×45 mm is the default: the face is found, the background is turned white and the head is sized to the official guide lines automatically. Print a sheet of 8 photos on 6×4 inch paper, or save a 630×810 file under 250 KB for the Passport Seva online form."
    }
   },
   {
@@ -145,7 +145,7 @@
   },
   {
    "@type": "Question",
-   "name": "Does llemonAI Image Editor work offline, and are my photos uploaded?",
+   "name": "Does llemonAI Photo Editor work offline, and are my photos uploaded?",
    "acceptedAnswer": {
     "@type": "Answer",
     "text": "It works fully offline. Photos are opened, edited and saved on your device, and the AI models are built into the app, so nothing is uploaded. It only goes online when you click Check for updates."
@@ -153,7 +153,7 @@
   },
   {
    "@type": "Question",
-   "name": "Is llemonAI Image Editor free? Which devices does it run on?",
+   "name": "Is llemonAI Photo Editor free? Which devices does it run on?",
    "acceptedAnswer": {
     "@type": "Answer",
     "text": "Yes, it is free with no watermark and no sign-up. It runs on Windows 10 and 11 (64-bit and 32-bit, one portable .exe), macOS 12 and later (Apple Silicon and Intel) and Android 8.0 and later."
@@ -163,555 +163,176 @@
 }
 </script>
 
-<style>
-  :root {
-    --bg: #0b0f14;
-    --bg-alt: #101722;
-    --card: #141d2b;
-    --border: #223349;
-    --text: #e7edf5;
-    --text-dim: #9fb0c3;
-    --accent: #ffd23f;
-    --accent-dim: #3a8bff;
-  }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0; padding: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    scroll-behavior: smooth;
-  }
-  a { color: var(--accent-dim); }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-
-  header.hero {
-    background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 64px 0 56px;
-  }
-  .brand {
-    display: flex; align-items: center;
-    margin-bottom: 40px;
-  }
-  .brand img { height: 34px; width: auto; display: block; }
-  .back-home { color: var(--text-dim); font-size: 13px; text-decoration: none; margin-left: 16px; }
-  .back-home:hover { color: var(--text); }
-
-  /* llemonai wordmark, redrawn from the app's own brand.tsx: llem + a lemon "o" + n + AI */
-  .wm { display: inline-flex; align-items: baseline; white-space: nowrap; font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
-  .wm-o { width: 0.74em; height: 0.83em; align-self: flex-end; margin: 0 0.015em 0.02em; flex: none; }
-  .wm-ai { color: #3a8bff; }
-  .wm-llm::before, .wm-n::before, .wm-ai::before { content: attr(data-t); }
-  /* brand name as real text for search engines and screen readers; the visible wordmark draws its "o" as a lemon */
-  .wm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .wm-product { margin-left: 0.28em; font-weight: 700; }
-  .wm.on-dark .wm-llm { color: #3a8bff; }
-  .wm.on-dark .wm-n { color: #e7edf5; }
-  .wm.on-dark .wm-product { color: #ffd23f; }
-  .hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.1;
-    margin: 0 0 16px;
-  }
-  .hero h1 span { color: var(--accent); }
-  .hero p.lead {
-    color: var(--text-dim);
-    font-size: 18px;
-    max-width: 640px;
-    line-height: 1.6;
-    margin: 0 0 32px;
-  }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 22px;
-    border-radius: 10px;
-    font-weight: 600; font-size: 15px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: transform 0.12s ease, opacity 0.12s ease;
-  }
-  .btn:hover { transform: translateY(-1px); }
-  .btn-primary { background: var(--accent); color: #14100a; }
-  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
-  .btn small { font-weight: 400; opacity: 0.75; }
-  .hero-note { color: var(--text-dim); font-size: 13px; margin-top: 6px; }
-
-  section { padding: 56px 0; }
-  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  h2 { font-size: 28px; margin: 0 0 8px; }
-  .section-lead { color: var(--text-dim); margin: 0 0 32px; max-width: 640px; line-height: 1.6; }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px;
-  }
-  .card h3 { margin: 0 0 8px; font-size: 16px; }
-  .card p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
-  .card .icon { font-size: 22px; margin-bottom: 10px; display: block; }
-
-  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-  @media (min-width: 700px) { .download-grid { grid-template-columns: repeat(2, 1fr); } }
-  .dl-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .dl-card h3 { margin: 0; font-size: 20px; }
-  .dl-card .meta { color: var(--text-dim); font-size: 13px; }
-  .dl-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
-  .dl-card .btn { justify-content: center; margin-top: auto; }
-  .checksum {
-    font-size: 11px;
-    color: var(--text-dim);
-    word-break: break-all;
-    line-height: 1.5;
-    border-top: 1px solid var(--border);
-    padding-top: 10px;
-  }
-  .dl-count {
-    font-size: 12px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-top: -4px;
-  }
-  .dl-count .n { color: var(--accent); font-weight: 700; }
-  .dl-version {
-    display: inline-block; align-self: flex-start;
-    font-size: 12px; font-weight: 700; color: var(--accent);
-    border: 1px solid var(--accent); border-radius: 999px; padding: 2px 10px;
-  }
-  .whats-new { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0 0 20px; }
-  .whats-new strong { color: var(--text); }
-  .prev-versions { margin-top: 32px; }
-  .prev-versions h3 { font-size: 16px; margin: 0 0 4px; }
-  .prev-scroll { overflow-x: auto; }
-  table.prev { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
-  table.prev th, table.prev td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  table.prev th { color: var(--text-dim); font-weight: 600; }
-  table.prev td.sha { font-size: 11px; word-break: break-all; color: var(--text-dim); }
-
-  table.checklist { width: 100%; border-collapse: collapse; margin-top: 8px; }
-  table.checklist th, table.checklist td {
-    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px;
-  }
-  table.checklist th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
-
-  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
-  .shot-grid-phone { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); justify-content: center; }
-  .shot-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .shot-card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
-  .shot-card .cap { padding: 14px 16px; font-size: 14px; color: var(--text-dim); }
-
-  footer {
-    padding: 40px 0;
-    color: var(--text-dim);
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
-  }
-  footer a { color: var(--text-dim); }
-
-  code, .mono { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
-
-  /* Chat widget */
-  #chat-toggle {
-    position: fixed; right: 20px; bottom: 20px; z-index: 1000;
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--accent); color: #14100a; border: none;
-    font-size: 24px; cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-  }
-  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
-  #chat-toggle .chat-badge {
-    position: absolute; top: -2px; right: -2px;
-    width: 18px; height: 18px; border-radius: 50%;
-    background: #ff4d4f; color: #fff; font-size: 11px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--bg);
-    animation: chat-badge-pulse 1.8s ease-in-out infinite;
-  }
-  #chat-toggle .chat-badge.hidden { display: none; }
-  @keyframes chat-badge-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.18); }
-  }
-
-  #chat-panel {
-    position: fixed; right: 20px; bottom: 88px; z-index: 1000;
-    width: 400px; max-width: calc(100vw - 40px);
-    height: min(720px, 85vh); max-height: calc(100vh - 100px);
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-    display: flex; flex-direction: column; overflow: hidden;
-    opacity: 0; transform: translateY(12px) scale(0.98);
-    pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease;
-  }
-  #chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-  @media (max-width: 440px) {
-    #chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); height: min(720px, 80vh); }
-    #chat-toggle { right: 14px; bottom: 14px; }
-  }
-
-  #chat-body { min-height: 160px; flex: 1 1 auto; }
-  #chat-quick-replies { max-height: 100px; overflow-y: auto; flex-shrink: 0; }
-  #chat-quick-replies.collapsed { display: none; }
-  #chat-more-toggle {
-    flex-shrink: 0; margin: 0 16px 10px; padding: 7px 12px; font-size: 12.5px;
-    background: transparent; border: 1px dashed var(--border); color: var(--text-dim);
-    border-radius: 999px; cursor: pointer; align-self: flex-start;
-  }
-  #chat-more-toggle:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  #chat-quick-replies::-webkit-scrollbar { width: 6px; }
-  #chat-quick-replies::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  #chat-header {
-    padding: 14px 16px; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 10px;
-    background: var(--bg-alt); font-weight: 700; font-size: 14px;
-  }
-  #chat-header .chat-avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--accent); color: #14100a;
-    display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
-  }
-  #chat-header .chat-title-block { flex: 1; min-width: 0; }
-  #chat-header .chat-status { font-weight: 400; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
-  #chat-header .chat-status .dot { width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; display: inline-block; }
-  #chat-header button {
-    background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; line-height: 1;
-    padding: 4px; border-radius: 6px; transition: background 0.15s ease, color 0.15s ease;
-  }
-  #chat-header button:hover { background: rgba(255,255,255,0.06); color: var(--text); }
-
-  #chat-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
-  #chat-body::-webkit-scrollbar { width: 6px; }
-  #chat-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 92%; animation: chat-pop-in 0.16s ease; }
-  .chat-row.user { align-self: flex-end; flex-direction: row-reverse; }
-  .chat-row .chat-mini-avatar {
-    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
-    background: var(--bg-alt); border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center; font-size: 11px;
-  }
-  @keyframes chat-pop-in {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .chat-msg { font-size: 13.5px; line-height: 1.5; }
-  .chat-msg.bot { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px 10px 10px 2px; padding: 8px 12px; }
-  .chat-msg.user { background: var(--accent-dim); color: #fff; border-radius: 10px 10px 2px 10px; padding: 8px 12px; }
-  .chat-msg a { color: inherit; text-decoration: underline; }
-  .chat-msg.bot a { color: var(--accent-dim); }
-
-  .chat-typing { display: flex; gap: 4px; padding: 10px 12px; }
-  .chat-typing span {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim);
-    animation: chat-typing-bounce 1s infinite ease-in-out;
-  }
-  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
-  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes chat-typing-bounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-    30% { transform: translateY(-4px); opacity: 1; }
-  }
-
-  #chat-quick-replies { padding: 10px 16px 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
-  .chat-chip {
-    background: transparent; border: 1px solid var(--border); color: var(--text);
-    border-radius: 999px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; text-align: left;
-    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-  }
-  .chat-chip:hover { border-color: var(--accent-dim); color: var(--accent-dim); background: rgba(58,139,255,0.08); }
-
-  #chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
-  #chat-input {
-    flex: 1; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 20px;
-    padding: 9px 14px; color: var(--text); font-size: 13px; outline: none;
-  }
-  #chat-input:focus { border-color: var(--accent-dim); }
-  #chat-send, #chat-attach {
-    background: var(--accent); color: #14100a; border: none; border-radius: 50%;
-    width: 36px; height: 36px; flex-shrink: 0; cursor: pointer; font-size: 15px;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.12s ease;
-  }
-  #chat-attach { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
-  #chat-attach:hover, #chat-send:hover { transform: scale(1.06); }
-  #chat-attach:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  #chat-send:disabled { opacity: 0.5; cursor: default; transform: none; }
-  .chat-msg.error { background: rgba(255,77,79,0.1); border-color: rgba(255,77,79,0.3); }
-
-  #chat-report-pill {
-    display: none; align-items: center; gap: 8px; margin: 0 16px 10px;
-    background: rgba(58,139,255,0.1); border: 1px solid var(--accent-dim); border-radius: 10px;
-    padding: 8px 10px; font-size: 12px; flex-shrink: 0;
-  }
-  #chat-report-pill.show { display: flex; }
-  #chat-report-pill .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
-  #chat-report-pill button {
-    background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px;
-  }
-  #chat-report-pill button:hover { color: var(--text); }
-  /* PDF Organizer page additions */
-  .kbd { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 12px; padding: 1px 6px; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; background: var(--card); color: var(--text); }
-  table.checklist td:first-child { white-space: nowrap; }
-  #chat-attach { display: none; }
-  .usp-tag {
-    display: inline-block; margin-bottom: 14px; padding: 5px 12px; border-radius: 999px;
-    background: rgba(255,210,63,0.12); border: 1px solid rgba(255,210,63,0.45); color: var(--accent);
-    font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
-  }
-  .usp-split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 26px 0 8px; }
-  .usp-col { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; }
-  .usp-col h3 { margin: 0 0 8px; font-size: 17px; }
-  .usp-col p { margin: 0; color: var(--text-dim); font-size: 14.5px; line-height: 1.55; }
-  .usp-col.ours { border-color: rgba(255,210,63,0.55); box-shadow: 0 0 0 1px rgba(255,210,63,0.2) inset; }
-  .usp-col.ours h3 { color: var(--accent); }
-  .size-demo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 22px; }
-  .size-demo .num { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; }
-  .size-demo .num small { display: block; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dim); }
-  .size-demo .arrow { font-size: 28px; color: var(--text-dim); }
-  .size-demo .num.after { color: #6fcf7a; }
-  .size-demo .note { flex: 1 1 260px; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
-  ol.steps { margin: 18px 0 0; padding-left: 22px; color: var(--text-dim); line-height: 1.7; }
-  ol.steps b { color: var(--text); }
-  @media (max-width: 760px) { .usp-split { grid-template-columns: 1fr; } .size-demo .num { font-size: 28px; } .brand { flex-wrap: wrap; row-gap: 10px; } .brand .wm { font-size: 1.45rem !important; } }
-
-  .mac-open { margin-top: 28px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; }
-  .mac-open h3 { margin: 0 0 6px; font-size: 18px; }
-  .mac-open p { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
-  .mac-open ol { margin: 0 0 12px; padding-left: 22px; font-size: 14px; line-height: 1.7; }
-  .mac-open ol li { margin-bottom: 4px; }
-  .mac-open .quote { color: var(--text); font-style: italic; }
-  .mac-open .mono { display: block; margin-top: 6px; padding: 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; white-space: nowrap; }
-  .mac-open details { margin-top: 6px; font-size: 13px; color: var(--text-dim); }
-  .mac-open summary { cursor: pointer; color: var(--text); }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>#chat-attach { display: none; }</style>
 </head>
 <body>
 
-<header class="hero">
+<div class="topbar">
   <div class="wrap">
-    <div class="brand">
-      <span class="wm on-dark" style="font-size: 1.9rem;" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
-        <span class="wm-sr">llemonAI</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
-        <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
-          <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
-          <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
-          <circle cx="50" cy="71" r="38" fill="#f2b705"/>
-          <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
-          <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
-          <circle cx="50" cy="33" r="5" fill="#d99a00"/>
-          <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
-        </svg>
-        <span class="wm-n" data-t="n" aria-hidden="true"></span>
-        <span class="wm-ai" data-t="AI" aria-hidden="true"></span>
-        <span class="wm-product">Image Editor</span>
-      </span>
-      <a class="back-home" href="index.html">&larr; llemonai.in</a>
-    </div>
-    <span class="usp-tag">&#9733; New &middot; on-device AI, nothing uploaded</span>
-    <h1>Passport photos. New backgrounds.<br/><span>Right resolution. Ready-to-print collages.</span></h1>
-    <p class="lead">
-      A free photo editor for <strong>Windows, macOS and Android</strong> that does the four jobs people need most:
-      make <strong>Indian passport photos</strong>, <strong>remove or change the background</strong>,
-      <strong>reduce or change the resolution</strong> to fit any upload limit or print size, and arrange
-      <strong>collages</strong> on pages from 6&times;4&nbsp;inch to A4.
-    </p>
+    <a class="wm" href="#top" title="llem = Large Language Embedded Model &middot; AI = Artificial Intelligence">
+      <span class="wm-sr">llemonAI Photo Editor</span><span class="wm-llm" data-t="llem" aria-hidden="true"></span>
+      <svg class="wm-o" viewBox="0 0 100 112" aria-hidden="true">
+        <path d="M50 32 C31 30 21 16 22 3 C37 4 50 15 50 32 Z" fill="#3d8b3d"/>
+        <path d="M50 32 C51 15 63 4 79 3 C80 17 68 30 50 32 Z" fill="#4caf50"/>
+        <circle cx="50" cy="71" r="38" fill="#f2b705"/>
+        <circle cx="47" cy="68" r="36" fill="#ffd23f"/>
+        <ellipse cx="36" cy="54" rx="9" ry="12" fill="#fff" opacity="0.35"/>
+        <circle cx="50" cy="33" r="5" fill="#d99a00"/>
+        <circle cx="50" cy="108" r="4.5" fill="#d99a00"/>
+      </svg>
+      <span class="wm-n" data-t="n" aria-hidden="true"></span><span class="wm-ai" data-t="AI" aria-hidden="true"></span><span class="wm-product" aria-hidden="true">Photo Editor</span>
+    </a>
+    <a class="home" href="index.html">&larr; llemonai.in</a>
+    <nav>
+      <a class="opt" href="#highlights">Features</a>
+      <a class="opt" href="#faq">Questions</a>
+      <a class="btn btn-primary btn-sm" href="#download">Download</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow"><b>Free</b> &middot; Windows, macOS and Android &middot; version 1.0.0 &middot; on-device AI, nothing uploaded</p>
+    <h1>Passport photos. New backgrounds.<br/><span class="accent">The right size, ready to print.</span></h1>
+    <p class="lead">A free photo editor that does the four jobs people need most: make Indian passport photos, remove or change the background, reduce or change the resolution for any upload limit or print size, and arrange collages from 6&times;4&nbsp;inch to A4.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#download">Download</a>
-      <a class="btn btn-secondary" href="#highlights">See the four key features</a>
+      <a class="btn btn-primary" href="#download">Download free</a>
+      <a class="btn btn-plain" href="#highlights">See the four key features</a>
     </div>
-    <div class="hero-note">Windows 10/11, 64-bit &amp; 32-bit, one portable .exe, no installer &middot; macOS 12 and later, Apple Silicon &amp; Intel &middot; Android 8.0 (API 26) and later, single sideloaded APK &middot; works offline</div>
+    <p class="small">Windows 10/11: one portable .exe, no installer &middot; macOS 12 or later, Apple Silicon and Intel &middot; Android 8.0 or later &middot; works offline</p>
+    <figure class="hero-shot">
+      <div class="frame"><img src="screenshots/image-editor-scenery.png" width="1800" height="1125" alt="llemonAI Photo Editor with an illustrated person placed on a softly blurred lake scenery, with Zoom scenery, Blur scenery and Match lighting controls" /></div>
+      <figcaption>Background removed and replaced with a lake scenery. Illustrated portrait.</figcaption>
+    </figure>
   </div>
 </header>
 
 <section id="highlights">
   <div class="wrap">
-    <h2>Four things it does best</h2>
-    <p class="section-lead">Everything runs on your device &mdash; the AI models are built into the app, so your photos are never uploaded.</p>
-    <div class="usp-split">
-      <div class="usp-col ours">
-        <h3>&#9312; Passport photos</h3>
-        <p>Indian passport <b>35&times;45&nbsp;mm</b> by default (plus visa/OCI 2&times;2&nbsp;in, PAN card, stamp size and custom). The face is found, the background turned white and the head sized to the official guide lines automatically. Save a 300&nbsp;DPI print, a <b>630&times;810 under 250&nbsp;KB</b> file for Passport Seva, or a sheet of <b>8 on 6&times;4&nbsp;in</b>.</p>
-      </div>
-      <div class="usp-col ours">
-        <h3>&#9313; Background removal</h3>
-        <p>One tap finds the person and removes the background. Keep it transparent, choose white or any colour, blur it, or put the person on <b>any scenery</b> &mdash; move, zoom and blur the scenery and match the lighting. Objects and plain walls work too, with Keep selection and Remove colour.</p>
-      </div>
+    <p class="kicker">Four things it does best</p>
+    <div class="narrow">
+      <h2>Made for the photo jobs that come up every week.</h2>
+      <p class="muted">Everything runs on your device. The AI models are built into the app, so your photos are never uploaded.</p>
     </div>
-    <div class="usp-split" style="margin-top:0;">
-      <div class="usp-col ours">
-        <h3>&#9314; Change of resolution</h3>
-        <p>Reduce a camera photo to the size a form, email or WhatsApp accepts &mdash; or set the exact print size. Choose <b>DPI</b> (72&ndash;600) and the size in <b>pixels, percent, cm, mm or inches</b>, with or without resampling, or save under a <b>maximum file size in KB</b>. A <b>before / after table</b> shows pixels, print size, DPI and file size.</p>
-      </div>
-      <div class="usp-col ours">
-        <h3>&#9315; Collages</h3>
-        <p>Pages from <b>6&times;4&nbsp;in to A4</b> and Letter, portrait or landscape, with <b>24 layouts</b>. Drop photos into boxes, drag to swap, pan and zoom inside each box, set spacing, margins and rounded corners. Print at exact size, or save JPG, PNG or PDF at 300&nbsp;DPI.</p>
-      </div>
-    </div>
-    <div class="size-demo">
-      <div class="num"><small>Camera photo</small>1.4 MB</div>
-      <div class="arrow">&rarr;</div>
-      <div class="num after"><small>Full HD</small>449 KB</div>
-      <div class="arrow">&rarr;</div>
-      <div class="num after"><small>Online form</small>&lt; 250 KB</div>
-      <div class="note">A 4000&times;1824 photo of Kesroli Fort, Rajasthan: <b>Quick size &rarr; Full HD</b> makes it 1920&times;876 and 449&nbsp;KB; <b>Save &rarr; Maximum file size 250&nbsp;KB</b> brings it to 246&nbsp;KB for an upload form. The app shows both sizes before you apply.</div>
-    </div>
-    <ol class="steps">
-      <li><b>Open</b> a photo &mdash; or drop it on the window, paste it, share it to the app on Android, or take one with the camera.</li>
-      <li><b>Passport</b>: pick the size; framing and the white background are automatic. <b>Edit &rarr; Background</b>: one tap removes it. <b>Edit &rarr; Crop</b>: choose the new resolution and see the before / after sizes.</li>
-      <li><b>Collage</b>: pick a page and a layout, and add photos.</li>
-      <li><b>Save</b> as JPG, PNG, WebP or PDF &mdash; with a maximum file size if a form needs one &mdash; or <b>print</b> at exact size.</li>
-    </ol>
-  </div>
-</section>
 
-<section class="alt" id="screenshots">
-  <div class="wrap">
-    <h2>See it in action</h2>
-    <p class="section-lead">Screenshots from Windows and Android, with an illustrated portrait and public-domain photos of India. The Mac app looks the same, with a native menu bar.</p>
-    <div class="shot-grid">
-      <div class="shot-card">
-        <img src="screenshots/image-editor-passport.png" alt="Passport mode framing a face to 35 by 45 millimetres on a white background with guide lines for the top of the head and the chin" loading="lazy" />
-        <div class="cap">&#9312; Indian passport photo, framed automatically on white</div>
+    <div class="feature">
+      <div class="text">
+        <h3>Passport photos</h3>
+        <p>Indian passport 35&times;45&nbsp;mm by default, plus visa/OCI 2&times;2&nbsp;in, PAN card, stamp size and custom. The face is found, the background turned white and the head sized to the official guide lines automatically.</p>
+        <ul class="ticks">
+          <li>A 300&nbsp;DPI print, or 630&times;810 under 250&nbsp;KB for Passport Seva</li>
+          <li>A sheet of 8 on 6&times;4&nbsp;in paper, with cutting guides</li>
+        </ul>
       </div>
-      <div class="shot-card">
-        <img src="screenshots/image-editor-scenery.png" alt="llemonAI Image Editor with an illustrated person placed on a softly blurred lake scenery, with Zoom scenery, Blur scenery and Match lighting controls" loading="lazy" />
-        <div class="cap">&#9313; Background removed &mdash; here replaced with a lake scenery</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/image-editor-resolution.png" alt="The Image size and resolution panel reducing a 4000 by 1824 photo to Full HD, with a before and after table showing pixels, print size, DPI and file size" loading="lazy" />
-        <div class="cap">&#9314; Change of resolution, with before / after sizes</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/image-editor-collage.png" alt="A collage of a portrait and three Indian landscape photos on an A4 landscape page, with the layout picker" loading="lazy" />
-        <div class="cap">&#9315; Collages from 6&times;4&nbsp;in to A4, 24 layouts</div>
-      </div>
+      <figure><div class="frame"><img src="screenshots/image-editor-passport.png" width="1800" height="1125" loading="lazy" alt="Passport mode framing a face to 35 by 45 millimetres on a white background with guide lines for the top of the head and the chin" /></div></figure>
     </div>
-    <div class="shot-grid" style="margin-top:20px;">
-      <div class="shot-card">
-        <img src="screenshots/image-editor-sheet.png" alt="A 6 by 4 inch print sheet with eight passport photos and cutting guides" loading="lazy" />
-        <div class="cap">8 passport photos on a 6&times;4&nbsp;in sheet, with cutting guides</div>
-      </div>
-      <div class="shot-card">
-        <img src="screenshots/image-editor-text.png" alt="Yellow text reading Happy Diwali in Hindi and English on a photo, with the Text panel showing the Hindi and Indian scripts font" loading="lazy" />
-        <div class="cap">Also: text in Hindi, other Indian scripts and English</div>
-      </div>
-    </div>
-    <div class="shot-grid shot-grid-phone" style="margin-top:20px;">
-      <div class="shot-card">
-        <img src="screenshots/image-editor-android.png" alt="llemonAI Image Editor on an Android phone, with a portrait's white background replaced by light blue" loading="lazy" />
-        <div class="cap">Android &mdash; the same features, made for touch</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="features">
-  <div class="wrap">
-    <h2>Also in the box</h2>
-    <p class="section-lead">For ID photos, social posts, greeting cards, family prints and documents that must be under an upload limit.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="icon">&#9632;</span>
-        <h3>Select part of a photo</h3>
-        <p>Rectangle, ellipse, freehand lasso and magic-wand selections, with add, subtract, feather and invert. Adjustments then change only that area.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#9728;</span>
-        <h3>Light &amp; colour</h3>
-        <p>Brightness, contrast, exposure, highlights, shadows, saturation, vibrance, warmth, tint, hue, sharpness and vignette, with a live preview. One-tap Auto enhance, B&amp;W and Sepia.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#9787;</span>
-        <h3>Beauty</h3>
-        <p>Smooth skin for a younger look, remove dark spots, make skin tone lighter or deeper, brighten eyes, whiten teeth &mdash; plus a tap-to-remove spot healer. Only facial skin changes.</p>
-      </div>
-      <div class="card">
-        <span class="icon">T</span>
-        <h3>Text on photos</h3>
-        <p>Any number of text boxes: fonts including Hindi and other Indian scripts, size, colour, bold, italic, outline, shadow, a background box and rotation. Drag to place.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#9986;</span>
-        <h3>Crop, rotate, straighten</h3>
-        <p>Crop to print shapes (6&times;4, 5&times;7, A4, 35&times;45&nbsp;mm and more), rotate, flip and straighten. Unlimited undo and redo on every edit.</p>
-      </div>
-      <div class="card">
-        <span class="icon">&#128424;</span>
-        <h3>Print at exact size</h3>
-        <p>Collages and passport sheets print at their real dimensions; saved files carry their 300&nbsp;DPI print size. PDF export for print shops.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="alt" id="uses">
-<style>
-  .uses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 22px; }
-  .uses-grid h3 { margin: 0 0 10px; font-size: 16px; color: var(--accent); }
-  .uses-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .uses-grid li { padding: 5px 11px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); font-size: 13.5px; color: var(--text-dim); }
-  .uses-hi { margin-top: 18px; color: var(--text-dim); font-size: 14.5px; }
-  .faq-list details { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin-top: 10px; }
-  .faq-list summary { cursor: pointer; font-weight: 600; }
-  .faq-list details p { margin: 10px 0 0; color: var(--text-dim); line-height: 1.6; }
-</style>
-  <div class="wrap">
-    <h2>What people use it for</h2>
-    <p class="section-lead">A passport photo maker, background remover, photo size reducer, image resizer and collage maker in one free app for PC, Mac and Android.</p>
-    <div class="uses-grid">
-      <div>
-        <h3>Passport &amp; ID photos</h3>
-        <ul><li>Indian passport photo 35×45 mm</li><li>Passport Seva photo 630×810 under 250 KB</li><li>Passport photo with white background</li><li>8 passport photos on a 4×6 sheet</li><li>Visa / OCI photo 2×2 inch</li><li>PAN card photo 25×35 mm</li><li>Stamp size photo</li><li>US, UK and Schengen visa photos</li><li>Photos for exam and job application forms</li></ul>
-      </div>
-      <div>
+    <div class="feature flip">
+      <div class="text">
         <h3>Background removal</h3>
-        <ul><li>Remove background from a photo</li><li>Change background to white</li><li>Blue or any colour background</li><li>Transparent background PNG</li><li>Blur the background</li><li>Put a person on a scenery</li><li>Remove a plain-coloured wall</li><li>Cut out an object with lasso or magic wand</li></ul>
+        <p>One tap finds the person and removes the background. Keep it transparent, choose white or any colour, blur it, or put the person on any scenery, then move, zoom and blur the scenery and match the lighting.</p>
+        <ul class="ticks">
+          <li>Objects and plain walls work too, with Keep selection and Remove colour</li>
+          <li>A Refine brush touches up hair and edges</li>
+        </ul>
       </div>
-      <div>
-        <h3>Resolution &amp; file size</h3>
-        <ul><li>Reduce photo size in KB</li><li>Compress to 20, 50, 100, 200 or 250 KB</li><li>Reduce MB to KB</li><li>Change DPI to 300 for printing</li><li>Resize in pixels, cm, mm or inches</li><li>Resize to Full HD 1920 px</li><li>Resize for WhatsApp or email</li><li>See before / after file size</li></ul>
-      </div>
-      <div>
-        <h3>Collages &amp; printing</h3>
-        <ul><li>Photo collage on A4</li><li>4×6 / 6×4 photo collage</li><li>5×7 and 8×10 prints</li><li>24 collage layouts</li><li>Save collage as PDF</li><li>Print at exact size</li></ul>
-      </div>
-      <div>
-        <h3>Editing &amp; beauty</h3>
-        <ul><li>Brightness, contrast and colour</li><li>Crop, rotate and straighten</li><li>Select part of a photo</li><li>Add text in Hindi, Tamil, Telugu and English</li><li>Remove dark spots</li><li>Smooth skin, look younger</li><li>Lighter or deeper skin tone</li><li>HEIC to JPG, PNG to JPG, photo to PDF</li></ul>
-      </div>
+      <figure><div class="frame crop crop-mid"><img src="screenshots/image-editor-scenery.png" loading="lazy" alt="Close-up of a portrait cut out from its original background and placed on a blurred lake scenery" /></div></figure>
     </div>
-    <p class="uses-hi" lang="hi">हिंदी में: पासपोर्ट साइज फोटो बनाएं, फोटो का बैकग्राउंड हटाएं या बदलें, फोटो का साइज KB में कम करें, रेज़ोल्यूशन और DPI बदलें, और A4 या 4×6 पर फोटो कोलाज बनाएं &mdash; मुफ़्त, बिना इंटरनेट के।</p>
+
+    <div class="feature">
+      <div class="text">
+        <h3>Change of resolution</h3>
+        <p>Reduce a camera photo to the size a form, email or WhatsApp accepts, or set the exact print size. Choose DPI and the size in pixels, percent, cm, mm or inches, or save under a maximum file size in KB.</p>
+        <ul class="ticks">
+          <li>A before and after table: pixels, print size, DPI and file size</li>
+          <li>With Resample off, only the print size changes</li>
+        </ul>
+      </div>
+      <figure><div class="frame"><img src="screenshots/image-editor-resolution.png" width="1800" height="1125" loading="lazy" alt="The Image size and resolution panel reducing a 4000 by 1824 photo to Full HD, with a before and after table showing pixels, print size, DPI and file size" /></div></figure>
+    </div>
+
+    <div class="stat">
+      <span class="num">1.4 MB</span><span class="arrow">&rarr;</span><span class="num after">246 KB</span>
+      <span class="note">A 4000&times;1824 photo of Kesroli Fort, Rajasthan, saved with a 250&nbsp;KB limit for an upload form. Quick size &rarr; Full HD alone makes it 449&nbsp;KB.</span>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h3>Collages</h3>
+        <p>Pages from 6&times;4&nbsp;in to A4 and Letter, portrait or landscape, with 24 layouts. Drop photos into boxes, drag to swap, pan and zoom inside each box, and set spacing, margins and rounded corners.</p>
+        <ul class="ticks">
+          <li>Print at exact size, or save JPG, PNG or PDF at 300&nbsp;DPI</li>
+        </ul>
+      </div>
+      <figure><div class="frame"><img src="screenshots/image-editor-collage.png" width="1800" height="1125" loading="lazy" alt="A collage of a portrait and three Indian landscape photos on an A4 landscape page, with the layout picker" /></div></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="features">
+  <div class="wrap">
+    <p class="kicker">Also in the box</p>
+    <div class="narrow"><h2>The everyday edits, too.</h2></div>
+    <div class="feature">
+      <div class="text">
+        <h3>Text in Indian scripts</h3>
+        <p>Any number of text boxes, with fonts for Hindi, other Indian scripts and English: size, colour, bold, italic, outline, shadow, a background box and rotation. Drag to place.</p>
+      </div>
+      <figure><div class="frame"><img src="screenshots/image-editor-text.png" width="1800" height="1125" loading="lazy" alt="Yellow text reading Happy Diwali in Hindi and English on a photo, with the Text panel showing the Hindi and Indian scripts font" /></div></figure>
+    </div>
+    <div class="also">
+      <div><h3>Select part of a photo</h3><p>Rectangle, ellipse, lasso and magic-wand selections with add, subtract, feather and invert. Adjustments then change only that area.</p></div>
+      <div><h3>Light and colour</h3><p>Brightness, contrast, exposure, highlights, shadows, saturation, warmth, sharpness and more, with a live preview. One-tap Auto enhance, B&amp;W and Sepia.</p></div>
+      <div><h3>Beauty</h3><p>Smooth skin, remove dark spots, lighter or deeper skin tone, brighter eyes and whiter teeth, plus a tap-to-remove spot healer. Only facial skin changes.</p></div>
+      <div><h3>Crop, rotate, straighten</h3><p>Crop to print shapes (6&times;4, 5&times;7, A4, 35&times;45&nbsp;mm and more), rotate, flip and straighten. Unlimited undo and redo.</p></div>
+      <div><h3>Print at exact size</h3><p>Collages and passport sheets print at their real dimensions; saved files carry their 300&nbsp;DPI print size. PDF export for print shops.</p></div>
+      <div><h3>Private and offline</h3><p>No account, no watermark, no upload. It only goes online when you click Check for updates.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap android">
+    <div>
+      <p class="kicker">Android</p>
+      <h2>The same editor on your phone.</h2>
+      <p class="muted">Made for touch, with camera, gallery and &ldquo;Share to&rdquo; support. HEIC photos open too.</p>
+    </div>
+    <div class="phones">
+      <div class="frame"><img src="screenshots/image-editor-android.png" width="1080" height="2208" loading="lazy" alt="llemonAI Photo Editor on an Android phone, with a portrait's white background replaced by light blue" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="uses">
+  <div class="wrap">
+    <p class="kicker">What people use it for</p>
+    <div class="narrow">
+      <h2>One free app instead of five.</h2>
+      <p class="muted">A passport photo maker, background remover, photo size reducer, image resizer and collage maker for PC, Mac and Android.</p>
+    </div>
+    <div class="also">
+      <div><h3>Passport and ID photos</h3><p>Indian passport photo 35&times;45&nbsp;mm &middot; Passport Seva photo 630&times;810 under 250&nbsp;KB &middot; white background &middot; 8 photos on a 4&times;6 sheet &middot; visa/OCI 2&times;2 inch &middot; PAN card 25&times;35&nbsp;mm &middot; stamp size &middot; US, UK and Schengen visa photos &middot; exam and job application forms</p></div>
+      <div><h3>Background removal</h3><p>Remove the background &middot; change it to white, blue or any colour &middot; transparent PNG &middot; blur the background &middot; put a person on a scenery &middot; remove a plain wall &middot; cut out an object with lasso or magic wand</p></div>
+      <div><h3>Resolution and file size</h3><p>Reduce photo size in KB &middot; compress to 20, 50, 100, 200 or 250&nbsp;KB &middot; MB to KB &middot; 300 DPI for printing &middot; resize in pixels, cm, mm or inches &middot; Full HD 1920&nbsp;px &middot; WhatsApp or email size</p></div>
+      <div><h3>Collages and printing</h3><p>Photo collage on A4 &middot; 4&times;6 / 6&times;4 collage &middot; 5&times;7 and 8&times;10 prints &middot; 24 layouts &middot; save as PDF &middot; print at exact size</p></div>
+      <div><h3>Editing and beauty</h3><p>Brightness, contrast and colour &middot; crop, rotate, straighten &middot; text in Hindi, Tamil, Telugu and English &middot; remove dark spots &middot; smooth skin &middot; HEIC to JPG, PNG to JPG, photo to PDF</p></div>
+      <div lang="hi"><h3>हिंदी में</h3><p>पासपोर्ट साइज फोटो बनाएं, फोटो का बैकग्राउंड हटाएं या बदलें, फोटो का साइज KB में कम करें, रेज़ोल्यूशन और DPI बदलें, और A4 या 4&times;6 पर फोटो कोलाज बनाएं &mdash; मुफ़्त, बिना इंटरनेट के।</p></div>
+    </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <h2>Frequently asked questions</h2>
-    <div class="faq-list">
-      <details><summary>How do I make an Indian passport size photo at home?</summary><p>Open llemonAI Image Editor, go to the Passport tab and choose a photo. India passport 35×45 mm is the default: the face is found, the background is turned white and the head is sized to the official guide lines automatically. Print a sheet of 8 photos on 6×4 inch paper, or save a 630×810 file under 250 KB for the Passport Seva online form.</p></details>
+    <p class="kicker">Questions</p>
+    <div class="narrow"><h2>Frequently asked questions.</h2></div>
+    <div class="faq" style="margin-top:28px">
+      <details><summary>How do I make an Indian passport size photo at home?</summary><p>Open llemonAI Photo Editor, go to the Passport tab and choose a photo. India passport 35×45 mm is the default: the face is found, the background is turned white and the head is sized to the official guide lines automatically. Print a sheet of 8 photos on 6×4 inch paper, or save a 630×810 file under 250 KB for the Passport Seva online form.</p></details>
       <details><summary>What is the size of an Indian passport photo?</summary><p>An Indian passport photo is 35×45 mm (3.5×4.5 cm) on a white background. For the Passport Seva online application the app saves 630×810 pixels under 250 KB. India visa and OCI photos are 2×2 inch (51×51 mm). Always check the latest official rules before applying.</p></details>
       <details><summary>How do I remove the background from a photo for free?</summary><p>Open the photo, go to Edit → Background and tap Remove background. On-device AI finds the person and removes the background without uploading anything. Then keep it transparent (PNG), choose white or any colour, blur it, or place the person on any scenery photo.</p></details>
       <details><summary>How do I change a photo background to white?</summary><p>In Edit → Background tap Remove background and choose white. For passport photos the Passport tab does this automatically. A Refine brush touches up hair and edges.</p></details>
@@ -719,72 +340,51 @@
       <details><summary>How do I change the resolution or DPI of a photo?</summary><p>Go to Edit → Crop → Image size &amp; resolution. Choose a quick size (4K, Full HD, HD, WhatsApp / email, Small, 50%, 25%) or type the size in pixels, percent, cm, mm or inches, and set the DPI (for example 300 for printing). A before / after table shows pixels, print size, DPI and file size before you apply. With Resample off only the print size changes.</p></details>
       <details><summary>How do I resize a photo in cm for a form or for printing?</summary><p>In Edit → Crop → Image size &amp; resolution choose cm (or mm or inches), type the width or height and the DPI, and apply. Saved JPG and PNG files keep their DPI, so they print at exactly that size.</p></details>
       <details><summary>How do I make a photo collage on A4 or 4×6 paper?</summary><p>Open the Collage tab, choose a page from 6×4 inch to A4 or Letter (portrait or landscape) and one of 24 layouts, then add photos. Drag to swap, pan and zoom inside each box, set spacing, margins and rounded corners, and print at exact size or save JPG, PNG or PDF at 300 DPI.</p></details>
-      <details><summary>Does llemonAI Image Editor work offline, and are my photos uploaded?</summary><p>It works fully offline. Photos are opened, edited and saved on your device, and the AI models are built into the app, so nothing is uploaded. It only goes online when you click Check for updates.</p></details>
-      <details><summary>Is llemonAI Image Editor free? Which devices does it run on?</summary><p>Yes, it is free with no watermark and no sign-up. It runs on Windows 10 and 11 (64-bit and 32-bit, one portable .exe), macOS 12 and later (Apple Silicon and Intel) and Android 8.0 and later.</p></details>
+      <details><summary>Does llemonAI Photo Editor work offline, and are my photos uploaded?</summary><p>It works fully offline. Photos are opened, edited and saved on your device, and the AI models are built into the app, so nothing is uploaded. It only goes online when you click Check for updates.</p></details>
+      <details><summary>Is llemonAI Photo Editor free? Which devices does it run on?</summary><p>Yes, it is free with no watermark and no sign-up. It runs on Windows 10 and 11 (64-bit and 32-bit, one portable .exe), macOS 12 and later (Apple Silicon and Intel) and Android 8.0 and later.</p></details>
     </div>
   </div>
 </section>
 
-<section class="alt" id="download">
+<section class="band" id="download">
   <div class="wrap">
-    <h2>Download</h2>
-    <p class="section-lead">Windows, Mac or Android &mdash; pick the build that matches your device. Not sure which Windows build? Almost every PC made since 2010 is 64-bit &mdash; use the 64-bit build unless you know otherwise.</p>
-    <p class="whats-new"><strong>llemonAI Image Editor 1.0.0, 14 Nov 2026.</strong> First release: Indian passport photos and print sheets, AI background removal and scenery backgrounds, change of resolution and file size with a before / after table, collages from 6&times;4 in to A4, plus selections, Beauty, text and <b>Check for updates</b> in About.</p>
-    <div class="download-grid">
-      <div class="dl-card">
-        <span class="dl-version">Version 1.0.0 &middot; 14 Nov 2026</span>
-        <h3>llemonAI Image Editor &mdash; 64-bit</h3>
-        <div class="meta">Recommended for almost everyone &middot; Windows 10/11 64-bit</div>
-        <ul>
-          <li>Single portable .exe (~46&nbsp;MB, AI models included)</li>
-          <li>No installation, no admin rights required</li>
-          <li>Uses the Microsoft Edge WebView2 runtime built into Windows 10 and 11</li>
-        </ul>
-        <a class="btn btn-primary" href="#" id="dl-x64">Download for 64-bit Windows</a>
-        <div class="dl-count" id="count-x64"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x64"></span></div>
+    <p class="kicker">Download</p>
+    <div class="narrow">
+      <h2>Free, for Windows, Mac and Android.</h2>
+      <p class="muted">Not sure which Windows file? Almost every PC made since 2010 is 64-bit.</p>
+    </div>
+    <div class="whats-new">
+      <p>The app itself is still named <b>llemonAI Image Editor</b>, as are the download files; it gets the new name in a coming update.</p>
+      <p><strong>1.0.0 (14 Nov 2026), first release:</strong> Indian passport photos and print sheets, AI background removal and scenery backgrounds, change of resolution and file size with a before and after table, collages from 6&times;4&nbsp;in to A4, plus selections, Beauty, text and Check for updates in About.</p>
+    </div>
+
+    <div class="dl-list">
+      <div class="dl-row">
+        <h3>Windows 64-bit <span class="rec">Recommended</span></h3>
+        <div class="meta">Windows 10 or 11. One portable .exe (about 46&nbsp;MB, AI models included), no installer, no admin rights.</div>
+        <div class="act"><a class="btn btn-primary" href="#" id="dl-x64">Download .exe</a><div class="dl-count" id="count-x64"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-x64"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 1.0.0 &middot; 14 Nov 2026</span>
-        <h3>llemonAI Image Editor &mdash; 32-bit</h3>
-        <div class="meta">For 32-bit Windows installations</div>
-        <ul>
-          <li>Single portable .exe (~45&nbsp;MB)</li>
-          <li>No installation, no admin rights required</li>
-          <li>Windows 10/11, 32-bit edition</li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-x86">Download for 32-bit Windows</a>
-        <div class="dl-count" id="count-x86"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-x86"></span></div>
+      <div class="dl-row">
+        <h3>Windows 32-bit</h3>
+        <div class="meta">For 32-bit editions of Windows 10 or 11. Portable .exe (about 45&nbsp;MB).</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-x86">Download .exe</a><div class="dl-count" id="count-x86"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-x86"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 1.0.0 &middot; 14 Nov 2026</span>
-        <h3>llemonAI Image Editor &mdash; Mac</h3>
-        <div class="meta">macOS 12 or later &middot; Apple Silicon and Intel</div>
-        <ul>
-          <li>Disk image (~23&nbsp;MB): drag the app to Applications</li>
-          <li>Native menu bar and &#8984; shortcuts</li>
-          <li>First launch: macOS blocks it once because it isn't notarized by Apple &mdash; see <a href="#mac-open">Opening on a Mac</a></li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-mac">Download for Mac</a>
-        <div class="dl-count" id="count-mac"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-mac"></span></div>
+      <div class="dl-row">
+        <h3>Mac</h3>
+        <div class="meta">macOS 12 or later, Apple Silicon and Intel. Disk image (about 23&nbsp;MB). The first launch needs one extra step: <a href="#mac-open">opening on a Mac</a>.</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-mac">Download .dmg</a><div class="dl-count" id="count-mac"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-mac"></span></details>
       </div>
-      <div class="dl-card">
-        <span class="dl-version">Version 1.0.0 &middot; 14 Nov 2026</span>
-        <h3>llemonAI Image Editor &mdash; Android</h3>
-        <div class="meta">Android 8.0+ (API 26+)</div>
-        <ul>
-          <li>Single .apk (~35&nbsp;MB), sideload install</li>
-          <li>Signed with our own release key (not on Play Store yet)</li>
-          <li>Camera, gallery and &ldquo;Share to&rdquo; support; HEIC photos open too</li>
-        </ul>
-        <a class="btn btn-secondary" href="#" id="dl-android">Download for Android</a>
-        <div class="dl-count" id="count-android"></div>
-        <div class="checksum">SHA256:<br /><span class="mono" id="sha-android"></span></div>
+      <div class="dl-row">
+        <h3>Android</h3>
+        <div class="meta">Android 8.0 or later. One .apk (about 35&nbsp;MB), installed directly; not on the Play Store yet.</div>
+        <div class="act"><a class="btn btn-plain" href="#" id="dl-android">Download .apk</a><div class="dl-count" id="count-android"></div></div>
+        <details class="checksum"><summary>SHA256 checksum</summary><span class="mono" id="sha-android"></span></details>
       </div>
     </div>
-    <p class="section-lead" style="margin-top:16px; margin-bottom:0; font-size:13px;" id="dl-total-line"></p>
+    <p class="small" style="margin-top:14px" id="dl-total-line"></p>
 
     <div class="mac-open" id="mac-open">
       <h3>Opening llemonAI Image Editor on a Mac</h3>
@@ -803,52 +403,35 @@
       </details>
     </div>
 
-    <p class="section-lead" style="margin-top:24px; margin-bottom:0; font-size:13px;">
-      Verify your download hasn't been tampered with or corrupted: after downloading, run
-      <span class="mono">certutil -hashfile llemonAI-Image-Editor-1.0.0-win-x64.exe SHA256</span> (PowerShell/Command Prompt), or on a Mac <span class="mono">shasum -a 256 llemonAI-Image-Editor-1.0.0-macos.dmg</span> (Terminal),
-      and compare the result to the SHA256 value shown above for the file you downloaded.
-    </p>
-    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      All builds are digitally signed (self-signed certificates, SHA256; the Mac app has an ad-hoc signature and isn't notarized by Apple, so macOS blocks its first launch until you click Open Anyway &mdash; see <a href="#mac-open">Opening on a Mac</a>). Windows SmartScreen may still show
-      an "Unknown Publisher" warning, and Android may warn about installing from an unknown source, on first
-      run &mdash; that's expected since neither is signed by a publicly trusted CA or listed on the Play Store yet.
-      The signature and the SHA256 checksum above both let you confirm each file matches exactly what we published.
-    </p>
-    <p class="section-lead" style="margin-top:12px; margin-bottom:0; font-size:13px;">
-      Installing the Android APK: Android will block it by default as an "unknown source." Open the
-      downloaded file, tap through the "Install anyway" / "allow this source" prompt, then Install. This is
-      normal for any app installed outside the Play Store.
-    </p>
+    <p class="fine">To check a download, run <span class="mono">certutil -hashfile llemonAI-Image-Editor-1.0.0-win-x64.exe SHA256</span> on Windows or <span class="mono">shasum -a 256 llemonAI-Image-Editor-1.0.0-macos.dmg</span> on a Mac, and compare it with the checksum above. The files are signed with llemonai's own certificates, not a public authority, so Windows SmartScreen may say "Unknown Publisher" and Android may ask you to allow installs from this source. Both are expected.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Good to know</h2>
-    <p class="section-lead">How llemonAI Image Editor handles your photos.</p>
-    <table class="checklist">
-      <thead><tr><th>Topic</th><th>Details</th></tr></thead>
+    <p class="kicker">Good to know</p>
+    <div class="narrow"><h2>How it handles your photos.</h2></div>
+    <table class="facts">
       <tbody>
-        <tr><td>Your photos stay on your device</td><td>Photos are opened, edited and saved locally, and the AI (Google's open-source MediaPipe models) runs inside the app. Nothing is uploaded and no internet connection is needed. The app only goes online when you click Check for updates.</td></tr>
-        <tr><td>Updates</td><td>About &rarr; <strong>Check for updates</strong> installs a newer version after checking its SHA256 checksum. Windows and macOS restart on the new version; Android opens its installer.</td></tr>
-        <tr><td>Background removal</td><td>The AI is made for people. For objects, select the object (lasso or magic wand) and use &ldquo;Keep selection&rdquo;, or remove a plain-coloured background by tapping it. A Refine brush touches up edges.</td></tr>
-        <tr><td>Passport photo sizes</td><td>India passport 35&times;45&nbsp;mm (default), India visa/OCI 2&times;2&nbsp;in, PAN card 25&times;35&nbsp;mm, stamp 20&times;25&nbsp;mm, US 2&times;2&nbsp;in, UK/Schengen 35&times;45&nbsp;mm and custom. Always check the latest official rules before applying.</td></tr>
-        <tr><td>Paper sizes</td><td>6&times;4&nbsp;in (4R), 7&times;5 (5R), 8&times;6 (6R), 10&times;8 (8R), 12&times;8, A5, A4 and Letter, portrait or landscape. Print at 100% / &ldquo;Actual size&rdquo; for exact dimensions.</td></tr>
-        <tr><td>Resolution</td><td>Set any DPI from 30 to 2400 (presets 72, 96, 150, 200, 300, 600). With <b>Resample</b> off only the print size changes and the pixels stay identical; with it on the photo is scaled. The DPI is saved inside JPG and PNG files so they print at the right size.</td></tr>
-        <tr><td>File formats</td><td>Opens JPEG, PNG, WebP, GIF, BMP and AVIF (HEIC on Android and Mac). Saves JPG, PNG (keeps transparency), WebP and PDF.</td></tr>
-        <tr><td>Shortcuts</td><td><span class="kbd">Ctrl</span>+<span class="kbd">O</span> open &middot; <span class="kbd">Ctrl</span>+<span class="kbd">S</span> save &middot; <span class="kbd">Ctrl</span>+<span class="kbd">P</span> print &middot; <span class="kbd">Ctrl</span>+<span class="kbd">Z</span> / <span class="kbd">Ctrl</span>+<span class="kbd">Y</span> undo / redo &middot; <span class="kbd">Ctrl</span>+<span class="kbd">V</span> paste a photo &middot; <span class="kbd">F1</span> help</td></tr>
+        <tr><th>Your photos stay on your device</th><td>Photos are opened, edited and saved locally, and the AI (Google's open-source MediaPipe models) runs inside the app. Nothing is uploaded and no internet connection is needed. The app only goes online when you click Check for updates.</td></tr>
+        <tr><th>Updates</th><td>About &rarr; <b>Check for updates</b> installs a newer version after checking its SHA256 checksum. Windows and macOS restart on the new version; Android opens its installer.</td></tr>
+        <tr><th>Background removal</th><td>The AI is made for people. For objects, select the object (lasso or magic wand) and use &ldquo;Keep selection&rdquo;, or remove a plain-coloured background by tapping it. A Refine brush touches up edges.</td></tr>
+        <tr><th>Passport photo sizes</th><td>India passport 35&times;45&nbsp;mm (default), India visa/OCI 2&times;2&nbsp;in, PAN card 25&times;35&nbsp;mm, stamp 20&times;25&nbsp;mm, US 2&times;2&nbsp;in, UK/Schengen 35&times;45&nbsp;mm and custom. Always check the latest official rules before applying.</td></tr>
+        <tr><th>Paper sizes</th><td>6&times;4&nbsp;in (4R), 7&times;5 (5R), 8&times;6 (6R), 10&times;8 (8R), 12&times;8, A5, A4 and Letter, portrait or landscape. Print at 100% / &ldquo;Actual size&rdquo; for exact dimensions.</td></tr>
+        <tr><th>Resolution</th><td>Any DPI from 30 to 2400 (presets 72, 96, 150, 200, 300, 600). With <b>Resample</b> off only the print size changes and the pixels stay identical; with it on the photo is scaled. The DPI is saved inside JPG and PNG files so they print at the right size.</td></tr>
+        <tr><th>File formats</th><td>Opens JPEG, PNG, WebP, GIF, BMP and AVIF (HEIC on Android and Mac). Saves JPG, PNG (keeps transparency), WebP and PDF.</td></tr>
+        <tr><th>Shortcuts</th><td><span class="kbd">Ctrl</span>+<span class="kbd">O</span> open &middot; <span class="kbd">Ctrl</span>+<span class="kbd">S</span> save &middot; <span class="kbd">Ctrl</span>+<span class="kbd">P</span> print &middot; <span class="kbd">Ctrl</span>+<span class="kbd">Z</span> / <span class="kbd">Ctrl</span>+<span class="kbd">Y</span> undo / redo &middot; <span class="kbd">Ctrl</span>+<span class="kbd">V</span> paste a photo &middot; <span class="kbd">F1</span> help (&#8984; on a Mac)</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; width:100%;">
-    <div>&copy; <span id="year"></span> llemonai.in &mdash; llemonAI Image Editor. All rights reserved. Simple, not complex. Powerful and useful.</div>
-    <div>llem = Large Language Embedded Model &middot; AI = Artificial Intelligence</div>
-    <div>Also from llemonai: <a href="reader.html">llemonAI Reader</a> &middot; <a href="organizer.html">PDF Organizer</a> &middot; <a href="scanner.html">llemonAI Wi-Fi Scanner</a></div>
-    <div>Contact: <a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
-    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=3a8bff&labelColor=141d2b" alt="Page view count" style="height:20px;" />
+  <div class="wrap">
+    <div>&copy; <span id="year"></span> llemonai.in &middot; llemonAI Photo Editor</div>
+    <div>Also from llemonai: <a href="reader.html">PDF Annotator</a> &middot; <a href="organizer.html">PDF Shrinker</a> &middot; <a href="scanner.html">Wi-Fi Scanner</a></div>
+    <div><a href="mailto:llemonai.us@gmail.com">llemonai.us@gmail.com</a></div>
+    <img src="https://hits.sh/llemonai.in.svg?label=page%20views&color=5b9bff&labelColor=2c2a26" alt="Page view count" style="height:20px;" />
   </div>
 </footer>
 
@@ -864,7 +447,7 @@
   document.getElementById('sha-android').textContent = 'D4E48F9F418199951FCCF2641301603178D29B59C56D0511A3E317C46694B0A7';
   document.getElementById('sha-mac').textContent = '480AC9D59DD528EDA3779DC8B256E9932E884D98114B6255D23A7DAC29823D35';
 
-  // Live download counts from GitHub's public Releases API, summed across all Image Editor releases.
+  // Live download counts from GitHub's public Releases API, summed across all Photo Editor releases.
   fetch('https://api.github.com/repos/llemonai/llemon-image-editor/releases?per_page=100')
     .then(function (res) { if (!res.ok) throw new Error('GitHub API error ' + res.status); return res.json(); })
     .then(function (releases) {
@@ -923,7 +506,7 @@
 (function () {
   var faq = [
     {
-      q: "What is llemonAI Image Editor?",
+      q: "What is llemonAI Photo Editor?",
       a: "A free photo editor for Windows, macOS and Android. It removes or replaces a photo's background with on-device AI (including putting a person on any scenery), beautifies faces, adds text in English, Hindi and other Indian scripts, makes Indian passport photos, and prints collages from 6×4 inch to A4. Everything runs on your device."
     },
     {
@@ -967,12 +550,12 @@
       a: "That's macOS's standard message for apps that aren't notarized by Apple; it doesn't mean anything was found in the app. Allow it once: 1. Drag the app from the .dmg into Applications. 2. Double-click it and click <b>Done</b> on the warning. 3. Open <b>System Settings → Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to the blocked app. 4. Enter your password and click <b>Open Anyway</b> again. See <a href=\"#mac-open\">Opening on a Mac</a> for details."
     },
     {
-      q: "How do I update llemonAI Image Editor?",
+      q: "How do I update llemonAI Photo Editor?",
       a: "Open <b>About</b> (the ⓘ button) and click <b>Check for updates</b>. If a newer version exists, click <b>Install</b>: the app downloads it from our GitHub release, checks its SHA256 checksum, and installs it. Windows and macOS restart on the new version; on Android, confirm in the system installer."
     },
     {
       q: "Are my photos uploaded anywhere?",
-      a: "No. llemonAI Image Editor works entirely on your device, including the AI for background removal and face detection, and doesn't need an internet connection."
+      a: "No. llemonAI Photo Editor works entirely on your device, including the AI for background removal and face detection, and doesn't need an internet connection."
     },
     {
       q: "How do I contact support?",
@@ -1185,7 +768,7 @@
     panel.classList.add('open');
     badge.classList.add('hidden');
     if (!greeted) {
-      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI Image Editor &mdash; pick a common question below or type your own.", 'bot');
+      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI Photo Editor &mdash; pick a common question below or type your own.", 'bot');
       showMenu();
       greeted = true;
     }
