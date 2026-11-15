@@ -403,3 +403,6 @@ article th { color: var(--ink-3); font-weight: 600; font-size: 13px; text-transf
   .topbar .wm { font-size: 1.1rem; }
   .topbar .btn-sm { padding: 7px 12px; font-size: 13px; }
 }
+
+/* WebP screenshots with PNG fallback: the <picture> wrapper must not affect layout */
+picture { display: contents; }
