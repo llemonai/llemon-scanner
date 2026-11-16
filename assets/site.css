@@ -406,3 +406,26 @@ article th { color: var(--ink-3); font-weight: 600; font-size: 13px; text-transf
 
 /* WebP screenshots with PNG fallback: the <picture> wrapper must not affect layout */
 picture { display: contents; }
+
+/* YouTube videos: thumbnail first, the player loads only on click */
+.vids { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 32px; }
+@media (min-width: 760px) { .vids { grid-template-columns: 1fr 1fr; } }
+.vids h3 { margin: 14px 0 4px; font-size: 18px; }
+.vids h3 a { color: var(--ink); text-decoration: none; }
+.vids h3 a:hover { color: var(--lemon); }
+.vids p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.vid-one { max-width: 860px; margin-top: 32px; }
+.yt-box { position: relative; aspect-ratio: 16 / 9; background: #000; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.yt-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.yt { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.88; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt .play { position: absolute; left: 50%; top: 50%; width: 72px; height: 50px; margin: -25px 0 0 -36px; border-radius: 14px; background: var(--lemon); box-shadow: 0 6px 24px rgba(0,0,0,.5); }
+.yt .play::after { content: ""; position: absolute; left: 29px; top: 15px; border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent #16140f; }
+.yt:focus-visible { outline: 3px solid var(--lemon); outline-offset: -3px; }
+.vids-sub { margin-top: 56px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.vids.shorts { grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (min-width: 760px) { .vids.shorts { grid-template-columns: repeat(4, 1fr); } }
+.vids.shorts .yt-box { aspect-ratio: 9 / 16; }
+.vids.shorts h3 { font-size: 16px; }
+.vids.shorts p { font-size: 14px; color: var(--ink-3); }
