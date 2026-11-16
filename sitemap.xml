@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://llemonai.in/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://llemonai.in/screenshots/reader-whiteboard.png</image:loc></image:image>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://llemonai.in/reader.html</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image><image:loc>https://llemonai.in/screenshots/reader-whiteboard.png</image:loc></image:image>
@@ -25,7 +25,7 @@
   </url>
   <url>
     <loc>https://llemonai.in/organizer.html</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image><image:loc>https://llemonai.in/screenshots/organizer-sizes.png</image:loc></image:image>
@@ -36,7 +36,7 @@
   </url>
   <url>
     <loc>https://llemonai.in/image-editor.html</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image><image:loc>https://llemonai.in/screenshots/image-editor-scenery.png</image:loc></image:image>
@@ -48,7 +48,7 @@
   </url>
   <url>
     <loc>https://llemonai.in/scanner.html</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image><image:loc>https://llemonai.in/screenshots/scan-view.png</image:loc></image:image>
