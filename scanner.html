@@ -399,26 +399,26 @@
   var faq = [
     {
       q: "What is llemonAI Wi-Fi Scanner?",
-      a: "A free Wi-Fi scanning and diagnostics tool for Windows, macOS and Android. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report — built for IT engineers and field technicians."
+      a: "A free Wi-Fi scanning and diagnostics tool for Windows, macOS and Android. It scans nearby networks, decodes raw beacon frames, tracks signal history and channel usage, and can export a field-ready PDF report, built for IT engineers and field technicians."
     },
     {
       q: "Is there an Android version?",
-      a: "Yes — a native Android app (Android 8.0 / API 26 and later) with the same core features as Windows: scanning, beacon decode, signal history, PDF export, and the Field Engineer Checklist, plus a couple of Android-only extras (Wi-Fi chipset capabilities, reverse-geocoded location). It's a sideloaded .apk, not on the Play Store yet — see the <a href=\"#download\">Download</a> section for install steps."
+      a: "Yes, a native Android app (Android 8.0 / API 26 and later) with the same core features as Windows: scanning, beacon decode, signal history, PDF export, and the Field Engineer Checklist, plus a couple of Android-only extras (Wi-Fi chipset capabilities, reverse-geocoded location). It's a sideloaded .apk, not on the Play Store yet, see the <a href=\"#download\">Download</a> section for install steps."
     },
     {
-      q: "Which download do I need — Windows 32-bit, 64-bit, or Android?",
-      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install — almost every PC made since 2010 is 64-bit. On Android, there's a single .apk that works on any Android 8.0+ device. All three are on the <a href=\"#download\">Download</a> section above."
+      q: "Which download do I need: Windows 32-bit, 64-bit, or Android?",
+      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install. Almost every PC made since 2010 is 64-bit. On Android, there's a single .apk that works on any Android 8.0+ device. All three are on the <a href=\"#download\">Download</a> section above."
     },
     {
       q: "What are the system requirements?",
-      a: "Windows: Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit — no installer, no admin rights, no separate .NET install needed. Android: Android 8.0 (API 26) or later, ~11MB sideloaded .apk. macOS: macOS 12 Monterey or later on Apple Silicon or Intel; allow Location when asked so macOS shows network names."
+      a: "Windows: Windows 10 (build 19041 / version 2004 or later) or Windows 11, either 64-bit or 32-bit. No installer, no admin rights, no separate .NET install needed. Android: Android 8.0 (API 26) or later, ~11MB sideloaded .apk. macOS: macOS 12 Monterey or later on Apple Silicon or Intel; allow Location when asked so macOS shows network names."
     },
     {
       q: "Is it really free? Do I need to install anything?",
-      a: "Yes, it's free on every platform. On Windows there's nothing to install — download the single .exe and run it directly (even from a USB stick). On a Mac, drag the app from the .dmg to Applications (see <a href=\"#mac-open\">Opening on a Mac</a> for the first launch). On Android, download the .apk and sideload it — no Play Store account needed."
+      a: "Yes, it's free on every platform. On Windows there's nothing to install: download the single .exe and run it directly (even from a USB stick). On a Mac, drag the app from the .dmg to Applications (see <a href=\"#mac-open\">Opening on a Mac</a> for the first launch). On Android, download the .apk and sideload it, no Play Store account needed."
     },
     {
-      q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
+      q: "I see a Windows SmartScreen (or Android install) warning. Is it safe?",
       a: "The Windows 16.1.2 executables are signed with our own self-signed certificate (not a paid, publicly trusted one), so Windows may show a SmartScreen or unknown-publisher warning. Compare the downloaded file with its SHA256 checksum in the <a href=\"#download\">Download</a> section; on Windows, run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>. The Android APK is signed with our release key but may still show an unknown-source warning because it is sideloaded. The Mac app isn't notarized by Apple, so the first time allow it in System Settings → Privacy &amp; Security → <b>Open Anyway</b> (see <a href=\"#mac-open\">Opening on a Mac</a>)."
     },
     {
@@ -435,11 +435,11 @@
     },
     {
       q: "What's the Field Engineer Checklist?",
-      a: "A built-in, printable/exportable checklist for site visits, on Windows, Android and macOS — technician and customer details, device info, environmental conditions, RF checks, and throughput verification. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
+      a: "A built-in, printable/exportable checklist for site visits, on Windows, Android and macOS: technician and customer details, device info, environmental conditions, RF checks, and throughput verification. See the <a href=\"#checklist\">Field Engineer Checklist</a> section above."
     },
     {
-      q: "My Wi-Fi throughput is low — what should I check?",
-      a: "Signal strength (RSSI) alone doesn't tell the whole story. Check: optimal channel selection (avoid overlapping/congested channels — use the Channel Usage view), AP and client positioning (distance, walls, obstructions), interference from other networks or non-Wi-Fi devices, number of connected clients (now shown directly when an AP advertises it), and uplink throughput separately from downlink — it's often the real bottleneck."
+      q: "My Wi-Fi throughput is low. What should I check?",
+      a: "Signal strength (RSSI) alone doesn't tell the whole story. Check: optimal channel selection (avoid overlapping/congested channels, use the Channel Usage view), AP and client positioning (distance, walls, obstructions), interference from other networks or non-Wi-Fi devices, number of connected clients (now shown directly when an AP advertises it), and uplink throughput separately from downlink, it's often the real bottleneck."
     },
     {
       q: "How do I contact support?",
@@ -447,7 +447,7 @@
     },
     {
       q: "Can I get advice based on my own scan report?",
-      a: "Yes &mdash; click the paperclip icon below and attach the PDF report exported from llemonAI Wi-Fi Scanner on Windows, macOS or Android (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
+      a: "Yes. Click the paperclip icon below and attach the PDF report exported from llemonAI Wi-Fi Scanner on Windows, macOS or Android (Export to PDF in the app). Then ask things like \"how do I increase coverage?\" or \"how do I improve throughput?\" and I'll answer using the actual numbers from your report."
     }
   ];
 
@@ -607,7 +607,7 @@
       return;
     }
     if (file.size > 15 * 1024 * 1024) {
-      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
+      addMessage('That PDF is larger than 15 MB. Please attach a smaller report.', 'bot error');
       return;
     }
 
@@ -618,7 +618,7 @@
         reportContext = text.slice(0, MAX_REPORT_CHARS);
         reportName.textContent = file.name;
         reportPill.classList.add('show');
-        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
+        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions. It isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
       })
       .catch(function () {
         typingRow.remove();
@@ -636,7 +636,7 @@
   reportRemoveBtn.addEventListener('click', function () {
     reportContext = '';
     reportPill.classList.remove('show');
-    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
+    addMessage('Report removed. Back to general questions about the app.', 'bot');
   });
 
   function showMenu() {

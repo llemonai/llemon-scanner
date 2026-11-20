@@ -190,7 +190,7 @@
     <ol class="howto">
       <li><b>Open</b> the PDF. The size bar shows the original size, and each page shows its own.</li>
       <li><b>Select</b> the heavy pages: Ctrl+click on Windows (&#8984;+click on a Mac), or tap the &#10003; on each page on Android.</li>
-      <li><b>Resolution&hellip;</b> &mdash; choose dpi, colour or grayscale, JPEG or PNG. The preview shows the size before and after.</li>
+      <li><b>Resolution&hellip;</b>: choose dpi, colour or grayscale, JPEG or PNG. The preview shows the size before and after.</li>
       <li><b>Apply</b> and watch the file size drop. A page that would only get bigger as a picture is left as it is.</li>
     </ol>
   </div>
@@ -402,27 +402,27 @@
     },
     {
       q: "How do I make a PDF smaller without blurring the text?",
-      a: "Open it and look at the size under each page &mdash; usually a few photo or scanned pages make up most of the file. Select those pages (Ctrl+click on Windows, tap the &#10003; on Android), choose <b>Resolution…</b>, pick e.g. 96 or 150 dpi and Apply. Only those pages change; text pages stay sharp and searchable."
+      a: "Open it and look at the size under each page. Usually a few photo or scanned pages make up most of the file. Select those pages (Ctrl+click on Windows, tap the &#10003; on Android), choose <b>Resolution…</b>, pick e.g. 96 or 150 dpi and Apply. Only those pages change; text pages stay sharp and searchable."
     },
     {
       q: "Why didn't a page get smaller?",
       a: "A page of ordinary text is already smaller than any picture of it, so turning it into a picture would make the file bigger. The Resolution dialog warns you, and by default such pages are left unchanged. Lower resolution helps pages with photos, scans or heavy drawings."
     },
     {
-      q: "Which download do I need — Windows 32-bit, 64-bit, Mac or Android?",
-      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install — almost every PC made since 2010 is 64-bit. On a Mac, download the .dmg; it runs on Apple Silicon and Intel Macs with macOS 12 or later (the first time, allow it in System Settings → Privacy &amp; Security → <b>Open Anyway</b>; see <a href=\"#mac-open\">Opening on a Mac</a>). On Android, there's a single .apk for any Android 8.0+ device. All of them are in the <a href=\"#download\">Download</a> section above."
+      q: "Which download do I need: Windows 32-bit, 64-bit, Mac or Android?",
+      a: "On Windows, use the 64-bit build unless you specifically know you're on a 32-bit install. Almost every PC made since 2010 is 64-bit. On a Mac, download the .dmg; it runs on Apple Silicon and Intel Macs with macOS 12 or later (the first time, allow it in System Settings → Privacy &amp; Security → <b>Open Anyway</b>; see <a href=\"#mac-open\">Opening on a Mac</a>). On Android, there's a single .apk for any Android 8.0+ device. All of them are in the <a href=\"#download\">Download</a> section above."
     },
     {
       q: "Can I combine Word and text files into the PDF?",
-      a: "Yes — <b>Append</b> adds PDF, Word (.docx and old .doc) and text (.txt) files at the end, and <b>Insert</b> adds them after the selected page. Choose several files at once to combine them. Kannada, Hindi and other scripts show correctly."
+      a: "Yes, <b>Append</b> adds PDF, Word (.docx and old .doc) and text (.txt) files at the end, and <b>Insert</b> adds them after the selected page. Choose several files at once to combine them. Kannada, Hindi and other scripts show correctly."
     },
     {
       q: "How do I add or remove page numbers?",
       a: "Click <b>Page numbers</b>. To add numbers, choose the position, the format (for example \"Page 1 of 10\"), the first number and size, and whether to skip the cover page. To remove numbers already printed in a document, use <b>Find and delete page numbers</b>; it covers them with white, and <b>Bring back</b> or Undo restores them."
     },
     {
-      q: "I see a Windows SmartScreen (or Android install) warning — is it safe?",
-      a: "The builds are signed with our own self-signed certificate/key (not a paid, publicly trusted CA or Play Store listing yet), so Windows may show \"Unknown Publisher\" Android may warn about an unknown source, and macOS blocks the first launch until you click <b>Open Anyway</b> in System Settings → Privacy &amp; Security — that's expected. To confirm a file is genuine, compare its SHA256 checksum in the <a href=\"#download\">Download</a> section: on Windows run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
+      q: "I see a Windows SmartScreen (or Android install) warning. Is it safe?",
+      a: "The builds are signed with our own self-signed certificate/key (not a paid, publicly trusted CA or Play Store listing yet), so Windows may show \"Unknown Publisher\" Android may warn about an unknown source, and macOS blocks the first launch until you click <b>Open Anyway</b> in System Settings → Privacy &amp; Security, that's expected. To confirm a file is genuine, compare its SHA256 checksum in the <a href=\"#download\">Download</a> section: on Windows run <span class=\"mono\">certutil -hashfile &lt;file&gt; SHA256</span>."
     },
     {
       q: "My Mac says \"Apple could not verify llemonAI PDF Organizer is free of malware\". How do I open it?",
@@ -598,7 +598,7 @@
       return;
     }
     if (file.size > 15 * 1024 * 1024) {
-      addMessage('That PDF is larger than 15MB &mdash; please attach a smaller report.', 'bot error');
+      addMessage('That PDF is larger than 15 MB. Please attach a smaller report.', 'bot error');
       return;
     }
 
@@ -609,7 +609,7 @@
         reportContext = text.slice(0, MAX_REPORT_CHARS);
         reportName.textContent = file.name;
         reportPill.classList.add('show');
-        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions &mdash; it isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
+        addMessage('Got your report (<strong>' + file.name + '</strong>). Ask me things like "how do I increase coverage?" or "how do I improve throughput?" and I\'ll answer using its actual data. Note: the report text is sent to our AI assistant only to answer your questions. It isn\'t stored on our servers or used for anything else. Click the &times; above to remove it any time.', 'bot');
       })
       .catch(function () {
         typingRow.remove();
@@ -627,7 +627,7 @@
   reportRemoveBtn.addEventListener('click', function () {
     reportContext = '';
     reportPill.classList.remove('show');
-    addMessage('Report removed &mdash; back to general questions about the app.', 'bot');
+    addMessage('Report removed. Back to general questions about the app.', 'bot');
   });
 
   function showMenu() {
@@ -647,7 +647,7 @@
     panel.classList.add('open');
     badge.classList.add('hidden');
     if (!greeted) {
-      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI PDF Shrinker &mdash; pick a common question below or type your own.", 'bot');
+      addMessage("Hi! I'm the llemonai Help Bot. Ask me anything about llemonAI PDF Shrinker. Pick a common question below or type your own.", 'bot');
       showMenu();
       greeted = true;
     }
